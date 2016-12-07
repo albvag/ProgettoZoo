@@ -27,7 +27,43 @@ public class DBConnect {
         }catch(Exception ex){
             System.out.printf("Errore "+ex);
         };
-    } 
+    }
+    public String checkRole(String user)
+    {
+        try{
+            String query = "Select * from utente where utente.Codice_Utente = '"+user+"'";
+            rs = st.executeQuery(query);
+            String ruolo = "";
+            while(rs.next())
+            {ruolo = rs.getString("Ruolo_Utente");}
+            
+            return ruolo;
+        }catch(Exception ex){
+            System.out.println(ex);
+            return "Errore";
+        }
+    }
+    
+    public int userExists(String user, String password)
+    {
+        try{
+            String query = "Select * from utente where utente.Codice_Utente = '"+user+"' AND utente.Password = '"+password+"'";
+            rs = st.executeQuery(query);
+            int count=0;
+            while(rs.next())
+            {
+                count++;
+                String utente = rs.getString("Codice_Utente");
+                System.out.println(utente);
+            }
+            return count;
+        }catch(Exception ex){
+            
+            System.out.println(ex);
+            return -1;
+        }
+        
+    }
    // Esempio per vedere se funziona
     public void getData(){
         try{

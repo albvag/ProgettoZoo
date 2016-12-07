@@ -5,6 +5,11 @@
  */
 package logins;
 
+import java.awt.Toolkit;
+import java.awt.event.*;
+import java.awt.*;
+import progettozoo.DBConnect;
+
 /**
  *
  * @author Alberto
@@ -16,6 +21,7 @@ public class JLogin extends javax.swing.JFrame {
      */
     public JLogin() {
         initComponents();
+        //getContentPane().setBackground(Color.yellow);
     }
 
     /**
@@ -33,9 +39,10 @@ public class JLogin extends javax.swing.JFrame {
         jPasswordFieldPassword = new javax.swing.JPasswordField();
         jLabelUsername = new javax.swing.JLabel();
         jLabelPassword = new javax.swing.JLabel();
+        jLabelHide1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 255));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Zoo Login");
 
         jButtonInvia.setText("Invia");
         jButtonInvia.addActionListener(new java.awt.event.ActionListener() {
@@ -80,6 +87,10 @@ public class JLogin extends javax.swing.JFrame {
                         .addGap(63, 63, 63)
                         .addComponent(jButtonEsci)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelHide1)
+                .addGap(45, 45, 45))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,7 +107,9 @@ public class JLogin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonInvia)
                     .addComponent(jButtonEsci))
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabelHide1)
+                .addContainerGap(98, Short.MAX_VALUE))
         );
 
         pack();
@@ -105,9 +118,46 @@ public class JLogin extends javax.swing.JFrame {
     private void jButtonInviaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInviaActionPerformed
         // TODO add your handling code here:
        
-        this.jTextFieldUsername.setText("Inviato");
-        JCassiere cassiere = new JCassiere();
-        cassiere.setVisible(true);
+       
+        DBConnect conn = new DBConnect();
+        String user = this.jTextFieldUsername.getText();
+        String password = this.jPasswordFieldPassword.getText();
+        int userExists = conn.userExists(user, password);
+        if( userExists == 1)
+        {
+            String ruolo;
+            ruolo = conn.checkRole(user);
+            switch(ruolo){
+                case "Cassiere": {
+                    JCassiere cassiere = new JCassiere();
+                    cassiere.setVisible(true);
+                    break;
+                }
+                case "Veterinario": {
+                    JVeterinario vet = new JVeterinario();
+                    vet.setVisible(true);
+                    break;
+                }
+                case "Custode":{
+                    JCustode cust = new JCustode();
+                    cust.setVisible(true);
+                    break;
+                }
+                case "Direttore":{
+                    JDirettore dir = new JDirettore();
+                    dir.setVisible(true);
+                    break;
+                }
+                case "Errore":{
+                    this.jLabelHide1.setText(String.format("%d", userExists));
+                }
+            }
+            close(this);
+        }
+        else {
+           this.jLabelHide1.setText(String.format("%d", userExists));
+        }
+        
     }//GEN-LAST:event_jButtonInviaActionPerformed
 
     private void jButtonEsciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEsciActionPerformed
@@ -144,16 +194,25 @@ public class JLogin extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new JLogin().setVisible(true);
+                
             }
         });
     }
-
+    
+    public void close(Window Form)
+    {
+    WindowEvent winClosingEvent = new WindowEvent(Form, WindowEvent.WINDOW_CLOSING);
+    Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEsci;
     private javax.swing.JButton jButtonInvia;
+    private javax.swing.JLabel jLabelHide1;
     private javax.swing.JLabel jLabelPassword;
     private javax.swing.JLabel jLabelUsername;
     private javax.swing.JPasswordField jPasswordFieldPassword;

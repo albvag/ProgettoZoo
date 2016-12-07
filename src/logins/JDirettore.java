@@ -9,12 +9,12 @@ package logins;
  *
  * @author Alberto
  */
-public class JCassiere extends javax.swing.JFrame {
+public class JDirettore extends javax.swing.JFrame {
 
     /**
-     * Creates new form Cassiere
+     * Creates new form JDirettore
      */
-    public JCassiere() {
+    public JDirettore() {
         initComponents();
     }
 
@@ -30,7 +30,7 @@ public class JCassiere extends javax.swing.JFrame {
         jButtonLogout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cassiere");
+        setTitle("Direttore");
 
         jButtonLogout.setText("Logout");
         jButtonLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -44,14 +44,14 @@ public class JCassiere extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(508, Short.MAX_VALUE)
+                .addContainerGap(317, Short.MAX_VALUE)
                 .addComponent(jButtonLogout)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(390, Short.MAX_VALUE)
+                .addContainerGap(245, Short.MAX_VALUE)
                 .addComponent(jButtonLogout)
                 .addGap(30, 30, 30))
         );
@@ -69,6 +69,7 @@ public class JCassiere extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -83,21 +84,20 @@ public class JCassiere extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JCassiere.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDirettore.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JCassiere.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDirettore.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JCassiere.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDirettore.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JCassiere.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDirettore.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JCassiere().setVisible(true);
+                new JDirettore().setVisible(true);
             }
         });
     }
