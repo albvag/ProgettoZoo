@@ -5,10 +5,14 @@
  */
 package logins;
 
+import java.sql.*;
 import java.awt.*;
+import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.table.*;
+import progettozoo.Animale;
+import progettozoo.DBConnect;
 
 /**
  *
@@ -23,9 +27,10 @@ public class JVeterinario extends javax.swing.JFrame {
        
 
         initComponents();
-        rowSelectModel(jTableAnimali);   
         String[] jTableAnimaliHeaders  = {"Nome Animale","Specie","Habitat","Sesso","Ultima Visita"};
+        rowSelectModel(jTableAnimali);   
         creaTabella(jTableAnimali, jTableAnimaliHeaders);
+        Show_Animali_In_JTable();
       
     }
 
@@ -54,7 +59,7 @@ public class JVeterinario extends javax.swing.JFrame {
 
         jTableAnimali.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"asd", "asd", "asd", "asd", "asd"},
+                {"", "", "", "", ""},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -144,6 +149,10 @@ public class JVeterinario extends javax.swing.JFrame {
     }
     
     //Crea una tabella non modificabile tranne che per la colonna ultima visita
+    /*
+    Ho fatto così perchè se andavo a modificare la tabella attraverso custom code
+    cambiando il valore tornato da isCellEditable(i,c) la tabella diventava invisibile.
+    */
     public void creaTabella(JTable table,String[] columnHeaders){
         Object[][] data = {
             {"","","","",""},
@@ -161,8 +170,6 @@ public class JVeterinario extends javax.swing.JFrame {
                 return canEdit[columnIndex];
             }
         };
-
-
     table.setModel(tableModel);
     }
     
@@ -182,10 +189,29 @@ public class JVeterinario extends javax.swing.JFrame {
                 }
             }
         });
+        
+    }
+   
+   public void Show_Animali_In_JTable()
+   {
+       DBConnect conn = new DBConnect();
+       ArrayList<Animale> list = conn.animaliList();
+       DefaultTableModel model = (DefaultTableModel) jTableAnimali.getModel();
+       Object[] row = new Object[5];
+       for(int i = 0; i < list.size(); i++)
+       {
+           row[0] = list.get(i).getId();
+           row[1] = list.get(i).getNome();
+           row[2] = list.get(i).getSpecie();
+           row[3] = list.get(i).getSesso();
+           row[4] = list.get(i).getDataNascita();
+           
+           model.addRow(row);
+       }
     }
     
-
     
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonLogout;
     private javax.swing.JScrollPane jScrollPane1;
