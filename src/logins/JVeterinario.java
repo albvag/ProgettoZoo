@@ -5,6 +5,11 @@
  */
 package logins;
 
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.event.*;
+import javax.swing.table.*;
+
 /**
  *
  * @author Alberto
@@ -15,7 +20,13 @@ public class JVeterinario extends javax.swing.JFrame {
      * Creates new form JVeterinario
      */
     public JVeterinario() {
+       
+
         initComponents();
+        rowSelectModel(jTableAnimali);   
+        String[] jTableAnimaliHeaders  = {"Nome Animale","Specie","Habitat","Sesso","Ultima Visita"};
+        creaTabella(jTableAnimali, jTableAnimaliHeaders);
+      
     }
 
     /**
@@ -28,8 +39,8 @@ public class JVeterinario extends javax.swing.JFrame {
     private void initComponents() {
 
         jButtonLogout = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableAnimali = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Veterinario");
@@ -41,41 +52,46 @@ public class JVeterinario extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableAnimali.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Gesu", null, null, null, null},
+                {"asd", "asd", "asd", "asd", "asd"},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null}
             },
             new String [] {
-                "Nome Animale", "Specie", "Sesso", "Gabbia", "Ultima Visita"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
-        jTable1.setColumnSelectionAllowed(true);
-        jScrollPane2.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jScrollPane1.setViewportView(jTableAnimali);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(318, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonLogout)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(162, 162, 162)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(238, 238, 238)
                 .addComponent(jButtonLogout)
-                .addGap(30, 30, 30))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -84,6 +100,7 @@ public class JVeterinario extends javax.swing.JFrame {
     private void jButtonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogoutActionPerformed
         // TODO add your handling code here:
         JLogin log = new JLogin();
+        log.setLocationRelativeTo(null);
         log.setVisible(true);
         log.close(this);
     }//GEN-LAST:event_jButtonLogoutActionPerformed
@@ -91,7 +108,7 @@ public class JVeterinario extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
+
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -116,7 +133,8 @@ public class JVeterinario extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(JVeterinario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -124,10 +142,53 @@ public class JVeterinario extends javax.swing.JFrame {
             }
         });
     }
+    
+    //Crea una tabella non modificabile tranne che per la colonna ultima visita
+    public void creaTabella(JTable table,String[] columnHeaders){
+        Object[][] data = {
+            {"","","","",""},
+        };
+        
+        DefaultTableModel tableModel = new DefaultTableModel(data, columnHeaders)
+        {
+           
+            boolean[] canEdit = new boolean[]{
+                    false, false, false, false, true
+            };
+            
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+        };
 
+
+    table.setModel(tableModel);
+    }
+    
+    //Seleziona riga di una tabella anziché la singola cella
+    public void rowSelectModel(JTable table)
+    {
+            
+        ListSelectionModel model = table.getSelectionModel();
+        model.addListSelectionListener(new ListSelectionListener(){
+        
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+              if(!model.isSelectionEmpty())
+                {
+                    int selectedRow = model.getMinSelectionIndex();
+                    JOptionPane.showMessageDialog(null,"Selezionata la riga: "+selectedRow);
+                }
+            }
+        });
+    }
+    
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonLogout;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableAnimali;
     // End of variables declaration//GEN-END:variables
 }
