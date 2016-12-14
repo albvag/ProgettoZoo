@@ -5,6 +5,12 @@
  */
 package logins;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 import java.sql.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -216,7 +222,7 @@ public class JVeterinario extends javax.swing.JFrame {
            row[1] = list.get(i).getSpecie();
            row[2] = list.get(i).getDataNascita();
            row[3] = list.get(i).getSesso();
-           row[4] =  visList.get(0).getDUV();
+           row[4] =  visList.get(0).getDUV(list.get(i).getId());
            /*
            get(0) perchè la data dell'ultima visita viene registrata ogni volta con un solo elemento
            quindi se metto indice i non va bene perchè altrimenti avanza nella lista in elementi non esistenti
