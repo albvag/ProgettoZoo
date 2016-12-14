@@ -6,6 +6,8 @@
 package progettozoo;
 
 import java.sql.*;
+import java.util.ArrayList;
+import progettozoo.Animale;
 
 /**
  *
@@ -28,6 +30,8 @@ public class DBConnect {
             System.out.printf("Errore "+ex);
         };
     }
+    
+    //Mi dice qual è il ruolo di un certo utente
     public String checkRole(String user)
     {
         try{
@@ -44,6 +48,7 @@ public class DBConnect {
         }
     }
     
+    //verifica la corrispondenza tra utente e password inseriti
     public int userExists(String user, String password)
     {
         try{
@@ -64,20 +69,28 @@ public class DBConnect {
         }
         
     }
-   // Esempio per vedere se funziona
-    public void getData(){
-        try{
-            String query = "Select * from utente";
-            rs = st.executeQuery(query);
-            System.out.println("Records from database");
-            while(rs.next())
-            {
-                String username = rs.getString("Codice_Utente");
-                System.out.println(username);
-            }
-        }catch(Exception ex){
-            System.out.println(ex);
-        };
-    }
+    //Estrae le informazioni sull'animale da poter mettere sulla tabella
+       public ArrayList<Animale> animaliList()
+       {
+        ArrayList<Animale> animaliList = new ArrayList<Animale>();
+        String query = "Select * from animale";
+
+           try{
+               Animale anim;
+               rs = st.executeQuery(query);
+                while(rs.next())
+                {
+                    anim = new Animale(rs.getString("animale.Codice_Animale"),rs.getString("Nome"),
+                            rs.getString("Specie"),rs.getString("Genere"),rs.getString("Data_Nascita"),
+                            rs.getBoolean("Salute"), rs.getBoolean("Nostro"), rs.getBoolean("Presente"));
+                    animaliList.add(anim);
+                }
+            }catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+           return animaliList;   
+        }
     
+
 }
