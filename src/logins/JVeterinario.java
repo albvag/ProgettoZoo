@@ -13,6 +13,7 @@ import javax.swing.event.*;
 import javax.swing.table.*;
 import progettozoo.Animale;
 import progettozoo.DBConnect;
+import progettozoo.Visita;
 
 /**
  *
@@ -27,7 +28,7 @@ public class JVeterinario extends javax.swing.JFrame {
        
 
         initComponents();
-        String[] jTableAnimaliHeaders  = {"Nome Animale","Specie","Habitat","Sesso","Ultima Visita"};
+        String[] jTableAnimaliHeaders  = {"Nome Animale","Specie","Data di Nascita","Sesso","Ultima Visita","Salute","Presente"};
         rowSelectModel(jTableAnimali);   
         creaTabella(jTableAnimali, jTableAnimaliHeaders);
         Show_Animali_In_JTable();
@@ -46,6 +47,7 @@ public class JVeterinario extends javax.swing.JFrame {
         jButtonLogout = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableAnimali = new javax.swing.JTable();
+        jButtonSchedaAnimale = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Veterinario");
@@ -76,14 +78,18 @@ public class JVeterinario extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTableAnimali);
 
+        jButtonSchedaAnimale.setText("Scheda Animale");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(95, 95, 95)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(318, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(97, 97, 97)
+                .addComponent(jButtonSchedaAnimale)
+                .addContainerGap(35, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonLogout)
@@ -93,7 +99,11 @@ public class JVeterinario extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(25, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jButtonSchedaAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(238, 238, 238)
                 .addComponent(jButtonLogout)
                 .addContainerGap(25, Short.MAX_VALUE))
@@ -155,14 +165,14 @@ public class JVeterinario extends javax.swing.JFrame {
     */
     public void creaTabella(JTable table,String[] columnHeaders){
         Object[][] data = {
-            {"","","","",""},
+            {"","","","","","",""},
         };
         
         DefaultTableModel tableModel = new DefaultTableModel(data, columnHeaders)
         {
            
             boolean[] canEdit = new boolean[]{
-                    false, false, false, false, true
+                    false, false, false, false, false, false
             };
             
             @Override
@@ -197,14 +207,26 @@ public class JVeterinario extends javax.swing.JFrame {
        DBConnect conn = new DBConnect();
        ArrayList<Animale> list = conn.animaliList();
        DefaultTableModel model = (DefaultTableModel) jTableAnimali.getModel();
-       Object[] row = new Object[5];
+       Object[] row = new Object[7];
+       
        for(int i = 0; i < list.size(); i++)
        {
-           row[0] = list.get(i).getId();
-           row[1] = list.get(i).getNome();
-           row[2] = list.get(i).getSpecie();
+           ArrayList<Visita> visList = conn.visitaList(list.get(i).getId());
+           row[0] = list.get(i).getNome();
+           row[1] = list.get(i).getSpecie();
+           row[2] = list.get(i).getDataNascita();
            row[3] = list.get(i).getSesso();
-           row[4] = list.get(i).getDataNascita();
+           row[4] =  visList.get(0).getDUV();
+           /*
+           get(0) perchè la data dell'ultima visita viene registrata ogni volta con un solo elemento
+           quindi se metto indice i non va bene perchè altrimenti avanza nella lista in elementi non esistenti
+           */
+           
+           if(list.get(i).getSalute() == true ) row[5] = "OK";
+           else row[5] = "MALATO";
+           
+           if(list.get(i).getPresente() == true ) row[6] = "SI";
+           else row[6] = "NO";
            
            model.addRow(row);
        }
@@ -214,6 +236,7 @@ public class JVeterinario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonLogout;
+    private javax.swing.JButton jButtonSchedaAnimale;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableAnimali;
     // End of variables declaration//GEN-END:variables
