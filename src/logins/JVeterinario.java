@@ -5,14 +5,7 @@
  */
 package logins;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.sql.*;
-import java.awt.*;
+
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.event.*;
@@ -20,6 +13,7 @@ import javax.swing.table.*;
 import progettozoo.Animale;
 import progettozoo.DBConnect;
 import progettozoo.Visita;
+import schede.JSchedaAnimale_Veterinario;
 
 /**
  *
@@ -54,6 +48,8 @@ public class JVeterinario extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableAnimali = new javax.swing.JTable();
         jButtonSchedaAnimale = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Veterinario");
@@ -85,34 +81,45 @@ public class JVeterinario extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableAnimali);
 
         jButtonSchedaAnimale.setText("Scheda Animale");
+        jButtonSchedaAnimale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSchedaAnimaleActionPerformed(evt);
+            }
+        });
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97)
-                .addComponent(jButtonSchedaAnimale)
-                .addContainerGap(35, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonLogout)
-                .addGap(23, 23, 23))
+                .addGap(66, 66, 66)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonSchedaAnimale)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonLogout))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(108, 108, 108)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(164, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jButtonSchedaAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(238, 238, 238)
-                .addComponent(jButtonLogout)
-                .addContainerGap(25, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonLogout)
+                            .addComponent(jButtonSchedaAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(31, 31, 31))
         );
 
         pack();
@@ -125,6 +132,13 @@ public class JVeterinario extends javax.swing.JFrame {
         log.setVisible(true);
         log.close(this);
     }//GEN-LAST:event_jButtonLogoutActionPerformed
+
+    private void jButtonSchedaAnimaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSchedaAnimaleActionPerformed
+        // TODO add your handling code here:
+         JSchedaAnimale_Veterinario sav = new JSchedaAnimale_Veterinario();
+                    sav.setLocationRelativeTo(null);
+                    sav.setVisible(true);
+    }//GEN-LAST:event_jButtonSchedaAnimaleActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,6 +258,8 @@ public class JVeterinario extends javax.swing.JFrame {
     private javax.swing.JButton jButtonLogout;
     private javax.swing.JButton jButtonSchedaAnimale;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableAnimali;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
