@@ -7,7 +7,6 @@ package progettozoo;
 
 import java.sql.*;
 import java.util.ArrayList;
-import progettozoo.Animale;
 
 /**
  *

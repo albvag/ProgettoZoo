@@ -28,7 +28,7 @@ public class JVeterinario extends javax.swing.JFrame {
        
 
         initComponents();
-        String[] jTableAnimaliHeaders  = {"Nome Animale","Specie","Data di Nascita","Sesso","Ultima Visita","Salute","Presente"};
+        String[] jTableAnimaliHeaders  = {"Codice Animale","Nome Animale","Specie","Data di Nascita","Genere","Ultima Visita","Salute","Presente"};
         selectmode(jTableAnimali);   
         creaTabella(jTableAnimali, jTableAnimaliHeaders);
         Show_Animali_In_JTable();
@@ -132,6 +132,8 @@ public class JVeterinario extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    
+    //Modo di selezionare le righe della tabella
 public void selectmode(JTable table)
 {
     //SET SELECTION MODE
@@ -156,12 +158,22 @@ public void selectmode(JTable table)
           JOptionPane.showMessageDialog(null, "No selection");
         }else
         {
-          int selectedRow=lsm.getMinSelectionIndex();
-          JOptionPane.showMessageDialog(null, "Selected Row "+selectedRow);
+            String value = getTableValue(table, 0);
+          //int selectedRow=lsm.getMinSelectionIndex();
+          JOptionPane.showMessageDialog(null, "Selezionato: "+value);
         }
       }
     });
 }   
+
+//ritorna il valore della colonna i-esima della riga selezionata nella tabella
+    public String getTableValue(JTable table, int column)
+    {
+        int row = table.getSelectedRow();
+        String value = table.getModel().getValueAt(row, column).toString();
+        return value;
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -203,13 +215,13 @@ public void selectmode(JTable table)
     */
     public void creaTabella(JTable table,String[] columnHeaders){
         Object[][] data = {
-            {"","","","","","",""},
+            {"","","","","","","","",""},
         };
         
         DefaultTableModel tableModel = new DefaultTableModel(data, columnHeaders)
         {
             boolean[] canEdit = new boolean[]{
-                    false, false, false, false, false, false
+                    false, false, false, false, false, false, false, false, false
             };
             
             @Override
@@ -225,26 +237,27 @@ public void selectmode(JTable table)
        DBConnect conn = new DBConnect();
        ArrayList<Animale> list = conn.animaliList();
        DefaultTableModel model = (DefaultTableModel) jTableAnimali.getModel();
-       Object[] row = new Object[7];
+       Object[] row = new Object[8];
        
        for(int i = 0; i < list.size(); i++)
        {
            ArrayList<Visita> visList = conn.visitaList(list.get(i).getId());
-           row[0] = list.get(i).getNome();
-           row[1] = list.get(i).getSpecie();
-           row[2] = list.get(i).getDataNascita();
-           row[3] = list.get(i).getSesso();
-           row[4] =  visList.get(0).getDUV(list.get(i).getId());
+           row[0] = list.get(i).getId();
+           row[1] = list.get(i).getNome();
+           row[2] = list.get(i).getSpecie();
+           row[3] = list.get(i).getDataNascita();
+           row[4] = list.get(i).getSesso();
+           row[5] =  visList.get(0).getDUV(list.get(i).getId());
            /*
            get(0) perchè la data dell'ultima visita viene registrata ogni volta con un solo elemento
            quindi se metto indice i non va bene perchè altrimenti avanza nella lista in elementi non esistenti
            */
            
-           if(list.get(i).getSalute() == true ) row[5] = "OK";
-           else row[5] = "MALATO";
+           if(list.get(i).getSalute() == true ) row[6] = "OK";
+           else row[6] = "MALATO";
            
-           if(list.get(i).getPresente() == true ) row[6] = "SI";
-           else row[6] = "NO";
+           if(list.get(i).getPresente() == true ) row[7] = "SI";
+           else row[7] = "NO";
            
            model.addRow(row);
        }
