@@ -18,10 +18,9 @@ public class ProgettoZoo {
      */
     public static void main(String[] args) 
     {
-        DBConnect connect = new DBConnect();
-        connect.getData();
         // TODO code application logic here
         JLogin login = new JLogin();
+        login.setLocationRelativeTo(null);
         login.setVisible(true);
    
     }

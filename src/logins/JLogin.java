@@ -43,6 +43,7 @@ public class JLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Zoo Login");
+        setLocation(new java.awt.Point(0, 0));
 
         jButtonInvia.setText("Invia");
         jButtonInvia.addActionListener(new java.awt.event.ActionListener() {
@@ -67,9 +68,16 @@ public class JLogin extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
+                        .addComponent(jButtonInvia)
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabelHide1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonEsci)
+                        .addGap(45, 45, 45))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabelPassword)
@@ -78,17 +86,8 @@ public class JLogin extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabelUsername)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jButtonInvia)))
-                .addContainerGap(79, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonEsci)
-                    .addComponent(jLabelHide1))
-                .addGap(45, 45, 45))
+                                .addComponent(jTextFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(88, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,10 +103,9 @@ public class JLogin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonInvia)
-                    .addComponent(jButtonEsci))
-                .addGap(18, 18, 18)
-                .addComponent(jLabelHide1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonEsci)
+                    .addComponent(jLabelHide1))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
@@ -127,22 +125,26 @@ public class JLogin extends javax.swing.JFrame {
             ruolo = conn.checkRole(user);
             switch(ruolo){
                 case "Cassiere": {
-                    JCassiere cassiere = new JCassiere();
-                    cassiere.setVisible(true);
+                    JCassiere cass = new JCassiere();
+                    cass.setLocationRelativeTo(null);
+                    cass.setVisible(true);
                     break;
                 }
                 case "Veterinario": {
                     JVeterinario vet = new JVeterinario();
+                    vet.setLocationRelativeTo(null);
                     vet.setVisible(true);
                     break;
                 }
                 case "Custode":{
                     JCustode cust = new JCustode();
+                    cust.setLocationRelativeTo(null);
                     cust.setVisible(true);
                     break;
                 }
                 case "Direttore":{
                     JDirettore dir = new JDirettore();
+                    dir.setLocationRelativeTo(null);
                     dir.setVisible(true);
                     break;
                 }
@@ -153,7 +155,7 @@ public class JLogin extends javax.swing.JFrame {
             close(this);
         }
         else {
-           this.jLabelHide1.setText(String.format("%d", userExists));
+           this.jLabelHide1.setText(String.format("%d", userExists)); /* Gestire errore */
         }
         
     }//GEN-LAST:event_jButtonInviaActionPerformed
@@ -196,7 +198,7 @@ public class JLogin extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new JLogin().setVisible(true);
-                
+                         
             }
         });
     }

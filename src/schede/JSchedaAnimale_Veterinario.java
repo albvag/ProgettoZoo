@@ -5,6 +5,13 @@
  */
 package schede;
 
+import java.awt.Toolkit;
+import java.awt.event.*;
+import java.awt.*;
+import logins.JLogin;
+import progettozoo.DBConnect;
+import logins.JVeterinario;
+
 /**
  *
  * @author Alberto
@@ -15,7 +22,13 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
      * Creates new form JSchedaAnimale_Veterinario
      */
     public JSchedaAnimale_Veterinario() {
-        initComponents();
+        initComponents();        
+        
+        JVeterinario v = new JVeterinario();
+        String[] jTableVisiteHeaders  = {"Data Visita","Note Visita"};
+        v.selectmode(jTableVisite);   
+        v.creaTabella(jTableVisite, jTableVisiteHeaders);
+        
     }
 
     /**
@@ -32,19 +45,20 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        jButtonClose = new javax.swing.JButton();
+        jLabelDisplayNome = new javax.swing.JLabel();
+        jLabelDisplaySpecie = new javax.swing.JLabel();
+        jLabelDisplayHabitat = new javax.swing.JLabel();
+        jLabelDisplayGenere = new javax.swing.JLabel();
+        jLabel1DisplayNascita = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        jButtonNuovaVisita = new javax.swing.JButton();
+        jLabelDisplaySalute = new javax.swing.JLabel();
+        jLabelDisplayPresente = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableVisite = new javax.swing.JTable();
+        jButtonLeggiNoteVisita = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,29 +72,34 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
 
         jLabel5.setText("Data di Nascita:");
 
-        jButton1.setText("Chiudi Scheda");
+        jButtonClose.setText("Chiudi Scheda");
+        jButtonClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCloseActionPerformed(evt);
+            }
+        });
 
-        jLabel7.setText("-");
+        jLabelDisplayNome.setText("-");
 
-        jLabel8.setText("-");
+        jLabelDisplaySpecie.setText("-");
 
-        jLabel9.setText("-");
+        jLabelDisplayHabitat.setText("-");
 
-        jLabel10.setText("-");
+        jLabelDisplayGenere.setText("-");
 
-        jLabel11.setText("-");
+        jLabel1DisplayNascita.setText("-");
 
         jLabel12.setText("Salute Attuale:");
 
         jLabel13.setText("Presente Attualmente:");
 
-        jButton3.setText("Nuova Visita");
+        jButtonNuovaVisita.setText("Nuova Visita");
 
-        jLabel14.setText("-");
+        jLabelDisplaySalute.setText("-");
 
-        jLabel15.setText("-");
+        jLabelDisplayPresente.setText("-");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableVisite.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -91,7 +110,9 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
                 "Title 1", "Title 2"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableVisite);
+
+        jButtonLeggiNoteVisita.setText("Leggi Note Visita");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,48 +120,49 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel15)
-                        .addGap(251, 251, 251)
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(5, 5, 5)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel5)))
-                                    .addComponent(jLabel12))
-                                .addGap(51, 51, 51)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel14)))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(5, 5, 5)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(96, 96, 96)
-                                        .addComponent(jLabel9))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1)
-                                            .addComponent(jLabel2))
-                                        .addGap(98, 98, 98)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel8))))))
-                        .addGap(28, 28, 28)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(74, Short.MAX_VALUE))
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)))
+                            .addComponent(jLabel12))
+                        .addGap(51, 51, 51)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1DisplayNascita)
+                            .addComponent(jLabelDisplayGenere)
+                            .addComponent(jLabelDisplaySalute)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(96, 96, 96)
+                                .addComponent(jLabelDisplayHabitat))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2))
+                                .addGap(98, 98, 98)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelDisplayNome)
+                                    .addComponent(jLabelDisplaySpecie)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelDisplayPresente)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonNuovaVisita)
+                        .addGap(138, 138, 138)
+                        .addComponent(jButtonLeggiNoteVisita)
+                        .addGap(126, 126, 126)
+                        .addComponent(jButtonClose))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,49 +171,56 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14)
+                            .addComponent(jLabelDisplaySalute)
                             .addComponent(jLabel12)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 36, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel1)
-                                    .addComponent(jLabel7))
+                                    .addComponent(jLabelDisplayNome))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel2)
-                                    .addComponent(jLabel8))
+                                    .addComponent(jLabelDisplaySpecie))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel3)
-                                    .addComponent(jLabel9))
+                                    .addComponent(jLabelDisplayHabitat))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel4)
-                                    .addComponent(jLabel10))
+                                    .addComponent(jLabelDisplayGenere))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(26, 26, 26)
-                                        .addComponent(jLabel11))
+                                        .addComponent(jLabel1DisplayNascita))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel5)))
-                                .addGap(34, 34, 34)))
-                        .addGap(0, 41, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(jButtonClose)
                     .addComponent(jLabel13)
-                    .addComponent(jButton3)
-                    .addComponent(jLabel15))
+                    .addComponent(jButtonNuovaVisita)
+                    .addComponent(jLabelDisplayPresente)
+                    .addComponent(jButtonLeggiNoteVisita))
                 .addGap(36, 36, 36))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
+        // TODO add your handling code here: 
+        setVisible(false);
+    }//GEN-LAST:event_jButtonCloseActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -225,26 +254,29 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
                 new JSchedaAnimale_Veterinario().setVisible(true);
             }
         });
-    }
+    }    
+    
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonClose;
+    private javax.swing.JButton jButtonLeggiNoteVisita;
+    private javax.swing.JButton jButtonNuovaVisita;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel1DisplayNascita;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelDisplayGenere;
+    private javax.swing.JLabel jLabelDisplayHabitat;
+    private javax.swing.JLabel jLabelDisplayNome;
+    private javax.swing.JLabel jLabelDisplayPresente;
+    private javax.swing.JLabel jLabelDisplaySalute;
+    private javax.swing.JLabel jLabelDisplaySpecie;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableVisite;
     // End of variables declaration//GEN-END:variables
 }

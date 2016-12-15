@@ -67,8 +67,8 @@ public class DBConnect {
             System.out.println(ex);
             return -1;
         }
-        
     }
+    
     //Estrae le informazioni sull'animale da poter mettere sulla tabella
        public ArrayList<Animale> animaliList()
        {
@@ -81,7 +81,7 @@ public class DBConnect {
                 while(rs.next())
                 {
                     anim = new Animale(rs.getString("animale.Codice_Animale"),rs.getString("Nome"),
-                            rs.getString("Specie"),rs.getString("Genere"),rs.getString("Data_Nascita"),
+                            rs.getString("Specie"),rs.getString("Genere"),rs.getDate("Data_Nascita"),
                             rs.getBoolean("Salute"), rs.getBoolean("Nostro"), rs.getBoolean("Presente"));
                     animaliList.add(anim);
                 }
@@ -90,7 +90,47 @@ public class DBConnect {
                 System.out.println(ex);
             }   
            return animaliList;   
+        }       
+       
+       //DATI VISITE EFFETTUATE AD UN CERTO ANIMALE
+       public ArrayList<Visita> visitaList(String animale)
+       {
+        ArrayList<Visita> visitaList = new ArrayList<Visita>();
+        String query = "Select * from visita where Cod_Animale = '"+animale+"'";
+
+           try{
+               Visita vis;
+               rs = st.executeQuery(query);
+                while(rs.next())
+                {
+                    vis = new Visita(rs.getString("Cod_Veterinario"),rs.getString("Cod_Animale"), rs.getDate("Data_Visita"));
+                    visitaList.add(vis);
+                }
+            }catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+           return visitaList;   
         }
-    
+       
+       public ArrayList<Visita> visitaTuttiList()
+       {
+        ArrayList<Visita> visitaTuttiList = new ArrayList<Visita>();
+        String query = "Select * from visita ";
+
+           try{
+               Visita vis;
+               rs = st.executeQuery(query);
+                while(rs.next())
+                {
+                    vis = new Visita(rs.getString("Cod_Veterinario"),rs.getString("Cod_Animale"), rs.getDate("Data_Visita"));
+                    visitaTuttiList.add(vis);
+                }
+            }catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+           return visitaTuttiList;   
+        }
 
 }

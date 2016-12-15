@@ -62,6 +62,7 @@ public class JDirettore extends javax.swing.JFrame {
     private void jButtonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogoutActionPerformed
         // TODO add your handling code here:
         JLogin log = new JLogin();
+        log.setLocationRelativeTo(null);
         log.setVisible(true);
         log.close(this);
     }//GEN-LAST:event_jButtonLogoutActionPerformed
