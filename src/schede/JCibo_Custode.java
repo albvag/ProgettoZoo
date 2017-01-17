@@ -64,10 +64,7 @@ public class JCibo_Custode extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
-        JCustode log = new JCustode();
-        log.setLocationRelativeTo(null);
-        log.setVisible(true);
-        log.close(this);
+        setVisible(false);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
