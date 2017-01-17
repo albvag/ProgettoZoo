@@ -69,10 +69,7 @@ public class JPulizia_Custode extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
-        JCustode log = new JCustode();
-        log.setLocationRelativeTo(null);
-        log.setVisible(true);
-        //.close(this);
+        setVisible(false);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
