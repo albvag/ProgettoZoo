@@ -125,15 +125,21 @@ public class JVeterinario extends javax.swing.JFrame {
 
     private void jButtonSchedaAnimaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSchedaAnimaleActionPerformed
         // TODO add your handling code here:
-         JSchedaAnimale_Veterinario sav = new JSchedaAnimale_Veterinario();
-                    sav.setLocationRelativeTo(null);
+        
+        if(!"".equals(getTableSelectedItem(jTableAnimali, "Codice Animale")) )
+        {
+        JSchedaAnimale_Veterinario sav = new JSchedaAnimale_Veterinario();
+        sav.setLocationRelativeTo(null);
+        sav.setVisible(true);
         sav.jLabelDisplayNome.setText(getTableSelectedItem(jTableAnimali, "Nome Animale"));
         sav.jLabelDisplaySpecie.setText(getTableSelectedItem(jTableAnimali, "Specie"));
         sav.jLabelDisplayGenere.setText(getTableSelectedItem(jTableAnimali, "Genere"));
         sav.jLabelDisplayNascita.setText(getTableSelectedItem(jTableAnimali, "Data di Nascita"));
         sav.jLabelDisplaySalute.setText(getTableSelectedItem(jTableAnimali, "Salute"));
         sav.jLabelDisplayPresente.setText(getTableSelectedItem(jTableAnimali, "Presente"));
-                    sav.setVisible(true);
+        }
+        else JOptionPane.showMessageDialog(null, "Errore: selezionata riga nulla");
+        
         
         
         
@@ -190,7 +196,6 @@ public void selectmode(JTable table)
         else{
             String value = getTableValue(table, 0);
           //int selectedRow=lsm.getMinSelectionIndex();
-          JOptionPane.showMessageDialog(null, "Selezionato: "+value);
         }
       }
     });
@@ -251,7 +256,7 @@ public void selectmode(JTable table)
         DefaultTableModel tableModel = new DefaultTableModel(data, columnHeaders)
         {
             boolean[] canEdit = new boolean[]{
-                    false, false, false, false, false, false, false, false, false
+                    false, false, false, false, false, false, false, false, false //messo così per ricordarmi come si fa per ogni singola cella
             };
             
             @Override
