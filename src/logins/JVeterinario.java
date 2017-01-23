@@ -7,6 +7,7 @@ package logins;
 
 
 import java.util.ArrayList;
+import java.util.Objects;
 import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.table.*;
@@ -126,14 +127,43 @@ public class JVeterinario extends javax.swing.JFrame {
         // TODO add your handling code here:
          JSchedaAnimale_Veterinario sav = new JSchedaAnimale_Veterinario();
                     sav.setLocationRelativeTo(null);
+        sav.jLabelDisplayNome.setText(getTableSelectedItem(jTableAnimali, "Nome Animale"));
+        sav.jLabelDisplaySpecie.setText(getTableSelectedItem(jTableAnimali, "Specie"));
+        sav.jLabelDisplayGenere.setText(getTableSelectedItem(jTableAnimali, "Genere"));
+        sav.jLabelDisplayNascita.setText(getTableSelectedItem(jTableAnimali, "Data di Nascita"));
+        sav.jLabelDisplaySalute.setText(getTableSelectedItem(jTableAnimali, "Salute"));
+        sav.jLabelDisplayPresente.setText(getTableSelectedItem(jTableAnimali, "Presente"));
                     sav.setVisible(true);
+        
+        
+        
     }//GEN-LAST:event_jButtonSchedaAnimaleActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+   
     
     //Modo di selezionare le righe della tabella
+    public String getTableSelectedItem(JTable table, String item)
+    {
+        String colonna = "";
+        String selezione = "";
+        int stop = -1;
+        ArrayList jTableHeaders = new ArrayList();
+        for(int i=0; i<table.getColumnCount(); i++)
+        {  
+            jTableHeaders.add(i,table.getColumnName(i));         
+            if( jTableHeaders.contains(item)){
+                    stop = i;
+                    colonna = jTableHeaders.get(stop).toString();
+                    selezione = getTableValue(table, i);
+                    return selezione;
+                }
+        }
+        if("".equals(colonna)) {
+            JOptionPane.showMessageDialog(null, "TABLE INDEX NOT FOUND");}
+        return selezione;
+    }
+        
+    
 public void selectmode(JTable table)
 {
     //SET SELECTION MODE
@@ -156,8 +186,8 @@ public void selectmode(JTable table)
         if(lsm.isSelectionEmpty())
         {
           JOptionPane.showMessageDialog(null, "No selection");
-        }else
-        {
+        }
+        else{
             String value = getTableValue(table, 0);
           //int selectedRow=lsm.getMinSelectionIndex();
           JOptionPane.showMessageDialog(null, "Selezionato: "+value);
