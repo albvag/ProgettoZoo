@@ -147,7 +147,7 @@ public class JVeterinario extends javax.swing.JFrame {
 
    
     
-    //Modo di selezionare le righe della tabella
+    //Restituisce il valore di una certa colonna di una tabella in base alla riga selezionata.
     public String getTableSelectedItem(JTable table, String item)
     {
         String colonna = "";
@@ -164,8 +164,8 @@ public class JVeterinario extends javax.swing.JFrame {
                     return selezione;
                 }
         }
-        if("".equals(colonna)) {
-            JOptionPane.showMessageDialog(null, "TABLE INDEX NOT FOUND");}
+        if(stop == -1) {
+            JOptionPane.showMessageDialog(null, "INDICE TABELLA NON TROVATO");}
         return selezione;
     }
         
@@ -182,7 +182,6 @@ public void selectmode(JTable table)
       @Override
       public void valueChanged(ListSelectionEvent e) {
            
-        // JUST IGNORE WHEN USER HAS ATLEAST ONE SELECTION
         if(e.getValueIsAdjusting())
         {
           return;
@@ -191,12 +190,13 @@ public void selectmode(JTable table)
         
         if(lsm.isSelectionEmpty())
         {
-          JOptionPane.showMessageDialog(null, "No selection");
+          JOptionPane.showMessageDialog(null, "Nessuna Selezione");
         }
-        else{
+        /*else{
             String value = getTableValue(table, 0);
-          //int selectedRow=lsm.getMinSelectionIndex();
-        }
+            //int selectedRow=lsm.getMinSelectionIndex();
+        JOptionPane.showMessageDialog(null, "Selezionata riga "+value);
+        }*/
       }
     });
 }   
