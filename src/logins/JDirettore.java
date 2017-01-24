@@ -4,6 +4,15 @@
  * and open the template in the editor.
  */
 package logins;
+import java.util.ArrayList;
+import javax.swing.*;
+import javax.swing.event.*;
+import javax.swing.table.*;
+import progettozoo.Animale;
+import progettozoo.DBConnect;
+import schede.JAggiungiAnimale_Direttore;
+import schede.JAggiungiHabitat_Direttore;
+import schede.JAggiungiPersonale_Direttore;
 
 /**
  *
@@ -28,6 +37,15 @@ public class JDirettore extends javax.swing.JFrame {
     private void initComponents() {
 
         jButtonLogout = new javax.swing.JButton();
+        jAggiungiPersonale = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jAggiungiAnimale = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jAggiungiHabitat = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Direttore");
@@ -39,6 +57,44 @@ public class JDirettore extends javax.swing.JFrame {
             }
         });
 
+        jAggiungiPersonale.setText("Aggiungi Personale");
+        jAggiungiPersonale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAggiungiPersonaleActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Rimuovi Personale");
+
+        jAggiungiAnimale.setText("Aggiungi Animale");
+        jAggiungiAnimale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAggiungiAnimaleActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Rimuovi Animale");
+
+        jAggiungiHabitat.setText("Aggiungi Habitat");
+        jAggiungiHabitat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAggiungiHabitatActionPerformed(evt);
+            }
+        });
+
+        jButton6.setText("Rimuovi Habitat");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText("Vedi Incassi");
+
+        jButton8.setText("Lista Animali");
+
+        jButton9.setText("Presta Animale");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -47,11 +103,44 @@ public class JDirettore extends javax.swing.JFrame {
                 .addContainerGap(317, Short.MAX_VALUE)
                 .addComponent(jButtonLogout)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                    .addComponent(jAggiungiAnimale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jAggiungiPersonale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jAggiungiHabitat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(67, 67, 67))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(245, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jAggiungiPersonale)
+                    .addComponent(jButton2))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jAggiungiAnimale)
+                    .addComponent(jButton4))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jAggiungiHabitat)
+                    .addComponent(jButton6))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton7)
+                    .addComponent(jButton8))
+                .addGap(18, 18, 18)
+                .addComponent(jButton9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(jButtonLogout)
                 .addGap(30, 30, 30))
         );
@@ -66,6 +155,28 @@ public class JDirettore extends javax.swing.JFrame {
         log.setVisible(true);
         log.close(this);
     }//GEN-LAST:event_jButtonLogoutActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jAggiungiPersonaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAggiungiPersonaleActionPerformed
+       JAggiungiPersonale_Direttore per = new JAggiungiPersonale_Direttore();
+                    per.setLocationRelativeTo(null);
+                    per.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jAggiungiPersonaleActionPerformed
+
+    private void jAggiungiAnimaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAggiungiAnimaleActionPerformed
+       JAggiungiAnimale_Direttore an = new JAggiungiAnimale_Direttore();
+                   an.setLocationRelativeTo(null);
+                   an.setVisible(true);    // TODO add your handling code here:
+    }//GEN-LAST:event_jAggiungiAnimaleActionPerformed
+
+    private void jAggiungiHabitatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAggiungiHabitatActionPerformed
+        JAggiungiHabitat_Direttore hab = new JAggiungiHabitat_Direttore();
+         hab.setLocationRelativeTo(null);
+                   hab.setVisible(true);         // TODO add your handling code here:
+    }//GEN-LAST:event_jAggiungiHabitatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -104,6 +215,15 @@ public class JDirettore extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jAggiungiAnimale;
+    private javax.swing.JButton jAggiungiHabitat;
+    private javax.swing.JButton jAggiungiPersonale;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonLogout;
     // End of variables declaration//GEN-END:variables
 }
