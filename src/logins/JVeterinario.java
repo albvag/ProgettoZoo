@@ -6,6 +6,7 @@
 package logins;
 
 
+import java.awt.Component;
 import java.util.ArrayList;
 import java.util.Objects;
 import javax.swing.*;
@@ -32,8 +33,8 @@ public class JVeterinario extends javax.swing.JFrame {
         String[] jTableAnimaliHeaders  = {"Codice Animale","Nome Animale","Specie","Data di Nascita","Genere","Ultima Visita","Salute","Presente"};
         selectmode(jTableAnimali);   
         creaTabella(jTableAnimali, jTableAnimaliHeaders);
+        jTableAnimali.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         Show_Animali_In_JTable();
-      
     }
 
     /**
@@ -77,6 +78,7 @@ public class JVeterinario extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
+        jTableAnimali.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTableAnimali);
 
         jButtonSchedaAnimale.setText("Scheda Animale");
@@ -91,25 +93,27 @@ public class JVeterinario extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(226, 226, 226)
                         .addComponent(jButtonSchedaAnimale)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonLogout)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                        .addGap(228, 228, 228)
+                        .addComponent(jButtonLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(39, 39, 39)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonLogout)
-                    .addComponent(jButtonSchedaAnimale))
-                .addGap(31, 31, 31))
+                    .addComponent(jButtonSchedaAnimale)
+                    .addComponent(jButtonLogout))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         pack();
@@ -125,22 +129,23 @@ public class JVeterinario extends javax.swing.JFrame {
 
     private void jButtonSchedaAnimaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSchedaAnimaleActionPerformed
         // TODO add your handling code here:
-        
-        if(!"".equals(getTableSelectedItem(jTableAnimali, "Codice Animale")) )
-        {
-        JSchedaAnimale_Veterinario sav = new JSchedaAnimale_Veterinario();
-        sav.setLocationRelativeTo(null);
-        sav.setVisible(true);
-        sav.jLabelDisplayNome.setText(getTableSelectedItem(jTableAnimali, "Nome Animale"));
-        sav.jLabelDisplaySpecie.setText(getTableSelectedItem(jTableAnimali, "Specie"));
-        sav.jLabelDisplayGenere.setText(getTableSelectedItem(jTableAnimali, "Genere"));
-        sav.jLabelDisplayNascita.setText(getTableSelectedItem(jTableAnimali, "Data di Nascita"));
-        sav.jLabelDisplaySalute.setText(getTableSelectedItem(jTableAnimali, "Salute"));
-        sav.jLabelDisplayPresente.setText(getTableSelectedItem(jTableAnimali, "Presente"));
+         
+        if(jTableAnimali.getSelectedRow() == -1) JOptionPane.showMessageDialog(null, "Errore: Nessuna riga selezionata");
+        else{
+            if(!"".equals(getTableSelectedItem(jTableAnimali, "Codice Animale")) )
+            {
+            JSchedaAnimale_Veterinario sav = new JSchedaAnimale_Veterinario();
+            sav.setLocationRelativeTo(null);
+            sav.setVisible(true);
+            sav.jLabelDisplayNome.setText(getTableSelectedItem(jTableAnimali, "Nome Animale"));
+            sav.jLabelDisplaySpecie.setText(getTableSelectedItem(jTableAnimali, "Specie"));
+            sav.jLabelDisplayGenere.setText(getTableSelectedItem(jTableAnimali, "Genere"));
+            sav.jLabelDisplayNascita.setText(getTableSelectedItem(jTableAnimali, "Data di Nascita"));
+            sav.jLabelDisplaySalute.setText(getTableSelectedItem(jTableAnimali, "Salute"));
+            sav.jLabelDisplayPresente.setText(getTableSelectedItem(jTableAnimali, "Presente"));
+            }
+            else JOptionPane.showMessageDialog(null, "Errore: selezionata riga nulla");
         }
-        else JOptionPane.showMessageDialog(null, "Errore: selezionata riga nulla");
-        
-        
         
         
     }//GEN-LAST:event_jButtonSchedaAnimaleActionPerformed
@@ -168,8 +173,7 @@ public class JVeterinario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "INDICE TABELLA NON TROVATO");}
         return selezione;
     }
-        
-    
+
 public void selectmode(JTable table)
 {
     //SET SELECTION MODE
@@ -177,7 +181,7 @@ public void selectmode(JTable table)
     ListSelectionModel model=table.getSelectionModel();
     
     //add listener
-    model.addListSelectionListener(new ListSelectionListener() {
+   /* model.addListSelectionListener(new ListSelectionListener() {
       
       @Override
       public void valueChanged(ListSelectionEvent e) {
@@ -192,13 +196,9 @@ public void selectmode(JTable table)
         {
           JOptionPane.showMessageDialog(null, "Nessuna Selezione");
         }
-        /*else{
-            String value = getTableValue(table, 0);
-            //int selectedRow=lsm.getMinSelectionIndex();
-        JOptionPane.showMessageDialog(null, "Selezionata riga "+value);
-        }*/
+   
       }
-    });
+    });/ */
 }   
 
 //ritorna il valore della colonna i-esima della riga selezionata nella tabella
