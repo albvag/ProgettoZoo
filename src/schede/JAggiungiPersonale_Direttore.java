@@ -388,7 +388,7 @@ if(rpass==false)
     errconfpass.setText("Caratteri non validi");
 else
     errconfpass.setText("Caratteri validi");
-//questa parte serve solo come test per verificare il funzionamento di cio che inserisco
+//questa parte serve solo come test per verificare il funzionamento di cio che inserisco dopo la tolgo e metto il collegamento al database
  if(nom==true && cog==true && res==true && ind==true && tel==true && user==true && pass==true && rpass==true )
  System.out.println("Nome: "+nome+" Cognome: "+cognome+" Residente a: "+residenza+" in via: "+indirizzo+" Telefono: "+telefono+" Username: "+username+" Password: "+password+" Conferma Password: "+rippass+" con il ruolo di: "+ruolo);
  else {System.out.println("ERRORE");
