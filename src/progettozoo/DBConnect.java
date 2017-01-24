@@ -30,6 +30,22 @@ public class DBConnect {
         };
     }
     
+    public String checkAnimalHabitat(String Codice_Animale)
+    {
+    try{
+            String query = "Select Cod_Gabbia from situato where situato.Cod_Animale = '"+Codice_Animale+"'";
+            rs = st.executeQuery(query);
+            String habitat = "";
+            while(rs.next())
+            {habitat = rs.getString("Cod_Gabbia");}
+            
+            return habitat;
+        }catch(Exception ex){
+            System.out.println(ex);
+            return "Errore";
+        }
+    }
+    
     //Mi dice qual è il ruolo di un certo utente
     public String checkRole(String user)
     {

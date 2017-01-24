@@ -6,11 +6,8 @@
 package logins;
 
 
-import java.awt.Component;
 import java.util.ArrayList;
-import java.util.Objects;
 import javax.swing.*;
-import javax.swing.event.*;
 import javax.swing.table.*;
 import progettozoo.Animale;
 import progettozoo.DBConnect;
@@ -78,6 +75,7 @@ public class JVeterinario extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
+        jTableAnimali.getTableHeader().setResizingAllowed(false);
         jTableAnimali.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTableAnimali);
 
@@ -134,9 +132,12 @@ public class JVeterinario extends javax.swing.JFrame {
         else{
             if(!"".equals(getTableSelectedItem(jTableAnimali, "Codice Animale")) )
             {
+                DBConnect conn = new DBConnect();
             JSchedaAnimale_Veterinario sav = new JSchedaAnimale_Veterinario();
             sav.setLocationRelativeTo(null);
             sav.setVisible(true);
+            sav.jLabelDisplayHabitat.setText(conn.checkAnimalHabitat(getTableSelectedItem(jTableAnimali, "Codice Animale")));
+            sav.jLabelDisplayCod.setText(getTableSelectedItem(jTableAnimali, "Codice Animale"));
             sav.jLabelDisplayNome.setText(getTableSelectedItem(jTableAnimali, "Nome Animale"));
             sav.jLabelDisplaySpecie.setText(getTableSelectedItem(jTableAnimali, "Specie"));
             sav.jLabelDisplayGenere.setText(getTableSelectedItem(jTableAnimali, "Genere"));
@@ -155,7 +156,7 @@ public class JVeterinario extends javax.swing.JFrame {
     //Restituisce il valore di una certa colonna di una tabella in base alla riga selezionata.
     public String getTableSelectedItem(JTable table, String item)
     {
-        String colonna = "";
+      //  String colonna = "";
         String selezione = "";
         int stop = -1;
         ArrayList jTableHeaders = new ArrayList();
@@ -164,7 +165,7 @@ public class JVeterinario extends javax.swing.JFrame {
             jTableHeaders.add(i,table.getColumnName(i));         
             if( jTableHeaders.contains(item)){
                     stop = i;
-                    colonna = jTableHeaders.get(stop).toString();
+                    //colonna = jTableHeaders.get(stop).toString();
                     selezione = getTableValue(table, i);
                     return selezione;
                 }
@@ -266,7 +267,7 @@ public void selectmode(JTable table)
         };
     table.setModel(tableModel);
     }
-   
+        
    public void Show_Animali_In_JTable()
    {
        DBConnect conn = new DBConnect();
@@ -277,6 +278,7 @@ public void selectmode(JTable table)
        for(int i = 0; i < list.size(); i++)
        {
            ArrayList<Visita> visList = conn.visitaList(list.get(i).getId());
+     
            row[0] = list.get(i).getId();
            row[1] = list.get(i).getNome();
            row[2] = list.get(i).getSpecie();

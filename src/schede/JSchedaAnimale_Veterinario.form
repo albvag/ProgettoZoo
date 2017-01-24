@@ -29,47 +29,42 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                              <Component id="jLabelGenere" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelNome" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
+                              <Component id="jLabelDisplayNome" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jLabelSalute" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelDataNascita" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelDisplayNascita" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelDisplayGenere" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelDisplaySalute" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabelHabitat" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-                              <Component id="jLabelDisplayHabitat" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelPresente" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jLabelDisplayPresente" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabelNome" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelSpecie" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelSalute" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelGenere" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelHabitat" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelSpecie" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelDataNascita" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabelDisplayNome" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelDisplaySpecie" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelDisplayHabitat" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelDisplayGenere" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelDisplayNascita" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelDisplaySalute" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabelPresente" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabelDisplayPresente" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelCod" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                      <Component id="jLabelDisplayCod" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="118" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="jButtonNuovaVisita" min="-2" max="-2" attributes="0"/>
@@ -80,16 +75,26 @@
                   </Group>
                   <Component id="jScrollPane1" alignment="1" min="-2" pref="413" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="68" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="47" pref="47" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <Component id="jScrollPane1" min="-2" pref="146" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelCod" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelDisplayCod" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelNome" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelDisplayNome" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -104,28 +109,24 @@
                           <Component id="jLabelHabitat" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelDisplayHabitat" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelGenere" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelDisplayGenere" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelDataNascita" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelDisplayNascita" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jScrollPane1" min="-2" pref="146" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelDisplaySalute" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelSalute" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabelDisplayGenere" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelGenere" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabelDataNascita" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelDisplayNascita" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="37" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelDisplaySalute" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelSalute" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButtonClose" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabelPresente" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -273,7 +274,7 @@
               </TableColumnModel>
             </Property>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+              <TableHeader reorderingAllowed="false" resizingAllowed="false"/>
             </Property>
           </Properties>
         </Component>
@@ -283,6 +284,19 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Leggi Note Visita"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelCod">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Codice Animale:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelDisplayCod">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="-"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
