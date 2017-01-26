@@ -8,30 +8,61 @@ package schede;
 import java.awt.Toolkit;
 import java.awt.event.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 import logins.JLogin;
 import progettozoo.DBConnect;
 import logins.JVeterinario;
+import progettozoo.Animale;
+import progettozoo.Visita;
 
 /**
  *
  * @author Alberto
  */
+
 public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
 
-    /**
+    /** 
      * Creates new form JSchedaAnimale_Veterinario
      */
+    
     public JSchedaAnimale_Veterinario() {
         initComponents();        
-        
-        DBConnect conn = new DBConnect();
+       
         JVeterinario v = new JVeterinario();
-        String[] jTableVisiteHeaders  = {"Data Visita","Note Visita"};
-        v.selectmode(jTableVisite);   
-        v.creaTabella(jTableVisite, jTableVisiteHeaders);
-        
-        
+        String[] jTableVisiteHeaders  = {"Data Visite","Note Visite"};
+        v.creaTabella(this.jTableVisite, jTableVisiteHeaders); 
+        v.selectmode(this.jTableVisite); 
+
     }
+        
+    public JSchedaAnimale_Veterinario(Animale anim_sel) {
+        initComponents();      
+           setLocationRelativeTo(null);
+           setVisible(true);
+        JVeterinario v = new JVeterinario();
+        String[] jTableVisiteHeaders  = {"Data Visite","Note Visite"};
+        v.creaTabella(this.jTableVisite, jTableVisiteHeaders); 
+        v.selectmode(this.jTableVisite);      
+        
+           // jLabelDisplayHabitat.setText(anim_sel.getHabitat());
+            jLabelDisplayCod.setText(anim_sel.getId());
+            jLabelDisplayNome.setText(anim_sel.getNome());
+            jLabelDisplaySpecie.setText(anim_sel.getSpecie());
+            jLabelDisplayGenere.setText(anim_sel.getSesso());
+            
+            System.out.println(jLabelDisplayGenere.getText());
+         /*   jLabelDisplayNascita.setText("2010,10,10");
+            jLabelDisplaySalute.setText("OK");
+            jLabelDisplayPresente.setText("SI");
+            Show_DateVisite_In_JTable(jLabelDisplayCod.getText());  */
+        System.out.println("SCHEDE: "+anim_sel.getId());
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -123,6 +154,11 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         }
 
         jButtonLeggiNoteVisita.setText("Leggi Note Visita");
+        jButtonLeggiNoteVisita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLeggiNoteVisitaActionPerformed(evt);
+            }
+        });
 
         jLabelCod.setText("Codice Animale:");
 
@@ -229,6 +265,11 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         // TODO add your handling code here: 
         setVisible(false);
     }//GEN-LAST:event_jButtonCloseActionPerformed
+
+    private void jButtonLeggiNoteVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLeggiNoteVisitaActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButtonLeggiNoteVisitaActionPerformed
     
     /**
      * @param args the command line arguments
@@ -264,9 +305,22 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
             }
         });
     }    
-    
   
-
+   public void Show_DateVisite_In_JTable(String cod_anim)
+   {
+       DBConnect conn = new DBConnect();
+       ArrayList<Visita> visite = conn.visitaList(cod_anim);
+       DefaultTableModel model = (DefaultTableModel) jTableVisite.getModel();
+       Object[] row = new Object[8];
+       
+       for(int i = 0; i < visite.size(); i++)
+       {
+           row[0] = visite.get(i).getDV();
+           row[1] = visite.get(i).getNote();
+                 
+           model.addRow(row);
+       }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonLeggiNoteVisita;
@@ -288,6 +342,6 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSalute;
     private javax.swing.JLabel jLabelSpecie;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableVisite;
+    public javax.swing.JTable jTableVisite;
     // End of variables declaration//GEN-END:variables
 }
