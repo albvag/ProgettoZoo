@@ -18,6 +18,7 @@ public class DBConnect {
     private Statement st;
     private ResultSet rs;
     
+    
     //Connessione al nostro DB
     public DBConnect(){
     
@@ -29,7 +30,7 @@ public class DBConnect {
             System.out.printf("Errore "+ex);
         };
     }
-    
+        
     public String checkAnimalHabitat(String Codice_Animale)
     {
     try{
@@ -89,15 +90,18 @@ public class DBConnect {
        {
         ArrayList<Animale> animaliList = new ArrayList<Animale>();
         String query = "Select * from animale";
+        String q2 = "Select * from situato";
 
            try{
                Animale anim;
                rs = st.executeQuery(query);
+               
+               
                 while(rs.next())
                 {
-                    anim = new Animale(rs.getString("animale.Codice_Animale"),rs.getString("Nome"),
-                            rs.getString("Specie"),rs.getString("Genere"),rs.getDate("Data_Nascita"),
-                            rs.getBoolean("Salute"), rs.getBoolean("Nostro"), rs.getBoolean("Presente"));
+                    anim = new Animale(rs.getString("animale.Codice_Animale"),rs.getString("animale.Nome"),
+                            rs.getString("animale.Specie"),rs.getString("animale.Genere"),rs.getDate("animale.Data_Nascita"),
+                            rs.getBoolean("animale.Salute"), rs.getBoolean("animale.Nostro"), rs.getBoolean("animale.Presente"));
                     animaliList.add(anim);
                 }
             }catch(Exception ex){
@@ -118,7 +122,7 @@ public class DBConnect {
                rs = st.executeQuery(query);
                 while(rs.next())
                 {
-                    vis = new Visita(rs.getString("Cod_Veterinario"),rs.getString("Cod_Animale"), rs.getDate("Data_Visita"));
+                    vis = new Visita(rs.getString("Cod_Veterinario"),rs.getString("Cod_Animale"), rs.getDate("Data_Visita"), rs.getString("Note_Visita"));
                     visitaList.add(vis);
                 }
             }catch(Exception ex){
@@ -138,7 +142,7 @@ public class DBConnect {
                rs = st.executeQuery(query);
                 while(rs.next())
                 {
-                    vis = new Visita(rs.getString("Cod_Veterinario"),rs.getString("Cod_Animale"), rs.getDate("Data_Visita"));
+                    vis = new Visita(rs.getString("Cod_Veterinario"),rs.getString("Cod_Animale"), rs.getDate("Data_Visita"), rs.getString("Note_Visita"));
                     visitaTuttiList.add(vis);
                 }
             }catch(Exception ex){

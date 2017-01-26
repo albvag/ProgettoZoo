@@ -328,7 +328,7 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
         
         
       
-         String formnome = "[a-zA-Z]{1,}";
+          String formnome = "[a-zA-Z]{1,}";
           String formcog = "[a-zA-Z]{1,}";
           String formres = "[a-zA-Z]{1,}";
           String formind = "[a-zA-Z ]{1,}+[ 0-9]{1,}";

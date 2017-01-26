@@ -24,7 +24,18 @@ public class Animale {
     private boolean salute, nostro, presente;
     
 
-
+    public Animale()
+    {
+        this.id = "";
+        this.nome = "";
+        this.specie = "";
+        this.sesso = "";
+        this.data_nascita = new Date(0000,00,00);
+        this.salute = true;
+        this.nostro = true;
+        this.presente = true;
+    }
+    
     public Animale(String ID, String Nome, String Specie, String Sesso, Date Data_Nascita, boolean Salute, boolean Nostro, boolean Presente)
     {
         this.id = ID;
@@ -35,6 +46,45 @@ public class Animale {
         this.salute = Salute;
         this.nostro = Nostro;
         this.presente = Presente;
+    }
+    
+    public void setId(String ID)
+    {
+        this.id = ID;
+    }
+    
+    public void setNome(String NOME)
+    {
+        this.nome = NOME;
+    }
+    
+    public void setSpecie(String SPECIE)
+    {
+        this.specie = SPECIE;
+    }
+    
+    public void setSesso(String SESSO)
+    {
+        this.sesso = SESSO;
+    }
+    public void setDataNascita(Date DATA)
+    {
+        this.data_nascita = DATA;
+    }
+    
+    public void setSalute(boolean SALUTE)
+    {
+        this.salute = SALUTE;   
+    }
+    
+     public void setPresente(boolean PRESENTE)
+    {
+       this.presente = PRESENTE;     
+    }
+    
+    public void setNostro(boolean NOSTRO)
+    {
+       this.nostro = NOSTRO;     
     }
     
     public String getId()

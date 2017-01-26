@@ -16,12 +16,14 @@ public class Visita {
     private String veterinario;
     private String animale;
     private Date data_visita;
+    private String note;
     
-    public Visita(String Vet, String An, Date DV)
+    public Visita(String Vet, String An, Date DV, String NOTE)
     {
         this.veterinario = Vet;
         this.animale = An;
         this.data_visita = DV;
+        this.note = NOTE;
     }        
         public String getVeterinario()
         {
@@ -30,6 +32,11 @@ public class Visita {
         public String getAnimaleVisitato()
         {
             return animale;
+        }
+        
+        public String getNote()
+        {
+            return note;
         }
         
         public Date getDV()

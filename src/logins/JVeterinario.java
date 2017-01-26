@@ -7,6 +7,7 @@ package logins;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.*;
 import javax.swing.table.*;
 import progettozoo.Animale;
@@ -23,6 +24,11 @@ public class JVeterinario extends javax.swing.JFrame {
     /**
      * Creates new form JVeterinario
      */
+    public String COD_AN, NOME, SPECIE, GENERE, HABITAT;
+    public Date DATANASCITA;
+    public boolean NOSTRO,PRESENTE,SALUTE;
+    public Animale anim_sel = new Animale();
+    
     public JVeterinario() {
        
 
@@ -128,15 +134,48 @@ public class JVeterinario extends javax.swing.JFrame {
 
     private void jButtonSchedaAnimaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSchedaAnimaleActionPerformed
         // TODO add your handling code here:
-         
+        /* 
+        Animale anim = new Animale();
+        String ID = getTableSelectedItem(this.jTableAnimali, "Codice Animale");
+        String NOME = getTableSelectedItem(this.jTableAnimali, "Nome");
+        anim_sel = new Animale("Franco",NOME,"","", new Date(2010,10,10), false,false,false);
+            JSchedaAnimale_Veterinario sav = new JSchedaAnimale_Veterinario(); 
+               sav.setLocationRelativeTo(null);
+            sav.setVisible(true);
+       // sav.anim_sel = new Animale(ID,NOME,"","", new Date(2010,10,10), false,false,false);
+        System.out.println("Da JVeterinario: "+anim.getId());*/
+        
+        
+        
         if(jTableAnimali.getSelectedRow() == -1) JOptionPane.showMessageDialog(null, "Errore: Nessuna riga selezionata");
         else{
             if(!"".equals(getTableSelectedItem(jTableAnimali, "Codice Animale")) )
             {
-                DBConnect conn = new DBConnect();
-            JSchedaAnimale_Veterinario sav = new JSchedaAnimale_Veterinario();
-            sav.setLocationRelativeTo(null);
-            sav.setVisible(true);
+            DBConnect conn = new DBConnect();
+                
+            
+        /*
+            Date sto= new Date(2010,10,10);
+            .anim_sel = new Animale(getTableSelectedItem(jTableAnimali, "Codice Animale"),getTableSelectedItem(jTableAnimali, "Nome Animale"),
+            getTableSelectedItem(jTableAnimali, "Specie"), getTableSelectedItem(jTableAnimali, "Genere"), sto,
+            true,true,true );
+        */
+        
+           COD_AN = conn.checkAnimalHabitat(getTableSelectedItem(jTableAnimali, "Codice Animale"));
+           NOME = getTableSelectedItem(jTableAnimali, "Nome Animale");
+           SPECIE = getTableSelectedItem(jTableAnimali, "Specie");
+           GENERE = getTableSelectedItem(jTableAnimali, "Genere");
+           
+           anim_sel.setId(COD_AN);
+           anim_sel.setNome(NOME);
+           anim_sel.setSpecie(SPECIE);
+           anim_sel.setSesso(GENERE);
+           /*
+           String hab = anim_sel.getId();
+           System.out.println("Da JVeterinario: "+hab);*/
+            
+           new JSchedaAnimale_Veterinario(anim_sel);  
+            /*
             sav.jLabelDisplayHabitat.setText(conn.checkAnimalHabitat(getTableSelectedItem(jTableAnimali, "Codice Animale")));
             sav.jLabelDisplayCod.setText(getTableSelectedItem(jTableAnimali, "Codice Animale"));
             sav.jLabelDisplayNome.setText(getTableSelectedItem(jTableAnimali, "Nome Animale"));
@@ -145,19 +184,17 @@ public class JVeterinario extends javax.swing.JFrame {
             sav.jLabelDisplayNascita.setText(getTableSelectedItem(jTableAnimali, "Data di Nascita"));
             sav.jLabelDisplaySalute.setText(getTableSelectedItem(jTableAnimali, "Salute"));
             sav.jLabelDisplayPresente.setText(getTableSelectedItem(jTableAnimali, "Presente"));
+            sav.Show_DateVisite_In_JTable(sav.jLabelDisplayCod.getText());       */     
             }
             else JOptionPane.showMessageDialog(null, "Errore: selezionata riga nulla");
         }
         
         
     }//GEN-LAST:event_jButtonSchedaAnimaleActionPerformed
-
-   
     
     //Restituisce il valore di una certa colonna di una tabella in base alla riga selezionata.
     public String getTableSelectedItem(JTable table, String item)
     {
-      //  String colonna = "";
         String selezione = "";
         int stop = -1;
         ArrayList jTableHeaders = new ArrayList();
@@ -166,7 +203,6 @@ public class JVeterinario extends javax.swing.JFrame {
             jTableHeaders.add(i,table.getColumnName(i));         
             if( jTableHeaders.contains(item)){
                     stop = i;
-                    //colonna = jTableHeaders.get(stop).toString();
                     selezione = getTableValue(table, i);
                     return selezione;
                 }
@@ -180,27 +216,6 @@ public void selectmode(JTable table)
 {
     //SET SELECTION MODE
     table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-    ListSelectionModel model=table.getSelectionModel();
-    
-    //add listener
-   /* model.addListSelectionListener(new ListSelectionListener() {
-      
-      @Override
-      public void valueChanged(ListSelectionEvent e) {
-           
-        if(e.getValueIsAdjusting())
-        {
-          return;
-        }
-        ListSelectionModel lsm=(ListSelectionModel) e.getSource();
-        
-        if(lsm.isSelectionEmpty())
-        {
-          JOptionPane.showMessageDialog(null, "Nessuna Selezione");
-        }
-   
-      }
-    });/ */
 }   
 
 //ritorna il valore della colonna i-esima della riga selezionata nella tabella
@@ -300,13 +315,12 @@ public void selectmode(JTable table)
            model.addRow(row);
        }
     }
-    
-    
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonLogout;
     private javax.swing.JButton jButtonSchedaAnimale;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableAnimali;
+    public javax.swing.JTable jTableAnimali;
     // End of variables declaration//GEN-END:variables
 }

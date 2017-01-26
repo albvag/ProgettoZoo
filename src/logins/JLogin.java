@@ -64,6 +64,11 @@ public class JLogin extends javax.swing.JFrame {
                 jTextFieldUsernameFocusGained(evt);
             }
         });
+        jTextFieldUsername.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldUsernameKeyPressed(evt);
+            }
+        });
 
         jPasswordFieldPassword.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -237,8 +242,57 @@ public class JLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordFieldPasswordFocusGained
 
     private void jTextFieldUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldUsernameFocusGained
-    this.jTextFieldUsername.selectAll();     // TODO add your handling code here:
+
+        this.jTextFieldUsername.selectAll();     // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldUsernameFocusGained
+
+    private void jTextFieldUsernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldUsernameKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+                DBConnect conn = new DBConnect();
+            String user = this.jTextFieldUsername.getText();
+            String password = this.jPasswordFieldPassword.getText();
+            int userExists = conn.userExists(user, password);
+            if( userExists == 1)
+            {
+                String ruolo;
+                ruolo = conn.checkRole(user);
+                switch(ruolo){
+                    case "Cassiere": {
+                        JCassiere cass = new JCassiere();
+                        cass.setLocationRelativeTo(null);
+                        cass.setVisible(true);
+                        break;
+                    }
+                    case "Veterinario": {
+                        JVeterinario vet = new JVeterinario();
+                        vet.setLocationRelativeTo(null);
+                        vet.setVisible(true);
+                        break;
+                    }
+                    case "Custode":{
+                        JCustode cust = new JCustode();
+                        cust.setLocationRelativeTo(null);
+                        cust.setVisible(true);
+                        break;
+                    }
+                    case "Direttore":{
+                        JDirettore dir = new JDirettore();
+                        dir.setLocationRelativeTo(null);
+                        dir.setVisible(true);
+                        break;
+                    }
+                    case "Errore":{
+                        this.jLabelHide1.setText(String.format("%d", userExists));
+                    }
+                }
+                close(this);
+            }
+            else {
+               this.jLabelHide1.setText(String.format("%d", userExists)); /* Gestire errore */
+            }
+        };
+    }//GEN-LAST:event_jTextFieldUsernameKeyPressed
 
     /**
      * @param args the command line arguments

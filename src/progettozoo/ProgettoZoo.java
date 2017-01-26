@@ -6,6 +6,7 @@
 package progettozoo;
 
 import logins.JLogin;
+import logins.JVeterinario;
 
 /**
  *
@@ -22,7 +23,6 @@ public class ProgettoZoo {
         JLogin login = new JLogin();
         login.setLocationRelativeTo(null);
         login.setVisible(true);
-   
     }
     
 }
