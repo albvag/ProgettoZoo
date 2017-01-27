@@ -155,7 +155,7 @@ public class JVeterinario extends javax.swing.JFrame {
            
            anim_sel.setId(COD_AN);
            anim_sel.setNome(NOME);
-           anim_sel.setSpecie(SPECIE);a
+           anim_sel.setSpecie(SPECIE);
            anim_sel.setSesso(GENERE);
            anim_sel.setHabitat(HABITAT);
            

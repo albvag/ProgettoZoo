@@ -77,7 +77,7 @@ public class Animale {
     
     public void setDataNascita(Date DATA)
     {
-        this.data_nascita = DATA;s
+        this.data_nascita = DATA;
     }
     
     public void setSalute(boolean SALUTE)
