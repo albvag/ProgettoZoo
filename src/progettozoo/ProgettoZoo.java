@@ -5,6 +5,9 @@
  */
 package progettozoo;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import logins.JLogin;
 import logins.JVeterinario;
 
@@ -23,6 +26,27 @@ public class ProgettoZoo {
         JLogin login = new JLogin();
         login.setLocationRelativeTo(null);
         login.setVisible(true);
-    }
-    
+    }  
+  public void DateFormatter(String DateToChange)
+  {
+    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String dateInString = DateToChange;
+
+        try {
+
+            Date date = formatter.parse(dateInString);
+            System.out.println(date);
+            System.out.println(formatter.format(date));
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+  }
+  
+  public void ciao()
+  {
+      System.out.println("ciao");
+  }
+  
+
 }

@@ -19,7 +19,7 @@ public class Animale {
     private String id;
     private String nome;
     private String specie;
-    private String sesso;
+    private String sesso,habitat;
     private Date data_nascita;
     private boolean salute, nostro, presente;
     
@@ -30,18 +30,20 @@ public class Animale {
         this.nome = "";
         this.specie = "";
         this.sesso = "";
+        this.habitat = "";
         this.data_nascita = new Date(0000,00,00);
         this.salute = true;
         this.nostro = true;
         this.presente = true;
     }
     
-    public Animale(String ID, String Nome, String Specie, String Sesso, Date Data_Nascita, boolean Salute, boolean Nostro, boolean Presente)
+    public Animale(String ID, String Nome, String Specie, String Sesso, String Habitat, Date Data_Nascita, boolean Salute, boolean Nostro, boolean Presente)
     {
         this.id = ID;
         this.nome = Nome;
         this.specie = Specie;
         this.sesso = Sesso;
+        this.habitat = Habitat;
         this.data_nascita = Data_Nascita;
         this.salute = Salute;
         this.nostro = Nostro;
@@ -67,6 +69,12 @@ public class Animale {
     {
         this.sesso = SESSO;
     }
+    
+    public void setHabitat(String HABITAT)
+    {
+        this.habitat = HABITAT;
+    }
+    
     public void setDataNascita(Date DATA)
     {
         this.data_nascita = DATA;
@@ -105,6 +113,11 @@ public class Animale {
     public String getSesso()
     {
         return sesso;
+    }
+    
+    public String getHabitat()
+    {
+        return habitat;
     }
     
     public Date getDataNascita()

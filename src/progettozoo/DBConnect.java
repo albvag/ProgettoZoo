@@ -89,8 +89,7 @@ public class DBConnect {
        public ArrayList<Animale> animaliList()
        {
         ArrayList<Animale> animaliList = new ArrayList<Animale>();
-        String query = "Select * from animale";
-        String q2 = "Select * from situato";
+        String query = "Select * from animale LEFT JOIN situato on situato.Cod_Animale = animale.Codice_Animale";
 
            try{
                Animale anim;
@@ -100,7 +99,7 @@ public class DBConnect {
                 while(rs.next())
                 {
                     anim = new Animale(rs.getString("animale.Codice_Animale"),rs.getString("animale.Nome"),
-                            rs.getString("animale.Specie"),rs.getString("animale.Genere"),rs.getDate("animale.Data_Nascita"),
+                            rs.getString("animale.Specie"),rs.getString("animale.Genere"),rs.getString("situato.Cod_Gabbia"),rs.getDate("animale.Data_Nascita"),
                             rs.getBoolean("animale.Salute"), rs.getBoolean("animale.Nostro"), rs.getBoolean("animale.Presente"));
                     animaliList.add(anim);
                 }

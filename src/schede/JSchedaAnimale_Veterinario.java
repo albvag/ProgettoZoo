@@ -54,6 +54,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
             jLabelDisplayNome.setText(anim_sel.getNome());
             jLabelDisplaySpecie.setText(anim_sel.getSpecie());
             jLabelDisplayGenere.setText(anim_sel.getSesso());
+            jLabelDisplayHabitat.setText(anim_sel.getHabitat());
             
             System.out.println(jLabelDisplayGenere.getText());
          /*   jLabelDisplayNascita.setText("2010,10,10");
