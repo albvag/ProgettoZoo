@@ -26,73 +26,87 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jLabel6" max="32767" attributes="0"/>
-                  <Component id="jLabel1" max="32767" attributes="0"/>
+                  <Component id="jLabel1" pref="80" max="32767" attributes="0"/>
                   <Component id="jLabel2" pref="80" max="32767" attributes="0"/>
-                  <Component id="jLabel3" max="32767" attributes="0"/>
-                  <Component id="jLabel4" max="32767" attributes="0"/>
+                  <Component id="jLabel3" pref="80" max="32767" attributes="0"/>
+                  <Component id="jLabel4" pref="80" max="32767" attributes="0"/>
+                  <Component id="jLabel6" alignment="0" pref="80" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="erroretel" alignment="0" pref="160" max="32767" attributes="0"/>
-                      <Component id="erroreindirizzo" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jAggiungiResidenza" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
-                      <Component id="erroreresidenza" alignment="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="jAggiungiNumeroTelefono" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
-                  <Component id="errorecognome" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
-                  <Component id="errorenome" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jAggiungiCognome" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
-                          <Component id="jNomePersonale" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
-                          <Component id="jAggiungiIndirizzo" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                      <Component id="errorenome" min="-2" pref="160" max="-2" attributes="0"/>
+                      <EmptySpace min="85" pref="1021" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="erroreresidenza" min="-2" pref="160" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="1021" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jAggiungiNumeroTelefono" max="32767" attributes="0"/>
+                          <Component id="erroretel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jAggiungiCognome" alignment="0" pref="448" max="32767" attributes="0"/>
+                          <Component id="errorecognome" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                          <Component id="erroreindirizzo" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                          <Component id="jAggiungiResidenza" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jAggiungiIndirizzo" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jNomePersonale" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel7" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jAggiungiPassword" min="-2" pref="140" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel5" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="jButtonSave" min="-2" pref="74" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
+                              <Component id="jButtonClose" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="errorepass" min="-2" pref="160" max="-2" attributes="0"/>
-                                  <Component id="jAggiungiUser" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <Component id="jLabel7" min="-2" pref="123" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jLabel5" min="-2" pref="123" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel8" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
+                                                  <Component id="jLabel9" min="-2" pref="123" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jRuolo" min="-2" pref="136" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                              <Component id="errconfpass" min="-2" pref="160" max="-2" attributes="0"/>
+                                              <Component id="jRipetiPassword" min="-2" pref="448" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jAggiungiUser" alignment="1" max="32767" attributes="0"/>
+                                                  <Group type="102" attributes="0">
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="erroreuser" min="-2" pref="160" max="-2" attributes="0"/>
+                                                          <Component id="jAggiungiPassword" min="-2" pref="448" max="-2" attributes="0"/>
+                                                          <Component id="errorepass" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
                               </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel8" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jRipetiPassword" min="-2" pref="140" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="104" pref="104" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="erroreuser" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
-                                  <Component id="errconfpass" alignment="0" min="-2" pref="168" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="jButtonSave" min="-2" pref="74" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jButtonClose" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel9" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jRuolo" min="-2" pref="140" max="-2" attributes="0"/>
-                              </Group>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="85" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -101,73 +115,66 @@
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="errorenome" pref="10" max="32767" attributes="0"/>
-                  <Component id="erroreuser" max="32767" attributes="0"/>
+                  <Component id="erroreuser" pref="10" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel5" alignment="3" max="32767" attributes="0"/>
-                      <Component id="jAggiungiUser" alignment="3" max="32767" attributes="0"/>
+                      <Component id="jLabel5" alignment="0" pref="23" max="32767" attributes="0"/>
+                      <Component id="jAggiungiUser" alignment="3" pref="23" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jNomePersonale" alignment="3" max="32767" attributes="0"/>
-                      <Component id="jLabel6" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jLabel6" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="jNomePersonale" alignment="0" pref="27" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="errorecognome" min="-2" pref="10" max="-2" attributes="0"/>
-                  <Component id="errorepass" min="-2" pref="10" max="-2" attributes="0"/>
+                  <Component id="errorepass" alignment="1" min="-2" pref="10" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="erroreresidenza" min="-2" pref="10" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jAggiungiCognome" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                           <Component id="jLabel7" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                           <Component id="jAggiungiPassword" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="errconfpass" min="-2" pref="10" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                              <Component id="erroreresidenza" min="-2" pref="10" max="-2" attributes="0"/>
-                              <EmptySpace pref="14" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel1" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel2" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="jAggiungiResidenza" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="jLabel8" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="jRipetiPassword" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="erroreindirizzo" min="-2" pref="10" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel3" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                          <Component id="jAggiungiIndirizzo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel9" alignment="3" max="32767" attributes="0"/>
-                          <Component id="jRuolo" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <Component id="erroretel" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel4" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="jAggiungiNumeroTelefono" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jAggiungiResidenza" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="jLabel2" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="jRipetiPassword" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="jLabel8" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+              <Component id="erroreindirizzo" min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jAggiungiIndirizzo" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="jLabel3" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="jLabel9" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="jRuolo" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="erroretel" min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jAggiungiNumeroTelefono" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="jLabel4" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="37" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButtonSave" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonClose" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -190,7 +197,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="      Residenza"/>
+        <Property name="text" type="java.lang.String" value="         Citt&#xe0;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
@@ -204,27 +211,62 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jNomePersonale">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="99" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Campo formato da sole lettere"/>
+      </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jNomePersonaleMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jNomePersonaleActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jAggiungiCognome">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="99" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Campo formato da sole lettere"/>
+      </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jAggiungiCognomeMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jAggiungiCognomeActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jAggiungiResidenza">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="99" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Campo formato da sole lettere"/>
+      </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jAggiungiResidenzaMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jAggiungiResidenzaActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jAggiungiIndirizzo">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="99" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Es.via indirizzo 1"/>
+      </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jAggiungiIndirizzoMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jAggiungiIndirizzoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jAggiungiNumeroTelefono">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="99" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Campo formato da soli numeri"/>
+      </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jAggiungiNumeroTelefonoMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jAggiungiNumeroTelefonoActionPerformed"/>
       </Events>
     </Component>
@@ -240,11 +282,19 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
-        <Property name="text" type="java.lang.String" value="    Ripeti Password"/>
+        <Property name="text" type="java.lang.String" value="  Conferma Password"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jAggiungiUser">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="99" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Campo formato da soli caratteri alfanumerici pi&#xf9;  _ e &#x2013; di lungezza min 3 e max 15"/>
+        <Property name="toolTipText" type="java.lang.String" value="Username formato da soli caratteri alfanumerici pi&#xf9;  _ e &#x2013; di lungezza min 3 e max 15"/>
+      </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jAggiungiUserMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jAggiungiUserActionPerformed"/>
       </Events>
     </Component>
@@ -265,11 +315,20 @@
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="jAggiungiPassword">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Password che deve contenere un numero, un carattere minuscolo, uno maiuscolo e un carattere speciale tra !@#$% e deve avere lunghezza min 8 e max 20"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursore testo"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jAggiungiPasswordActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="jRipetiPassword">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Password che deve contenere un numero, un carattere minuscolo, uno maiuscolo e un carattere speciale tra !@#$% e deve avere lunghezza min 8 e max 20"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRipetiPasswordActionPerformed"/>
       </Events>

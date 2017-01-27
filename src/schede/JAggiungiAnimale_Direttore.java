@@ -43,6 +43,7 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
         jAggiunginomeanimale = new javax.swing.JTextField();
         jAggiungispecie = new javax.swing.JTextField();
         jDatadinascita = new javax.swing.JTextField();
+
         jButtonSave = new javax.swing.JButton();
         jButtonClose = new javax.swing.JButton();
         jGenere = new javax.swing.JComboBox<>();
@@ -60,12 +61,40 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
 
         jDataAnimale.setText("  Data di nascita");
 
+        jAggiunginomeanimale.setForeground(new java.awt.Color(153, 153, 153));
+        jAggiunginomeanimale.setText("Nome formato da sole lettere");
+        jAggiunginomeanimale.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jAggiunginomeanimaleMouseClicked(evt);
+            }
+        });
         jAggiunginomeanimale.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jAggiunginomeanimaleActionPerformed(evt);
             }
         });
 
+        jAggiungispecie.setForeground(new java.awt.Color(153, 153, 153));
+        jAggiungispecie.setText("Es.leone,orso,pinguino,ecc.");
+        jAggiungispecie.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jAggiungispecieMouseClicked(evt);
+            }
+        });
+        jAggiungispecie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAggiungispecieActionPerformed(evt);
+            }
+        });
+
+        jDatadinascita.setForeground(new java.awt.Color(153, 153, 153));
+        jDatadinascita.setText("dd/mm/aaaa");
+        jDatadinascita.setToolTipText("");
+        jDatadinascita.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jDatadinascitaMouseClicked(evt);
+            }
+        });
         jDatadinascita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jDatadinascitaActionPerformed(evt);
@@ -162,12 +191,13 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
   else
     return false;
 }
+
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
         setVisible(false); // TODO add your handling code here:
     }//GEN-LAST:event_jButtonCloseActionPerformed
 
     private void jDatadinascitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDatadinascitaActionPerformed
-        // TODO add your handling code here:
+    // TODO add your handling code here:
     }//GEN-LAST:event_jDatadinascitaActionPerformed
 
     private void jAggiunginomeanimaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAggiunginomeanimaleActionPerformed
@@ -183,7 +213,7 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
          String formnome = "[a-zA-Z]{1,}";
          String forspecie ="[a-zA-Z]{1,}";
          //inserire la data in formato dd/mm/aaaa (giorno/mese/anno)
-         String fordata ="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[-/.](19|20)[0-9]{2}";
+         String fordata ="(0[1-9]|1[0-9]|2[0-9]|3[01])[- /.](0[1-9]|[12][0-9]|3[01])[-/.](19|20)[0-9]{2}";
           Pattern pattern = Pattern.compile(formnome);
           Pattern pattern1 = Pattern.compile(forspecie);
           Pattern pattern2 = Pattern.compile(fordata);
@@ -203,6 +233,8 @@ if(dat==false)
     erroredata.setText("Caratteri non validi");
 else
     erroredata.setText("Caratteri validi");
+
+
     if(nom==true && spe==true && dat==true)
      System.out.println("Nome: "+nome+" Specie: "+specie+" Genere: "+genere+" nato il: "+data);
     else{System.out.println("ERRORE");}
@@ -211,6 +243,41 @@ else
     private void jGenereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGenereActionPerformed
                // TODO add your handling code here:
     }//GEN-LAST:event_jGenereActionPerformed
+
+    private void jDatadinascitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDatadinascitaMouseClicked
+        if(jDatadinascita.getText().equals("dd/mm/aaaa"))
+        {jDatadinascita.setText("");
+         jDatadinascita.setForeground(Color.black);
+        }
+        else
+            jDatadinascita.getText();
+        
+       
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jDatadinascitaMouseClicked
+
+    private void jAggiunginomeanimaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jAggiunginomeanimaleMouseClicked
+          if(jAggiunginomeanimale.getText().equals("Nome formato da sole lettere"))
+          {jAggiunginomeanimale.setText("");
+           jAggiunginomeanimale.setForeground(Color.black);
+          }
+        else
+            jAggiunginomeanimale.getText();   // TODO add your handling code here:
+    }//GEN-LAST:event_jAggiunginomeanimaleMouseClicked
+
+    private void jAggiungispecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAggiungispecieActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jAggiungispecieActionPerformed
+
+    private void jAggiungispecieMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jAggiungispecieMouseClicked
+         if(jAggiungispecie.getText().equals("Es.leone,orso,pinguino,ecc."))
+         {jAggiungispecie.setText("");
+          jAggiungispecie.setForeground(Color.black);
+         }
+        else
+            jAggiungispecie.getText(); 
+         // TODO add your handling code here:
+    }//GEN-LAST:event_jAggiungispecieMouseClicked
 
     /**
      * @param args the command line arguments
