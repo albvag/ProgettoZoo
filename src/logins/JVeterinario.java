@@ -13,6 +13,7 @@ import javax.swing.table.*;
 import progettozoo.Animale;
 import progettozoo.DBConnect;
 import progettozoo.Visita;
+import progettozoo.ProgettoZoo;
 import schede.JSchedaAnimale_Veterinario;
 
 /**
@@ -33,6 +34,9 @@ public class JVeterinario extends javax.swing.JFrame {
        
 
         initComponents();
+           ProgettoZoo pz = new ProgettoZoo();
+           pz.DateFormatter("10/10/2010");
+           
         String[] jTableAnimaliHeaders  = {"Codice Animale","Nome Animale","Specie","Data di Nascita","Genere","Ultima Visita","Salute","Presente"};
         selectmode(jTableAnimali);   
         creaTabella(jTableAnimali, jTableAnimaliHeaders);
@@ -134,57 +138,31 @@ public class JVeterinario extends javax.swing.JFrame {
 
     private void jButtonSchedaAnimaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSchedaAnimaleActionPerformed
         // TODO add your handling code here:
-        /* 
-        Animale anim = new Animale();
-        String ID = getTableSelectedItem(this.jTableAnimali, "Codice Animale");
-        String NOME = getTableSelectedItem(this.jTableAnimali, "Nome");
-        anim_sel = new Animale("Franco",NOME,"","", new Date(2010,10,10), false,false,false);
-            JSchedaAnimale_Veterinario sav = new JSchedaAnimale_Veterinario(); 
-               sav.setLocationRelativeTo(null);
-            sav.setVisible(true);
-       // sav.anim_sel = new Animale(ID,NOME,"","", new Date(2010,10,10), false,false,false);
-        System.out.println("Da JVeterinario: "+anim.getId());*/
-        
-        
-        
+ 
         if(jTableAnimali.getSelectedRow() == -1) JOptionPane.showMessageDialog(null, "Errore: Nessuna riga selezionata");
         else{
             if(!"".equals(getTableSelectedItem(jTableAnimali, "Codice Animale")) )
             {
             DBConnect conn = new DBConnect();
-                
-            
-        /*
-            Date sto= new Date(2010,10,10);
-            .anim_sel = new Animale(getTableSelectedItem(jTableAnimali, "Codice Animale"),getTableSelectedItem(jTableAnimali, "Nome Animale"),
-            getTableSelectedItem(jTableAnimali, "Specie"), getTableSelectedItem(jTableAnimali, "Genere"), sto,
-            true,true,true );
-        */
-        
-           COD_AN = conn.checkAnimalHabitat(getTableSelectedItem(jTableAnimali, "Codice Animale"));
+              
+           COD_AN = getTableSelectedItem(jTableAnimali, "Codice Animale");
            NOME = getTableSelectedItem(jTableAnimali, "Nome Animale");
            SPECIE = getTableSelectedItem(jTableAnimali, "Specie");
            GENERE = getTableSelectedItem(jTableAnimali, "Genere");
+           HABITAT = conn.checkAnimalHabitat(COD_AN);
+           
+           String DataTable = getTableSelectedItem(jTableAnimali, "Data di Nascita");
            
            anim_sel.setId(COD_AN);
            anim_sel.setNome(NOME);
            anim_sel.setSpecie(SPECIE);
            anim_sel.setSesso(GENERE);
-           /*
-           String hab = anim_sel.getId();
-           System.out.println("Da JVeterinario: "+hab);*/
+           anim_sel.setHabitat(HABITAT);
+           
+           System.out.println(anim_sel.getHabitat());
             
            new JSchedaAnimale_Veterinario(anim_sel);  
-            /*
-            sav.jLabelDisplayHabitat.setText(conn.checkAnimalHabitat(getTableSelectedItem(jTableAnimali, "Codice Animale")));
-            sav.jLabelDisplayCod.setText(getTableSelectedItem(jTableAnimali, "Codice Animale"));
-            sav.jLabelDisplayNome.setText(getTableSelectedItem(jTableAnimali, "Nome Animale"));
-            sav.jLabelDisplaySpecie.setText(getTableSelectedItem(jTableAnimali, "Specie"));
-            sav.jLabelDisplayGenere.setText(getTableSelectedItem(jTableAnimali, "Genere"));
-            sav.jLabelDisplayNascita.setText(getTableSelectedItem(jTableAnimali, "Data di Nascita"));
-            sav.jLabelDisplaySalute.setText(getTableSelectedItem(jTableAnimali, "Salute"));
-            sav.jLabelDisplayPresente.setText(getTableSelectedItem(jTableAnimali, "Presente"));
-            sav.Show_DateVisite_In_JTable(sav.jLabelDisplayCod.getText());       */     
+           
             }
             else JOptionPane.showMessageDialog(null, "Errore: selezionata riga nulla");
         }
@@ -306,7 +284,7 @@ public void selectmode(JTable table)
            quindi se metto indice i non va bene perchè altrimenti avanza nella lista in elementi non esistenti
            */
            
-           if(list.get(i).getSalute() == true ) row[6] = "OK";
+           if(list.get(i).getSalute() == true ) row[6] = "SANO";
            else row[6] = "MALATO";
            
            if(list.get(i).getPresente() == true ) row[7] = "SI";
