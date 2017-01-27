@@ -14,6 +14,7 @@ import progettozoo.Utente;
 import schede.JAggiungiAnimale_Direttore;
 import schede.JAggiungiHabitat_Direttore;
 import schede.JAggiungiPersonale_Direttore;
+import schede.jListaAnimali_Direttore;
 
 /**
  *
@@ -48,7 +49,7 @@ public class JDirettore extends javax.swing.JFrame {
         jAggiungiHabitat = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        jListaanimali = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -95,7 +96,12 @@ public class JDirettore extends javax.swing.JFrame {
 
         jButton7.setText("Vedi Incassi");
 
-        jButton8.setText("Lista Animali");
+        jListaanimali.setText("Lista Animali");
+        jListaanimali.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jListaanimaliActionPerformed(evt);
+            }
+        });
 
         jButton9.setText("Presta Animale");
 
@@ -120,7 +126,7 @@ public class JDirettore extends javax.swing.JFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jListaanimali, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(67, 67, 67))
         );
         layout.setVerticalGroup(
@@ -141,7 +147,7 @@ public class JDirettore extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton7)
-                    .addComponent(jButton8))
+                    .addComponent(jListaanimali))
                 .addGap(18, 18, 18)
                 .addComponent(jButton9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
@@ -181,6 +187,12 @@ public class JDirettore extends javax.swing.JFrame {
          hab.setLocationRelativeTo(null);
                    hab.setVisible(true);         // TODO add your handling code here:
     }//GEN-LAST:event_jAggiungiHabitatActionPerformed
+
+    private void jListaanimaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListaanimaliActionPerformed
+        jListaAnimali_Direttore lis = new jListaAnimali_Direttore();
+         lis.setLocationRelativeTo(null);
+                   lis.setVisible(true); // TODO add your handling code here:
+    }//GEN-LAST:event_jListaanimaliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,8 +238,8 @@ public class JDirettore extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonLogout;
+    private javax.swing.JButton jListaanimali;
     // End of variables declaration//GEN-END:variables
 }
