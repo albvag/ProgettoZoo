@@ -119,10 +119,8 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel5" alignment="0" pref="23" max="32767" attributes="0"/>
-                      <Component id="jAggiungiUser" alignment="3" pref="23" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="jLabel5" alignment="0" pref="23" max="32767" attributes="0"/>
+                  <Component id="jAggiungiUser" min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="jLabel6" min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="jNomePersonale" alignment="0" pref="27" max="32767" attributes="0"/>
               </Group>
@@ -153,10 +151,8 @@
                       <Component id="jAggiungiResidenza" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="jLabel2" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="jRipetiPassword" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="jLabel8" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jLabel8" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="jRipetiPassword" min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
               <Component id="erroreindirizzo" min="-2" pref="10" max="-2" attributes="0"/>
