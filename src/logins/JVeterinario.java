@@ -307,7 +307,7 @@ public void selectmode(JTable table)
            row[4] = list.get(i).getSesso();
            
            
-           if( visList.size() != 0){
+           if( !visList.isEmpty()){
                String DUV = visList.get(0).getDUV(list.get(i).getId()).toString();
                String DUV_String = pz.NuovoFormatoData(DUV, "yyyy-MM-dd", "dd-MM-yyyy");
                row[5] =  DUV_String;
