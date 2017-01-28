@@ -6,14 +6,8 @@
 package logins;
 
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.table.*;
 import progettozoo.Animale;
@@ -161,12 +155,10 @@ public class JVeterinario extends javax.swing.JFrame {
            
                       
            String salute = getTableSelectedItem(this.jTableAnimali, "Salute");
-           if(salute == "SANO") SALUTE = true;
-           else SALUTE = false;
+           SALUTE = "SANO".equals(salute);
            
            String presente = getTableSelectedItem(this.jTableAnimali, "Presente");
-           if(presente == "SI") PRESENTE = true;
-           else PRESENTE = false;
+           PRESENTE = "SI".equals(presente);
               
            
            anim_sel.setId(COD_AN);
