@@ -36,7 +36,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         initComponents();        
        
         JVeterinario v = new JVeterinario();
-        String[] jTableVisiteHeaders  = {"Data Visite","Note Visite"};
+        String[] jTableVisiteHeaders  = {"Data Visite","Note Visite","Veterinario"};
         v.creaTabella(this.jTableVisite, jTableVisiteHeaders); 
         v.selectmode(this.jTableVisite); 
 
@@ -44,16 +44,16 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         
     public JSchedaAnimale_Veterinario(Animale anim_sel) {
         initComponents();      
-           setLocationRelativeTo(null);
-           setVisible(true);
+        setLocationRelativeTo(null);
+        setVisible(true);
+        
         JVeterinario v = new JVeterinario();
-        String[] jTableVisiteHeaders  = {"Data Visite","Note Visite"};
+        String[] jTableVisiteHeaders  = {"Data Visite","Note Visite","Veterinario"};
         v.creaTabella(this.jTableVisite, jTableVisiteHeaders); 
         v.selectmode(this.jTableVisite);      
         
           Show_DateVisite_In_JTable(anim_sel.getId());
           
-           // jLabelDisplayHabitat.setText(anim_sel.getHabitat());
             this.jLabelDisplayCod.setText(anim_sel.getId());
             this.jLabelDisplayNome.setText(anim_sel.getNome());
             this.jLabelDisplaySpecie.setText(anim_sel.getSpecie());
@@ -329,6 +329,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
            
            row[0] = DataString;
            row[1] = visite.get(i).getNote();
+           row[2] = visite.get(i).getVeterinario();
                  
            model.addRow(row);
        }
