@@ -148,7 +148,7 @@ public class JVeterinario extends javax.swing.JFrame {
             if(!"".equals(getTableSelectedItem(this.jTableAnimali, "Codice Animale")) )
             {
             DBConnect conn = new DBConnect();
-              ProgettoZoo pz = new ProgettoZoo();
+            ProgettoZoo pz = new ProgettoZoo();
            COD_AN = getTableSelectedItem(this.jTableAnimali, "Codice Animale");
            NOME = getTableSelectedItem(this.jTableAnimali, "Nome Animale");
            SPECIE = getTableSelectedItem(this.jTableAnimali, "Specie");
@@ -157,8 +157,7 @@ public class JVeterinario extends javax.swing.JFrame {
 
            
            String DataTable = getTableSelectedItem(this.jTableAnimali, "Data di Nascita"); 
-           String DataString = pz.NuovoFormatoData(DataTable, "yyyy-MM-dd", "dd-MM-yyyy");
-           DATANASCITA = pz.ConvertStringToDate(DataString, "dd-MM-yyyy");
+           DATANASCITA = pz.ConvertStringToDate(DataTable, "dd-MM-yyyy");
            
                       
            String salute = getTableSelectedItem(this.jTableAnimali, "Salute");
@@ -286,6 +285,7 @@ public void selectmode(JTable table)
    public void Show_Animali_In_JTable()
    {
        DBConnect conn = new DBConnect();
+       ProgettoZoo pz = new ProgettoZoo();
        ArrayList<Animale> list = conn.animaliList();
        DefaultTableModel model = (DefaultTableModel) jTableAnimali.getModel();
        Object[] row = new Object[8];
@@ -295,16 +295,30 @@ public void selectmode(JTable table)
            ArrayList<Visita> visList = conn.visitaList(list.get(i).getId());
      
            row[0] = list.get(i).getId();
+           
            row[1] = list.get(i).getNome();
+           
            row[2] = list.get(i).getSpecie();
-           row[3] = list.get(i).getDataNascita();
+           
+           String DataNascita = list.get(i).getDataNascita().toString();
+           String DataNascita_String = pz.NuovoFormatoData(DataNascita, "yyyy-MM-dd", "dd-MM-yyyy");
+           row[3] = DataNascita_String;
+           
            row[4] = list.get(i).getSesso();
-           if( visList.size() != 0) row[5] =  visList.get(0).getDUV(list.get(i).getId());
+           
+           
+           if( visList.size() != 0){
+               String DUV = visList.get(0).getDUV(list.get(i).getId()).toString();
+               String DUV_String = pz.NuovoFormatoData(DataNascita, "yyyy-MM-dd", "dd-MM-yyyy");
+               row[5] =  DUV_String;
+           }
            else row[5] =  "MAI VISITATO";
            /*
            get(0) perchè la data dell'ultima visita viene registrata ogni volta con un solo elemento
            quindi se metto indice i non va bene perchè altrimenti avanza nella lista in elementi non esistenti
            */
+           String DataTable = list.get(i).getDataNascita().toString();
+           String DataString = pz.NuovoFormatoData(DataTable, "yyyy-MM-dd", "dd-MM-yyyy");
            
            if(list.get(i).getSalute() == true ) row[6] = "SANO";
            else row[6] = "MALATO";

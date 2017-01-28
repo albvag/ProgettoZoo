@@ -18,6 +18,7 @@ import logins.JLogin;
 import progettozoo.DBConnect;
 import logins.JVeterinario;
 import progettozoo.Animale;
+import progettozoo.ProgettoZoo;
 import progettozoo.Visita;
 
 /**
@@ -50,6 +51,8 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         v.creaTabella(this.jTableVisite, jTableVisiteHeaders); 
         v.selectmode(this.jTableVisite);      
         
+          Show_DateVisite_In_JTable(anim_sel.getId());
+          
            // jLabelDisplayHabitat.setText(anim_sel.getHabitat());
             this.jLabelDisplayCod.setText(anim_sel.getId());
             this.jLabelDisplayNome.setText(anim_sel.getNome());
@@ -318,14 +321,19 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
        DefaultTableModel model = (DefaultTableModel) jTableVisite.getModel();
        Object[] row = new Object[8];
        
+       ProgettoZoo pz = new ProgettoZoo();
        for(int i = 0; i < visite.size(); i++)
        {
-           row[0] = visite.get(i).getDV();
+           String DataTable = visite.get(i).getDV().toString();
+           String DataString = pz.NuovoFormatoData(DataTable, "yyyy-MM-dd", "dd-MM-yyyy");
+           
+           row[0] = DataString;
            row[1] = visite.get(i).getNote();
                  
            model.addRow(row);
        }
     }
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonLeggiNoteVisita;
