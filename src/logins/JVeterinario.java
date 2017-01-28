@@ -145,24 +145,29 @@ public class JVeterinario extends javax.swing.JFrame {
  
         if(jTableAnimali.getSelectedRow() == -1) JOptionPane.showMessageDialog(null, "Errore: Nessuna riga selezionata");
         else{
-            if(!"".equals(getTableSelectedItem(jTableAnimali, "Codice Animale")) )
+            if(!"".equals(getTableSelectedItem(this.jTableAnimali, "Codice Animale")) )
             {
             DBConnect conn = new DBConnect();
               ProgettoZoo pz = new ProgettoZoo();
-           COD_AN = getTableSelectedItem(jTableAnimali, "Codice Animale");
-           NOME = getTableSelectedItem(jTableAnimali, "Nome Animale");
-           SPECIE = getTableSelectedItem(jTableAnimali, "Specie");
-           GENERE = getTableSelectedItem(jTableAnimali, "Genere");
+           COD_AN = getTableSelectedItem(this.jTableAnimali, "Codice Animale");
+           NOME = getTableSelectedItem(this.jTableAnimali, "Nome Animale");
+           SPECIE = getTableSelectedItem(this.jTableAnimali, "Specie");
+           GENERE = getTableSelectedItem(this.jTableAnimali, "Genere");
            HABITAT = conn.checkAnimalHabitat(COD_AN);
+
            
-           String DataTable = getTableSelectedItem(jTableAnimali, "Data di Nascita"); 
-//               
-              
-              String DataString = pz.NuovoFormatoData(DataTable, "yyyy-MM-dd", "dd-MM-yyyy");
-              DATANASCITA = pz.ConvertStringToDate(DataString, "dd-MM-yyyy");
-              
-               
-              System.out.println("DATANASCITA: "+DATANASCITA);
+           String DataTable = getTableSelectedItem(this.jTableAnimali, "Data di Nascita"); 
+           String DataString = pz.NuovoFormatoData(DataTable, "yyyy-MM-dd", "dd-MM-yyyy");
+           DATANASCITA = pz.ConvertStringToDate(DataString, "dd-MM-yyyy");
+           
+                      
+           String salute = getTableSelectedItem(this.jTableAnimali, "Salute");
+           if(salute == "SANO") SALUTE = true;
+           else SALUTE = false;
+           
+           String presente = getTableSelectedItem(this.jTableAnimali, "Presente");
+           if(presente == "SI") PRESENTE = true;
+           else PRESENTE = false;
               
            
            anim_sel.setId(COD_AN);
@@ -171,6 +176,8 @@ public class JVeterinario extends javax.swing.JFrame {
            anim_sel.setSesso(GENERE);
            anim_sel.setHabitat(HABITAT);
            anim_sel.setDataNascita(DATANASCITA);
+           anim_sel.setSalute(SALUTE);
+           anim_sel.setPresente(PRESENTE);
            
            
            System.out.println(anim_sel.getHabitat());
@@ -292,7 +299,8 @@ public void selectmode(JTable table)
            row[2] = list.get(i).getSpecie();
            row[3] = list.get(i).getDataNascita();
            row[4] = list.get(i).getSesso();
-           row[5] =  visList.get(0).getDUV(list.get(i).getId());
+           if( visList.size() != 0) row[5] =  visList.get(0).getDUV(list.get(i).getId());
+           else row[5] =  "MAI VISITATO";
            /*
            get(0) perchè la data dell'ultima visita viene registrata ogni volta con un solo elemento
            quindi se metto indice i non va bene perchè altrimenti avanza nella lista in elementi non esistenti

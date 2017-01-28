@@ -51,14 +51,21 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         v.selectmode(this.jTableVisite);      
         
            // jLabelDisplayHabitat.setText(anim_sel.getHabitat());
-            jLabelDisplayCod.setText(anim_sel.getId());
-            jLabelDisplayNome.setText(anim_sel.getNome());
-            jLabelDisplaySpecie.setText(anim_sel.getSpecie());
-            jLabelDisplayGenere.setText(anim_sel.getSesso());
-            jLabelDisplayHabitat.setText(anim_sel.getHabitat());
+            this.jLabelDisplayCod.setText(anim_sel.getId());
+            this.jLabelDisplayNome.setText(anim_sel.getNome());
+            this.jLabelDisplaySpecie.setText(anim_sel.getSpecie());
+            this.jLabelDisplayGenere.setText(anim_sel.getSesso());
+            this.jLabelDisplayHabitat.setText(anim_sel.getHabitat());
           
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
             jLabelDisplayNascita.setText(sdf.format(anim_sel.getDataNascita()));
+            
+            if(anim_sel.getSalute() == true) this.jLabelDisplaySalute.setText("SANO");
+            else this.jLabelDisplaySalute.setText("MALATO");
+            
+            if(anim_sel.getPresente() == true) this.jLabelDisplayPresente.setText("SI");
+            else  this.jLabelDisplayPresente.setText("NO");
+            
     }
     
 

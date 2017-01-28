@@ -44,10 +44,11 @@ public Date ConvertStringToDate(String Data, String FORMAT)
                 return startDate;
 }
  public String NuovoFormatoData(String DataToFormat_AS_STRING, String OLD_FORMAT, String NEW_FORMAT)
- {  String DATE_FORMAT = NEW_FORMAT; 
+ { 
+    String DATE_FORMAT = NEW_FORMAT; 
     Date newDate = ConvertStringToDate(DataToFormat_AS_STRING,OLD_FORMAT);
     SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
-     return sdf.format(newDate);
+    return sdf.format(newDate);
  }
 
 
