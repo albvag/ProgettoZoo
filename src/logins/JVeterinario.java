@@ -6,8 +6,14 @@
 package logins;
 
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.table.*;
 import progettozoo.Animale;
@@ -34,8 +40,6 @@ public class JVeterinario extends javax.swing.JFrame {
        
 
         initComponents();
-           ProgettoZoo pz = new ProgettoZoo();
-           pz.DateFormatter("10/10/2010");
            
         String[] jTableAnimaliHeaders  = {"Codice Animale","Nome Animale","Specie","Data di Nascita","Genere","Ultima Visita","Salute","Presente"};
         selectmode(jTableAnimali);   
@@ -144,20 +148,30 @@ public class JVeterinario extends javax.swing.JFrame {
             if(!"".equals(getTableSelectedItem(jTableAnimali, "Codice Animale")) )
             {
             DBConnect conn = new DBConnect();
-              
+              ProgettoZoo pz = new ProgettoZoo();
            COD_AN = getTableSelectedItem(jTableAnimali, "Codice Animale");
            NOME = getTableSelectedItem(jTableAnimali, "Nome Animale");
            SPECIE = getTableSelectedItem(jTableAnimali, "Specie");
            GENERE = getTableSelectedItem(jTableAnimali, "Genere");
            HABITAT = conn.checkAnimalHabitat(COD_AN);
            
-           String DataTable = getTableSelectedItem(jTableAnimali, "Data di Nascita");
+           String DataTable = getTableSelectedItem(jTableAnimali, "Data di Nascita"); 
+//               
+              
+              String DataString = pz.NuovoFormatoData(DataTable, "yyyy-MM-dd", "dd-MM-yyyy");
+              DATANASCITA = pz.ConvertStringToDate(DataString, "dd-MM-yyyy");
+              
+               
+              System.out.println("DATANASCITA: "+DATANASCITA);
+              
            
            anim_sel.setId(COD_AN);
            anim_sel.setNome(NOME);
            anim_sel.setSpecie(SPECIE);
            anim_sel.setSesso(GENERE);
            anim_sel.setHabitat(HABITAT);
+           anim_sel.setDataNascita(DATANASCITA);
+           
            
            System.out.println(anim_sel.getHabitat());
             

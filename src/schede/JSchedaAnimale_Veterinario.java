@@ -8,6 +8,7 @@ package schede;
 import java.awt.Toolkit;
 import java.awt.event.*;
 import java.awt.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JTable;
@@ -55,13 +56,9 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
             jLabelDisplaySpecie.setText(anim_sel.getSpecie());
             jLabelDisplayGenere.setText(anim_sel.getSesso());
             jLabelDisplayHabitat.setText(anim_sel.getHabitat());
-            
-            System.out.println(jLabelDisplayGenere.getText());
-         /*   jLabelDisplayNascita.setText("2010,10,10");
-            jLabelDisplaySalute.setText("OK");
-            jLabelDisplayPresente.setText("SI");
-            Show_DateVisite_In_JTable(jLabelDisplayCod.getText());  */
-        System.out.println("SCHEDE: "+anim_sel.getId());
+          
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            jLabelDisplayNascita.setText(sdf.format(anim_sel.getDataNascita()));
     }
     
 

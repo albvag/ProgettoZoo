@@ -5,9 +5,11 @@
  */
 package progettozoo;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import logins.JLogin;
 import logins.JVeterinario;
 
@@ -27,26 +29,27 @@ public class ProgettoZoo {
         login.setLocationRelativeTo(null);
         login.setVisible(true);
     }  
-  public void DateFormatter(String DateToChange)
-  {
-    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        String dateInString = DateToChange;
+    
+public Date ConvertStringToDate(String Data, String FORMAT)
+{
+    String startDateString = Data;
+                DateFormat df = new SimpleDateFormat(FORMAT); 
+                Date startDate = new Date();
+                try {
+                    startDate = df.parse(startDateString);
+                    
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                return startDate;
+}
+ public String NuovoFormatoData(String DataToFormat_AS_STRING, String OLD_FORMAT, String NEW_FORMAT)
+ {  String DATE_FORMAT = NEW_FORMAT; 
+    Date newDate = ConvertStringToDate(DataToFormat_AS_STRING,OLD_FORMAT);
+    SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
+     return sdf.format(newDate);
+ }
 
-        try {
 
-            Date date = formatter.parse(dateInString);
-            System.out.println(date);
-            System.out.println(formatter.format(date));
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-  }
-  
-  public void ciao()
-  {
-      System.out.println("ciao");
-  }
-  
 
 }
