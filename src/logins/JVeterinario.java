@@ -309,7 +309,7 @@ public void selectmode(JTable table)
            
            if( visList.size() != 0){
                String DUV = visList.get(0).getDUV(list.get(i).getId()).toString();
-               String DUV_String = pz.NuovoFormatoData(DataNascita, "yyyy-MM-dd", "dd-MM-yyyy");
+               String DUV_String = pz.NuovoFormatoData(DUV, "yyyy-MM-dd", "dd-MM-yyyy");
                row[5] =  DUV_String;
            }
            else row[5] =  "MAI VISITATO";
