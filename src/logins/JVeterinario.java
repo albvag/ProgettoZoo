@@ -317,8 +317,6 @@ public void selectmode(JTable table)
            get(0) perchè la data dell'ultima visita viene registrata ogni volta con un solo elemento
            quindi se metto indice i non va bene perchè altrimenti avanza nella lista in elementi non esistenti
            */
-           String DataTable = list.get(i).getDataNascita().toString();
-           String DataString = pz.NuovoFormatoData(DataTable, "yyyy-MM-dd", "dd-MM-yyyy");
            
            if(list.get(i).getSalute() == true ) row[6] = "SANO";
            else row[6] = "MALATO";
