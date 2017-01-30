@@ -51,7 +51,6 @@ public class JVeterinario extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         
-        setTitle("Benvenuto Veterinario: "+user_login.getUsername());
         System.out.println(user_login.getUsername());
         
         

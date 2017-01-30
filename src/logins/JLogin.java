@@ -141,7 +141,7 @@ public class JLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
        
        
-        DBConnect conn = new DBConnect();
+DBConnect conn = new DBConnect();
         String user = this.jTextFieldUsername.getText();
         String password = this.jPasswordFieldPassword.getText();
         boolean userExists = conn.userExists(user, password);
@@ -159,6 +159,7 @@ public class JLogin extends javax.swing.JFrame {
                 }
                 case "Veterinario": {
                     JVeterinario vet = new JVeterinario(user_login);
+                    vet.setTitle("Benvenuto: "+user_login.getUsername()+ " " + user_login.getRuolo());
                     vet.setLocationRelativeTo(null);
                     vet.setVisible(true);
                     break;
@@ -214,6 +215,7 @@ public class JLogin extends javax.swing.JFrame {
                 }
                 case "Veterinario": {
                     JVeterinario vet = new JVeterinario(user_login);
+                    vet.setTitle("Benvenuto: "+user_login.getUsername()+ " " + user_login.getRuolo());
                     vet.setLocationRelativeTo(null);
                     vet.setVisible(true);
                     break;
@@ -257,7 +259,7 @@ public class JLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(evt.getKeyCode()== KeyEvent.VK_ENTER){
              
-        DBConnect conn = new DBConnect();
+       DBConnect conn = new DBConnect();
         String user = this.jTextFieldUsername.getText();
         String password = this.jPasswordFieldPassword.getText();
         boolean userExists = conn.userExists(user, password);
@@ -275,6 +277,7 @@ public class JLogin extends javax.swing.JFrame {
                 }
                 case "Veterinario": {
                     JVeterinario vet = new JVeterinario(user_login);
+                    vet.setTitle("Benvenuto: "+user_login.getUsername()+ " " + user_login.getRuolo());
                     vet.setLocationRelativeTo(null);
                     vet.setVisible(true);
                     break;

@@ -10,6 +10,7 @@ import javax.swing.event.*;
 import javax.swing.table.*;
 import progettozoo.Animale;
 import progettozoo.DBConnect;
+import progettozoo.Utente;
 import schede.JAggiungiAnimale_Direttore;
 import schede.JAggiungiHabitat_Direttore;
 import schede.JAggiungiPersonale_Direttore;
@@ -26,7 +27,9 @@ public class JDirettore extends javax.swing.JFrame {
     public JDirettore() {
         initComponents();
     }
-
+    public JDirettore(Utente user_login) {
+        initComponents();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
