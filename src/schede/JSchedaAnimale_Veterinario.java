@@ -330,7 +330,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
            row[0] = DataString;
            row[1] = visite.get(i).getNote();
            row[2] = visite.get(i).getVeterinario();
-                 
+            
            model.addRow(row);
        }
     }

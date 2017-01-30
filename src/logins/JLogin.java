@@ -8,7 +8,9 @@ package logins;
 import java.awt.Toolkit;
 import java.awt.event.*;
 import java.awt.*;
+import javax.swing.JOptionPane;
 import progettozoo.DBConnect;
+import progettozoo.Utente;
 
 /**
  *
@@ -140,8 +142,8 @@ public class JLogin extends javax.swing.JFrame {
         DBConnect conn = new DBConnect();
         String user = this.jTextFieldUsername.getText();
         String password = this.jPasswordFieldPassword.getText();
-        int userExists = conn.userExists(user, password);
-        if( userExists == 1)
+        boolean userExists = conn.userExists(user, password);
+        if( userExists)
         {
             String ruolo;
             ruolo = conn.checkRole(user);
@@ -177,7 +179,7 @@ public class JLogin extends javax.swing.JFrame {
             close(this);
         }
         else {
-           this.jLabelHide1.setText(String.format("%d", userExists)); /* Gestire errore */
+                JOptionPane.showMessageDialog(null, "Errore! Username o password non sono corretti");
         }
         
     }//GEN-LAST:event_jButtonInviaActionPerformed
@@ -193,8 +195,8 @@ public class JLogin extends javax.swing.JFrame {
                 DBConnect conn = new DBConnect();
             String user = this.jTextFieldUsername.getText();
             String password = this.jPasswordFieldPassword.getText();
-            int userExists = conn.userExists(user, password);
-            if( userExists == 1)
+            boolean userExists = conn.userExists(user, password);
+            if( userExists )
             {
                 String ruolo;
                 ruolo = conn.checkRole(user);
@@ -224,13 +226,13 @@ public class JLogin extends javax.swing.JFrame {
                         break;
                     }
                     case "Errore":{
-                        this.jLabelHide1.setText(String.format("%d", userExists));
+                        JOptionPane.showMessageDialog(null, "Errore! Username o password non sono corretti");
                     }
                 }
                 close(this);
             }
             else {
-               this.jLabelHide1.setText(String.format("%d", userExists)); /* Gestire errore */
+                JOptionPane.showMessageDialog(null, "Errore! Username o password non sono corretti");
             }
         } ;  
             
@@ -252,11 +254,14 @@ public class JLogin extends javax.swing.JFrame {
                 DBConnect conn = new DBConnect();
             String user = this.jTextFieldUsername.getText();
             String password = this.jPasswordFieldPassword.getText();
-            int userExists = conn.userExists(user, password);
-            if( userExists == 1)
+            boolean userExists = conn.userExists(user, password);
+            if( userExists )
             {
+                Utente user_login = new Utente();
+                user_login = conn.InfoUtente(user);
+                System.out.println(user_login.getUsername());
                 String ruolo;
-                ruolo = conn.checkRole(user);
+                ruolo = user_login.getRuolo();
                 switch(ruolo){
                     case "Cassiere": {
                         JCassiere cass = new JCassiere();
@@ -265,7 +270,8 @@ public class JLogin extends javax.swing.JFrame {
                         break;
                     }
                     case "Veterinario": {
-                        JVeterinario vet = new JVeterinario();
+                        JVeterinario vet = new JVeterinario(user_login);
+                        vet.setTitle("Benvenuto Veterinario: "+user_login.getUsername());
                         vet.setLocationRelativeTo(null);
                         vet.setVisible(true);
                         break;
@@ -283,13 +289,13 @@ public class JLogin extends javax.swing.JFrame {
                         break;
                     }
                     case "Errore":{
-                        this.jLabelHide1.setText(String.format("%d", userExists));
+                        JOptionPane.showMessageDialog(null, "Errore! Username o password non sono corretti");
                     }
                 }
                 close(this);
             }
             else {
-               this.jLabelHide1.setText(String.format("%d", userExists)); /* Gestire errore */
+                JOptionPane.showMessageDialog(null, "Errore! Username o password non sono corretti");
             }
         };
     }//GEN-LAST:event_jTextFieldUsernameKeyPressed

@@ -7,6 +7,7 @@ package progettozoo;
 
 import java.sql.*;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,6 +28,7 @@ public class DBConnect {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoo","root","");
             st = conn.createStatement();
         }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Errore! Impossibile connettersi al Database");
             System.out.printf("Errore "+ex);
         };
     }
@@ -65,24 +67,48 @@ public class DBConnect {
     }
     
     //verifica la corrispondenza tra utente e password inseriti
-    public int userExists(String user, String password)
+    public boolean userExists(String user, String password)
     {
         try{
             String query = "Select * from utente where utente.Codice_Utente = '"+user+"' AND utente.Password = '"+password+"'";
             rs = st.executeQuery(query);
-            int count=0;
-            while(rs.next())
-            {
-                count++;
-                String utente = rs.getString("Codice_Utente");
-                System.out.println(utente);
-            }
-            return count;
+           
+            while(rs.next())  return true;
+            
         }catch(Exception ex){
             
-            System.out.println(ex);
-            return -1;
+            JOptionPane.showMessageDialog(null, "Errore! Username o password non sono corretti.");
+            return false;
         }
+        return false;
+    }
+    
+    public Utente InfoUtente(String Cod_Utente)
+    {
+        Utente utente = new Utente();
+          try{
+            String query = "Select * from utente JOIN impiegato on impiegato.Codice_Impiegato = utente.Codice_Utente where utente.Codice_Utente = '"+Cod_Utente+"'";
+            rs = st.executeQuery(query);
+            
+            while(rs.next())
+            {
+              String username = utente.setUsername(rs.getString("utente.Codice_Utente"));
+              String password = utente.setPassword(rs.getString("utente.Password"));
+               String nome = utente.setNome(rs.getString("impiegato.Nome"));
+               String cognome = utente.setCognome(rs.getString("impiegato.Cognome"));
+               String ruolo = utente.setRuolo(rs.getString("utente.Ruolo_Utente"));
+               String residenza = "";
+               String indirizzo = "";
+               String telefono = "";
+               utente = new Utente(username, password, nome, cognome, ruolo, residenza, indirizzo, telefono);
+               return utente;
+            }
+        }catch(Exception ex){
+            
+            JOptionPane.showMessageDialog(null, "Errore! Nessun utente trovato.");
+            return null;
+        }
+        return utente;
     }
     
     //Estrae le informazioni sull'animale da poter mettere sulla tabella

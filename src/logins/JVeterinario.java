@@ -14,6 +14,7 @@ import progettozoo.Animale;
 import progettozoo.DBConnect;
 import progettozoo.Visita;
 import progettozoo.ProgettoZoo;
+import progettozoo.Utente;
 import schede.JSchedaAnimale_Veterinario;
 
 /**
@@ -36,10 +37,24 @@ public class JVeterinario extends javax.swing.JFrame {
         initComponents();
            
         String[] jTableAnimaliHeaders  = {"Codice Animale","Nome Animale","Specie","Data di Nascita","Genere","Ultima Visita","Salute","Presente"};
-        selectmode(jTableAnimali);   
-        creaTabella(jTableAnimali, jTableAnimaliHeaders);
-        jTableAnimali.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-        Show_Animali_In_JTable();
+        selectmode(this.jTableAnimali);   
+        creaTabella(this.jTableAnimali, jTableAnimaliHeaders);
+        this.jTableAnimali.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        Show_Animali_In_JTable(this.jTableAnimali);
+    }
+    
+    public JVeterinario(Utente user) {
+       
+
+        initComponents();
+        setTitle("ciao");
+        
+        System.out.println(user.getUsername());
+        String[] jTableAnimaliHeaders  = {"Codice Animale","Nome Animale","Specie","Data di Nascita","Genere","Ultima Visita","Salute","Presente"};
+        selectmode(this.jTableAnimali);   
+        creaTabella(this.jTableAnimali, jTableAnimaliHeaders);
+        this.jTableAnimali.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        Show_Animali_In_JTable(this.jTableAnimali);
     }
 
     /**
@@ -274,12 +289,12 @@ public void selectmode(JTable table)
     table.setModel(tableModel);
     }
         
-   public void Show_Animali_In_JTable()
+   public void Show_Animali_In_JTable(JTable table)
    {
        DBConnect conn = new DBConnect();
        ProgettoZoo pz = new ProgettoZoo();
        ArrayList<Animale> list = conn.animaliList();
-       DefaultTableModel model = (DefaultTableModel) jTableAnimali.getModel();
+       DefaultTableModel model = (DefaultTableModel) table.getModel();
        Object[] row = new Object[8];
        
        for(int i = 0; i < list.size(); i++)
