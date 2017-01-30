@@ -29,6 +29,7 @@ public class JDirettore extends javax.swing.JFrame {
     }
     public JDirettore(Utente user_login) {
         initComponents();
+        setTitle("Benvenuto, "+user_login.getNome()+ " " + user_login.getCognome() );
     }
     /**
      * This method is called from within the constructor to initialize the form.

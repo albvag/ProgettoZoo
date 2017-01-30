@@ -50,7 +50,7 @@ public class JVeterinario extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setVisible(true);
-        
+        setTitle("Benvenuto, "+user_login.getNome()+ " " + user_login.getCognome() );
         System.out.println(user_login.getUsername());
         
         

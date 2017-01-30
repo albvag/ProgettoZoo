@@ -159,7 +159,6 @@ DBConnect conn = new DBConnect();
                 }
                 case "Veterinario": {
                     JVeterinario vet = new JVeterinario(user_login);
-                    vet.setTitle("Benvenuto: "+user_login.getUsername()+ " " + user_login.getRuolo());
                     vet.setLocationRelativeTo(null);
                     vet.setVisible(true);
                     break;
@@ -171,7 +170,7 @@ DBConnect conn = new DBConnect();
                     break;
                 }
                 case "Direttore":{
-                    JDirettore dir = new JDirettore();
+                    JDirettore dir = new JDirettore(user_login);
                     dir.setLocationRelativeTo(null);
                     dir.setVisible(true);
                     break;
@@ -215,7 +214,6 @@ DBConnect conn = new DBConnect();
                 }
                 case "Veterinario": {
                     JVeterinario vet = new JVeterinario(user_login);
-                    vet.setTitle("Benvenuto: "+user_login.getUsername()+ " " + user_login.getRuolo());
                     vet.setLocationRelativeTo(null);
                     vet.setVisible(true);
                     break;
@@ -227,7 +225,7 @@ DBConnect conn = new DBConnect();
                     break;
                 }
                 case "Direttore":{
-                    JDirettore dir = new JDirettore();
+                    JDirettore dir = new JDirettore(user_login);
                     dir.setLocationRelativeTo(null);
                     dir.setVisible(true);
                     break;
@@ -277,7 +275,6 @@ DBConnect conn = new DBConnect();
                 }
                 case "Veterinario": {
                     JVeterinario vet = new JVeterinario(user_login);
-                    vet.setTitle("Benvenuto: "+user_login.getUsername()+ " " + user_login.getRuolo());
                     vet.setLocationRelativeTo(null);
                     vet.setVisible(true);
                     break;
@@ -289,7 +286,7 @@ DBConnect conn = new DBConnect();
                     break;
                 }
                 case "Direttore":{
-                    JDirettore dir = new JDirettore();
+                    JDirettore dir = new JDirettore(user_login);
                     dir.setLocationRelativeTo(null);
                     dir.setVisible(true);
                     break;
