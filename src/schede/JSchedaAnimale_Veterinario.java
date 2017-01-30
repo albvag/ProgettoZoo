@@ -46,7 +46,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         initComponents();      
         setLocationRelativeTo(null);
         setVisible(true);
-        
+        System.out.println("si è aperto!");
         JVeterinario v = new JVeterinario();
         String[] jTableVisiteHeaders  = {"Data Visite","Note Visite","Veterinario"};
         v.creaTabella(this.jTableVisite, jTableVisiteHeaders); 
@@ -63,10 +63,10 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
             jLabelDisplayNascita.setText(sdf.format(anim_sel.getDataNascita()));
             
-            if(anim_sel.getSalute() == true) this.jLabelDisplaySalute.setText("SANO");
+            if(anim_sel.getSalute() ) this.jLabelDisplaySalute.setText("SANO");
             else this.jLabelDisplaySalute.setText("MALATO");
             
-            if(anim_sel.getPresente() == true) this.jLabelDisplayPresente.setText("SI");
+            if(anim_sel.getPresente() ) this.jLabelDisplayPresente.setText("SI");
             else  this.jLabelDisplayPresente.setText("NO");
             
     }

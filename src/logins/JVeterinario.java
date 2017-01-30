@@ -35,7 +35,8 @@ public class JVeterinario extends javax.swing.JFrame {
        
 
         initComponents();
-           
+        System.out.println("ciao");
+        
         String[] jTableAnimaliHeaders  = {"Codice Animale","Nome Animale","Specie","Data di Nascita","Genere","Ultima Visita","Salute","Presente"};
         selectmode(this.jTableAnimali);   
         creaTabella(this.jTableAnimali, jTableAnimaliHeaders);
@@ -43,13 +44,17 @@ public class JVeterinario extends javax.swing.JFrame {
         Show_Animali_In_JTable(this.jTableAnimali);
     }
     
-    public JVeterinario(Utente user) {
+    public JVeterinario(Utente user_login) {
        
 
         initComponents();
-        setTitle("ciao");
+        setLocationRelativeTo(null);
+        setVisible(true);
         
-        System.out.println(user.getUsername());
+        setTitle("Benvenuto Veterinario: "+user_login.getUsername());
+        System.out.println(user_login.getUsername());
+        
+        
         String[] jTableAnimaliHeaders  = {"Codice Animale","Nome Animale","Specie","Data di Nascita","Genere","Ultima Visita","Salute","Presente"};
         selectmode(this.jTableAnimali);   
         creaTabella(this.jTableAnimali, jTableAnimaliHeaders);

@@ -17,7 +17,9 @@ import progettozoo.Utente;
  * @author Alberto
  */
 public class JLogin extends javax.swing.JFrame {
-
+    
+    public Utente user_login = new Utente();
+    
     /**
      * Creates new form JLogin
      */
@@ -145,8 +147,9 @@ public class JLogin extends javax.swing.JFrame {
         boolean userExists = conn.userExists(user, password);
         if( userExists)
         {
-            String ruolo;
-            ruolo = conn.checkRole(user);
+            user_login = conn.InfoUtente(user);
+                        
+            String ruolo = user_login.getRuolo();
             switch(ruolo){
                 case "Cassiere": {
                     JCassiere cass = new JCassiere();
@@ -155,7 +158,7 @@ public class JLogin extends javax.swing.JFrame {
                     break;
                 }
                 case "Veterinario": {
-                    JVeterinario vet = new JVeterinario();
+                    JVeterinario vet = new JVeterinario(user_login);
                     vet.setLocationRelativeTo(null);
                     vet.setVisible(true);
                     break;
@@ -192,48 +195,50 @@ public class JLogin extends javax.swing.JFrame {
     private void jPasswordFieldPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldPasswordKeyPressed
         
         if(evt.getKeyCode()== KeyEvent.VK_ENTER){
-                DBConnect conn = new DBConnect();
-            String user = this.jTextFieldUsername.getText();
-            String password = this.jPasswordFieldPassword.getText();
-            boolean userExists = conn.userExists(user, password);
-            if( userExists )
-            {
-                String ruolo;
-                ruolo = conn.checkRole(user);
-                switch(ruolo){
-                    case "Cassiere": {
-                        JCassiere cass = new JCassiere();
-                        cass.setLocationRelativeTo(null);
-                        cass.setVisible(true);
-                        break;
-                    }
-                    case "Veterinario": {
-                        JVeterinario vet = new JVeterinario();
-                        vet.setLocationRelativeTo(null);
-                        vet.setVisible(true);
-                        break;
-                    }
-                    case "Custode":{
-                        JCustode cust = new JCustode();
-                        cust.setLocationRelativeTo(null);
-                        cust.setVisible(true);
-                        break;
-                    }
-                    case "Direttore":{
-                        JDirettore dir = new JDirettore();
-                        dir.setLocationRelativeTo(null);
-                        dir.setVisible(true);
-                        break;
-                    }
-                    case "Errore":{
-                        JOptionPane.showMessageDialog(null, "Errore! Username o password non sono corretti");
-                    }
+                
+        DBConnect conn = new DBConnect();
+        String user = this.jTextFieldUsername.getText();
+        String password = this.jPasswordFieldPassword.getText();
+        boolean userExists = conn.userExists(user, password);
+        if( userExists)
+        {
+            user_login = conn.InfoUtente(user);
+                        
+            String ruolo = user_login.getRuolo();
+            switch(ruolo){
+                case "Cassiere": {
+                    JCassiere cass = new JCassiere();
+                    cass.setLocationRelativeTo(null);
+                    cass.setVisible(true);
+                    break;
                 }
-                close(this);
+                case "Veterinario": {
+                    JVeterinario vet = new JVeterinario(user_login);
+                    vet.setLocationRelativeTo(null);
+                    vet.setVisible(true);
+                    break;
+                }
+                case "Custode":{
+                    JCustode cust = new JCustode();
+                    cust.setLocationRelativeTo(null);
+                    cust.setVisible(true);
+                    break;
+                }
+                case "Direttore":{
+                    JDirettore dir = new JDirettore();
+                    dir.setLocationRelativeTo(null);
+                    dir.setVisible(true);
+                    break;
+                }
+                case "Errore":{
+                    this.jLabelHide1.setText(String.format("%d", userExists));
+                }
             }
-            else {
+            close(this);
+        }
+        else {
                 JOptionPane.showMessageDialog(null, "Errore! Username o password non sono corretti");
-            }
+        }
         } ;  
             
     }//GEN-LAST:event_jPasswordFieldPasswordKeyPressed
@@ -251,52 +256,50 @@ public class JLogin extends javax.swing.JFrame {
     private void jTextFieldUsernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldUsernameKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyCode()== KeyEvent.VK_ENTER){
-                DBConnect conn = new DBConnect();
-            String user = this.jTextFieldUsername.getText();
-            String password = this.jPasswordFieldPassword.getText();
-            boolean userExists = conn.userExists(user, password);
-            if( userExists )
-            {
-                Utente user_login = new Utente();
-                user_login = conn.InfoUtente(user);
-                System.out.println(user_login.getUsername());
-                String ruolo;
-                ruolo = user_login.getRuolo();
-                switch(ruolo){
-                    case "Cassiere": {
-                        JCassiere cass = new JCassiere();
-                        cass.setLocationRelativeTo(null);
-                        cass.setVisible(true);
-                        break;
-                    }
-                    case "Veterinario": {
-                        JVeterinario vet = new JVeterinario(user_login);
-                        vet.setTitle("Benvenuto Veterinario: "+user_login.getUsername());
-                        vet.setLocationRelativeTo(null);
-                        vet.setVisible(true);
-                        break;
-                    }
-                    case "Custode":{
-                        JCustode cust = new JCustode();
-                        cust.setLocationRelativeTo(null);
-                        cust.setVisible(true);
-                        break;
-                    }
-                    case "Direttore":{
-                        JDirettore dir = new JDirettore();
-                        dir.setLocationRelativeTo(null);
-                        dir.setVisible(true);
-                        break;
-                    }
-                    case "Errore":{
-                        JOptionPane.showMessageDialog(null, "Errore! Username o password non sono corretti");
-                    }
+             
+        DBConnect conn = new DBConnect();
+        String user = this.jTextFieldUsername.getText();
+        String password = this.jPasswordFieldPassword.getText();
+        boolean userExists = conn.userExists(user, password);
+        if( userExists)
+        {
+            user_login = conn.InfoUtente(user);
+                        
+            String ruolo = user_login.getRuolo();
+            switch(ruolo){
+                case "Cassiere": {
+                    JCassiere cass = new JCassiere();
+                    cass.setLocationRelativeTo(null);
+                    cass.setVisible(true);
+                    break;
                 }
-                close(this);
+                case "Veterinario": {
+                    JVeterinario vet = new JVeterinario(user_login);
+                    vet.setLocationRelativeTo(null);
+                    vet.setVisible(true);
+                    break;
+                }
+                case "Custode":{
+                    JCustode cust = new JCustode();
+                    cust.setLocationRelativeTo(null);
+                    cust.setVisible(true);
+                    break;
+                }
+                case "Direttore":{
+                    JDirettore dir = new JDirettore();
+                    dir.setLocationRelativeTo(null);
+                    dir.setVisible(true);
+                    break;
+                }
+                case "Errore":{
+                    this.jLabelHide1.setText(String.format("%d", userExists));
+                }
             }
-            else {
+            close(this);
+        }
+        else {
                 JOptionPane.showMessageDialog(null, "Errore! Username o password non sono corretti");
-            }
+        }
         };
     }//GEN-LAST:event_jTextFieldUsernameKeyPressed
 
