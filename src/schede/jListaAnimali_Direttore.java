@@ -10,6 +10,7 @@ import javax.swing.*;
 import javax.swing.table.*;
 import progettozoo.Animale;
 import progettozoo.DBConnect;
+import progettozoo.ProgettoZoo;
 import progettozoo.Visita;
 import schede.JSchedaAnimale_Veterinario;
 
@@ -18,12 +19,18 @@ import schede.JSchedaAnimale_Veterinario;
  * @author Roberto
  */
 public class jListaAnimali_Direttore extends javax.swing.JFrame {
-
+ public String COD_AN, NOME, SPECIE, GENERE, HABITAT;
+    public Date DATANASCITA;
+    public boolean NOSTRO,PRESENTE,SALUTE;
+    public Animale anim_sel = new Animale();
     /**
      * Creates new form jListaAnimali_Direttore
      */
     public jListaAnimali_Direttore() {
         initComponents();
+          
+           
+       
     }
 
     /**
@@ -36,12 +43,12 @@ public class jListaAnimali_Direttore extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableAnimali = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableAnimali.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -52,7 +59,7 @@ public class jListaAnimali_Direttore extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableAnimali);
 
         jButton1.setText("Chiudi");
 
@@ -80,7 +87,7 @@ public class jListaAnimali_Direttore extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+ 
     /**
      * @param args the command line arguments
      */
@@ -115,10 +122,11 @@ public class jListaAnimali_Direttore extends javax.swing.JFrame {
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableAnimali;
     // End of variables declaration//GEN-END:variables
 }
