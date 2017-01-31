@@ -43,14 +43,29 @@ public Date ConvertStringToDate(String Data, String FORMAT)
                 }
                 return startDate;
 }
- public String NuovoFormatoData(String DataToFormat_AS_STRING, String OLD_FORMAT, String NEW_FORMAT)
- { 
-    String DATE_FORMAT = NEW_FORMAT; 
-    Date newDate = ConvertStringToDate(DataToFormat_AS_STRING,OLD_FORMAT);
-    SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
-    return sdf.format(newDate);
+        public String NuovoFormatoData(String DataToFormat_AS_STRING, String OLD_FORMAT, String NEW_FORMAT)
+        { 
+           String DATE_FORMAT = NEW_FORMAT; 
+           Date newDate = ConvertStringToDate(DataToFormat_AS_STRING,OLD_FORMAT);
+           SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
+           return sdf.format(newDate);
+        }
+
+        public String StringFormat(String stringToFormat, int intervallo)
+        {
+              if( stringToFormat.length() > intervallo )
+              {
+                    int index = 0;           
+                    for(int i=0; i<stringToFormat.length(); i=i+100)
+                    {
+                        index = stringToFormat.indexOf( " ", i);
+                    char[] notaChars = stringToFormat.toCharArray();
+                    notaChars[index] = '\n';
+                    stringToFormat = String.valueOf(notaChars);
+
+                    }
+                    return stringToFormat;
+             }
+                return stringToFormat;
+        }
  }
-
-
-
-}

@@ -285,11 +285,15 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         vis.setVeterinario(vet.getTableSelectedItem(jTableVisite, "Veterinario"));
     
         String datavis =  vet.getTableSelectedItem(this.jTableVisite, "Data Visite"); 
-       
-       
-            if(datavis.equals(""))  JOptionPane.showMessageDialog(null, "Errore! Nessuna visita selezionata", "Dettagli visita", JOptionPane.ERROR_MESSAGE);
         
-        else  JOptionPane.showMessageDialog( frame, vis.getNote() + "\nFirmato: "+ vis.getVeterinario() , "Dettagli visita del "+ datavis, JOptionPane.CLOSED_OPTION);
+        String nota = vis.setNote(vet.getTableSelectedItem(jTableVisite, "Note Visite"));
+
+       
+        ProgettoZoo pz = new ProgettoZoo();
+        nota = pz.StringFormat(nota, 100);
+              
+        if(datavis.equals(""))  JOptionPane.showMessageDialog(null, "Errore! Nessuna visita selezionata", "Dettagli visita", JOptionPane.ERROR_MESSAGE);
+        else  JOptionPane.showMessageDialog( frame, nota + "\nFirmato: "+ vis.getVeterinario() , "Dettagli visita del "+ datavis, JOptionPane.CLOSED_OPTION);
         
     }//GEN-LAST:event_jButtonLeggiNoteVisitaActionPerformed
     
