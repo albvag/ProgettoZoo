@@ -35,7 +35,6 @@ public class JVeterinario extends javax.swing.JFrame {
        
 
         initComponents();
-        System.out.println("ciao");
         
         String[] jTableAnimaliHeaders  = {"Codice Animale","Nome Animale","Specie","Data di Nascita","Genere","Ultima Visita","Salute","Presente"};
         selectmode(this.jTableAnimali);   
@@ -51,7 +50,6 @@ public class JVeterinario extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         setTitle("Benvenuto, "+user_login.getNome()+ " " + user_login.getCognome() );
-        System.out.println(user_login.getUsername());
         
         
         String[] jTableAnimaliHeaders  = {"Codice Animale","Nome Animale","Specie","Data di Nascita","Genere","Ultima Visita","Salute","Presente"};
@@ -189,9 +187,7 @@ public class JVeterinario extends javax.swing.JFrame {
            anim_sel.setSalute(SALUTE);
            anim_sel.setPresente(PRESENTE);
            
-           
-           System.out.println(anim_sel.getHabitat());
-            
+                       
            new JSchedaAnimale_Veterinario(anim_sel);  
            
             }
