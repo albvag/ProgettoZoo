@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package schede;
+import progettozoo.DBConnect;
 
 /**
  *
@@ -28,21 +29,32 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jSalva = new javax.swing.JButton();
         jButtonClose = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jInseriscihabitat = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
         jLabel1.setText("           SELEZIONA IL TIPO DI HABITAT CHE VUOI INSERIRE:");
 
-        jButton1.setText("Salva");
+        jSalva.setText("Salva");
+        jSalva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSalvaActionPerformed(evt);
+            }
+        });
 
         jButtonClose.setText("Chiudi");
         jButtonClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCloseActionPerformed(evt);
+            }
+        });
+
+        jInseriscihabitat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jInseriscihabitatActionPerformed(evt);
             }
         });
 
@@ -52,7 +64,7 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(jSalva)
                 .addGap(43, 43, 43)
                 .addComponent(jButtonClose)
                 .addGap(36, 36, 36))
@@ -60,7 +72,7 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jInseriscihabitat))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -68,11 +80,11 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
+                .addComponent(jInseriscihabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(jSalva)
                     .addComponent(jButtonClose))
                 .addGap(46, 46, 46))
         );
@@ -83,6 +95,15 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
         setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_jButtonCloseActionPerformed
+
+    private void jInseriscihabitatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInseriscihabitatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jInseriscihabitatActionPerformed
+
+    private void jSalvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalvaActionPerformed
+       String habitat= this.jInseriscihabitat.getText();
+       // TODO add your handling code here:
+    }//GEN-LAST:event_jSalvaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,9 +141,9 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonClose;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTextField jInseriscihabitat;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jSalva;
     // End of variables declaration//GEN-END:variables
 }
