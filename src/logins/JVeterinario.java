@@ -156,7 +156,7 @@ public class JVeterinario extends javax.swing.JFrame {
     private void jButtonSchedaAnimaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSchedaAnimaleActionPerformed
         // TODO add your handling code here:
  
-        if(jTableAnimali.getSelectedRow() == -1) JOptionPane.showMessageDialog(null, "Errore: Nessuna riga selezionata");
+        if(jTableAnimali.getSelectedRow() == -1) JOptionPane.showMessageDialog(null, "Errore: Nessuna riga selezionata", "Errore", JOptionPane.ERROR_MESSAGE);
         else{
             if(!"".equals(getTableSelectedItem(this.jTableAnimali, "Codice Animale")) )
             {
@@ -195,7 +195,7 @@ public class JVeterinario extends javax.swing.JFrame {
            new JSchedaAnimale_Veterinario(anim_sel);  
            
             }
-            else JOptionPane.showMessageDialog(null, "Errore: selezionata riga nulla");
+            else JOptionPane.showMessageDialog(null, "Errore: selezionata riga nulla", "Errore", JOptionPane.ERROR_MESSAGE);
         }
         
         
@@ -217,7 +217,7 @@ public class JVeterinario extends javax.swing.JFrame {
                 }
         }
         if(stop == -1) {
-            JOptionPane.showMessageDialog(null, "INDICE TABELLA NON TROVATO");}
+            JOptionPane.showMessageDialog(null, "INDICE TABELLA NON TROVATO", "Errore", JOptionPane.ERROR_MESSAGE);}
         return selezione;
     }
 
@@ -301,6 +301,7 @@ public void selectmode(JTable table)
        DefaultTableModel model = (DefaultTableModel) table.getModel();
        Object[] row = new Object[8];
        
+        table.changeSelection(0, 0, false, false);
        for(int i = 0; i < list.size(); i++)
        {
            ArrayList<Visita> visList = conn.visitaList(list.get(i).getId());

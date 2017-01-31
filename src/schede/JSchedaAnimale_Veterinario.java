@@ -11,6 +11,7 @@ import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -32,6 +33,8 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
      * Creates new form JSchedaAnimale_Veterinario
      */
     
+        public Visita vis = new Visita();
+        
     public JSchedaAnimale_Veterinario() {
         initComponents();        
        
@@ -46,13 +49,13 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         initComponents();      
         setLocationRelativeTo(null);
         setVisible(true);
-        System.out.println("si è aperto!");
+      
         JVeterinario v = new JVeterinario();
         String[] jTableVisiteHeaders  = {"Data Visite","Note Visite","Veterinario"};
         v.creaTabella(this.jTableVisite, jTableVisiteHeaders); 
         v.selectmode(this.jTableVisite);      
         
-          Show_DateVisite_In_JTable(anim_sel.getId());
+        Show_DateVisite_In_JTable(anim_sel.getId());
           
             this.jLabelDisplayCod.setText(anim_sel.getId());
             this.jLabelDisplayNome.setText(anim_sel.getNome());
@@ -275,7 +278,18 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCloseActionPerformed
 
     private void jButtonLeggiNoteVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLeggiNoteVisitaActionPerformed
-        // TODO add your handling code here:
+        Component frame = null;
+        JVeterinario vet = new JVeterinario();
+        vis.setNote(vet.getTableSelectedItem(jTableVisite, "Note Visite"));
+        vis.setAnimale(this.jLabelDisplayCod.getText());
+        vis.setVeterinario(vet.getTableSelectedItem(jTableVisite, "Veterinario"));
+    
+        String datavis =  vet.getTableSelectedItem(this.jTableVisite, "Data Visite"); 
+       
+       
+            if(datavis.equals(""))  JOptionPane.showMessageDialog(null, "Errore! Nessuna visita selezionata", "Dettagli visita", JOptionPane.ERROR_MESSAGE);
+        
+        else  JOptionPane.showMessageDialog( frame, vis.getNote() + "\nFirmato: "+ vis.getVeterinario() , "Dettagli visita del "+ datavis, JOptionPane.CLOSED_OPTION);
         
     }//GEN-LAST:event_jButtonLeggiNoteVisitaActionPerformed
     
@@ -318,8 +332,10 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
    {
        DBConnect conn = new DBConnect();
        ArrayList<Visita> visite = conn.visitaList(cod_anim);
-       DefaultTableModel model = (DefaultTableModel) jTableVisite.getModel();
-       Object[] row = new Object[8];
+       DefaultTableModel model = (DefaultTableModel) this.jTableVisite.getModel();
+       Object[] row = new Object[3];
+       
+       this.jTableVisite.changeSelection(0, 0, false, false);
        
        ProgettoZoo pz = new ProgettoZoo();
        for(int i = 0; i < visite.size(); i++)
