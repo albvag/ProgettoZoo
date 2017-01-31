@@ -53,10 +53,10 @@ public Date ConvertStringToDate(String Data, String FORMAT)
 
         public String StringFormat(String stringToFormat, int intervallo)
         {
+            int index = 0;          
               if( stringToFormat.length() > intervallo )
-              {
-                    int index = 0;           
-                    for(int i=0; i<stringToFormat.length(); i=i+100)
+              {        
+                    for(int i=intervallo; i<stringToFormat.length(); i=i+100)
                     {
                         index = stringToFormat.indexOf( " ", i);
                     char[] notaChars = stringToFormat.toCharArray();
