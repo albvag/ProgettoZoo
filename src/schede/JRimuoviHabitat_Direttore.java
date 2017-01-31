@@ -25,7 +25,15 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
         initComponents();
         DBConnect conn =new DBConnect();
         ArrayList<Habitat> list = conn.selezionaHabitat();
-        System.out.println(list);
+        //String[] array=new String [list.size()] ;
+        for(int i = 0; i < list.size(); i++)
+        {
+            
+            this.jrimuoviHabitat.addItem(list.get(i).getHabitat());
+            
+        }
+        
+        
        /* String[] array = list.toArray(new String[list.size()]);
         JComboBox comboBox = new JComboBox(array);
         String[] array1 = new String[list.size()];
