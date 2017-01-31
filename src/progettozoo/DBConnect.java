@@ -7,6 +7,8 @@ package progettozoo;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,7 +34,14 @@ public class DBConnect {
             System.out.printf("Errore "+ex);
         };
     }
-        
+    public void insertHabitat(String Cod_Gabbia)
+    {
+        try {
+            st.executeUpdate("INSERT INTO gabbia values ('"+Cod_Gabbia+"')");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public String checkAnimalHabitat(String Codice_Animale)
     {
     try{
@@ -65,7 +74,50 @@ public class DBConnect {
             return "Errore";
         }
     }
-    
+    public ArrayList<Habitat> selezionaHabitat()
+    {
+        ArrayList<Habitat> hablist = new ArrayList<Habitat>();
+        String query = "Select * from gabbia ";
+
+           try{
+               Habitat hab;
+               rs = st.executeQuery(query);
+               
+               
+                while(rs.next())
+                {
+                    hab = new Habitat(rs.getString("gabbia.Codice_Gabbia"));
+                    hablist.add(hab);
+                }
+            }catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+           return hablist; 
+    }
+    public void deleteHabitat(String Cod_Gabbia)
+    {
+        try {
+            st.execute("DELETE FROM gabbia where Codice_Gabbia= '"+Cod_Gabbia+"'");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public boolean habitatExists(String Cod_Gabbia)
+    {
+        try{
+            String query = "Select * from gabbia where gabbia.Codice_Gabbia = '"+Cod_Gabbia+"'";
+            rs = st.executeQuery(query);
+           
+            while(rs.next())  return true;
+            
+        }catch(Exception ex){
+            
+            JOptionPane.showMessageDialog(null, "Errore! L'Habitat è già esistente");
+            return false;
+        }
+        return false;
+    }
     //verifica la corrispondenza tra utente e password inseriti
     public boolean userExists(String user, String password)
     {

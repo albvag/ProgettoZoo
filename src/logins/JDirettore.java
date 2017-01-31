@@ -14,6 +14,7 @@ import progettozoo.Utente;
 import schede.JAggiungiAnimale_Direttore;
 import schede.JAggiungiHabitat_Direttore;
 import schede.JAggiungiPersonale_Direttore;
+import schede.JRimuoviHabitat_Direttore;
 import schede.jListaAnimali_Direttore;
 
 /**
@@ -47,7 +48,7 @@ public class JDirettore extends javax.swing.JFrame {
         jAggiungiAnimale = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jAggiungiHabitat = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        jRimuoviHabitat = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jListaanimali = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
@@ -87,10 +88,10 @@ public class JDirettore extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("Rimuovi Habitat");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jRimuoviHabitat.setText("Rimuovi Habitat");
+        jRimuoviHabitat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jRimuoviHabitatActionPerformed(evt);
             }
         });
 
@@ -124,7 +125,7 @@ public class JDirettore extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jRimuoviHabitat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jListaanimali, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(67, 67, 67))
@@ -143,7 +144,7 @@ public class JDirettore extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jAggiungiHabitat)
-                    .addComponent(jButton6))
+                    .addComponent(jRimuoviHabitat))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton7)
@@ -166,9 +167,11 @@ public class JDirettore extends javax.swing.JFrame {
         log.close(this);
     }//GEN-LAST:event_jButtonLogoutActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void jRimuoviHabitatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRimuoviHabitatActionPerformed
+         JRimuoviHabitat_Direttore rim = new JRimuoviHabitat_Direttore();
+                    rim.setLocationRelativeTo(null);
+                    rim.setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_jRimuoviHabitatActionPerformed
 
     private void jAggiungiPersonaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAggiungiPersonaleActionPerformed
        JAggiungiPersonale_Direttore per = new JAggiungiPersonale_Direttore();
@@ -236,10 +239,10 @@ public class JDirettore extends javax.swing.JFrame {
     private javax.swing.JButton jAggiungiPersonale;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonLogout;
     private javax.swing.JButton jListaanimali;
+    private javax.swing.JButton jRimuoviHabitat;
     // End of variables declaration//GEN-END:variables
 }

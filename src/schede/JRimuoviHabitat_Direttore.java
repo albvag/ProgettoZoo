@@ -23,6 +23,16 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
      */
     public JRimuoviHabitat_Direttore() {
         initComponents();
+        DBConnect conn =new DBConnect();
+        ArrayList<Habitat> list = conn.selezionaHabitat();
+        System.out.println(list);
+       /* String[] array = list.toArray(new String[list.size()]);
+        JComboBox comboBox = new JComboBox(array);
+        String[] array1 = new String[list.size()];
+        for(int i = 0; i < array1.length; i++) {
+        array1[i] = list.get(i).getHabitat();
+}
+        this.jrimuoviHabitat  = new JComboBox(array1);*/
     }
 
     /**
@@ -88,11 +98,11 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jrimuoviHabitatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrimuoviHabitatActionPerformed
-      DBConnect conn = new DBConnect();
+    /*  DBConnect conn = new DBConnect();
       ArrayList<Habitat> list=conn.selezionaHabitat();
     
        
-        conn.selezionaHabitat();      // TODO add your handling code here:
+        conn.selezionaHabitat();  */    // TODO add your handling code here:
     }//GEN-LAST:event_jrimuoviHabitatActionPerformed
 
     /**

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package schede;
+import javax.swing.JOptionPane;
 import progettozoo.DBConnect;
 
 /**
@@ -97,12 +98,17 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCloseActionPerformed
 
     private void jInseriscihabitatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInseriscihabitatActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jInseriscihabitatActionPerformed
 
     private void jSalvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalvaActionPerformed
        String habitat= this.jInseriscihabitat.getText();
-       // TODO add your handling code here:
+       DBConnect conn= new DBConnect();
+       if(conn.habitatExists(habitat))
+       {
+            JOptionPane.showMessageDialog(null, "Errore! L'Habitat è già esistente");
+       }
+       conn.insertHabitat(habitat);// TODO add your handling code here:
     }//GEN-LAST:event_jSalvaActionPerformed
 
     /**
