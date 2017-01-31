@@ -25,6 +25,34 @@ public class Visita {
         this.data_visita = DV;
         this.note = NOTE;
     }        
+
+    public Visita() {
+        this.veterinario = "";
+        this.animale = "";
+        this.data_visita = new Date();
+        this.note = "";
+    }
+    
+    public String setVeterinario(String Veterinario)
+    {
+        return this.veterinario = Veterinario;
+    }
+    
+    public String setAnimale(String Animale)
+    {
+       return this.animale = Animale;
+    }
+    
+    public Date setDataVisita(Date DataVisita)
+    {
+        return this.data_visita = DataVisita;
+    }
+    
+    public String setNote(String Note)
+    {
+        return this.note = Note;
+    }
+    
         public String getVeterinario()
         {
             return veterinario;
