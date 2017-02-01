@@ -5,17 +5,11 @@
  */
 package schede;
 
-import java.awt.Toolkit;
-import java.awt.event.*;
 import java.awt.*;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.ArrayList;;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
-import logins.JLogin;
 import progettozoo.DBConnect;
 import logins.JVeterinario;
 import progettozoo.Animale;
@@ -49,6 +43,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         initComponents();      
         setLocationRelativeTo(null);
         setSize(800, 450);
+        setTitle("Scheda Animale");
         setVisible(true); 
         this.jFrameVisita.setVisible(false);
         
@@ -389,20 +384,44 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         this.jFrameVisita.setTitle("Registrazione Nuova Visita per "+ this.jLabelDisplayCod.getText());
             this.jFrameVisita.setVisible(true);
             pack();
+            
+        
     }//GEN-LAST:event_jButtonNuovaVisitaActionPerformed
 
     private void jButtonNewVisConfermaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewVisConfermaActionPerformed
         // TODO add your handling code here:
         
-        this.jFrameVisita.setVisible(false);
-        setSize(800, 450);
+       ProgettoZoo pz = new ProgettoZoo();
+        String DataNuovaVisita = this.jTextFieldDataVisita.getText();
+        String NoteNuovaVisita = this.jTextAreaNoteVisita.getText();
+        
+      /*  String formato_data ="(0[1-9] | 1[0-9] | 2[0-9]|3[01]) [-] (0[1-9]|1[0-2]) [-] (19|20)[0-9]{2}";
+        boolean dat=check(formato_data,DataNuovaVisita);*/
+       boolean dat =  pz.isThisDateValid(DataNuovaVisita,"dd-MM-yyyy");
+        if(dat) 
+        {
+           // JOptionPane.showMessageDialog( null, "" , "Confermare la registrazione della nuova visita?", JOptionPane.YES_NO_OPTION);
+           int reply = JOptionPane.showConfirmDialog(null, "Conferma?", "TITOLO", JOptionPane.YES_NO_OPTION);
+            if (reply == JOptionPane.YES_OPTION) {
+
+                this.jTextFieldDataVisita.setText("");
+                this.jTextAreaNoteVisita.setText("");
+                this.jFrameVisita.setVisible(false);
+                setSize(800, 450);
+            } 
+        }
+        else  JOptionPane.showMessageDialog(null, "Formato della data non corretto\nSi prega di inserire una data corretta o di correggerlo nella forma\n ESEMPIO: 01-02-2017", "ERRORE!", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_jButtonNewVisConfermaActionPerformed
 
     private void jButtonNewVisAnnullaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewVisAnnullaActionPerformed
         // TODO add your handling code here:
         
+        this.jTextFieldDataVisita.setText("");
+        this.jTextAreaNoteVisita.setText("");
         this.jFrameVisita.setVisible(false);
         setSize(800, 450);
+        
+        
     }//GEN-LAST:event_jButtonNewVisAnnullaActionPerformed
     
     /**

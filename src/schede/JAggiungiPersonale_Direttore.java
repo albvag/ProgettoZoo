@@ -5,19 +5,8 @@
  */
 package schede;
 
-import java.awt.Toolkit;
-import java.awt.event.*;
 import java.awt.*;
-import logins.JLogin;
-import progettozoo.DBConnect;
-import logins.JDirettore;
 import java.util.regex.Pattern;
-import java.util.regex.Matcher;
-import java.util.regex.PatternSyntaxException;
-import java.awt.Choice;
-import javafx.collections.ObservableList;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
 /**
  *
  * @author Roberto
