@@ -431,10 +431,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
           java.sql.Date sqlDate = new java.sql.Date(DataVisita.getTime());
 
    conn.insertVisita(0,utente.getUsername(),this.jLabelDisplayCod.getText(), sqlDate, this.jTextAreaNoteVisita.getText());
-                    /* this.jTextFieldDataVisita.setText("");
-                     this.jTextAreaNoteVisita.setText("");
-                     this.jFrameVisita.setVisible(false);
-                     setSize(800, 450);*/
+                  
                   setVisible(false);
                     new JSchedaAnimale_Veterinario(anim, utente);
                  } 
