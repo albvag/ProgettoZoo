@@ -48,8 +48,11 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
     public JSchedaAnimale_Veterinario(Animale anim_sel) {
         initComponents();      
         setLocationRelativeTo(null);
-        setVisible(true);
-      
+        setSize(800, 450);
+        setVisible(true); 
+        this.jFrameVisita.setVisible(false);
+        
+        
         JVeterinario v = new JVeterinario();
         String[] jTableVisiteHeaders  = {"Data Visite","Note Visite","Veterinario"};
         v.creaTabella(this.jTableVisite, jTableVisiteHeaders); 
@@ -105,9 +108,16 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         jButtonLeggiNoteVisita = new javax.swing.JButton();
         jLabelCod = new javax.swing.JLabel();
         jLabelDisplayCod = new javax.swing.JLabel();
+        jFrameVisita = new javax.swing.JInternalFrame();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextAreaNoteVisita = new javax.swing.JTextArea();
+        jButtonNewVisConferma = new javax.swing.JButton();
+        jButtonNewVisAnnulla = new javax.swing.JButton();
+        jTextFieldDataVisita = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
 
         jLabelNome.setText("Nome:");
 
@@ -141,6 +151,11 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         jLabelPresente.setText("Presente Attualmente:");
 
         jButtonNuovaVisita.setText("Nuova Visita");
+        jButtonNuovaVisita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNuovaVisitaActionPerformed(evt);
+            }
+        });
 
         jLabelDisplaySalute.setText("-");
 
@@ -175,6 +190,70 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
 
         jLabelDisplayCod.setText("-");
 
+        jFrameVisita.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jFrameVisita.setTitle("Registrazione Visita");
+        jFrameVisita.setFrameIcon(null);
+        jFrameVisita.setVisible(true);
+
+        jLabel1.setText("Data Visita");
+
+        jLabel2.setText("Note Visita");
+
+        jTextAreaNoteVisita.setColumns(20);
+        jTextAreaNoteVisita.setRows(5);
+        jScrollPane2.setViewportView(jTextAreaNoteVisita);
+
+        jButtonNewVisConferma.setText("Conferma");
+        jButtonNewVisConferma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNewVisConfermaActionPerformed(evt);
+            }
+        });
+
+        jButtonNewVisAnnulla.setText("Annulla");
+        jButtonNewVisAnnulla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNewVisAnnullaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jFrameVisitaLayout = new javax.swing.GroupLayout(jFrameVisita.getContentPane());
+        jFrameVisita.getContentPane().setLayout(jFrameVisitaLayout);
+        jFrameVisitaLayout.setHorizontalGroup(
+            jFrameVisitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrameVisitaLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jFrameVisitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(jFrameVisitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jTextFieldDataVisita, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jFrameVisitaLayout.createSequentialGroup()
+                        .addComponent(jButtonNewVisConferma)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                        .addComponent(jButtonNewVisAnnulla, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+        jFrameVisitaLayout.setVerticalGroup(
+            jFrameVisitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrameVisitaLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(jFrameVisitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextFieldDataVisita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(jFrameVisitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jFrameVisitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonNewVisAnnulla)
+                    .addComponent(jButtonNewVisConferma))
+                .addGap(45, 45, 45))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -184,89 +263,93 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelNome)
+                            .addComponent(jLabelCod, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelDisplayCod)
+                            .addComponent(jLabelDisplayNome)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelGenere)
+                            .addComponent(jLabelHabitat)
+                            .addComponent(jLabelSpecie)
+                            .addComponent(jLabelDataNascita))
+                        .addGap(56, 56, 56)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelDisplayNascita)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelNome)
-                                .addGap(108, 108, 108)
-                                .addComponent(jLabelDisplayNome))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelPresente)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabelDisplayPresente))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelSalute)
-                                    .addComponent(jLabelGenere)
-                                    .addComponent(jLabelHabitat)
-                                    .addComponent(jLabelSpecie)
-                                    .addComponent(jLabelDataNascita))
-                                .addGap(56, 56, 56)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelDisplaySpecie)
                                     .addComponent(jLabelDisplayHabitat)
-                                    .addComponent(jLabelDisplayGenere)
-                                    .addComponent(jLabelDisplayNascita)
-                                    .addComponent(jLabelDisplaySalute))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabelDisplayGenere))
+                                .addGap(90, 90, 90)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButtonNuovaVisita)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButtonLeggiNoteVisita)
+                                        .addGap(47, 47, 47)
+                                        .addComponent(jButtonClose))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelCod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(53, 53, 53)
-                        .addComponent(jLabelDisplayCod)
-                        .addGap(85, 85, 85)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonNuovaVisita)
-                        .addGap(39, 39, 39)
-                        .addComponent(jButtonLeggiNoteVisita)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonClose))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(68, 68, 68))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelPresente)
+                            .addComponent(jLabelSalute))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelDisplaySalute)
+                            .addComponent(jLabelDisplayPresente))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(jFrameVisita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelDisplayCod)
+                            .addComponent(jLabelCod))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelDisplayNome)
+                            .addComponent(jLabelNome))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelDisplaySpecie)
+                            .addComponent(jLabelSpecie))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelDisplayHabitat)
+                            .addComponent(jLabelHabitat))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelGenere)
+                            .addComponent(jLabelDisplayGenere))
+                        .addGap(38, 38, 38)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelDataNascita)
+                            .addComponent(jLabelDisplayNascita))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelSalute)
+                            .addComponent(jLabelDisplaySalute))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelPresente)
+                            .addComponent(jLabelDisplayPresente))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelCod)
-                            .addComponent(jLabelDisplayCod))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelNome)
-                            .addComponent(jLabelDisplayNome))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelSpecie)
-                            .addComponent(jLabelDisplaySpecie))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelHabitat)
-                            .addComponent(jLabelDisplayHabitat))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelDisplayGenere)
-                            .addComponent(jLabelGenere))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelDataNascita)
-                    .addComponent(jLabelDisplayNascita))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelDisplaySalute)
-                    .addComponent(jLabelSalute))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonClose)
-                    .addComponent(jLabelPresente)
-                    .addComponent(jButtonNuovaVisita)
-                    .addComponent(jLabelDisplayPresente)
-                    .addComponent(jButtonLeggiNoteVisita))
-                .addGap(36, 36, 36))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonNuovaVisita)
+                            .addComponent(jButtonLeggiNoteVisita)
+                            .addComponent(jButtonClose))
+                        .addGap(52, 52, 52))))
+            .addComponent(jFrameVisita)
         );
 
         pack();
@@ -280,6 +363,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
     private void jButtonLeggiNoteVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLeggiNoteVisitaActionPerformed
         Component frame = null;
         JVeterinario vet = new JVeterinario();
+
         vis.setNote(vet.getTableSelectedItem(jTableVisite, "Note Visite"));
         vis.setAnimale(this.jLabelDisplayCod.getText());
         vis.setVeterinario(vet.getTableSelectedItem(jTableVisite, "Veterinario"));
@@ -293,9 +377,33 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         nota = pz.StringFormat(nota, 100);
               
         if(datavis.equals(""))  JOptionPane.showMessageDialog(null, "Errore! Nessuna visita selezionata", "Dettagli visita", JOptionPane.ERROR_MESSAGE);
-        else  JOptionPane.showMessageDialog( frame, nota + "\nFirmato: "+ vis.getVeterinario() , "Dettagli visita del "+ datavis, JOptionPane.CLOSED_OPTION);
+        else {
+            JOptionPane.showMessageDialog( frame, nota + "\nFirmato: "+ vis.getVeterinario() , "Dettagli visita del "+ datavis, JOptionPane.CLOSED_OPTION);        
+
+        }
         
     }//GEN-LAST:event_jButtonLeggiNoteVisitaActionPerformed
+
+    private void jButtonNuovaVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuovaVisitaActionPerformed
+        // TODO add your handling code here:
+        this.jFrameVisita.setTitle("Registrazione Nuova Visita per "+ this.jLabelDisplayCod.getText());
+            this.jFrameVisita.setVisible(true);
+            pack();
+    }//GEN-LAST:event_jButtonNuovaVisitaActionPerformed
+
+    private void jButtonNewVisConfermaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewVisConfermaActionPerformed
+        // TODO add your handling code here:
+        
+        this.jFrameVisita.setVisible(false);
+        setSize(800, 450);
+    }//GEN-LAST:event_jButtonNewVisConfermaActionPerformed
+
+    private void jButtonNewVisAnnullaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewVisAnnullaActionPerformed
+        // TODO add your handling code here:
+        
+        this.jFrameVisita.setVisible(false);
+        setSize(800, 450);
+    }//GEN-LAST:event_jButtonNewVisAnnullaActionPerformed
     
     /**
      * @param args the command line arguments
@@ -328,6 +436,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new JSchedaAnimale_Veterinario().setVisible(true);
+                
             }
         });
     }    
@@ -358,7 +467,12 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonLeggiNoteVisita;
+    private javax.swing.JButton jButtonNewVisAnnulla;
+    private javax.swing.JButton jButtonNewVisConferma;
     private javax.swing.JButton jButtonNuovaVisita;
+    private javax.swing.JInternalFrame jFrameVisita;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelCod;
     private javax.swing.JLabel jLabelDataNascita;
     public javax.swing.JLabel jLabelDisplayCod;
@@ -376,6 +490,9 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSalute;
     private javax.swing.JLabel jLabelSpecie;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTable jTableVisite;
+    private javax.swing.JTextArea jTextAreaNoteVisita;
+    private javax.swing.JTextField jTextFieldDataVisita;
     // End of variables declaration//GEN-END:variables
 }
