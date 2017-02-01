@@ -6,8 +6,10 @@
 package schede;
 
 import java.awt.*;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;;
+import java.util.ArrayList;import java.util.Date;
+;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import progettozoo.DBConnect;
@@ -395,22 +397,32 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         String DataNuovaVisita = this.jTextFieldDataVisita.getText();
         String NoteNuovaVisita = this.jTextAreaNoteVisita.getText();
         
-      /*  String formato_data ="(0[1-9] | 1[0-9] | 2[0-9]|3[01]) [-] (0[1-9]|1[0-2]) [-] (19|20)[0-9]{2}";
-        boolean dat=check(formato_data,DataNuovaVisita);*/
-       boolean dat =  pz.isThisDateValid(DataNuovaVisita,"dd-MM-yyyy");
-        if(dat) 
+        if(!this.jTextFieldDataVisita.getText().equals(""))
+        { 
+          Date DataVisita = pz.ConvertStringToDate(DataNuovaVisita, "dd-MM-yyyy");
+          Date today = new Date();
+          Date NascitaAnimale = pz.ConvertStringToDate(this.jLabelDisplayNascita.getText(), "dd-MM-yyyy");
+            boolean dat =  pz.isThisDateValid(DataNuovaVisita,"dd-MM-yyyy");
+        
+        if(dat && DataVisita.before(today) && NascitaAnimale.before(DataVisita)) 
         {
-           // JOptionPane.showMessageDialog( null, "" , "Confermare la registrazione della nuova visita?", JOptionPane.YES_NO_OPTION);
-           int reply = JOptionPane.showConfirmDialog(null, "Conferma?", "TITOLO", JOptionPane.YES_NO_OPTION);
-            if (reply == JOptionPane.YES_OPTION) {
+            if(NoteNuovaVisita.length() > 400 || NoteNuovaVisita.length() < 1) JOptionPane.showMessageDialog(null, "Le note della visita devono contenere almeno 1 carattere e possono contenere al massimo 400 caratteri",
+                    "ERRORE!", JOptionPane.ERROR_MESSAGE);
+            else{
+                int reply = JOptionPane.showConfirmDialog(null, "Data Visita: "+this.jTextFieldDataVisita.getText()+"\nNote Visita: " 
+                        + pz.StringFormat(this.jTextAreaNoteVisita.getText(), 100), "Confermare?", JOptionPane.YES_NO_OPTION);
+                 if (reply == JOptionPane.YES_OPTION) {
 
-                this.jTextFieldDataVisita.setText("");
-                this.jTextAreaNoteVisita.setText("");
-                this.jFrameVisita.setVisible(false);
-                setSize(800, 450);
-            } 
+                     this.jTextFieldDataVisita.setText("");
+                     this.jTextAreaNoteVisita.setText("");
+                     this.jFrameVisita.setVisible(false);
+                     setSize(800, 450);
+                 } 
+            }
         }
-        else  JOptionPane.showMessageDialog(null, "Formato della data non corretto\nSi prega di inserire una data corretta o di correggerlo nella forma\n ESEMPIO: 01-02-2017", "ERRORE!", JOptionPane.ERROR_MESSAGE);
+        else  JOptionPane.showMessageDialog(null, "Data non corretta! Possibili errori: \n1) Formato errato, verifica che sia GG-MM-AAAA"
+                + "\n2) Data non esistente. \n3) La data della visita inserita avvenuta prima della nascita dell'animale. \nSi prega di verificarne la correttezza.", "ERRORE!", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonNewVisConfermaActionPerformed
 
     private void jButtonNewVisAnnullaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewVisAnnullaActionPerformed

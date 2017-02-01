@@ -39,7 +39,7 @@ public Date ConvertStringToDate(String Data, String FORMAT)
                     startDate = df.parse(startDateString);
                     
                 } catch (ParseException e) {
-                    e.printStackTrace();
+                  //  e.printStackTrace();
                 }
                 return startDate;
 }
@@ -59,10 +59,13 @@ public Date ConvertStringToDate(String Data, String FORMAT)
                     for(int i=intervallo; i<stringToFormat.length(); i=i+intervallo)
                     {
                     index = stringToFormat.indexOf( " ", i);
-                    char[] notaChars = stringToFormat.toCharArray();
-                    notaChars[index] = '\n';
-                    stringToFormat = String.valueOf(notaChars);
-
+                        if(index >= i)
+                        { 
+                        char[] notaChars = stringToFormat.toCharArray();
+                        notaChars[index] = '\n';
+                        stringToFormat = String.valueOf(notaChars);
+                        }
+                        
                     }
                     return stringToFormat;
              }
