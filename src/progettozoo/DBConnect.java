@@ -34,6 +34,8 @@ public class DBConnect {
             System.out.printf("Errore "+ex);
         };
     }
+    
+    
     public void insertHabitat(String Cod_Gabbia)
     {
         try {
@@ -42,6 +44,17 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void insertVisita(int Cod_Visita, String Cod_Vet, String Cod_Anim, Date DataVisita, String NoteVisita)
+    {
+        try {
+            st.executeUpdate("INSERT INTO visita values ("+Cod_Visita+",'"+Cod_Vet +"','"+Cod_Anim+"','"+DataVisita+"','"+NoteVisita+"')");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
     public String checkAnimalHabitat(String Codice_Animale)
     {
     try{
@@ -74,6 +87,8 @@ public class DBConnect {
             return "Errore";
         }
     }
+    
+    
     public ArrayList<Habitat> selezionaHabitat()
     {
         ArrayList<Habitat> hablist = new ArrayList<Habitat>();
@@ -95,6 +110,8 @@ public class DBConnect {
             }   
            return hablist; 
     }
+    
+    
     public void deleteHabitat(String Cod_Gabbia)
     {
         try {
@@ -103,6 +120,8 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
     public boolean habitatExists(String Cod_Gabbia)
     {
         try{
@@ -118,6 +137,9 @@ public class DBConnect {
         }
         return false;
     }
+    
+    
+    
     //verifica la corrispondenza tra utente e password inseriti
     public boolean userExists(String user, String password)
     {

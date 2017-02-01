@@ -8,7 +8,8 @@ package schede;
 import java.awt.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;import java.util.Date;
+import java.util.ArrayList;import java.util.Calendar;
+import java.util.Date;
 ;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -16,6 +17,7 @@ import progettozoo.DBConnect;
 import logins.JVeterinario;
 import progettozoo.Animale;
 import progettozoo.ProgettoZoo;
+import progettozoo.Utente;
 import progettozoo.Visita;
 
 /**
@@ -28,7 +30,8 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
     /** 
      * Creates new form JSchedaAnimale_Veterinario
      */
-    
+        DBConnect conn = new DBConnect();
+        public Utente utente = new Utente();
         public Visita vis = new Visita();
         
     public JSchedaAnimale_Veterinario() {
@@ -41,8 +44,9 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
 
     }
         
-    public JSchedaAnimale_Veterinario(Animale anim_sel) {
+    public JSchedaAnimale_Veterinario(Animale anim_sel, Utente user_log) {
         initComponents();      
+        utente.setUsername(user_log.getUsername());
         setLocationRelativeTo(null);
         setSize(800, 450);
         setTitle("Scheda Animale");
@@ -360,7 +364,6 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
     private void jButtonLeggiNoteVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLeggiNoteVisitaActionPerformed
         Component frame = null;
         JVeterinario vet = new JVeterinario();
-
         vis.setNote(vet.getTableSelectedItem(jTableVisite, "Note Visite"));
         vis.setAnimale(this.jLabelDisplayCod.getText());
         vis.setVeterinario(vet.getTableSelectedItem(jTableVisite, "Veterinario"));
@@ -400,6 +403,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         if(!this.jTextFieldDataVisita.getText().equals(""))
         { 
           Date DataVisita = pz.ConvertStringToDate(DataNuovaVisita, "dd-MM-yyyy");
+          
           Date today = new Date();
           Date NascitaAnimale = pz.ConvertStringToDate(this.jLabelDisplayNascita.getText(), "dd-MM-yyyy");
             boolean dat =  pz.isThisDateValid(DataNuovaVisita,"dd-MM-yyyy");
@@ -412,7 +416,9 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
                 int reply = JOptionPane.showConfirmDialog(null, "Data Visita: "+this.jTextFieldDataVisita.getText()+"\nNote Visita: " 
                         + pz.StringFormat(this.jTextAreaNoteVisita.getText(), 100), "Confermare?", JOptionPane.YES_NO_OPTION);
                  if (reply == JOptionPane.YES_OPTION) {
+          java.sql.Date sqlDate = new java.sql.Date(DataVisita.getTime());
 
+   conn.insertVisita(0,utente.getUsername(),this.jLabelDisplayCod.getText(), sqlDate, this.jTextAreaNoteVisita.getText());
                      this.jTextFieldDataVisita.setText("");
                      this.jTextAreaNoteVisita.setText("");
                      this.jFrameVisita.setVisible(false);

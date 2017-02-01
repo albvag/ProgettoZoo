@@ -30,6 +30,7 @@ public class JVeterinario extends javax.swing.JFrame {
     public Date DATANASCITA;
     public boolean NOSTRO,PRESENTE,SALUTE;
     public Animale anim_sel = new Animale();
+    public Utente user = new Utente();
     
     public JVeterinario() {
        
@@ -51,6 +52,7 @@ public class JVeterinario extends javax.swing.JFrame {
         setVisible(true);
         setTitle("Benvenuto, "+user_login.getNome()+ " " + user_login.getCognome() );
         
+        user.setUsername(user_login.getUsername());
         
         String[] jTableAnimaliHeaders  = {"Codice Animale","Nome Animale","Specie","Data di Nascita","Genere","Ultima Visita","Salute","Presente"};
         selectmode(this.jTableAnimali);   
@@ -188,7 +190,7 @@ public class JVeterinario extends javax.swing.JFrame {
            anim_sel.setPresente(PRESENTE);
            
                        
-           new JSchedaAnimale_Veterinario(anim_sel);  
+           new JSchedaAnimale_Veterinario(anim_sel,user);  
            
             }
             else JOptionPane.showMessageDialog(null, "Errore: selezionata riga nulla", "Errore", JOptionPane.ERROR_MESSAGE);
