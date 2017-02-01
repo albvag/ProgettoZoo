@@ -6,9 +6,9 @@
 package schede;
 
 import java.awt.*;
-import java.text.DateFormat;
+import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;import java.util.Calendar;
+import java.util.ArrayList;
 import java.util.Date;
 ;
 import javax.swing.JOptionPane;
@@ -32,6 +32,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
      */
         DBConnect conn = new DBConnect();
         public Utente utente = new Utente();
+        public Animale anim = new Animale();
         public Visita vis = new Visita();
         
     public JSchedaAnimale_Veterinario() {
@@ -75,6 +76,17 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
             
             if(anim_sel.getPresente() ) this.jLabelDisplayPresente.setText("SI");
             else  this.jLabelDisplayPresente.setText("NO");
+            
+            String CODICE = anim_sel.getId();
+            String NOME = anim_sel.getNome();
+            String SPECIE = anim_sel.getSpecie();
+            String GENERE = anim_sel.getSesso();
+            String HABITAT = anim_sel.getHabitat();
+            Date NASCITA = anim_sel.getDataNascita();
+            boolean SALUTE = anim_sel.getSalute();
+            boolean NOSTRO = anim_sel.getNostro();
+            boolean PRESENTE = anim_sel.getPresente();
+            anim = new Animale( CODICE, NOME, SPECIE, GENERE, HABITAT, NASCITA, SALUTE, NOSTRO, PRESENTE);
             
     }
     
@@ -419,10 +431,12 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
           java.sql.Date sqlDate = new java.sql.Date(DataVisita.getTime());
 
    conn.insertVisita(0,utente.getUsername(),this.jLabelDisplayCod.getText(), sqlDate, this.jTextAreaNoteVisita.getText());
-                     this.jTextFieldDataVisita.setText("");
+                    /* this.jTextFieldDataVisita.setText("");
                      this.jTextAreaNoteVisita.setText("");
                      this.jFrameVisita.setVisible(false);
-                     setSize(800, 450);
+                     setSize(800, 450);*/
+                  setVisible(false);
+                    new JSchedaAnimale_Veterinario(anim, utente);
                  } 
             }
         }
@@ -473,14 +487,13 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new JSchedaAnimale_Veterinario().setVisible(true);
-                
             }
         });
-    }    
-  
+    }        
+    
    public void Show_DateVisite_In_JTable(String cod_anim)
    {
-       DBConnect conn = new DBConnect();
+     //  DBConnect conn = new DBConnect();
        ArrayList<Visita> visite = conn.visitaList(cod_anim);
        DefaultTableModel model = (DefaultTableModel) this.jTableVisite.getModel();
        Object[] row = new Object[3];
