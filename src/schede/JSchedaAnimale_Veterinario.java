@@ -541,8 +541,8 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
        ArrayList<Visita> visite = conn.visitaList(cod_anim);
         
        /* ORDINO GLI ELEMENTI PER DATE VISITE DA MENO RECENTE A PIU RECENTE */
-       Date[] vis = new Date[visite.size()];
-       pz.quicksortDate(visite, 0, vis.length-1);   
+       Date[] vs = new Date[visite.size()];
+       pz.quicksortDate(visite, 0, visite.size()-1);   
        
        
        DefaultTableModel model = (DefaultTableModel) this.jTableVisite.getModel();

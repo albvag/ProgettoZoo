@@ -98,24 +98,47 @@ public Date ConvertStringToDate(String Data, String FORMAT)
         
         public void quicksortDate(ArrayList<Visita> arrayDate, int start, int end)
         {
-            Date pivotElem, tmp,d1,d2;
+            Date pivotElem, tmp;
+            String cod_v, note_visita;
+                    String tmp_cod, tmp_nv;
             int endS1 = start;
 
             if ((end-start) <= 0)
                 return;
 
             pivotElem = arrayDate.get(start).getDV();
+            cod_v = arrayDate.get(start).getVeterinario();
+            note_visita = arrayDate.get(start).getNote();
 
             for(int i = start+1; i <= end; i++) {
                 if (arrayDate.get(i).getDV().before(pivotElem) ) {
                     endS1++;
                     tmp = arrayDate.get(endS1).getDV();
+                    tmp_cod = arrayDate.get(endS1).getVeterinario();
+                    tmp_nv = arrayDate.get(endS1).getNote();
+                    
                     arrayDate.get(endS1).setDataVisita(arrayDate.get(i).getDV());
+                    arrayDate.get(endS1).setVeterinario(arrayDate.get(i).getVeterinario());
+                    arrayDate.get(endS1).setNote(arrayDate.get(i).getNote());
+                    
                     arrayDate.get(i).setDataVisita(tmp);
+                    arrayDate.get(i).setVeterinario(tmp_cod);
+                    arrayDate.get(i).setNote(tmp_nv);
+                    
+                    System.out.println("dv: "+ arrayDate.get(i).getDV() + " cod: "+arrayDate.get(i).getVeterinario()+" note: "+  arrayDate.get(i).getNote());
+                    System.out.println("tmp: "+ tmp + " tmp_cod: "+tmp_cod+" tmp_nve: "+  tmp_nv +"\n\n");
+                    
+                    
                 }
             }
             arrayDate.get(start).setDataVisita(arrayDate.get(endS1).getDV());
+            arrayDate.get(start).setVeterinario(arrayDate.get(endS1).getVeterinario());
+            arrayDate.get(start).setNote(arrayDate.get(endS1).getNote());
+            
+            
             arrayDate.get(endS1).setDataVisita(pivotElem);
+            arrayDate.get(endS1).setVeterinario(cod_v);
+            arrayDate.get(endS1).setNote(note_visita);
 
             // Sort the two parts of the array
             quicksortDate(arrayDate, start, endS1-1);
