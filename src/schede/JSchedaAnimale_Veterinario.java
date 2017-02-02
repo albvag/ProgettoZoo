@@ -476,7 +476,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
             }
         }
         else  JOptionPane.showMessageDialog(null, "Data non corretta! Possibili errori: \n1) Formato errato, verifica che sia GG-MM-AAAA"
-                + "\n2) Data non esistente. \n3) La data della visita inserita avvenuta prima della nascita dell'animale. \nSi prega di verificarne la correttezza.", "ERRORE!", JOptionPane.ERROR_MESSAGE);
+                + "\n2) Data non esistente. \n3) La data della visita è precedente alla nascita dell'animale. \nSi prega di verificarne la correttezza.", "ERRORE!", JOptionPane.ERROR_MESSAGE);
         }
         else{
             JOptionPane.showMessageDialog(null, "Nessun campo inserito.",
