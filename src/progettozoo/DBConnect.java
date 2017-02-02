@@ -52,6 +52,19 @@ public class DBConnect {
         } catch (SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }    
+    
+    public int updateSaluteAnimale(String Salute, String Cod_Animale)
+    {
+        int salute;
+        if(Salute == "Sano") salute=1;
+        else salute = 0;
+        try {
+            st.executeUpdate("UPDATE animale SET Salute = '"+ salute + "' where Codice_Animale = '"+ Cod_Animale + "'");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return salute;
     }
     
     
