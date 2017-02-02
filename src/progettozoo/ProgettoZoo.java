@@ -8,6 +8,7 @@ package progettozoo;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 import logins.JLogin;
@@ -94,4 +95,32 @@ public Date ConvertStringToDate(String Data, String FORMAT)
 
 		return true;
 	}
+        
+        public void quicksortDate(ArrayList<Visita> arrayDate, int start, int end)
+        {
+            Date pivotElem, tmp,d1,d2;
+            int endS1 = start;
+
+            if ((end-start) <= 0)
+                return;
+
+            pivotElem = arrayDate.get(start).getDV();
+
+            for(int i = start+1; i <= end; i++) {
+                if (arrayDate.get(i).getDV().before(pivotElem) ) {
+                    endS1++;
+                    tmp = arrayDate.get(endS1).getDV();
+                    arrayDate.get(endS1).setDataVisita(arrayDate.get(i).getDV());
+                    arrayDate.get(i).setDataVisita(tmp);
+                }
+            }
+            arrayDate.get(start).setDataVisita(arrayDate.get(endS1).getDV());
+            arrayDate.get(endS1).setDataVisita(pivotElem);
+
+            // Sort the two parts of the array
+            quicksortDate(arrayDate, start, endS1-1);
+            quicksortDate(arrayDate, endS1+1, end);
+        }
+
+
  }

@@ -22,9 +22,13 @@ import progettozoo.ProgettoZoo;
 import progettozoo.Utente;
 import progettozoo.Visita;
 
+
 /**
  *
  * @author Alberto
+ * 
+ * ATTENZIONE! QUANDO I FRAME VENGONO RICARICATI, ALL'UTENTE HO RIASSEGNATO SOLO USERNAME, NOME E COGNOME. DEVO COMPLETARE
+ * 
  */
 
 public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
@@ -533,13 +537,19 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
    public void Show_DateVisite_In_JTable(String cod_anim)
    {
      //  DBConnect conn = new DBConnect();
+       ProgettoZoo pz = new ProgettoZoo();
        ArrayList<Visita> visite = conn.visitaList(cod_anim);
+        
+       /* ORDINO GLI ELEMENTI PER DATE VISITE DA MENO RECENTE A PIU RECENTE */
+       Date[] vis = new Date[visite.size()];
+       pz.quicksortDate(visite, 0, vis.length-1);   
+       
+       
        DefaultTableModel model = (DefaultTableModel) this.jTableVisite.getModel();
        Object[] row = new Object[3];
        
        this.jTableVisite.changeSelection(0, 0, false, false);
        
-       ProgettoZoo pz = new ProgettoZoo();
        for(int i = 0; i < visite.size(); i++)
        {
            String DataTable = visite.get(i).getDV().toString();

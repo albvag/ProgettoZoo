@@ -30,6 +30,7 @@ public class JVeterinario extends javax.swing.JFrame {
     public Date DATANASCITA;
     public boolean NOSTRO,PRESENTE,SALUTE;
     public Animale anim_sel = new Animale();
+    
     public Utente user = new Utente();
     
     public JVeterinario() {
@@ -37,11 +38,6 @@ public class JVeterinario extends javax.swing.JFrame {
 
         initComponents();
         
-        String[] jTableAnimaliHeaders  = {"Codice Animale","Nome Animale","Specie","Data di Nascita","Genere","Ultima Visita","Salute","Presente"};
-        selectmode(this.jTableAnimali);   
-        creaTabella(this.jTableAnimali, jTableAnimaliHeaders);
-        this.jTableAnimali.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-        Show_Animali_In_JTable(this.jTableAnimali);
     }
     
     public JVeterinario(Utente user_login) {
