@@ -7,6 +7,8 @@ package schede;
 import java.awt.Toolkit;
 import java.awt.event.*;
 import java.awt.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import logins.JLogin;
 import progettozoo.DBConnect;
 import logins.JDirettore;
@@ -14,6 +16,8 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import java.util.regex.PatternSyntaxException;
 import javax.swing.ComboBoxModel;
+import javax.swing.JOptionPane;
+import progettozoo.ProgettoZoo;
 /**
  *
  * @author Roberto
@@ -51,11 +55,11 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
         errorespecie = new javax.swing.JLabel();
         erroredata = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jsalute = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jnostro = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        jpresente = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,7 +125,7 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
             }
         });
 
-        jGenere.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Maschio", "Femmina" }));
+        jGenere.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "F" }));
         jGenere.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jGenereActionPerformed(evt);
@@ -130,15 +134,15 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
 
         jLabel1.setText("       Salute");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sano", "Malato" }));
+        jsalute.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SANO", "MALATO" }));
 
         jLabel2.setText("      Nostro");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
+        jnostro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
 
         jLabel3.setText("     Presente");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
+        jpresente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -172,15 +176,15 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jsalute, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jnostro, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jpresente, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -193,7 +197,7 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
                     .addComponent(jNomeAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jAggiunginomeanimale, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jsalute, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(errorespecie, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -202,13 +206,13 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jAggiungispecie, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jnostro, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jGenereAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jGenere, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jpresente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(erroredata, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
@@ -249,6 +253,7 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
         String genere = this.jGenere.getSelectedItem().toString();
         //data in formato dd/mm/aaaa
         String data = this.jDatadinascita.getText();
+      
          String formnome = "[a-zA-Z]{1,}";
          String forspecie ="[a-zA-Z]{1,}";
          //inserire la data in formato dd/mm/aaaa (giorno/mese/anno)
@@ -274,9 +279,33 @@ else
     erroredata.setText("Caratteri validi");
 
 
-    if(nom==true && spe==true && dat==true)
-     System.out.println("Nome: "+nome+" Specie: "+specie+" Genere: "+genere+" nato il: "+data);
-    else{System.out.println("ERRORE");}
+    
+   DBConnect conn =new DBConnect();
+   String Cod_anim=(this.jAggiungispecie.getText());
+   
+   ProgettoZoo pz= new ProgettoZoo();
+   Date d= pz.ConvertStringToDate(data, fordata);
+   java.sql.Date sqlDate = new java.sql.Date(d.getTime());
+   
+   
+   int salute;
+ if(this.jsalute.getSelectedItem()== "SANO")
+       salute=1;
+   else{salute=0;}
+   int nostro;
+    if(this.jnostro.getSelectedItem()== "SI")
+       nostro=1;
+   else{nostro=0;}
+    int presente;
+     if(this.jpresente.getSelectedItem()== "SI")
+       presente=1;
+   else{presente=0;}
+     if(nom==true && spe==true && dat==true)
+    {
+    conn.insertAnimale(Cod_anim, nome,specie,genere , sqlDate, salute,nostro, presente);
+    JOptionPane.showMessageDialog(null, "ANIMALE INSERITO CORRETTAMENTE");
+    setVisible(false);
+    }else{JOptionPane.showMessageDialog(null, "ALCUNI CAMPI NON SONO INSERITI CORRETTAMENTE");}
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jGenereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGenereActionPerformed
@@ -361,9 +390,6 @@ else
     private javax.swing.JTextField jAggiungispecie;
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonSave;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jDataAnimale;
     private javax.swing.JTextField jDatadinascita;
     private javax.swing.JComboBox<String> jGenere;
@@ -373,5 +399,8 @@ else
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jNomeAnimale;
     private javax.swing.JLabel jSpecieAnimale;
+    private javax.swing.JComboBox<String> jnostro;
+    private javax.swing.JComboBox<String> jpresente;
+    private javax.swing.JComboBox<String> jsalute;
     // End of variables declaration//GEN-END:variables
 }

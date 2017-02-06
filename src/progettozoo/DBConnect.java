@@ -44,7 +44,65 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    //query per l'inserimento di un animale nel DB
+    public void insertAnimale(String Cod_Animale,String nome,String specie,String genere,Date data,int salute,int nostro,int presente)
+    {
+     try {
+         st.executeUpdate("INSERT INTO animale values ('"+Cod_Animale+"','"+nome+"','"+specie+"','"+genere+"','"+data+"',"+salute+","+nostro+","+presente+")");
+     }   catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     //query per l'inserimento del personale nel DB
+    public void insertImpiegato(String user,String nome,String cognome,String residenza,String indirizzo,String telefono)
+    {
+     try {
+         st.executeUpdate("INSERT INTO impiegato values ('"+user+"','"+nome+"','"+cognome+"','"+residenza+"','"+indirizzo+"','"+telefono+"')");
+     }   catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void inserisciUtente(String user,String password,int stato,String ruolo)
+    {
+        try {
+            st.executeUpdate("INSERT INTO utente values ('"+user+"','"+password+"',"+stato+",'"+ruolo+"')");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    public void insertDirettore(String user)
+    {
+        try{
+            st.executeUpdate("INSERT INTO direttore values('"+user+"')");
+        }catch(SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+         public void insertVeterinario(String user)
+    {
+        try{
+            st.executeUpdate("INSERT INTO veterinario values('"+user+"')");
+        }catch(SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+            public void insertCustode(String user)
+    {
+        try{
+            st.executeUpdate("INSERT INTO custode values('"+user+"')");
+        }catch(SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+               public void insertCassiere(String user)
+    {
+        try{
+            st.executeUpdate("INSERT INTO cassiere values('"+user+"')");
+        }catch(SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public void insertVisita(int Cod_Visita, String Cod_Vet, String Cod_Anim, Date DataVisita, String NoteVisita)
     {
         try {
@@ -123,6 +181,7 @@ public class DBConnect {
             }   
            return hablist; 
     }
+   
     
     
     public void deleteHabitat(String Cod_Gabbia)
@@ -133,7 +192,21 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+     public boolean impiegatoExists(String Cod_imp)
+    {
+        try{
+            String query = "Select * from impiegato where impiegato.Codice_Impiegato = '"+Cod_imp+"'";
+            rs = st.executeQuery(query);
+           
+            while(rs.next())  return true;
+            
+        }catch(Exception ex){
+            
+            JOptionPane.showMessageDialog(null, "Errore! L'impiegato è già esistente");
+            return false;
+        }
+        return false;
+    }
     
     public boolean habitatExists(String Cod_Gabbia)
     {

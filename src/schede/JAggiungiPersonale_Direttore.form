@@ -25,33 +25,31 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jLabel1" pref="80" max="32767" attributes="0"/>
-                  <Component id="jLabel2" pref="80" max="32767" attributes="0"/>
-                  <Component id="jLabel3" pref="80" max="32767" attributes="0"/>
-                  <Component id="jLabel4" pref="80" max="32767" attributes="0"/>
-                  <Component id="jLabel6" alignment="0" pref="80" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jLabel1" pref="80" max="32767" attributes="0"/>
+                      <Component id="jLabel2" pref="80" max="32767" attributes="0"/>
+                      <Component id="jLabel3" pref="80" max="32767" attributes="0"/>
+                      <Component id="jLabel6" alignment="0" pref="80" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="jLabel10" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="errorenome" min="-2" pref="160" max="-2" attributes="0"/>
-                      <EmptySpace min="85" pref="1021" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="erroreresidenza" min="-2" pref="160" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="1021" max="32767" attributes="0"/>
+                      <EmptySpace min="85" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jAggiungiNumeroTelefono" max="32767" attributes="0"/>
-                          <Component id="erroretel" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jAggiungiCognome" alignment="0" pref="448" max="32767" attributes="0"/>
+                          <Component id="jAggiungiCognome" alignment="0" max="32767" attributes="0"/>
                           <Component id="errorecognome" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                           <Component id="erroreindirizzo" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                           <Component id="jAggiungiResidenza" alignment="0" max="32767" attributes="0"/>
                           <Component id="jAggiungiIndirizzo" alignment="0" max="32767" attributes="0"/>
                           <Component id="jNomePersonale" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jDatanascita" alignment="0" min="-2" pref="448" max="-2" attributes="0"/>
+                          <Component id="erroreresidenza" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -64,40 +62,33 @@
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel7" min="-2" pref="123" max="-2" attributes="0"/>
+                                  <Component id="jLabel4" min="-2" pref="123" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="1" attributes="0">
                                               <Component id="jLabel5" min="-2" pref="123" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel8" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
-                                                  <Component id="jLabel9" min="-2" pref="123" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="jLabel8" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
+                                          <Component id="jLabel9" min="-2" pref="123" max="-2" attributes="0"/>
+                                          <Component id="jLabel7" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jRuolo" min="-2" pref="136" max="-2" attributes="0"/>
-                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                              <Component id="errconfpass" min="-2" pref="160" max="-2" attributes="0"/>
-                                              <Component id="jRipetiPassword" min="-2" pref="448" max="-2" attributes="0"/>
-                                          </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jAggiungiUser" alignment="1" max="32767" attributes="0"/>
-                                                  <Group type="102" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="erroreuser" min="-2" pref="160" max="-2" attributes="0"/>
-                                                          <Component id="jAggiungiPassword" min="-2" pref="448" max="-2" attributes="0"/>
-                                                          <Component id="errorepass" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                  </Group>
+                                                  <Component id="erroreuser" min="-2" pref="160" max="-2" attributes="0"/>
+                                                  <Component id="jAggiungiUser" min="-2" pref="448" max="-2" attributes="0"/>
+                                                  <Component id="jAggiungiNumeroTelefono" alignment="0" min="-2" pref="448" max="-2" attributes="0"/>
+                                                  <Component id="erroretel" alignment="0" min="-2" pref="448" max="-2" attributes="0"/>
                                               </Group>
+                                          </Group>
+                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                              <Component id="errconfpass" min="-2" pref="160" max="-2" attributes="0"/>
+                                              <Component id="jRipetiPassword" min="-2" pref="448" max="-2" attributes="0"/>
+                                              <Component id="jRuolo" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
+                                              <Component id="jAggiungiPassword" alignment="0" min="-2" pref="448" max="-2" attributes="0"/>
+                                              <Component id="errorepass" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -113,69 +104,79 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="errorenome" pref="10" max="32767" attributes="0"/>
-                  <Component id="erroreuser" pref="10" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="errorenome" min="-2" pref="10" max="-2" attributes="0"/>
+                  <Component id="erroretel" min="-2" pref="10" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel5" alignment="0" pref="23" max="32767" attributes="0"/>
-                  <Component id="jAggiungiUser" min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="jLabel6" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="jNomePersonale" alignment="0" pref="27" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="errorecognome" min="-2" pref="10" max="-2" attributes="0"/>
-                  <Component id="errorepass" alignment="1" min="-2" pref="10" max="-2" attributes="0"/>
-              </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      <Component id="erroreresidenza" min="-2" pref="10" max="-2" attributes="0"/>
+                  <Component id="jNomePersonale" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel4" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="jAggiungiNumeroTelefono" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="errorecognome" min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jAggiungiCognome" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="jLabel7" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="jAggiungiPassword" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                           <Component id="jLabel1" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="jLabel5" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="jAggiungiUser" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="errconfpass" min="-2" pref="10" max="-2" attributes="0"/>
+                      <Component id="errorepass" min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel7" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="jAggiungiPassword" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="jLabel10" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="jDatanascita" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="errconfpass" min="-2" pref="10" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel8" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="jRipetiPassword" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="jAggiungiResidenza" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                              <Component id="erroreindirizzo" min="-2" pref="10" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel9" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="jRuolo" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="jAggiungiIndirizzo" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="jLabel3" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="24" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jButtonSave" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButtonClose" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="erroreresidenza" min="-2" pref="10" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="erroreuser" min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jAggiungiResidenza" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="jLabel2" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="jLabel8" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="jRipetiPassword" min="-2" pref="23" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-              <Component id="erroreindirizzo" min="-2" pref="10" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jAggiungiIndirizzo" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="jLabel3" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="jLabel9" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="jRuolo" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="erroretel" min="-2" pref="10" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jAggiungiNumeroTelefono" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="37" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButtonSave" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButtonClose" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -203,7 +204,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="       Telefono"/>
+        <Property name="text" type="java.lang.String" value="            Telefono"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jNomePersonale">
@@ -367,6 +368,22 @@
     <Component class="javax.swing.JLabel" name="errorepass">
     </Component>
     <Component class="javax.swing.JLabel" name="errconfpass">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel10">
+      <Properties>
+        <Property name="text" type="java.lang.String" value=" Data di Nascita"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jDatanascita">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="99" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Es.22/01/1995"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jDatanascitaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

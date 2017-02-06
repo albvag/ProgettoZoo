@@ -7,6 +7,7 @@ package schede;
 
 import java.util.ArrayList;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import progettozoo.Animale;
 import progettozoo.DBConnect;
 import progettozoo.Habitat;
@@ -25,7 +26,7 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
         initComponents();
         DBConnect conn =new DBConnect();
         ArrayList<Habitat> list = conn.selezionaHabitat();
-        //String[] array=new String [list.size()] ;
+        
         for(int i = 0; i < list.size(); i++)
         {
             
@@ -34,13 +35,7 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
         }
         
         
-       /* String[] array = list.toArray(new String[list.size()]);
-        JComboBox comboBox = new JComboBox(array);
-        String[] array1 = new String[list.size()];
-        for(int i = 0; i < array1.length; i++) {
-        array1[i] = list.get(i).getHabitat();
-}
-        this.jrimuoviHabitat  = new JComboBox(array1);*/
+     
     }
 
     /**
@@ -54,8 +49,8 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jrimuoviHabitat = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jRimuovi = new javax.swing.JButton();
+        jChiudi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,9 +62,19 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Salva");
+        jRimuovi.setText("Rimuovi");
+        jRimuovi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRimuoviActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Chiudi");
+        jChiudi.setText("Chiudi");
+        jChiudi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jChiudiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,9 +88,9 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(57, 57, 57)
-                .addComponent(jButton1)
+                .addComponent(jRimuovi)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(jChiudi)
                 .addGap(85, 85, 85))
         );
         layout.setVerticalGroup(
@@ -97,8 +102,8 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
                 .addComponent(jrimuoviHabitat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jRimuovi)
+                    .addComponent(jChiudi))
                 .addGap(70, 70, 70))
         );
 
@@ -112,6 +117,18 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
        
         conn.selezionaHabitat();  */    // TODO add your handling code here:
     }//GEN-LAST:event_jrimuoviHabitatActionPerformed
+
+    private void jChiudiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChiudiActionPerformed
+       setVisible(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_jChiudiActionPerformed
+
+    private void jRimuoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRimuoviActionPerformed
+        String sel =this.jrimuoviHabitat.getSelectedItem().toString();
+        DBConnect conn =new DBConnect();
+        conn.deleteHabitat(sel);
+        JOptionPane.showMessageDialog(null, "L'HABITAT SELEZIONATO E' STATO RIMOSSO");
+        setVisible(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_jRimuoviActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,9 +166,9 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jChiudi;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jRimuovi;
     private javax.swing.JComboBox<String> jrimuoviHabitat;
     // End of variables declaration//GEN-END:variables
 }

@@ -55,17 +55,17 @@
                   <Group type="102" attributes="0">
                       <Component id="jLabel1" min="-2" pref="80" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" min="-2" pref="190" max="-2" attributes="0"/>
+                      <Component id="jsalute" min="-2" pref="190" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="jLabel2" min="-2" pref="80" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jComboBox2" min="-2" pref="190" max="-2" attributes="0"/>
+                      <Component id="jnostro" min="-2" pref="190" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="jLabel3" min="-2" pref="80" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jComboBox3" min="-2" pref="190" max="-2" attributes="0"/>
+                      <Component id="jpresente" min="-2" pref="190" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -82,7 +82,7 @@
                   <Component id="jNomeAnimale" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="jAggiunginomeanimale" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="jComboBox1" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="jsalute" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="errorespecie" min="-2" pref="10" max="-2" attributes="0"/>
@@ -92,7 +92,7 @@
                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                       <Component id="jAggiungispecie" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="jLabel2" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="jComboBox2" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="jnostro" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -100,7 +100,7 @@
                   <Component id="jGenereAnimale" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="jGenere" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="jLabel3" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="jComboBox3" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="jpresente" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="erroredata" min="-2" pref="10" max="-2" attributes="0"/>
@@ -202,8 +202,8 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="2">
-            <StringItem index="0" value="Maschio"/>
-            <StringItem index="1" value="Femmina"/>
+            <StringItem index="0" value="M"/>
+            <StringItem index="1" value="F"/>
           </StringArray>
         </Property>
       </Properties>
@@ -225,12 +225,12 @@
         <Property name="text" type="java.lang.String" value="       Salute"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="jsalute">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="2">
-            <StringItem index="0" value="Sano"/>
-            <StringItem index="1" value="Malato"/>
+            <StringItem index="0" value="SANO"/>
+            <StringItem index="1" value="MALATO"/>
           </StringArray>
         </Property>
       </Properties>
@@ -243,7 +243,7 @@
         <Property name="text" type="java.lang.String" value="      Nostro"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox2">
+    <Component class="javax.swing.JComboBox" name="jnostro">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="2">
@@ -261,7 +261,7 @@
         <Property name="text" type="java.lang.String" value="     Presente"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox3">
+    <Component class="javax.swing.JComboBox" name="jpresente">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="2">
