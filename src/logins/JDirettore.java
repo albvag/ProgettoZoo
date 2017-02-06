@@ -14,6 +14,7 @@ import progettozoo.Utente;
 import schede.JAggiungiAnimale_Direttore;
 import schede.JAggiungiHabitat_Direttore;
 import schede.JAggiungiPersonale_Direttore;
+import schede.JRimuoviAnimale_Direttore;
 import schede.JRimuoviHabitat_Direttore;
 import schede.JRimuoviPersonale_Direttore;
 import schede.jListaAnimali_Direttore;
@@ -47,7 +48,7 @@ public class JDirettore extends javax.swing.JFrame {
         jAggiungiPersonale = new javax.swing.JButton();
         jRimuoviPersonale = new javax.swing.JButton();
         jAggiungiAnimale = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jRimuoviAnimale = new javax.swing.JButton();
         jAggiungiHabitat = new javax.swing.JButton();
         jRimuoviHabitat = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -86,7 +87,12 @@ public class JDirettore extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Rimuovi Animale");
+        jRimuoviAnimale.setText("Rimuovi Animale");
+        jRimuoviAnimale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRimuoviAnimaleActionPerformed(evt);
+            }
+        });
 
         jAggiungiHabitat.setText("Aggiungi Habitat");
         jAggiungiHabitat.addActionListener(new java.awt.event.ActionListener() {
@@ -133,7 +139,7 @@ public class JDirettore extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jRimuoviPersonale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jRimuoviHabitat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jRimuoviAnimale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jListaanimali, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(67, 67, 67))
         );
@@ -147,7 +153,7 @@ public class JDirettore extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jAggiungiAnimale)
-                    .addComponent(jButton4))
+                    .addComponent(jRimuoviAnimale))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jAggiungiHabitat)
@@ -210,6 +216,12 @@ public class JDirettore extends javax.swing.JFrame {
           rimpers.setVisible(true);
     }//GEN-LAST:event_jRimuoviPersonaleActionPerformed
 
+    private void jRimuoviAnimaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRimuoviAnimaleActionPerformed
+       JRimuoviAnimale_Direttore riman = new JRimuoviAnimale_Direttore();
+       riman.setLocationRelativeTo(null);
+       riman.setVisible(true);
+    }//GEN-LAST:event_jRimuoviAnimaleActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -250,11 +262,11 @@ public class JDirettore extends javax.swing.JFrame {
     private javax.swing.JButton jAggiungiAnimale;
     private javax.swing.JButton jAggiungiHabitat;
     private javax.swing.JButton jAggiungiPersonale;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonLogout;
     private javax.swing.JButton jListaanimali;
+    private javax.swing.JButton jRimuoviAnimale;
     private javax.swing.JButton jRimuoviHabitat;
     private javax.swing.JButton jRimuoviPersonale;
     // End of variables declaration//GEN-END:variables

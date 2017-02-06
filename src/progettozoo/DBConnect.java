@@ -158,9 +158,7 @@ public class DBConnect {
             return "Errore";
         }
     }
-    
-    
-    public ArrayList<Habitat> selezionaHabitat()
+     public ArrayList<Habitat> selezionaHabitat()
     {
         ArrayList<Habitat> hablist = new ArrayList<Habitat>();
         String query = "Select * from gabbia ";
@@ -181,6 +179,28 @@ public class DBConnect {
             }   
            return hablist; 
     }
+    
+    public ArrayList<Animale> selezionaAnimali()
+    {
+        ArrayList<Animale> animlist = new ArrayList<Animale>();
+        String query = "Select * from animale ";
+
+           try{
+               Animale an;
+               rs = st.executeQuery(query);
+               
+               
+                while(rs.next())
+                {
+                    an = new Animale(rs.getString("animale.Nome"));
+                    animlist.add(an);
+                }
+            }catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+           return animlist; 
+    }
    
     
     
@@ -191,6 +211,29 @@ public class DBConnect {
         } catch (SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+     public void deleteAnimale(String Cod_anim)
+    {
+        try {
+            st.execute("DELETE FROM animale where Nome= '"+Cod_anim+"'");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public boolean animaleExists(String Cod_anim)
+    {
+        try{
+            String query = "Select * from animale where animale.Codice_Animale = '"+Cod_anim+"'";
+            rs = st.executeQuery(query);
+           
+            while(rs.next())  return true;
+            
+        }catch(Exception ex){
+            
+            JOptionPane.showMessageDialog(null, "Errore! L'animale è già esistente");
+            return false;
+        }
+        return false;
     }
      public boolean impiegatoExists(String Cod_imp)
     {
