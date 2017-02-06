@@ -379,5 +379,35 @@ public class DBConnect {
             }   
            return visitaTuttiList;   
         }
+    public ArrayList<Prodotto> listaProdotti()
+       {
+        ArrayList<Prodotto> listaProdotti = new ArrayList<Prodotto>();
+        String query = "Select * from prodotto";
 
+           try{
+               Prodotto pro;
+               rs = st.executeQuery(query);
+                while(rs.next())
+                {
+                    pro = new Prodotto(rs.getString("Codice_prodotto"),rs.getDouble("Prezzo"), rs.getInt("Giacenza"));
+                    listaProdotti.add(pro);
+                }
+            }catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+           return listaProdotti;   
+        }
+    
+    
+    public void addProdotto(String Codice_Prodotto, double Prezzo, int Giacenza){
+      try {
+         st.executeUpdate("INSERT INTO prodotto values ('"+Codice_Prodotto+"','"+Prezzo+"','"+Giacenza+"')");
+     }   catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+    
+    }
+    
+    
 }

@@ -152,7 +152,7 @@ DBConnect conn = new DBConnect();
             String ruolo = user_login.getRuolo();
             switch(ruolo){
                 case "Cassiere": {
-                    JCassiere cass = new JCassiere();
+                    JCassiere cass = new JCassiere(user_login);
                     cass.setLocationRelativeTo(null);
                     cass.setVisible(true);
                     break;
@@ -164,9 +164,9 @@ DBConnect conn = new DBConnect();
                     break;
                 }
                 case "Custode":{
-                    JCustode cust = new JCustode();
-                    cust.setLocationRelativeTo(null);
-                    cust.setVisible(true);
+                    JCustode cus = new JCustode();
+                    cus.setLocationRelativeTo(null);
+                    cus.setVisible(true);
                     break;
                 }
                 case "Direttore":{
