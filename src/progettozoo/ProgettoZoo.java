@@ -123,11 +123,7 @@ public Date ConvertStringToDate(String Data, String FORMAT)
                     
                     arrayDate.get(i).setDataVisita(tmp);
                     arrayDate.get(i).setVeterinario(tmp_cod);
-                    arrayDate.get(i).setNote(tmp_nv);
-                    
-                    System.out.println("dv: "+ arrayDate.get(i).getDV() + " cod: "+arrayDate.get(i).getVeterinario()+" note: "+  arrayDate.get(i).getNote());
-                    System.out.println("tmp: "+ tmp + " tmp_cod: "+tmp_cod+" tmp_nve: "+  tmp_nv +"\n\n");
-                    
+                    arrayDate.get(i).setNote(tmp_nv);   
                     
                 }
             }
