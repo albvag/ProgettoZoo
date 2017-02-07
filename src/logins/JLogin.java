@@ -164,7 +164,7 @@ DBConnect conn = new DBConnect();
                     break;
                 }
                 case "Custode":{
-                    JCustode cus = new JCustode();
+                    JCustode cus = new JCustode(user_login);
                     cus.setLocationRelativeTo(null);
                     cus.setVisible(true);
                     break;
@@ -207,7 +207,7 @@ DBConnect conn = new DBConnect();
             String ruolo = user_login.getRuolo();
             switch(ruolo){
                 case "Cassiere": {
-                    JCassiere cass = new JCassiere();
+                    JCassiere cass = new JCassiere(user_login);
                     cass.setLocationRelativeTo(null);
                     cass.setVisible(true);
                     break;
@@ -219,7 +219,7 @@ DBConnect conn = new DBConnect();
                     break;
                 }
                 case "Custode":{
-                    JCustode cust = new JCustode();
+                    JCustode cust = new JCustode(user_login);
                     cust.setLocationRelativeTo(null);
                     cust.setVisible(true);
                     break;
@@ -268,7 +268,7 @@ DBConnect conn = new DBConnect();
             String ruolo = user_login.getRuolo();
             switch(ruolo){
                 case "Cassiere": {
-                    JCassiere cass = new JCassiere();
+                    JCassiere cass = new JCassiere(user_login);
                     cass.setLocationRelativeTo(null);
                     cass.setVisible(true);
                     break;
@@ -280,7 +280,7 @@ DBConnect conn = new DBConnect();
                     break;
                 }
                 case "Custode":{
-                    JCustode cust = new JCustode();
+                    JCustode cust = new JCustode(user_login);
                     cust.setLocationRelativeTo(null);
                     cust.setVisible(true);
                     break;

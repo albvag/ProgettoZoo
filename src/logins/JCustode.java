@@ -5,6 +5,7 @@
  */
 package logins;
 
+import progettozoo.Utente;
 import schede.JPulizia_Custode;
 
 /**
@@ -13,12 +14,28 @@ import schede.JPulizia_Custode;
  */
 public class JCustode extends javax.swing.JFrame {
 
+    Utente user = new Utente();
+    
     /**
      * Creates new form JCustode
      */
     public JCustode() {
         initComponents();
     }
+    
+    
+    public JCustode(Utente user_login) {
+        initComponents();
+        initComponents();
+        setLocationRelativeTo(null);
+        setVisible(true);
+        setTitle("Benvenuto, "+user_login.getNome()+ " " + user_login.getCognome() );
+        
+        user.setUsername(user_login.getUsername());
+        user.setNome(user_login.getNome());
+        user.setCognome(user_login.getCognome());
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

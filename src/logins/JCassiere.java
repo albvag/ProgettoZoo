@@ -7,7 +7,6 @@ package logins;
 
 import java.util.ArrayList;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import progettozoo.DBConnect;
 import progettozoo.Prodotto;
@@ -21,9 +20,8 @@ public class JCassiere extends javax.swing.JFrame {
 
     JVeterinario v = new JVeterinario();
     Utente user = new Utente();
-    DBConnect conn = new DBConnect();
     /**
-     * Creates new form Cassiere
+     * Creates new form JCassiere
      */
     public JCassiere() {
         initComponents();
@@ -41,9 +39,9 @@ public class JCassiere extends javax.swing.JFrame {
         user.setNome(user_login.getNome());
         user.setCognome(user_login.getCognome());
         
-        String[] jTableAnimaliHeaders  = {"Nome","Prezzo","Disponibilità","Ordine"};
+        String[] jTableProdottiHeaders  = {"Nome","Prezzo","Disponibilità","Ordine"};
         v.selectmode(this.jTable1);   
-        v.creaTabella(this.jTable1, jTableAnimaliHeaders);
+        v.creaTabella(this.jTable1, jTableProdottiHeaders);
         this.jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         Show_Prodotti_In_JTable(this.jTable1);
         
