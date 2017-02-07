@@ -180,7 +180,7 @@ public class DBConnect {
            return hablist; 
     }
     
-    public ArrayList<Animale> selezionaAnimali()
+    public ArrayList<Animale> selezionaAnimaliSpecie()
     {
         ArrayList<Animale> animlist = new ArrayList<Animale>();
         String query = "Select * from animale ";
@@ -192,7 +192,7 @@ public class DBConnect {
                
                 while(rs.next())
                 {
-                    an = new Animale(rs.getString("animale.Nome"));
+                    an = new Animale(rs.getString("animale.Specie"));
                     animlist.add(an);
                 }
             }catch(Exception ex){
@@ -201,9 +201,137 @@ public class DBConnect {
             }   
            return animlist; 
     }
-   
-    
-    
+     public ArrayList<Animale> selezionaAnimaliNome(String specie)
+    {
+        ArrayList<Animale> speclist = new ArrayList<Animale>();
+        String query = "Select Nome from animale where animale.Specie= '"+specie+"' ";
+
+           try{
+               Animale an;
+               rs = st.executeQuery(query);
+               
+               
+                while(rs.next())
+                {   
+                    
+                    an = new Animale(rs.getString("animale.Nome"));
+                    speclist.add(an);
+                }
+            }catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+           return speclist; 
+    }
+     public ArrayList<Utente> selezionaPersonaleRuolo()
+    {
+        ArrayList<Utente> ruololist = new ArrayList<Utente>();
+        String query = "Select * from utente";
+
+           try{
+               Utente ut;
+               rs = st.executeQuery(query);
+               
+               
+                while(rs.next())
+                {   
+                    
+                    ut = new Utente(rs.getString("utente.Ruolo_Utente"));
+                    ruololist.add(ut);
+                }
+            }catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+           return ruololist; 
+    }
+      public ArrayList<Utente> selezionaPersonaleNome(String ruolo)
+    {
+        
+        ArrayList<Utente> ruololist = new ArrayList<Utente>();
+        String query = "Select * from impiegato JOIN utente on impiegato.Codice_Impiegato=utente.Codice_Utente where utente.Ruolo_Utente= '"+ruolo+"'";
+        
+           try{
+               Utente ut;
+               rs = st.executeQuery(query);
+           
+               
+                while(rs.next())
+                {   
+                    
+                    ut = new Utente(rs.getString("impiegato.Nome")+" "+rs.getString("impiegato.Cognome"));
+                    ruololist.add(ut);
+                }
+           }catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+              return ruololist; 
+    }
+      public String selezionacodiceImpiegato(String cognome)
+      {   
+          String codice="";
+          String query="SELECT Codice_Impiegato from impiegato where impiegato.Cognome= '"+cognome+"'";
+        try {
+            
+            rs=st.executeQuery(query);
+            while(rs.next())
+            {
+           codice=rs.getString("impiegato.Codice_Impiegato");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return codice;
+      }
+     public void deletePersonaleImpiegato(String  codice)
+    {
+        try {
+            st.execute("DELETE FROM impiegato where impiegato.Codice_Impiegato = '"+codice+"'");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+      public void deletePersonaleUtente(String  codice)
+    {
+        try {
+            st.execute("DELETE FROM utente where utente.Codice_Utente = '"+codice+"'");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void deleteDirettore(String  codice)
+    {
+        try {
+            st.execute("DELETE FROM direttore where direttore.Codice_Direttore = '"+codice+"'");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     public void deleteVeterinario(String  codice)
+    {
+        try {
+            st.execute("DELETE FROM veterinario where veterinario.Codice_Veterinario = '"+codice+"'");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+      public void deleteCustode(String  codice)
+    {
+        try {
+            st.execute("DELETE FROM custode where custode.Codice_Custode = '"+codice+"'");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        public void deleteCassiere(String  codice)
+    {
+        try {
+            st.execute("DELETE FROM cassiere where cassiere.Codice_Cassiere = '"+codice+"'");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public void deleteHabitat(String Cod_Gabbia)
     {
         try {

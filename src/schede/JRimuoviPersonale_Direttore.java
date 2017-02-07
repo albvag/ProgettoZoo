@@ -5,6 +5,12 @@
  */
 package schede;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import progettozoo.Animale;
+import progettozoo.DBConnect;
+import progettozoo.Utente;
+
 /**
  *
  * @author Roberto
@@ -16,6 +22,17 @@ public class JRimuoviPersonale_Direttore extends javax.swing.JFrame {
      */
     public JRimuoviPersonale_Direttore() {
         initComponents();
+         DBConnect conn =new DBConnect();
+         
+        ArrayList<Utente> list = conn.selezionaPersonaleRuolo();
+        
+        
+        for(int i = 0; i < list.size(); i++)
+        {
+            
+            this.jselruolo.addItem(list.get(i).getRuolo());
+           
+        }
     }
 
     /**
@@ -28,35 +45,144 @@ public class JRimuoviPersonale_Direttore extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jselruolo = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jselnome = new javax.swing.JComboBox<>();
+        jRimuovi = new javax.swing.JButton();
+        jChiudi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("                       SELEZIONA IL NOMINATIVO DA RIMUOVERE");
+
+        jselruolo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jselruoloActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("SELEZIONA IL RUOLO");
+
+        jLabel3.setText("SELEZIONA IL NOME:");
+
+        jselnome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jselnomeActionPerformed(evt);
+            }
+        });
+
+        jRimuovi.setText("Rimuovi");
+        jRimuovi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRimuoviActionPerformed(evt);
+            }
+        });
+
+        jChiudi.setText("Chiudi");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jselnome, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jselruolo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE))
                 .addContainerGap(26, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jRimuovi)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jChiudi)
+                .addGap(68, 68, 68))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addGap(9, 9, 9)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jselruolo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jselnome, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRimuovi)
+                    .addComponent(jChiudi))
+                .addGap(39, 39, 39))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jselruoloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jselruoloActionPerformed
+             DBConnect conn=new DBConnect();
+       String ruolo=this.jselruolo.getSelectedItem().toString();
+       ArrayList<Utente> lista= new ArrayList<Utente>();
+       
+       lista=conn.selezionaPersonaleNome(ruolo);  
+      if(!lista.isEmpty())
+       {  this.jselnome.removeAllItems();
+     for(int j = 0; j < lista.size(); j++)
+        {
+            
+            this.jselnome.addItem(lista.get(j).getNome());
+            
+            
+        }} // TODO add your handling code here:
+    }//GEN-LAST:event_jselruoloActionPerformed
+
+    private void jselnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jselnomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jselnomeActionPerformed
+
+    private void jRimuoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRimuoviActionPerformed
+        DBConnect conn=new DBConnect();
+        String nominativo=this.jselnome.getSelectedItem().toString();
+        String ruolo=this.jselruolo.getSelectedItem().toString();
+        
+        String nome=nominativo.intern();
+        
+       
+        String [] nom=nome.split(" ");
+        int no=nom.length-1;
+        String n=nom[no];  
+         String cod=conn.selezionacodiceImpiegato(n);
+         conn.deletePersonaleImpiegato(cod);
+         conn.deletePersonaleUtente(cod);
+         JOptionPane.showMessageDialog(null, "L'UTENTE SELEZIONATO E' STATO RIMOSSO");
+         setVisible(false);
+          if(null == this.jselruolo.getSelectedItem().toString()) {
+              JOptionPane.showMessageDialog(null, "ERRORE");
+        } else switch (this.jselruolo.getSelectedItem().toString()) {
+            case "Direttore":
+                conn.deleteDirettore(cod);
+                break;
+        //System.out.println(this.jselruolo.getSelectedItem().toString());
+            case "Veterinario":
+                conn.deleteVeterinario(cod);
+                break;
+            case "Custode":
+                conn.deleteCustode(cod);
+                break;
+            case "Cassiere":
+                conn.deleteCassiere(cod);
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "ERRORE");
+                break;
+        }
+         
+    }//GEN-LAST:event_jRimuoviActionPerformed
 
     /**
      * @param args the command line arguments
@@ -94,7 +220,12 @@ public class JRimuoviPersonale_Direttore extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton jChiudi;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton jRimuovi;
+    private javax.swing.JComboBox<String> jselnome;
+    private javax.swing.JComboBox<String> jselruolo;
     // End of variables declaration//GEN-END:variables
 }

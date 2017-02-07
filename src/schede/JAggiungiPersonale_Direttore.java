@@ -446,7 +446,7 @@ if(rpass==false)
 else
     errconfpass.setText("Caratteri validi");
  DBConnect conn =new DBConnect();
-   String Cod_pers=(this.jNomePersonale.getText());
+   String Cod_pers=(this.jAggiungiUser.getText());
    int stato=1;
    ProgettoZoo pz= new ProgettoZoo();
   

@@ -6,6 +6,7 @@
 package schede;
 
 import java.util.ArrayList;
+import java.util.function.UnaryOperator;
 import javax.swing.JOptionPane;
 import progettozoo.Animale;
 import progettozoo.DBConnect;
@@ -23,14 +24,18 @@ public class JRimuoviAnimale_Direttore extends javax.swing.JFrame {
     public JRimuoviAnimale_Direttore() {
         initComponents();
          DBConnect conn =new DBConnect();
-        ArrayList<Animale> list = conn.selezionaAnimali();
+         
+        ArrayList<Animale> list = conn.selezionaAnimaliSpecie();
+        
         
         for(int i = 0; i < list.size(); i++)
         {
             
-            this.jrimuovianimale.addItem(list.get(i).getNome());
+            this.jselspecie.addItem(list.get(i).getSpecie());
            
         }
+        
+       
     }
 
     /**
@@ -43,13 +48,22 @@ public class JRimuoviAnimale_Direttore extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jrimuovianimale = new javax.swing.JComboBox<>();
+        jselspecie = new javax.swing.JComboBox<>();
         jRimuovi = new javax.swing.JButton();
         jChiudi = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jselanim = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("                                  SELEZIONA L'ANIMALE DA RIMUOVERE");
+
+        jselspecie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jselspecieActionPerformed(evt);
+            }
+        });
 
         jRimuovi.setText("Rimuovi");
         jRimuovi.addActionListener(new java.awt.event.ActionListener() {
@@ -65,31 +79,59 @@ public class JRimuoviAnimale_Direttore extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("SELEZIONA LA SPECIE:");
+
+        jLabel3.setText("SELEZIONA ANIMALE:");
+
+        jselanim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jselanimActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                    .addComponent(jrimuovianimale, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(jRimuovi)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
                 .addComponent(jChiudi)
                 .addGap(68, 68, 68))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jselspecie, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jselanim, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addComponent(jrimuovianimale, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jselspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jselanim, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRimuovi)
                     .addComponent(jChiudi))
@@ -105,11 +147,38 @@ public class JRimuoviAnimale_Direttore extends javax.swing.JFrame {
 
     private void jRimuoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRimuoviActionPerformed
           DBConnect conn= new DBConnect();
-          String Cod_anim=this.jrimuovianimale.getSelectedItem().toString();
+          String Cod_anim=this.jselanim.getSelectedItem().toString();
           conn.deleteAnimale(Cod_anim);
           JOptionPane.showMessageDialog(null, "L'ANIMALE E' STATO RIMOSSO CORRETTAMENTE");
           setVisible(false);
     }//GEN-LAST:event_jRimuoviActionPerformed
+
+    private void jselspecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jselspecieActionPerformed
+          DBConnect conn=new DBConnect();
+       String specie=this.jselspecie.getSelectedItem().toString();
+       ArrayList<Animale> lista= new ArrayList<Animale>();
+       
+       lista=conn.selezionaAnimaliNome(specie);
+       if(!lista.isEmpty())
+       {  this.jselanim.removeAllItems();
+     for(int j = 0; j < lista.size(); j++)
+        {
+            
+            this.jselanim.addItem(lista.get(j).getNome());
+            
+            
+        }}
+     
+     
+       
+        
+      // TODO add your handling code here:
+    }//GEN-LAST:event_jselspecieActionPerformed
+
+    private void jselanimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jselanimActionPerformed
+    
+     
+    }//GEN-LAST:event_jselanimActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,7 +218,10 @@ public class JRimuoviAnimale_Direttore extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jChiudi;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton jRimuovi;
-    private javax.swing.JComboBox<String> jrimuovianimale;
+    private javax.swing.JComboBox<String> jselanim;
+    private javax.swing.JComboBox<String> jselspecie;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,6 +23,12 @@ public class Utente {
         this.Indirizzo = "";
         this.Telefono = "";
     }
+      public Utente(String cod)
+      {
+       this.Ruolo=cod;
+       this.Nome=cod;
+       this.Cognome=cod;
+      }
     
     public Utente(String Username, String Password, String Nome, String Cognome, String Ruolo, String Residenza, String Indirizzo, String Telefono){
         this.Username = Username;
