@@ -14,9 +14,11 @@ import progettozoo.Utente;
 import schede.JAggiungiAnimale_Direttore;
 import schede.JAggiungiHabitat_Direttore;
 import schede.JAggiungiPersonale_Direttore;
+import schede.JAggiungiProdotto_Direttore;
 import schede.JRimuoviAnimale_Direttore;
 import schede.JRimuoviHabitat_Direttore;
 import schede.JRimuoviPersonale_Direttore;
+import schede.JRimuoviProdotto_Direttore;
 import schede.jListaAnimali_Direttore;
 
 /**
@@ -54,6 +56,8 @@ public class JDirettore extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jListaanimali = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        jAggiungiProdotto = new javax.swing.JButton();
+        jRimuoviProdotto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Direttore");
@@ -119,6 +123,20 @@ public class JDirettore extends javax.swing.JFrame {
 
         jButton9.setText("Presta Animale");
 
+        jAggiungiProdotto.setText("Aggiungi Prodotto");
+        jAggiungiProdotto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAggiungiProdottoActionPerformed(evt);
+            }
+        });
+
+        jRimuoviProdotto.setText("Rimuovi Prodotto");
+        jRimuoviProdotto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRimuoviProdottoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -130,6 +148,7 @@ public class JDirettore extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jAggiungiProdotto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
                     .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
                     .addComponent(jAggiungiAnimale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -140,7 +159,8 @@ public class JDirettore extends javax.swing.JFrame {
                     .addComponent(jRimuoviPersonale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jRimuoviHabitat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jRimuoviAnimale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jListaanimali, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jListaanimali, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jRimuoviProdotto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(67, 67, 67))
         );
         layout.setVerticalGroup(
@@ -162,9 +182,13 @@ public class JDirettore extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton7)
                     .addComponent(jListaanimali))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jAggiungiProdotto)
+                    .addComponent(jRimuoviProdotto))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jButton9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGap(13, 13, 13)
                 .addComponent(jButtonLogout)
                 .addGap(30, 30, 30))
         );
@@ -222,6 +246,18 @@ public class JDirettore extends javax.swing.JFrame {
        riman.setVisible(true);
     }//GEN-LAST:event_jRimuoviAnimaleActionPerformed
 
+    private void jAggiungiProdottoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAggiungiProdottoActionPerformed
+      JAggiungiProdotto_Direttore aggpro= new JAggiungiProdotto_Direttore();
+      aggpro.setLocationRelativeTo(null);
+      aggpro.setVisible(true);
+    }//GEN-LAST:event_jAggiungiProdottoActionPerformed
+
+    private void jRimuoviProdottoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRimuoviProdottoActionPerformed
+      JRimuoviProdotto_Direttore rimpro= new JRimuoviProdotto_Direttore();
+      rimpro.setLocationRelativeTo(null);
+      rimpro.setVisible(true);
+    }//GEN-LAST:event_jRimuoviProdottoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -262,6 +298,7 @@ public class JDirettore extends javax.swing.JFrame {
     private javax.swing.JButton jAggiungiAnimale;
     private javax.swing.JButton jAggiungiHabitat;
     private javax.swing.JButton jAggiungiPersonale;
+    private javax.swing.JButton jAggiungiProdotto;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonLogout;
@@ -269,5 +306,6 @@ public class JDirettore extends javax.swing.JFrame {
     private javax.swing.JButton jRimuoviAnimale;
     private javax.swing.JButton jRimuoviHabitat;
     private javax.swing.JButton jRimuoviPersonale;
+    private javax.swing.JButton jRimuoviProdotto;
     // End of variables declaration//GEN-END:variables
 }

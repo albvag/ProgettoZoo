@@ -158,7 +158,7 @@ public class DBConnect {
             return "Errore";
         }
     }
-     public ArrayList<Habitat> selezionaHabitat()
+      public ArrayList<Habitat> selezionaHabitat()
     {
         ArrayList<Habitat> hablist = new ArrayList<Habitat>();
         String query = "Select * from gabbia ";
@@ -178,6 +178,27 @@ public class DBConnect {
                 System.out.println(ex);
             }   
            return hablist; 
+    }
+     public ArrayList<Prodotto> selezionaProdotto()
+    {
+        ArrayList<Prodotto> prolist = new ArrayList<Prodotto>();
+        String query = "Select * from prodotto ";
+
+           try{
+               Prodotto pro;
+               rs = st.executeQuery(query);
+               
+               
+                while(rs.next())
+                {
+                    pro = new Prodotto(rs.getString("prodotto.Codice_Prodotto"),rs.getDouble("prodotto.prezzo"),rs.getInt("prodotto.giacenza"));
+                    prolist.add(pro);
+                }
+            }catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+           return prolist; 
     }
     
     public ArrayList<Animale> selezionaAnimaliSpecie()
@@ -336,6 +357,14 @@ public class DBConnect {
     {
         try {
             st.execute("DELETE FROM gabbia where Codice_Gabbia= '"+Cod_Gabbia+"'");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+      public void deleteProdotto(String codice)
+    {
+        try {
+            st.execute("DELETE FROM prodotto where Codice_Prodotto= '"+codice+"'");
         } catch (SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }

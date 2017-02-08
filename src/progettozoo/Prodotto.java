@@ -13,13 +13,14 @@ public class Prodotto {
     private String tipo;
     private final double prezzo;
     private int giacenza;
-    
+   
+  
     public Prodotto(String tipo,double prezzo, int giacenza ){
         this.prezzo = prezzo;
         this.tipo = tipo;
         this.giacenza = giacenza;
     }
-    
+   
     public double getPrezzo(){
     return this.prezzo;
     }

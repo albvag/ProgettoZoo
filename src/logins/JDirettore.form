@@ -33,6 +33,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="jAggiungiProdotto" max="32767" attributes="0"/>
                   <Component id="jButton9" pref="127" max="32767" attributes="0"/>
                   <Component id="jButton7" pref="127" max="32767" attributes="0"/>
                   <Component id="jAggiungiAnimale" max="32767" attributes="0"/>
@@ -45,6 +46,7 @@
                   <Component id="jRimuoviHabitat" alignment="0" max="32767" attributes="0"/>
                   <Component id="jRimuoviAnimale" alignment="0" max="32767" attributes="0"/>
                   <Component id="jListaanimali" max="32767" attributes="0"/>
+                  <Component id="jRimuoviProdotto" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
           </Group>
@@ -73,9 +75,14 @@
                   <Component id="jButton7" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jListaanimali" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jAggiungiProdotto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jRimuoviProdotto" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="18" max="32767" attributes="0"/>
               <Component id="jButton9" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="47" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
               <Component id="jButtonLogout" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
           </Group>
@@ -156,6 +163,22 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Presta Animale"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jAggiungiProdotto">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Aggiungi Prodotto"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jAggiungiProdottoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jRimuoviProdotto">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Rimuovi Prodotto"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRimuoviProdottoActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
