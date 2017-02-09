@@ -79,6 +79,11 @@ public class JAggiungiProdotto_Direttore extends javax.swing.JFrame {
         });
 
         jChiudi.setText("Chiudi");
+        jChiudi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jChiudiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -173,6 +178,10 @@ public class JAggiungiProdotto_Direttore extends javax.swing.JFrame {
       
       
     }//GEN-LAST:event_jSalvaActionPerformed
+
+    private void jChiudiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChiudiActionPerformed
+       setVisible(false);
+    }//GEN-LAST:event_jChiudiActionPerformed
 
     /**
      * @param args the command line arguments

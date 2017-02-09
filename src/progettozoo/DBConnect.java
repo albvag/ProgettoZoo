@@ -54,10 +54,10 @@ public class DBConnect {
         }
     }
      //query per l'inserimento del personale nel DB
-    public void insertImpiegato(String user,String nome,String cognome,String residenza,String indirizzo,String telefono)
+    public void insertImpiegato(String user,String nome,String cognome,Date data,String residenza,String indirizzo,String telefono)
     {
      try {
-         st.executeUpdate("INSERT INTO impiegato values ('"+user+"','"+nome+"','"+cognome+"','"+residenza+"','"+indirizzo+"','"+telefono+"')");
+         st.executeUpdate("INSERT INTO impiegato values ('"+user+"','"+nome+"','"+cognome+"','"+data+"','"+residenza+"','"+indirizzo+"','"+telefono+"')");
      }   catch (SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -161,7 +161,7 @@ public class DBConnect {
       public ArrayList<Habitat> selezionaHabitat()
     {
         ArrayList<Habitat> hablist = new ArrayList<Habitat>();
-        String query = "Select * from gabbia ";
+        String query = "Select distinct Codice_Gabbia from gabbia ";
 
            try{
                Habitat hab;
@@ -204,7 +204,7 @@ public class DBConnect {
     public ArrayList<Animale> selezionaAnimaliSpecie()
     {
         ArrayList<Animale> animlist = new ArrayList<Animale>();
-        String query = "Select * from animale ";
+        String query = "Select distinct Specie from animale ";
 
            try{
                Animale an;
@@ -247,7 +247,7 @@ public class DBConnect {
      public ArrayList<Utente> selezionaPersonaleRuolo()
     {
         ArrayList<Utente> ruololist = new ArrayList<Utente>();
-        String query = "Select * from utente";
+        String query = "SELECT DISTINCT Ruolo_Utente from utente";
 
            try{
                Utente ut;

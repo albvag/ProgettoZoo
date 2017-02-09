@@ -107,10 +107,11 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
        if(conn.habitatExists(habitat))
        {
             JOptionPane.showMessageDialog(null, "Errore! L'Habitat è già esistente");
-       }
+       }else{
        conn.insertHabitat(habitat);
     JOptionPane.showMessageDialog(null, "HABITAT INSERITO CORRETTAMENTE");
-    setVisible(false);// TODO add your handling code here:
+    setVisible(false);
+    }
     }//GEN-LAST:event_jSalvaActionPerformed
 
     /**

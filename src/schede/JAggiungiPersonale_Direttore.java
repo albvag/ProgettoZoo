@@ -66,6 +66,7 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
         errconfpass = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jDatanascita = new javax.swing.JTextField();
+        erroredata = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,7 +81,7 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
         jLabel4.setText("            Telefono");
 
         jNomePersonale.setForeground(new java.awt.Color(153, 153, 153));
-        jNomePersonale.setText("Campo formato da sole lettere");
+        jNomePersonale.setText("Es.Mario");
         jNomePersonale.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jNomePersonaleMouseClicked(evt);
@@ -93,7 +94,7 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
         });
 
         jAggiungiCognome.setForeground(new java.awt.Color(153, 153, 153));
-        jAggiungiCognome.setText("Campo formato da sole lettere");
+        jAggiungiCognome.setText("Es.Rossi");
         jAggiungiCognome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jAggiungiCognomeMouseClicked(evt);
@@ -106,7 +107,7 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
         });
 
         jAggiungiResidenza.setForeground(new java.awt.Color(153, 153, 153));
-        jAggiungiResidenza.setText("Campo formato da sole lettere");
+        jAggiungiResidenza.setText("Es.Roma");
         jAggiungiResidenza.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jAggiungiResidenzaMouseClicked(evt);
@@ -132,7 +133,7 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
         });
 
         jAggiungiNumeroTelefono.setForeground(new java.awt.Color(153, 153, 153));
-        jAggiungiNumeroTelefono.setText("Campo formato da soli numeri");
+        jAggiungiNumeroTelefono.setText("Es.0147852369");
         jAggiungiNumeroTelefono.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jAggiungiNumeroTelefonoMouseClicked(evt);
@@ -206,6 +207,11 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
 
         jDatanascita.setForeground(new java.awt.Color(153, 153, 153));
         jDatanascita.setText("Es.22/01/1995");
+        jDatanascita.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jDatanascitaMouseClicked(evt);
+            }
+        });
         jDatanascita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jDatanascitaActionPerformed(evt);
@@ -239,7 +245,8 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
                             .addComponent(jAggiungiIndirizzo, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jNomePersonale, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jDatanascita, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(erroreresidenza, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(erroreresidenza, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(erroredata, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
@@ -284,12 +291,12 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jNomePersonale)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jAggiungiNumeroTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jAggiungiNumeroTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jNomePersonale))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -300,8 +307,10 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jAggiungiUser, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(errorepass, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(errorepass, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(erroredata, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jAggiungiPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -371,7 +380,7 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
        String nome= this.jNomePersonale.getText();
        String cognome= this.jAggiungiCognome.getText();
-       //String data=this.jDatanascita.getText();
+       String data=this.jDatanascita.getText();
        String residenza =this.jAggiungiResidenza.getText();
        String indirizzo= this.jAggiungiIndirizzo.getText();
        String telefono= this.jAggiungiNumeroTelefono.getText();
@@ -385,7 +394,7 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
       
           String formnome = "[a-zA-Z]{1,}";
           String formcog = "[a-zA-Z]{1,}";
-        //  String fordata="(0[1-9]|1[0-9]|2[0-9]|3[01])[- /.](0[1-9]|1{2})[-/.](19|20)[0-9]{2}";
+          String fordata="(0[1-9]|1[0-9]|2[0-9]|3[01])[- /.](0[1-9]|1{2})[-/.](19|20)[0-9]{2}";
           String formres = "[a-zA-Z]{1,}";
           String formind = "[a-zA-Z ]{1,}+[ 0-9]{1,}";
           //Numero di telefono formato da soli numeri,minimo 1 e massimo 10
@@ -402,10 +411,10 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
            Pattern pattern4 = Pattern.compile(formtel);
            Pattern pattern5 = Pattern.compile(formuser);
            Pattern pattern6 = Pattern.compile(formpass);
-          // Pattern pattern7 = Pattern.compile(fordata);
+           Pattern pattern7 = Pattern.compile(fordata);
 boolean nom=check(formnome,nome);
 boolean cog=check(formcog,cognome);
-//boolean dat=check(fordata,data);
+boolean dat=check(fordata,data);
 boolean res=check(formres,residenza);
 boolean ind=check(formind,indirizzo);
 boolean tel=check(formtel,telefono);
@@ -421,6 +430,10 @@ if(cog==false)
     errorecognome.setText("Caratteri non validi");
 else
     errorecognome.setText("Caratteri validi");
+if(dat==false)
+    erroredata.setText("Caratteri non validi");
+else
+    erroredata.setText("Caratteri validi");
 if(res==false)
     erroreresidenza.setText("Caratteri non validi");
 else
@@ -450,11 +463,13 @@ else
    int stato=1;
    ProgettoZoo pz= new ProgettoZoo();
   
-  // Date d= pz.ConvertStringToDate(data, fordata);
-  // java.sql.Date sqlDate = new java.sql.Date(d.getTime());
-  if(nom==true && cog==true && res==true && ind==true && tel==true && user==true && pass==true && rpass==true )
-  { conn.insertImpiegato(username,nome, cognome, residenza, indirizzo, telefono);
-  conn.inserisciUtente(username, password, stato, ruolo);
+  
+  if(nom==true && cog==true && dat==true && res==true && ind==true && tel==true && user==true && pass==true && rpass==true )
+  {   Date d= pz.ConvertStringToDate(data, "dd/MM/yyyy");
+      java.sql.Date sqlDate = new java.sql.Date(d.getTime());
+      conn.insertImpiegato(username,nome, cognome,sqlDate, residenza, indirizzo, telefono);
+      conn.inserisciUtente(username, password, stato, ruolo);
+ 
   JOptionPane.showMessageDialog(null, "UTENTE INSERITO CORRETTAMENTE");
     setVisible(false);
   if(this.jRuolo.getSelectedItem().toString()=="Direttore")
@@ -466,12 +481,7 @@ else
   else if(this.jRuolo.getSelectedItem().toString()=="Cassiere")
       conn.insertCassiere(username);
   }else{JOptionPane.showMessageDialog(null, "ALCUNI CAMPI NON SONO INSERITI CORRETTAMENTE");}
-
- 
-
-    
        
-        
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jAggiungiResidenzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAggiungiResidenzaActionPerformed
@@ -503,7 +513,7 @@ else
     }//GEN-LAST:event_jRuoloActionPerformed
 
     private void jNomePersonaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNomePersonaleMouseClicked
-         if(jNomePersonale.getText().equals("Campo formato da sole lettere"))
+         if(jNomePersonale.getText().equals("Es.Mario"))
          { jNomePersonale.setText("");
          jNomePersonale.setForeground(Color.black);
          }
@@ -512,7 +522,7 @@ else
     }//GEN-LAST:event_jNomePersonaleMouseClicked
 
     private void jAggiungiCognomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jAggiungiCognomeMouseClicked
-        if(jAggiungiCognome.getText().equals("Campo formato da sole lettere"))
+        if(jAggiungiCognome.getText().equals("Es.Rossi"))
         {jAggiungiCognome.setText("");
         jAggiungiCognome.setForeground(Color.black);
         }
@@ -521,7 +531,7 @@ else
     }//GEN-LAST:event_jAggiungiCognomeMouseClicked
 
     private void jAggiungiResidenzaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jAggiungiResidenzaMouseClicked
-           if(jAggiungiResidenza.getText().equals("Campo formato da sole lettere"))
+           if(jAggiungiResidenza.getText().equals("Es.Roma"))
            {jAggiungiResidenza.setText("");
             jAggiungiResidenza.setForeground(Color.black);
            }
@@ -539,7 +549,7 @@ else
     }//GEN-LAST:event_jAggiungiIndirizzoMouseClicked
 
     private void jAggiungiNumeroTelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jAggiungiNumeroTelefonoMouseClicked
-         if(jAggiungiNumeroTelefono.getText().equals("Campo formato da soli numeri"))
+         if(jAggiungiNumeroTelefono.getText().equals("Es.0147852369"))
          {jAggiungiNumeroTelefono.setText("");
           jAggiungiNumeroTelefono.setForeground(Color.black);
          }
@@ -559,6 +569,15 @@ else
     private void jDatanascitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDatanascitaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jDatanascitaActionPerformed
+
+    private void jDatanascitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDatanascitaMouseClicked
+         if(jDatanascita.getText().equals("Es.22/01/1995"))
+       {jDatanascita.setText("");
+        jDatanascita.setForeground(Color.black);
+       }
+         else
+            jDatanascita.getText();
+    }//GEN-LAST:event_jDatanascitaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -599,6 +618,7 @@ else
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel errconfpass;
     private javax.swing.JLabel errorecognome;
+    private javax.swing.JLabel erroredata;
     private javax.swing.JLabel erroreindirizzo;
     private javax.swing.JLabel errorenome;
     private javax.swing.JLabel errorepass;

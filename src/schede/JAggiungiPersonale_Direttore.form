@@ -50,6 +50,7 @@
                           <Component id="jNomePersonale" alignment="0" max="32767" attributes="0"/>
                           <Component id="jDatanascita" alignment="0" min="-2" pref="448" max="-2" attributes="0"/>
                           <Component id="erroreresidenza" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                          <Component id="erroredata" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -111,12 +112,12 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel6" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="jNomePersonale" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                           <Component id="jAggiungiNumeroTelefono" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="jNomePersonale" alignment="3" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -131,8 +132,11 @@
                           <Component id="jAggiungiUser" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="errorepass" min="-2" pref="10" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="errorepass" min="-2" pref="10" max="-2" attributes="0"/>
+                          <Component id="erroredata" min="-2" pref="10" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel7" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                           <Component id="jAggiungiPassword" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
@@ -212,7 +216,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="99" green="99" red="99" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Campo formato da sole lettere"/>
+        <Property name="text" type="java.lang.String" value="Es.Mario"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jNomePersonaleMouseClicked"/>
@@ -224,7 +228,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="99" green="99" red="99" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Campo formato da sole lettere"/>
+        <Property name="text" type="java.lang.String" value="Es.Rossi"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jAggiungiCognomeMouseClicked"/>
@@ -236,7 +240,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="99" green="99" red="99" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Campo formato da sole lettere"/>
+        <Property name="text" type="java.lang.String" value="Es.Roma"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jAggiungiResidenzaMouseClicked"/>
@@ -260,7 +264,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="99" green="99" red="99" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Campo formato da soli numeri"/>
+        <Property name="text" type="java.lang.String" value="Es.0147852369"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jAggiungiNumeroTelefonoMouseClicked"/>
@@ -382,8 +386,11 @@
         <Property name="text" type="java.lang.String" value="Es.22/01/1995"/>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jDatanascitaMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jDatanascitaActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="erroredata">
     </Component>
   </SubComponents>
 </Form>

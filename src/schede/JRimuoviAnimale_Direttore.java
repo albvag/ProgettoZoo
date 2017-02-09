@@ -150,6 +150,9 @@ public class JRimuoviAnimale_Direttore extends javax.swing.JFrame {
           String Cod_anim=this.jselanim.getSelectedItem().toString();
           conn.deleteAnimale(Cod_anim);
           JOptionPane.showMessageDialog(null, "L'ANIMALE E' STATO RIMOSSO CORRETTAMENTE");
+         jListaAnimali_Direttore lis = new jListaAnimali_Direttore();
+         lis.setLocationRelativeTo(null);
+                   lis.setVisible(true);
           setVisible(false);
     }//GEN-LAST:event_jRimuoviActionPerformed
 
