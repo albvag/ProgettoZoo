@@ -34,7 +34,27 @@ public class DBConnect {
             System.out.printf("Errore "+ex);
         };
     }
-    
+    public int countSpecie(String specie)
+    {
+        int conta=0;
+        String query="SELECT Specie from animale where animale.Specie= '"+specie+"'";
+         try{
+               
+               rs = st.executeQuery(query);
+               
+               
+                while(rs.next())
+                {
+                    rs.getString("animale.Specie");
+                    conta++;
+                    
+                }
+            }catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+           return conta+1; 
+    }
     
     public void insertHabitat(String Cod_Gabbia)
     {

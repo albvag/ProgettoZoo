@@ -281,7 +281,10 @@ else
 
     
    DBConnect conn =new DBConnect();
-   String Cod_anim=(this.jAggiungispecie.getText());
+   
+   int cod=conn.countSpecie(specie);
+   
+   String Cod_anim=(this.jAggiungispecie.getText()+cod);
    
    ProgettoZoo pz= new ProgettoZoo();
    Date d= pz.ConvertStringToDate(data, fordata);
