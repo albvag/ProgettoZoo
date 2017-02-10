@@ -257,7 +257,7 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
          String formnome = "[a-zA-Z]{1,}";
          String forspecie ="[a-zA-Z]{1,}";
          //inserire la data in formato dd/mm/aaaa (giorno/mese/anno)
-         String fordata ="(0[1-9]|1[0-9]|2[0-9]|3[01])[- /.](0[1-9]|1{2})[-/.](19|20)[0-9]{2}";
+         String fordata ="(0[1-9]|1[0-9]|2[0-9]|3[01])[- /.](0[1-9]|1[0-2])[-/.](19|20)[0-9]{2}";
           Pattern pattern = Pattern.compile(formnome);
           Pattern pattern1 = Pattern.compile(forspecie);
           Pattern pattern2 = Pattern.compile(fordata);
@@ -307,6 +307,9 @@ else
     {
     conn.insertAnimale(Cod_anim, nome,specie,genere , sqlDate, salute,nostro, presente);
     JOptionPane.showMessageDialog(null, "ANIMALE INSERITO CORRETTAMENTE");
+     jListaAnimali_Direttore lis = new jListaAnimali_Direttore();
+     lis.setLocationRelativeTo(null);
+     lis.setVisible(true);
     setVisible(false);
     }else{JOptionPane.showMessageDialog(null, "ALCUNI CAMPI NON SONO INSERITI CORRETTAMENTE");}
     }//GEN-LAST:event_jButtonSaveActionPerformed

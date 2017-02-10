@@ -394,7 +394,7 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
       
           String formnome = "[a-zA-Z]{1,}";
           String formcog = "[a-zA-Z]{1,}";
-          String fordata="(0[1-9]|1[0-9]|2[0-9]|3[01])[- /.](0[1-9]|1{2})[-/.](19|20)[0-9]{2}";
+          String fordata="(0[1-9]|1[0-9]|2[0-9]|3[01])[- /.](0[1-9]|1[0-2])[-/.](19|20)[0-9]{2}";
           String formres = "[a-zA-Z]{1,}";
           String formind = "[a-zA-Z ]{1,}+[ 0-9]{1,}";
           //Numero di telefono formato da soli numeri,minimo 1 e massimo 10
