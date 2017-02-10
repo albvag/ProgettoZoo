@@ -251,7 +251,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Lista personale"/>
+        <Property name="text" type="java.lang.String" value="Lista Personale"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">

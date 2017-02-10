@@ -154,7 +154,7 @@ public class JDirettore extends javax.swing.JFrame {
 
         jButton1.setText("Lista Habitat");
 
-        jButton2.setText("Lista personale");
+        jButton2.setText("Lista Personale");
 
         jButton3.setText("Lista Prodotti");
 
