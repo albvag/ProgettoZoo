@@ -36,12 +36,7 @@ public class Animale {
         this.nostro = true;
         this.presente = true;
     }
-    public Animale(String spe)
-    {
-        this.specie=spe;
-        this.nome=spe;
-     
-    }
+  
     
     public Animale(String ID, String Nome, String Specie, String Sesso, String Habitat, Date Data_Nascita, boolean Salute, boolean Nostro, boolean Presente)
     {

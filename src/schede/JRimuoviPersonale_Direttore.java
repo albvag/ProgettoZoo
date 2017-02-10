@@ -139,7 +139,7 @@ public class JRimuoviPersonale_Direttore extends javax.swing.JFrame {
      for(int j = 0; j < lista.size(); j++)
         {
             
-            this.jselnome.addItem(lista.get(j).getNome());
+            this.jselnome.addItem(lista.get(j).getNome()+" "+lista.get(j).getCognome());
             
             
         }} // TODO add your handling code here:

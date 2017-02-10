@@ -233,7 +233,8 @@ public class DBConnect {
                
                 while(rs.next())
                 {
-                    an = new Animale(rs.getString("animale.Specie"));
+                    an = new Animale();
+                    an.setSpecie(rs.getString("animale.Specie"));
                     animlist.add(an);
                 }
             }catch(Exception ex){
@@ -255,7 +256,8 @@ public class DBConnect {
                 while(rs.next())
                 {   
                     
-                    an = new Animale(rs.getString("animale.Nome"));
+                    an = new Animale();
+                    an.setNome(rs.getString("animale.Nome"));
                     speclist.add(an);
                 }
             }catch(Exception ex){
@@ -277,7 +279,10 @@ public class DBConnect {
                 while(rs.next())
                 {   
                     
-                    ut = new Utente(rs.getString("utente.Ruolo_Utente"));
+                    ut = new Utente();
+                    ut.setRuolo(rs.getString("utente.Ruolo_Utente"));
+                    
+                    
                     ruololist.add(ut);
                 }
             }catch(Exception ex){
@@ -300,7 +305,9 @@ public class DBConnect {
                 while(rs.next())
                 {   
                     
-                    ut = new Utente(rs.getString("impiegato.Nome")+" "+rs.getString("impiegato.Cognome"));
+                    ut = new Utente();
+                    ut.setNome(rs.getString("impiegato.Nome"));
+                    ut.setCognome(rs.getString("impiegato.Cognome"));
                     ruololist.add(ut);
                 }
            }catch(Exception ex){
@@ -318,7 +325,7 @@ public class DBConnect {
             rs=st.executeQuery(query);
             while(rs.next())
             {
-           codice=rs.getString("impiegato.Codice_Impiegato");
+              codice=rs.getString("impiegato.Codice_Impiegato");
             }
         } catch (SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
@@ -476,11 +483,12 @@ public class DBConnect {
               String password = utente.setPassword(rs.getString("utente.Password"));
                String nome = utente.setNome(rs.getString("impiegato.Nome"));
                String cognome = utente.setCognome(rs.getString("impiegato.Cognome"));
+               Date datanascita=(Date) utente.setData(rs.getDate("impiegato.DataNascita"));
                String ruolo = utente.setRuolo(rs.getString("utente.Ruolo_Utente"));
-               String residenza = "";
-               String indirizzo = "";
-               String telefono = "";
-               utente = new Utente(username, password, nome, cognome, ruolo, residenza, indirizzo, telefono);
+               String residenza =utente.setResidenza(rs.getString("impiegato.Residenza"));
+               String indirizzo = utente.setIndirizzo(rs.getString("impiegato.Indirizzo"));
+               String telefono =utente.setTelefono(rs.getString("impiegato.Telefono"));
+               utente = new Utente(username, password, nome, cognome,datanascita, ruolo, residenza, indirizzo, telefono);
                return utente;
             }
         }catch(Exception ex){

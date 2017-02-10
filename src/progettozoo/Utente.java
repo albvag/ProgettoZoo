@@ -5,6 +5,8 @@
  */
 package progettozoo;
 
+import java.util.Date;
+
 /**
  *
  * @author Alberto
@@ -12,29 +14,27 @@ package progettozoo;
 public class Utente {
     
     private String Username, Nome, Cognome, Residenza, Indirizzo, Telefono, Ruolo, Password;
+    private Date DataNascita;
 
     public Utente(){
         this.Username = "";
         this.Password = "";
         this.Nome = "";
         this.Cognome = "";
+        this.DataNascita=new Date();
         this.Ruolo = "";
         this.Residenza = "";
         this.Indirizzo = "";
         this.Telefono = "";
     }
-      public Utente(String cod)
-      {
-       this.Ruolo=cod;
-       this.Nome=cod;
-       this.Cognome=cod;
-      }
+   
     
-    public Utente(String Username, String Password, String Nome, String Cognome, String Ruolo, String Residenza, String Indirizzo, String Telefono){
+    public Utente(String Username, String Password, String Nome, String Cognome,Date DataNascita, String Ruolo, String Residenza, String Indirizzo, String Telefono){
         this.Username = Username;
         this.Password = Password;
         this.Nome = Nome;
         this.Cognome = Cognome;
+        this.DataNascita=DataNascita;
         this.Ruolo = Ruolo;
         this.Residenza = Residenza;
         this.Indirizzo = Indirizzo;
@@ -81,7 +81,11 @@ public class Utente {
     public String setTelefono(String Telefono)
     {
         return this.Telefono = Telefono;
-    }   
+    } 
+    public Date setData(Date data)
+    {
+        return this.DataNascita=data;
+    }
     
     //GET
     public String getUsername()
@@ -122,5 +126,9 @@ public class Utente {
     public String getTelefono()
     {
         return this.Telefono;
+    }
+    public Date getData()
+    {
+        return this.DataNascita;
     }
 }
