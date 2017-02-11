@@ -41,7 +41,7 @@ public class JCassiere extends javax.swing.JFrame {
         
         String[] jTableProdottiHeaders  = {"Nome","Prezzo","Disponibilità","Ordine"};
         v.selectmode(this.jTable1);   
-        v.creaTabella(this.jTable1, jTableProdottiHeaders);
+        creaTabella(this.jTable1, jTableProdottiHeaders);
         this.jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         Show_Prodotti_In_JTable(this.jTable1);
         
@@ -172,6 +172,27 @@ public class JCassiere extends javax.swing.JFrame {
                 new JCassiere().setVisible(true);
             }
         });
+    }
+    
+    public void creaTabella(JTable table,String[] columnHeaders){
+        Object[][] data = {
+            {"","","","","","","","",""},
+        };
+        
+        DefaultTableModel tableModel = new DefaultTableModel(data, columnHeaders)
+        {
+            boolean[] canEdit = new boolean[]{
+                    false, false, false, true //messo così per ricordarmi come si fa per ogni singola cella
+            };
+            
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+         
+        };
+         table.setModel(tableModel);  
+        
     }
     
     public void Show_Prodotti_In_JTable(JTable table)
