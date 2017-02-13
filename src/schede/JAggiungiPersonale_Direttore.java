@@ -467,19 +467,30 @@ else
   if(nom==true && cog==true && dat==true && res==true && ind==true && tel==true && user==true && pass==true && rpass==true )
   {   Date d= pz.ConvertStringToDate(data, "dd/MM/yyyy");
       java.sql.Date sqlDate = new java.sql.Date(d.getTime());
-      conn.insertImpiegato(username,nome, cognome,sqlDate, residenza, indirizzo, telefono);
+       int reply = JOptionPane.showConfirmDialog(null, "Stai inserendo l'utente "+this.jNomePersonale.getText()+" "+this.jAggiungiCognome.getText()+"\n Data di nascita: "+this.jDatanascita.getText()+"\n Città: "+this.jAggiungiResidenza.getText()+"\n Indirizzo: "+this.jAggiungiIndirizzo.getText()+"\n Telefono: "+this.jAggiungiNumeroTelefono.getText()+"\n Username: "+this.jAggiungiUser.getText()+"\n Password: "+this.jAggiungiPassword.getText()+"\n Conferma Password: "+this.jRipetiPassword.getText()+"\n Ruolo: "+this.jRuolo.getSelectedItem().toString(), "Confermare?", JOptionPane.YES_NO_OPTION);
+      if (reply == JOptionPane.YES_OPTION)
+      {     conn.insertImpiegato(username,nome, cognome,sqlDate, residenza, indirizzo, telefono);
       conn.inserisciUtente(username, password, stato, ruolo);
  
   JOptionPane.showMessageDialog(null, "UTENTE INSERITO CORRETTAMENTE");
     setVisible(false);
-  if(this.jRuolo.getSelectedItem().toString()=="Direttore")
-      conn.insertDirettore(username);
-  else if(this.jRuolo.getSelectedItem().toString()=="Veterinario")
-      conn.insertVeterinario(username);
-  else if(this.jRuolo.getSelectedItem().toString()=="Custode")
-      conn.insertCustode(username);
-  else if(this.jRuolo.getSelectedItem().toString()=="Cassiere")
-      conn.insertCassiere(username);
+  if( null!=this.jRuolo.getSelectedItem().toString())
+      switch (this.jRuolo.getSelectedItem().toString()) {
+          case "Direttore":
+              conn.insertDirettore(username);
+              break;
+          case "Veterinario":
+              conn.insertVeterinario(username);
+              break;
+          case "Custode":
+              conn.insertCustode(username);
+              break;
+          case "Cassiere":
+              conn.insertCassiere(username);
+              break;
+          default:
+              break;
+      }}
   }else{JOptionPane.showMessageDialog(null, "ALCUNI CAMPI NON SONO INSERITI CORRETTAMENTE");}
        
     }//GEN-LAST:event_jButtonSaveActionPerformed
