@@ -342,14 +342,16 @@ else
    else{presente=0;}
      if(nom==true && spe==true && dat==true)
     {
-    conn.insertAnimale(Cod_anim, nome,specie,genere , sqlDate, salute,nostro, presente);
+         int reply = JOptionPane.showConfirmDialog(null, "Stai inserendo l'animale "+this.jAggiunginomeanimale.getText()+" di specie "+this.jAggiungispecie.getText()+" di sesso "+this.jGenere.getSelectedItem().toString()+" nato il "+this.jDatadinascita.getText()+" inserito nell'habitat "+this.jselhabitat.getSelectedItem().toString()+" Salute: "+this.jsalute.getSelectedItem().toString()+" Nostro: "+this.jnostro.getSelectedItem().toString()+" Presente: "+this.jpresente.getSelectedItem().toString(), "Confermare?", JOptionPane.YES_NO_OPTION);
+                if (reply == JOptionPane.YES_OPTION)
+                { conn.insertAnimale(Cod_anim, nome,specie,genere , sqlDate, salute,nostro, presente);
     String codiceanim=conn.selezionacodiceAnimale(nome);
     conn.insertAnimaleSituato(0,codiceanim, habitat);
     JOptionPane.showMessageDialog(null, "ANIMALE INSERITO CORRETTAMENTE");
      jListaAnimali_Direttore lis = new jListaAnimali_Direttore();
      lis.setLocationRelativeTo(null);
      lis.setVisible(true);
-    setVisible(false);
+    setVisible(false);}
     }else{JOptionPane.showMessageDialog(null, "ALCUNI CAMPI NON SONO INSERITI CORRETTAMENTE");}
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
