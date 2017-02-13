@@ -45,6 +45,7 @@ public class JVeterinario extends javax.swing.JFrame {
 
         initComponents();
         setLocationRelativeTo(null);
+        this.jPanelFiltri.setVisible(false);
         setVisible(true);
         setTitle("Benvenuto, "+user_login.getNome()+ " " + user_login.getCognome() );
         
@@ -57,6 +58,10 @@ public class JVeterinario extends javax.swing.JFrame {
         creaTabella(this.jTableAnimali, jTableAnimaliHeaders);
         this.jTableAnimali.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         Show_Animali_In_JTable(this.jTableAnimali);
+        
+         DBConnect conn=new DBConnect();
+         ArrayList<Animale> list = conn.selezionaAnimaliSpecie();
+        for(int i = 0; i < list.size(); i++)  this.jComboBoxSpecie.addItem(list.get(i).getSpecie()); 
     }
 
     /**
@@ -72,6 +77,27 @@ public class JVeterinario extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableAnimali = new javax.swing.JTable();
         jButtonSchedaAnimale = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jPanelFiltri = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jComboBoxGenere = new javax.swing.JComboBox<>();
+        jComboBoxSpecie = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jComboBoxSalute = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jComboBoxPresente = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jCheckBoxFiltri = new javax.swing.JCheckBox();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(7, 9), new java.awt.Dimension(7, 9), new java.awt.Dimension(7, 9));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Veterinario");
@@ -112,32 +138,191 @@ public class JVeterinario extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Filtri di ricerca:");
+
+        jLabel2.setText("Specie: ");
+
+        jLabel3.setText("Genere:");
+
+        jComboBoxGenere.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "M", "F" }));
+
+        jComboBoxSpecie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
+        jComboBoxSpecie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxSpecieActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Filtra");
+
+        jComboBoxSalute.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "SANO", "MALATO" }));
+
+        jLabel4.setText("Presente:");
+
+        jComboBoxPresente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Si", "No" }));
+
+        jLabel5.setText("Salute:");
+
+        jLabel6.setText("Data di Nascita compresa tra:");
+
+        jLabel7.setText("Data dell'ultima visita compresa tra: ");
+
+        jLabel8.setText("e");
+
+        jLabel9.setText("e");
+
+        javax.swing.GroupLayout jPanelFiltriLayout = new javax.swing.GroupLayout(jPanelFiltri);
+        jPanelFiltri.setLayout(jPanelFiltriLayout);
+        jPanelFiltriLayout.setHorizontalGroup(
+            jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelFiltriLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelFiltriLayout.createSequentialGroup()
+                        .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBoxSpecie, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxGenere, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanelFiltriLayout.createSequentialGroup()
+                        .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBoxPresente, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxSalute, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(26, 76, Short.MAX_VALUE)
+                .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFiltriLayout.createSequentialGroup()
+                        .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelFiltriLayout.createSequentialGroup()
+                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(jLabel9)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelFiltriLayout.createSequentialGroup()
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel8)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton1))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFiltriLayout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(101, 101, 101))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFiltriLayout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(68, 68, 68))))
+        );
+        jPanelFiltriLayout.setVerticalGroup(
+            jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelFiltriLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelFiltriLayout.createSequentialGroup()
+                        .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBoxGenere, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel6)))
+                        .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelFiltriLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jComboBoxSpecie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2)))
+                            .addGroup(jPanelFiltriLayout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel8))
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel4)
+                                .addComponent(jComboBoxPresente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel7))
+                        .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelFiltriLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboBoxSalute, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelFiltriLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9)))
+                            .addGroup(jPanelFiltriLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
+        );
+
+        jCheckBoxFiltri.setText("Attiva/Disattiva");
+        jCheckBoxFiltri.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCheckBoxFiltriMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(226, 226, 226)
-                        .addComponent(jButtonSchedaAnimale)
-                        .addGap(228, 228, 228)
-                        .addComponent(jButtonLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jCheckBoxFiltri)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(82, 82, 82))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                        .addComponent(jPanelFiltri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(284, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButtonLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButtonSchedaAnimale))
+                                .addGap(82, 82, 82))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(44, 44, 44)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
+                .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonSchedaAnimale)
-                    .addComponent(jButtonLogout))
-                .addContainerGap(58, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addComponent(jCheckBoxFiltri))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 23, Short.MAX_VALUE)
+                        .addComponent(jButtonSchedaAnimale)
+                        .addGap(53, 53, 53)
+                        .addComponent(jButtonLogout)
+                        .addGap(5, 5, 5)
+                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanelFiltri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -196,6 +381,20 @@ public class JVeterinario extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButtonSchedaAnimaleActionPerformed
+
+    private void jCheckBoxFiltriMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxFiltriMouseClicked
+        // TODO add your handling code here:
+        
+        if(this.jCheckBoxFiltri.isSelected())
+        this.jPanelFiltri.setVisible(true);
+        else this.jPanelFiltri.setVisible(false);
+        
+    }//GEN-LAST:event_jCheckBoxFiltriMouseClicked
+
+    private void jComboBoxSpecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSpecieActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jComboBoxSpecieActionPerformed
     
     //Restituisce il valore di una certa colonna di una tabella in base alla riga selezionata.
     public String getTableSelectedItem(JTable table, String item)
@@ -338,9 +537,30 @@ public void selectmode(JTable table)
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonLogout;
     private javax.swing.JButton jButtonSchedaAnimale;
+    private javax.swing.JCheckBox jCheckBoxFiltri;
+    private javax.swing.JComboBox<String> jComboBoxGenere;
+    private javax.swing.JComboBox<String> jComboBoxPresente;
+    private javax.swing.JComboBox<String> jComboBoxSalute;
+    private javax.swing.JComboBox<String> jComboBoxSpecie;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanelFiltri;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTableAnimali;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

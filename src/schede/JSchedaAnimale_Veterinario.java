@@ -6,6 +6,7 @@
 package schede;
 
 import java.awt.*;
+import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,7 +15,9 @@ import javax.swing.ButtonGroup;
 ;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import progettozoo.DBConnect;
 import logins.JVeterinario;
 import progettozoo.Animale;
@@ -39,7 +42,8 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         DBConnect conn = new DBConnect();
         public Utente utente = new Utente();
         public Animale anim = new Animale();
-        public Visita vis = new Visita();
+        public Visita vis = new Visita();  
+       
         
      ButtonGroup bG = new ButtonGroup();
      
@@ -50,6 +54,9 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         String[] jTableVisiteHeaders  = {"Data Visite","Note Visite","Veterinario"};
         v.creaTabella(this.jTableVisite, jTableVisiteHeaders); 
         v.selectmode(this.jTableVisite); 
+     
+        
+        System.out.println(this.jTableVisite.getTableHeader());
 
     }
         
@@ -99,6 +106,9 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
             boolean PRESENTE = anim_sel.getPresente();
             anim = new Animale( CODICE, NOME, SPECIE, GENERE, HABITAT, NASCITA, SALUTE, NOSTRO, PRESENTE);
             
+            
+        this.jTextAreaNoteVisita.setLineWrap(true);
+        this.jTextAreaNoteVisita.setWrapStyleWord(true);
     }
     
 
@@ -191,13 +201,10 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
 
         jTableVisite.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2"
+                "Title 1", "Title 2", "Title 3"
             }
         ));
         jTableVisite.getTableHeader().setResizingAllowed(false);
@@ -542,8 +549,8 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
        ArrayList<Visita> visite = conn.visitaList(cod_anim);
         
        /* ORDINO GLI ELEMENTI PER DATE VISITE DA MENO RECENTE A PIU RECENTE */
-       Date[] vs = new Date[visite.size()];
-       pz.quicksortDate(visite, 0, visite.size()-1);   
+       
+       pz.quicksortDate(visite, 0, visite.size()-1, "decrescente");   
        
        
        DefaultTableModel model = (DefaultTableModel) this.jTableVisite.getModel();

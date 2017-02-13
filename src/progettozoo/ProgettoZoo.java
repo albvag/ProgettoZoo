@@ -96,7 +96,7 @@ public Date ConvertStringToDate(String Data, String FORMAT)
 		return true;
 	}
         
-        public void quicksortDate(ArrayList<Visita> arrayDate, int start, int end)
+        public void quicksortDate(ArrayList<Visita> arrayDate, int start, int end, String ordine)
         {
             Date pivotElem, tmp;
             String cod_v, note_visita;
@@ -110,35 +110,70 @@ public Date ConvertStringToDate(String Data, String FORMAT)
             cod_v = arrayDate.get(start).getVeterinario();
             note_visita = arrayDate.get(start).getNote();
 
-            for(int i = start+1; i <= end; i++) {
-                if (arrayDate.get(i).getDV().before(pivotElem) ) {
-                    endS1++;
-                    tmp = arrayDate.get(endS1).getDV();
-                    tmp_cod = arrayDate.get(endS1).getVeterinario();
-                    tmp_nv = arrayDate.get(endS1).getNote();
-                    
-                    arrayDate.get(endS1).setDataVisita(arrayDate.get(i).getDV());
-                    arrayDate.get(endS1).setVeterinario(arrayDate.get(i).getVeterinario());
-                    arrayDate.get(endS1).setNote(arrayDate.get(i).getNote());
-                    
-                    arrayDate.get(i).setDataVisita(tmp);
-                    arrayDate.get(i).setVeterinario(tmp_cod);
-                    arrayDate.get(i).setNote(tmp_nv);   
-                    
-                }
-            }
-            arrayDate.get(start).setDataVisita(arrayDate.get(endS1).getDV());
-            arrayDate.get(start).setVeterinario(arrayDate.get(endS1).getVeterinario());
-            arrayDate.get(start).setNote(arrayDate.get(endS1).getNote());
-            
-            
-            arrayDate.get(endS1).setDataVisita(pivotElem);
-            arrayDate.get(endS1).setVeterinario(cod_v);
-            arrayDate.get(endS1).setNote(note_visita);
+            switch(ordine){
+                case "crescente":{
+                for(int i = start+1; i <= end; i++) {
+                    if (arrayDate.get(i).getDV().before(pivotElem) ) {
+                        endS1++;
+                        tmp = arrayDate.get(endS1).getDV();
+                        tmp_cod = arrayDate.get(endS1).getVeterinario();
+                        tmp_nv = arrayDate.get(endS1).getNote();
 
-            // Sort the two parts of the array
-            quicksortDate(arrayDate, start, endS1-1);
-            quicksortDate(arrayDate, endS1+1, end);
+                        arrayDate.get(endS1).setDataVisita(arrayDate.get(i).getDV());
+                        arrayDate.get(endS1).setVeterinario(arrayDate.get(i).getVeterinario());
+                        arrayDate.get(endS1).setNote(arrayDate.get(i).getNote());
+
+                        arrayDate.get(i).setDataVisita(tmp);
+                        arrayDate.get(i).setVeterinario(tmp_cod);
+                        arrayDate.get(i).setNote(tmp_nv);   
+
+                    }
+                }
+                arrayDate.get(start).setDataVisita(arrayDate.get(endS1).getDV());
+                arrayDate.get(start).setVeterinario(arrayDate.get(endS1).getVeterinario());
+                arrayDate.get(start).setNote(arrayDate.get(endS1).getNote());
+
+
+                arrayDate.get(endS1).setDataVisita(pivotElem);
+                arrayDate.get(endS1).setVeterinario(cod_v);
+                arrayDate.get(endS1).setNote(note_visita);
+
+                // Sort the two parts of the array
+                quicksortDate(arrayDate, start, endS1-1,ordine);
+                quicksortDate(arrayDate, endS1+1, end, ordine);
+                } break;                
+                case "decrescente":{
+                for(int i = start+1; i <= end; i++) {
+                    if (arrayDate.get(i).getDV().after(pivotElem) ) {
+                        endS1++;
+                        tmp = arrayDate.get(endS1).getDV();
+                        tmp_cod = arrayDate.get(endS1).getVeterinario();
+                        tmp_nv = arrayDate.get(endS1).getNote();
+
+                        arrayDate.get(endS1).setDataVisita(arrayDate.get(i).getDV());
+                        arrayDate.get(endS1).setVeterinario(arrayDate.get(i).getVeterinario());
+                        arrayDate.get(endS1).setNote(arrayDate.get(i).getNote());
+
+                        arrayDate.get(i).setDataVisita(tmp);
+                        arrayDate.get(i).setVeterinario(tmp_cod);
+                        arrayDate.get(i).setNote(tmp_nv);   
+
+                    }
+                }
+                arrayDate.get(start).setDataVisita(arrayDate.get(endS1).getDV());
+                arrayDate.get(start).setVeterinario(arrayDate.get(endS1).getVeterinario());
+                arrayDate.get(start).setNote(arrayDate.get(endS1).getNote());
+
+
+                arrayDate.get(endS1).setDataVisita(pivotElem);
+                arrayDate.get(endS1).setVeterinario(cod_v);
+                arrayDate.get(endS1).setNote(note_visita);
+
+                // Sort the two parts of the array
+                quicksortDate(arrayDate, start, endS1-1,ordine);
+                quicksortDate(arrayDate, endS1+1, end, ordine);
+                } break;
+            }
         }
 
 
