@@ -287,7 +287,7 @@ else
    String Cod_anim=(this.jAggiungispecie.getText()+cod);
    
    ProgettoZoo pz= new ProgettoZoo();
-   Date d= pz.ConvertStringToDate(data, fordata);
+   Date d= pz.ConvertStringToDate(data,"dd/MM/yyyy");
    java.sql.Date sqlDate = new java.sql.Date(d.getTime());
    
    
@@ -306,6 +306,9 @@ else
      if(nom==true && spe==true && dat==true)
     {
     conn.insertAnimale(Cod_anim, nome,specie,genere , sqlDate, salute,nostro, presente);
+    String codiceanim=conn.selezionacodiceAnimale(nome);
+    String codicehab=conn.checkAnimalHabitat(codiceanim);
+    conn.insertAnimaleSituato(0,codiceanim, codicehab);
     JOptionPane.showMessageDialog(null, "ANIMALE INSERITO CORRETTAMENTE");
      jListaAnimali_Direttore lis = new jListaAnimali_Direttore();
      lis.setLocationRelativeTo(null);

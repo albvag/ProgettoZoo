@@ -73,6 +73,14 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public void insertAnimaleSituato(int codsituato,String Cod_anim,String Cod_Hab)
+    {
+        try {
+            st.executeUpdate("INSERT INTO situato values ("+codsituato+",'"+Cod_anim+"','"+Cod_Hab+"')");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
      //query per l'inserimento del personale nel DB
     public void insertImpiegato(String user,String nome,String cognome,Date data,String residenza,String indirizzo,String telefono)
     {
@@ -316,6 +324,22 @@ public class DBConnect {
             }   
               return ruololist; 
     }
+       public String selezionacodiceAnimale(String nome)
+      {   
+          String codice="";
+          String query="SELECT Codice_Animale from animale where animale.Nome= '"+nome+"'";
+        try {
+            
+            rs=st.executeQuery(query);
+            while(rs.next())
+            {
+              codice=rs.getString("animale.Codice_Animale");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return codice;
+      }
       public String selezionacodiceImpiegato(String cognome)
       {   
           String codice="";
@@ -400,6 +424,22 @@ public class DBConnect {
     {
         try {
             st.execute("DELETE FROM animale where Nome= '"+Cod_anim+"'");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+       public void deleteAnimaleVisita(String Cod_anim)
+    {
+        try {
+            st.execute("DELETE FROM visita where Cod_Animale= '"+Cod_anim+"'");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+         public void deleteAnimaleSituato(String Cod_anim)
+    {
+        try {
+            st.execute("DELETE FROM situato where Cod_Animale= '"+Cod_anim+"'");
         } catch (SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }

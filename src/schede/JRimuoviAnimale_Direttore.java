@@ -148,7 +148,10 @@ public class JRimuoviAnimale_Direttore extends javax.swing.JFrame {
     private void jRimuoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRimuoviActionPerformed
           DBConnect conn= new DBConnect();
           String Cod_anim=this.jselanim.getSelectedItem().toString();
+          String codice=conn.selezionacodiceAnimale(Cod_anim);
           conn.deleteAnimale(Cod_anim);
+          conn.deleteAnimaleVisita(codice);
+          conn.deleteAnimaleSituato(codice);
           JOptionPane.showMessageDialog(null, "L'ANIMALE E' STATO RIMOSSO CORRETTAMENTE");
          jListaAnimali_Direttore lis = new jListaAnimali_Direttore();
          lis.setLocationRelativeTo(null);
