@@ -108,9 +108,12 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
        {
             JOptionPane.showMessageDialog(null, "Errore! L'Habitat è già esistente");
        }else{
-       conn.insertHabitat(habitat);
-    JOptionPane.showMessageDialog(null, "HABITAT INSERITO CORRETTAMENTE");
-    setVisible(false);
+            int reply = JOptionPane.showConfirmDialog(null, "L'habitat che vuoi inserire è: "+this.jInseriscihabitat.getText(), "Confermare?", JOptionPane.YES_NO_OPTION);
+                if (reply == JOptionPane.YES_OPTION)
+                {  
+                    conn.insertHabitat(habitat);
+                    setVisible(false);
+                }
     }
     }//GEN-LAST:event_jSalvaActionPerformed
 

@@ -8,6 +8,7 @@ import java.awt.Toolkit;
 import java.awt.event.*;
 import java.awt.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import logins.JLogin;
 import progettozoo.DBConnect;
@@ -17,6 +18,7 @@ import java.util.regex.Matcher;
 import java.util.regex.PatternSyntaxException;
 import javax.swing.ComboBoxModel;
 import javax.swing.JOptionPane;
+import progettozoo.Habitat;
 import progettozoo.ProgettoZoo;
 /**
  *
@@ -29,6 +31,15 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
      */
     public JAggiungiAnimale_Direttore() {
         initComponents();
+          DBConnect conn =new DBConnect();
+        ArrayList<Habitat> list = conn.selezionaHabitat();
+        
+        for(int i = 0; i < list.size(); i++)
+        {
+            
+            this.jselhabitat.addItem(list.get(i).getHabitat());
+            
+        }
     }
 
     /**
@@ -60,6 +71,8 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
         jnostro = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jpresente = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jselhabitat = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,26 +147,38 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
 
         jLabel1.setText("       Salute");
 
-        jsalute.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SANO", "MALATO" }));
+        jsalute.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SANO", "MALATO", " " }));
+        jsalute.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jsaluteActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("      Nostro");
 
         jnostro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
+        jnostro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jnostroActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("     Presente");
 
         jpresente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
 
+        jLabel4.setText("      Habitat");
+
+        jselhabitat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jselhabitatActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(422, Short.MAX_VALUE)
-                .addComponent(jButtonSave)
-                .addGap(45, 45, 45)
-                .addComponent(jButtonClose)
-                .addGap(34, 34, 34))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,17 +199,26 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jsalute, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jpresente, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jnostro, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jpresente, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jsalute, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(98, 98, 98)
+                        .addComponent(jButtonSave)
+                        .addGap(46, 46, 46)
+                        .addComponent(jButtonClose))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jselhabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -196,8 +230,8 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jNomeAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jAggiunginomeanimale, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jsalute, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jselhabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(errorespecie, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -205,25 +239,27 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
                     .addComponent(jSpecieAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jAggiungispecie, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jnostro, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jsalute, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jGenereAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jGenere, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpresente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jnostro, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(erroredata, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jDataAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDatadinascita, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                    .addComponent(jDatadinascita, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jpresente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSave)
                     .addComponent(jButtonClose))
-                .addGap(39, 39, 39))
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -253,6 +289,7 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
         String genere = this.jGenere.getSelectedItem().toString();
         //data in formato dd/mm/aaaa
         String data = this.jDatadinascita.getText();
+        String habitat=this.jselhabitat.getSelectedItem().toString();
       
          String formnome = "[a-zA-Z]{1,}";
          String forspecie ="[a-zA-Z]{1,}";
@@ -307,8 +344,7 @@ else
     {
     conn.insertAnimale(Cod_anim, nome,specie,genere , sqlDate, salute,nostro, presente);
     String codiceanim=conn.selezionacodiceAnimale(nome);
-    String codicehab=conn.checkAnimalHabitat(codiceanim);
-    conn.insertAnimaleSituato(0,codiceanim, codicehab);
+    conn.insertAnimaleSituato(0,codiceanim, habitat);
     JOptionPane.showMessageDialog(null, "ANIMALE INSERITO CORRETTAMENTE");
      jListaAnimali_Direttore lis = new jListaAnimali_Direttore();
      lis.setLocationRelativeTo(null);
@@ -355,6 +391,18 @@ else
             jAggiungispecie.getText(); 
          // TODO add your handling code here:
     }//GEN-LAST:event_jAggiungispecieMouseClicked
+
+    private void jnostroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jnostroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jnostroActionPerformed
+
+    private void jsaluteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jsaluteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jsaluteActionPerformed
+
+    private void jselhabitatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jselhabitatActionPerformed
+       // TODO add your handling code here:
+    }//GEN-LAST:event_jselhabitatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -406,10 +454,12 @@ else
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jNomeAnimale;
     private javax.swing.JLabel jSpecieAnimale;
     private javax.swing.JComboBox<String> jnostro;
     private javax.swing.JComboBox<String> jpresente;
     private javax.swing.JComboBox<String> jsalute;
+    private javax.swing.JComboBox<String> jselhabitat;
     // End of variables declaration//GEN-END:variables
 }

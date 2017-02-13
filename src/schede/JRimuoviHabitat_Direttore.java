@@ -125,9 +125,11 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
     private void jRimuoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRimuoviActionPerformed
         String sel =this.jrimuoviHabitat.getSelectedItem().toString();
         DBConnect conn =new DBConnect();
-        conn.deleteHabitat(sel);
+         int reply = JOptionPane.showConfirmDialog(null, "L'habitat che vuoi eliminare è: "+this.jrimuoviHabitat.getSelectedItem().toString(), "Confermare?", JOptionPane.YES_NO_OPTION);
+                if (reply == JOptionPane.YES_OPTION)
+                { conn.deleteHabitat(sel);
         JOptionPane.showMessageDialog(null, "L'HABITAT SELEZIONATO E' STATO RIMOSSO");
-        setVisible(false);        // TODO add your handling code here:
+        setVisible(false);  }      // TODO add your handling code here:
     }//GEN-LAST:event_jRimuoviActionPerformed
 
     /**

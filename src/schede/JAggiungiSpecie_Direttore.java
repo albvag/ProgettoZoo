@@ -5,34 +5,22 @@
  */
 package schede;
 
-import java.util.ArrayList;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import progettozoo.DBConnect;
-import progettozoo.Prodotto;
-import progettozoo.Utente;
+import static schede.JAggiungiAnimale_Direttore.check;
 
 /**
  *
  * @author Roberto
  */
-public class JRimuoviProdotto_Direttore extends javax.swing.JFrame {
+public class JAggiungiSpecie_Direttore extends javax.swing.JFrame {
 
     /**
-     * Creates new form JRimuoviProdotto_Direttore
+     * Creates new form JAggiungiSpecie_Direttore
      */
-    public JRimuoviProdotto_Direttore() {
-        initComponents(); 
-        DBConnect conn =new DBConnect();
-        ArrayList<Prodotto> list = conn.selezionaProdotto();
-        
-        
-        for(int i = 0; i < list.size(); i++)
-        {
-            
-            this.jrimuoviprodotto.addItem(list.get(i).getTipo());
-           
-        }
-    
+    public JAggiungiSpecie_Direttore() {
+        initComponents();
     }
 
     /**
@@ -45,24 +33,24 @@ public class JRimuoviProdotto_Direttore extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jrimuoviprodotto = new javax.swing.JComboBox<>();
-        jRimuovi = new javax.swing.JButton();
+        jaggiungispecie = new javax.swing.JTextField();
+        jSalva = new javax.swing.JButton();
         jChiudi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("                             SELEZIONA IL PRODOTTO DA RIMUOVERE");
+        jLabel1.setText("                                QUALE NUOVA SPECIE VUOI INSERIRE?");
 
-        jrimuoviprodotto.addActionListener(new java.awt.event.ActionListener() {
+        jaggiungispecie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrimuoviprodottoActionPerformed(evt);
+                jaggiungispecieActionPerformed(evt);
             }
         });
 
-        jRimuovi.setText("Rimuovi");
-        jRimuovi.addActionListener(new java.awt.event.ActionListener() {
+        jSalva.setText("Salva");
+        jSalva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRimuoviActionPerformed(evt);
+                jSalvaActionPerformed(evt);
             }
         });
 
@@ -81,48 +69,60 @@ public class JRimuoviProdotto_Direttore extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                    .addComponent(jrimuoviprodotto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jaggiungispecie))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(jRimuovi, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(jSalva, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jChiudi, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
+                .addComponent(jChiudi, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(jrimuoviprodotto, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(jaggiungispecie, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRimuovi)
-                    .addComponent(jChiudi))
-                .addGap(60, 60, 60))
+                    .addComponent(jSalva, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jChiudi, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(56, 56, 56))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jrimuoviprodottoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrimuoviprodottoActionPerformed
+public static boolean check(String regex, String input){
+  if (Pattern.matches(regex, input))
+    return true;
+  else
+    return false;
+}
+    private void jaggiungispecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jaggiungispecieActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jrimuoviprodottoActionPerformed
+    }//GEN-LAST:event_jaggiungispecieActionPerformed
 
-    private void jRimuoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRimuoviActionPerformed
-        String tipoPro = this.jrimuoviprodotto.getSelectedItem().toString();
-        DBConnect conn=new DBConnect();
-         int reply = JOptionPane.showConfirmDialog(null, "Vuoi eliminare il prodotto "+this.jrimuoviprodotto.getSelectedItem().toString()+"?", "Confermare?", JOptionPane.YES_NO_OPTION);
+    private void jSalvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalvaActionPerformed
+        String specie=this.jaggiungispecie.getText();
+         String formspecie = "[a-zA-Z]{1,}";
+         Pattern pattern = Pattern.compile(formspecie);
+          boolean spe=check(formspecie,specie);
+          if(spe==false)
+              JOptionPane.showMessageDialog(null, "LA SPECIE INSERITA CONTIENE CARATTERI ERRATI");
+          else{
+               int reply = JOptionPane.showConfirmDialog(null, "La Specie che vuoi inserire è: "+this.jaggiungispecie.getText(), "Confermare?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION)
-                { conn.deleteProdotto(tipoPro);
-         JOptionPane.showMessageDialog(null, "IL PRODOTTO E' STATO RIMOSSO CORRETTAMENTE");
-          setVisible(false);}
-    }//GEN-LAST:event_jRimuoviActionPerformed
+                {
+        DBConnect conn=new DBConnect();
+        conn.insertSpecie(specie);
+                }
+          }
+    }//GEN-LAST:event_jSalvaActionPerformed
 
     private void jChiudiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChiudiActionPerformed
-      setVisible(false);  
+       setVisible(false); // TODO add your handling code here:
     }//GEN-LAST:event_jChiudiActionPerformed
 
     /**
@@ -142,20 +142,20 @@ public class JRimuoviProdotto_Direttore extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JRimuoviProdotto_Direttore.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JAggiungiSpecie_Direttore.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JRimuoviProdotto_Direttore.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JAggiungiSpecie_Direttore.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JRimuoviProdotto_Direttore.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JAggiungiSpecie_Direttore.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JRimuoviProdotto_Direttore.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JAggiungiSpecie_Direttore.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JRimuoviProdotto_Direttore().setVisible(true);
+                new JAggiungiSpecie_Direttore().setVisible(true);
             }
         });
     }
@@ -163,7 +163,7 @@ public class JRimuoviProdotto_Direttore extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jChiudi;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton jRimuovi;
-    private javax.swing.JComboBox<String> jrimuoviprodotto;
+    private javax.swing.JButton jSalva;
+    private javax.swing.JTextField jaggiungispecie;
     // End of variables declaration//GEN-END:variables
 }

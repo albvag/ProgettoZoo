@@ -168,12 +168,14 @@ public class JAggiungiProdotto_Direttore extends javax.swing.JFrame {
         if(pre==false && pre2==false || gia==false)
       JOptionPane.showMessageDialog(null, "CARATTERI NON VALIDI");
         else{ 
-            JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE");
+             int reply = JOptionPane.showConfirmDialog(null, "Vuoi aggiungere il prodotto "+this.jaggiunginome.getText()+" al prezzo di "+this.jaggiungiprezzo.getText()+" con una giacenza di "+this.jaggiungigiacenza.getText()+" prodotti nel magazzino?", "Confermare?", JOptionPane.YES_NO_OPTION);
+                if (reply == JOptionPane.YES_OPTION)
+                { JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE");
             setVisible(false);
       int g=Integer.parseInt(giacenza);
       double p=Double.parseDouble(prezzo);
       DBConnect conn=new DBConnect();
-      conn.addProdotto(nome, p, g);
+      conn.addProdotto(nome, p, g);}
         }
       
       

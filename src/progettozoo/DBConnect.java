@@ -55,7 +55,14 @@ public class DBConnect {
             }   
            return conta+1; 
     }
-    
+     public void insertSpecie(String Cod_Specie)
+    {
+        try {
+            st.executeUpdate("INSERT INTO specie values ('"+Cod_Specie+"')");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public void insertHabitat(String Cod_Gabbia)
     {
         try {
@@ -206,6 +213,28 @@ public class DBConnect {
                 System.out.println(ex);
             }   
            return hablist; 
+    }
+      public ArrayList<Animale> selezionaSpecie()
+    {
+        ArrayList<Animale> spelist = new ArrayList<Animale>();
+        String query = "Select distinct Codice_Specie from specie ";
+
+           try{
+               Animale an;
+               rs = st.executeQuery(query);
+               
+               
+                while(rs.next())
+                {
+                    an = new Animale();
+                    an.setSpecie(rs.getString("specie.Codice_Specie"));
+                    spelist.add(an);
+                }
+            }catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+           return spelist; 
     }
      public ArrayList<Prodotto> selezionaProdotto()
     {
@@ -408,6 +437,14 @@ public class DBConnect {
     {
         try {
             st.execute("DELETE FROM gabbia where Codice_Gabbia= '"+Cod_Gabbia+"'");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     public void deleteSpecie(String specie)
+    {
+        try {
+            st.execute("DELETE FROM specie where Codice_Specie= '"+specie+"'");
         } catch (SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
