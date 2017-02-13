@@ -20,6 +20,7 @@ public class JCassiere extends javax.swing.JFrame {
 
     JVeterinario v = new JVeterinario();
     Utente user = new Utente();
+    DBConnect conn = new DBConnect();
     /**
      * Creates new form JCassiere
      */
@@ -40,10 +41,10 @@ public class JCassiere extends javax.swing.JFrame {
         user.setCognome(user_login.getCognome());
         
         String[] jTableProdottiHeaders  = {"Nome","Prezzo","Disponibilità","Ordine"};
-        v.selectmode(this.jTable1);   
-        creaTabella(this.jTable1, jTableProdottiHeaders);
-        this.jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-        Show_Prodotti_In_JTable(this.jTable1);
+        v.selectmode(this.jTableProdotti);   
+        creaTabella(this.jTableProdotti, jTableProdottiHeaders);
+        this.jTableProdotti.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        Show_Prodotti_In_JTable(this.jTableProdotti);
         
     }
 
@@ -59,8 +60,8 @@ public class JCassiere extends javax.swing.JFrame {
         jFrame1 = new javax.swing.JFrame();
         jButtonLogout = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        jTableProdotti = new javax.swing.JTable();
+        jVendiProdotti = new javax.swing.JToggleButton();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         jFrame1.setBackground(new java.awt.Color(51, 204, 255));
@@ -86,7 +87,7 @@ public class JCassiere extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableProdotti.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -97,9 +98,14 @@ public class JCassiere extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(jTableProdotti);
 
-        jToggleButton1.setText("Vendi");
+        jVendiProdotti.setText("Vendi");
+        jVendiProdotti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jVendiProdottiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,7 +116,7 @@ public class JCassiere extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jToggleButton1)
+                        .addComponent(jVendiProdotti)
                         .addGap(267, 267, 267)
                         .addComponent(jButtonLogout)))
                 .addGap(28, 28, 28))
@@ -122,7 +128,7 @@ public class JCassiere extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton1)
+                    .addComponent(jVendiProdotti)
                     .addComponent(jButtonLogout))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
@@ -137,6 +143,23 @@ public class JCassiere extends javax.swing.JFrame {
         log.setVisible(true);
         log.close(this);
     }//GEN-LAST:event_jButtonLogoutActionPerformed
+
+    private void jVendiProdottiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVendiProdottiActionPerformed
+        // TODO add your handling code here:
+        
+        ArrayList<Prodotto> pro = conn.listaProdotti();
+        for(int i = 0;i< pro.size(); i++){
+            
+            Object q = this.jTableProdotti.getValueAt(i+1, 3);
+            
+            System.out.print(q+"  ");
+            System.out.print(i+"  ");
+            System.out.println(pro.size());
+            
+            conn.vendiProdotto(pro.get(i), 5, user);
+            this.jTableProdotti.repaint();
+        }
+    }//GEN-LAST:event_jVendiProdottiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,7 +220,6 @@ public class JCassiere extends javax.swing.JFrame {
     
     public void Show_Prodotti_In_JTable(JTable table)
    {
-       DBConnect conn = new DBConnect();
        ArrayList<Prodotto> list = conn.listaProdotti();
        DefaultTableModel model = (DefaultTableModel) table.getModel();
        Object[] row = new Object[4];
@@ -223,7 +245,7 @@ public class JCassiere extends javax.swing.JFrame {
     private javax.swing.JButton jButtonLogout;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JTable jTableProdotti;
+    private javax.swing.JToggleButton jVendiProdotti;
     // End of variables declaration//GEN-END:variables
 }

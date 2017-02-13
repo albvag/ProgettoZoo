@@ -633,6 +633,21 @@ public class DBConnect {
         }  
     
     }
-    
+    public void vendiProdotto(Prodotto p, int q, Utente u){
+        Date d = new Date(25515102);
+        
+        try {
+         st.executeUpdate("INSERT INTO vende values ('"+0+"','"+u.getUsername()+"','"+p.getTipo()+"','"+q+"','"+d+"')");
+            }   catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        int newGiacenza = p.getGiacenza()-q;
+        try {
+         st.executeUpdate("UPDATE `prodotto` SET `Giacenza` = '"+newGiacenza+"' WHERE `prodotto`.`Codice_Prodotto` = '"+p.getTipo()+"' ");
+            }   catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     
 }
