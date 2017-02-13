@@ -150,15 +150,22 @@ public class JCassiere extends javax.swing.JFrame {
         ArrayList<Prodotto> pro = conn.listaProdotti();
         for(int i = 0;i< pro.size(); i++){
             
-            Object q = this.jTableProdotti.getValueAt(i+1, 3);
+            Object go = this.jTableProdotti.getValueAt(i+1, 3);
             
-            System.out.print(q+"  ");
-            System.out.print(i+"  ");
-            System.out.println(pro.size());
+            String gs = go.toString();
             
-            conn.vendiProdotto(pro.get(i), 5, user);
-            this.jTableProdotti.repaint();
+            int gi = Integer.parseInt(gs);
+            
+            System.out.print(go);
+            System.out.print(gs);
+            System.out.print(gi);
+            
+            
+            conn.vendiProdotto(pro.get(i), gi, user);
+            
         }
+        setVisible(false);
+        JCassiere cas = new JCassiere(user);
     }//GEN-LAST:event_jVendiProdottiActionPerformed
 
     /**
