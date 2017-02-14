@@ -478,8 +478,6 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
    conn.updateSaluteAnimale(RB_Selected, anim.getId());
                   
                   setVisible(false); 
-                 // new JVeterinario(utente);
-                 // this.jLabelDisplaySalute.setText(RB_Selected);
                   JSchedaAnimale_Veterinario v = new JSchedaAnimale_Veterinario(anim, utente); //resetta l'interfaccia per rendere visibile anche l'ultima data inserita dal veterinario stesso.
                   v.jLabelDisplaySalute.setText(RB_Selected);
                  } 
@@ -542,7 +540,6 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
     
    public void Show_DateVisite_In_JTable(String cod_anim)
    {
-     //  DBConnect conn = new DBConnect();
        ProgettoZoo pz = new ProgettoZoo();
        ArrayList<Visita> visite = conn.visitaList(cod_anim);
         
