@@ -6,11 +6,13 @@
 package logins;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import progettozoo.DBConnect;
 import progettozoo.Prodotto;
 import progettozoo.Utente;
+import static schede.JAggiungiPersonale_Direttore.check;
 
 /**
  *
@@ -35,16 +37,22 @@ public class JCassiere extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         setTitle("Benvenuto, "+user_login.getNome()+ " " + user_login.getCognome() );
-        
+        this.jFrameGiacenza.setVisible(false);
+        pack();
         user.setUsername(user_login.getUsername());
         user.setNome(user_login.getNome());
         user.setCognome(user_login.getCognome());
         
         String[] jTableProdottiHeaders  = {"Nome","Prezzo","Disponibilità","Ordine"};
+        String[] jTableGiacenzaHeaders  = {"Nome","Disponibilità","     "};
         v.selectmode(this.jTableProdotti);   
-        creaTabella(this.jTableProdotti, jTableProdottiHeaders);
+        creaTabellaProdotti(this.jTableProdotti, jTableProdottiHeaders);
+        creaTabellaGiacenza(this.jTableGiacenza, jTableGiacenzaHeaders);
         this.jTableProdotti.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         Show_Prodotti_In_JTable(this.jTableProdotti);
+        Show_Giacenza_In_JTable(this.jTableGiacenza);
+        this.jTableProdotti.setCellSelectionEnabled(false);
+        this.jTableGiacenza.setCellSelectionEnabled(false);
         
     }
 
@@ -62,6 +70,12 @@ public class JCassiere extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableProdotti = new javax.swing.JTable();
         jVendiProdotti = new javax.swing.JToggleButton();
+        jGiacenza = new javax.swing.JButton();
+        jFrameGiacenza = new javax.swing.JInternalFrame();
+        jAddGiacenza = new javax.swing.JButton();
+        jBack = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableGiacenza = new javax.swing.JTable();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         jFrame1.setBackground(new java.awt.Color(51, 204, 255));
@@ -107,30 +121,102 @@ public class JCassiere extends javax.swing.JFrame {
             }
         });
 
+        jGiacenza.setText("aggiungere alla giacenza");
+        jGiacenza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jGiacenzaActionPerformed(evt);
+            }
+        });
+
+        jFrameGiacenza.setPreferredSize(new java.awt.Dimension(489, 450));
+        jFrameGiacenza.setVisible(true);
+
+        jAddGiacenza.setText("Conferma");
+        jAddGiacenza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAddGiacenzaActionPerformed(evt);
+            }
+        });
+
+        jBack.setText("Annulla");
+        jBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBackActionPerformed(evt);
+            }
+        });
+
+        jTableGiacenza.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTableGiacenza);
+
+        javax.swing.GroupLayout jFrameGiacenzaLayout = new javax.swing.GroupLayout(jFrameGiacenza.getContentPane());
+        jFrameGiacenza.getContentPane().setLayout(jFrameGiacenzaLayout);
+        jFrameGiacenzaLayout.setHorizontalGroup(
+            jFrameGiacenzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrameGiacenzaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
+            .addGroup(jFrameGiacenzaLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jAddGiacenza)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBack)
+                .addGap(126, 126, 126))
+        );
+        jFrameGiacenzaLayout.setVerticalGroup(
+            jFrameGiacenzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrameGiacenzaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addGroup(jFrameGiacenzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jAddGiacenza)
+                    .addComponent(jBack))
+                .addGap(46, 46, 46))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jVendiProdotti)
-                        .addGap(267, 267, 267)
+                        .addGap(80, 80, 80)
+                        .addComponent(jGiacenza)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonLogout)))
-                .addGap(28, 28, 28))
+                .addGap(46, 46, 46)
+                .addComponent(jFrameGiacenza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jVendiProdotti)
-                    .addComponent(jButtonLogout))
-                .addContainerGap(37, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jVendiProdotti)
+                            .addComponent(jButtonLogout)
+                            .addComponent(jGiacenza)))
+                    .addComponent(jFrameGiacenza, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39))
         );
 
         pack();
@@ -143,31 +229,85 @@ public class JCassiere extends javax.swing.JFrame {
         log.setVisible(true);
         log.close(this);
     }//GEN-LAST:event_jButtonLogoutActionPerformed
-
+    
+    //vende biglietti e merce
+    
     private void jVendiProdottiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVendiProdottiActionPerformed
         // TODO add your handling code here:
         
+        this.jTableProdotti.editCellAt(0, 0);
         ArrayList<Prodotto> pro = conn.listaProdotti();
-        for(int i = 0;i< pro.size(); i++){
+        this.jTableProdotti.editCellAt(0, 0);
+        boolean avanza = true; 
+        for(int i = 0;i< pro.size()&&avanza; i++){ 
+            Object go = this.jTableProdotti.getValueAt(i+1, 3);
+            String gs = go.toString();
+            String formInt = "[0-9]*";
+            boolean pre=check(formInt,gs);
+            if(!pre){
+                avanza=false;
+                JOptionPane.showMessageDialog(null, "CARATTERI NON VALIDI");
+            }      
+        }
+        
+        for(int i = 0;i< pro.size()&&avanza; i++){
             
             Object go = this.jTableProdotti.getValueAt(i+1, 3);
-            
             String gs = go.toString();
-            
             int gi = Integer.parseInt(gs);
-            
-            System.out.print(go);
-            System.out.print(gs);
-            System.out.print(gi);
-            
-            
-            conn.vendiProdotto(pro.get(i), gi, user);
+            if(gi!=0)conn.vendiProdotto(pro.get(i), gi, user);
             
         }
-        setVisible(false);
-        JCassiere cas = new JCassiere(user);
+        if(avanza){
+            setVisible(false); 
+            JCassiere c = new JCassiere(user);
+        }
     }//GEN-LAST:event_jVendiProdottiActionPerformed
 
+    private void jGiacenzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGiacenzaActionPerformed
+        // TODO add your handling code here:
+        this.jFrameGiacenza.setVisible(true);
+        pack();
+        
+    }//GEN-LAST:event_jGiacenzaActionPerformed
+
+    private void jBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackActionPerformed
+        // TODO add your handling code here:
+        this.jFrameGiacenza.setVisible(false);
+        setSize(500,500);
+    }//GEN-LAST:event_jBackActionPerformed
+
+    private void jAddGiacenzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddGiacenzaActionPerformed
+        // TODO add your handling code here:
+        ArrayList<Prodotto> pro = conn.listaProdotti();
+        this.jTableGiacenza.editCellAt(0, 0);
+        boolean avanza = true; 
+        for(int i = 0;i< pro.size()&&avanza; i++){ 
+            Object go = this.jTableGiacenza.getValueAt(i+1, 2);
+            String gs = go.toString();
+            String formInt = "[0-9]*";
+            boolean pre=check(formInt,gs);
+            if(!pre){
+                avanza=false;
+                JOptionPane.showMessageDialog(null, "CARATTERI NON VALIDI");
+            }      
+        }
+        
+        for(int i = 0;i< pro.size()&&avanza; i++){
+            
+            Object go = this.jTableGiacenza.getValueAt(i+1, 2);
+            String gs = go.toString();
+            int gi = Integer.parseInt(gs);
+            if(gi!=0)conn.addToGiacenza(pro.get(i), gi);
+            
+        }
+        if(avanza){
+            setVisible(false); 
+            JCassiere c = new JCassiere(user);
+        }
+        
+    }//GEN-LAST:event_jAddGiacenzaActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -204,7 +344,7 @@ public class JCassiere extends javax.swing.JFrame {
         });
     }
     
-    public void creaTabella(JTable table,String[] columnHeaders){
+    public void creaTabellaProdotti(JTable table,String[] columnHeaders){
         Object[][] data = {
             {"","","","","","","","",""},
         };
@@ -225,8 +365,29 @@ public class JCassiere extends javax.swing.JFrame {
         
     }
     
+    public void creaTabellaGiacenza(JTable table,String[] columnHeaders){
+        Object[][] data = {
+            {"","","","","","","","",""},
+        };
+        
+        DefaultTableModel tableModel = new DefaultTableModel(data, columnHeaders)
+        {
+            boolean[] canEdit = new boolean[]{
+                    false, false, true //messo così per ricordarmi come si fa per ogni singola cella
+            };
+            
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+         
+        };
+         table.setModel(tableModel);  
+        
+    }
+    
     public void Show_Prodotti_In_JTable(JTable table)
-   {
+    {
        ArrayList<Prodotto> list = conn.listaProdotti();
        DefaultTableModel model = (DefaultTableModel) table.getModel();
        Object[] row = new Object[4];
@@ -247,11 +408,39 @@ public class JCassiere extends javax.swing.JFrame {
            
        }
     }
+    
+    public void Show_Giacenza_In_JTable(JTable table)
+    {
+       ArrayList<Prodotto> list = conn.listaProdotti();
+       DefaultTableModel model = (DefaultTableModel) table.getModel();
+       Object[] row = new Object[3];
+       
+        table.changeSelection(0, 0, false, false);
+       for(int i = 0; i < list.size(); i++)
+       {
+     
+           row[0] = list.get(i).getTipo();
+           
+           row[1] = list.get(i).getGiacenza();
+           
+           row[2] = 0;
+                   
+           model.addRow(row);
+           
+       }
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jAddGiacenza;
+    private javax.swing.JButton jBack;
     private javax.swing.JButton jButtonLogout;
     private javax.swing.JFrame jFrame1;
+    private javax.swing.JInternalFrame jFrameGiacenza;
+    private javax.swing.JButton jGiacenza;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTableGiacenza;
     private javax.swing.JTable jTableProdotti;
     private javax.swing.JToggleButton jVendiProdotti;
     // End of variables declaration//GEN-END:variables
