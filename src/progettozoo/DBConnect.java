@@ -584,17 +584,29 @@ public class DBConnect {
        {
         ArrayList<Animale> animaliList = new ArrayList<Animale>();
         String query = "Select * from animale LEFT JOIN situato on situato.Cod_Animale = animale.Codice_Animale";
-        String[] f_where = new String[7];
+        String[] f_where = new String[8];
 
             f_where[0] = "animale.Genere";
             f_where[1] = "animale.Specie";
             f_where[2] = "animale.Presente";
+            f_where[3] = "animale.Salute";
+            f_where[4] = "animale.Data_Nascita";
+            f_where[5] = "animale.Data_Nascita";
+            f_where[6] = "visita.Data_Visita";
+            f_where[7] = "visita.Data_Visita";
 
        int count_nofilter = 0;
        for(int i=0; i<Filtri.length; i++){
            System.out.println("Dalla QUERY: "+Filtri[i]);
            
+           if(Filtri[2].equals("SI") ) Filtri[2] = "1";
+           else if(Filtri[2].equals("NO")) Filtri[2] = "0";
+           
+           if(Filtri[3].equals("SANO") ) Filtri[3] = "1";
+           else if(Filtri[3].equals("MALATO")) Filtri[3] = "0";
+           
            if(!Filtri[i].equals("") && count_nofilter !=0) {
+               
                query = query + " AND "+ f_where[i] + " = '"+ Filtri[i] +"'";
                
                System.out.println("Query al passaggio di "+Filtri[i]+ "con count "+count_nofilter+ ": "+query);
@@ -606,6 +618,8 @@ public class DBConnect {
                count_nofilter++;
            }
        }
+       
+       
        
            try{
                Animale anim;

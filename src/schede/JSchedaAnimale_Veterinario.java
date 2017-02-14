@@ -39,7 +39,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         public Animale anim = new Animale();
         public Visita vis = new Visita();  
        
-        public String[] filters = {"","","","","",""};
+        public String[] filters = new String[7];
      ButtonGroup bG = new ButtonGroup();
      
     public JSchedaAnimale_Veterinario() {
@@ -402,7 +402,11 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
         // TODO add your handling code here: 
         setVisible(false);
-        new JVeterinario(utente, filters);
+        
+        String[] FILTRI = new String[8];
+        for(int i=0; i<FILTRI.length; i++) FILTRI[i] = "";
+        
+        new JVeterinario(utente, FILTRI);
     }//GEN-LAST:event_jButtonCloseActionPerformed
 
     private void jButtonLeggiNoteVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLeggiNoteVisitaActionPerformed

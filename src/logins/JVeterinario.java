@@ -6,7 +6,6 @@
 package logins;
 
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.*;
@@ -81,18 +80,7 @@ public class JVeterinario extends javax.swing.JFrame {
          ArrayList<Animale> list = conn.selezionaAnimaliSpecie();
         for(int i = 0; i < list.size(); i++)  
             this.jComboBoxSpecie.addItem(list.get(i).getSpecie()); 
-        
-     /*   if( this.jTextFieldDN_A.getText().equals("") || this.jTextFieldDUV_A.getText().equals("") )
-        { 
-            Date today = new Date();
-            String oggi = pz.NuovoFormatoData(today.toString(), "yyyy-MM-dd", "dd-MM-yyyy");
-            this.jTextFieldDN_A.setText(oggi);
-            this.jTextFieldDUV_A.setText(oggi);
-        }
-        else{
-            
-            
-        }*/
+
     }
 
     /**
@@ -195,7 +183,7 @@ public class JVeterinario extends javax.swing.JFrame {
 
         jLabel4.setText("Presente:");
 
-        jComboBoxPresente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Si", "No" }));
+        jComboBoxPresente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "SI", "NO" }));
 
         jLabel5.setText("Salute:");
 
@@ -214,6 +202,9 @@ public class JVeterinario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextFieldDN_AFocusGained(evt);
             }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldDN_AFocusLost(evt);
+            }
         });
 
         jLabel7.setText("Data dell'ultima visita compresa tra: ");
@@ -230,6 +221,9 @@ public class JVeterinario extends javax.swing.JFrame {
         jTextFieldDUV_A.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextFieldDUV_AFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldDUV_AFocusLost(evt);
             }
         });
 
@@ -468,30 +462,59 @@ public class JVeterinario extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxSpecieActionPerformed
 
     private void jTextFieldDN_AFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDN_AFocusGained
-        this.jTextFieldDN_A.selectAll();        // TODO add your handling code here:
+      
+        ProgettoZoo pz = new ProgettoZoo();
+      boolean dat = pz.isThisDateValid(this.jTextFieldDN_Da.getText(), "dd-MM-yyyy");
+      
+      Date DN_DA = pz.ConvertStringToDate(this.jTextFieldDN_Da.getText(), "dd-MM-yyyy");
+      Date DN_A = pz.ConvertStringToDate(this.jTextFieldDN_A.getText(), "dd-MM-yyyy");
+      Date today = new Date();
+      
+        if(dat && DN_DA.before(today) && DN_DA.before(DN_A)) this.jTextFieldDN_A.setText(pz.NuovoFormatoData(today.toString(), "dd-MM-yyyy", "dd-MM-yyyy"));
+        if(dat && DN_DA.after(today) && DN_DA.after(DN_A)) this.jTextFieldDN_Da.setText(pz.NuovoFormatoData(today.toString(), "dd-MM-yyyy", "dd-MM-yyyy"));
+   
+        this.jTextFieldDN_A.selectAll();       
     }//GEN-LAST:event_jTextFieldDN_AFocusGained
 
     private void jTextFieldDUV_AFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDUV_AFocusGained
             // TODO add your handling code here:
-            this.jTextFieldDUV_A.selectAll();
       ProgettoZoo pz = new ProgettoZoo();
-      boolean dat = pz.isThisDateValid(this.jTextFieldDUV_A.getText(), "dd-MM-yyyy");
+      boolean dat = pz.isThisDateValid(this.jTextFieldDUV_DA.getText(), "dd-MM-yyyy");
       
       Date DUV_DA = pz.ConvertStringToDate(this.jTextFieldDUV_DA.getText(), "dd-MM-yyyy");
       Date DUV_A = pz.ConvertStringToDate(this.jTextFieldDUV_A.getText(), "dd-MM-yyyy");
       Date today = new Date();
       
-      if(dat && DUV_DA.before(today) && DUV_DA.before(DUV_A)) this.jTextFieldDUV_A.setEditable(true);
-      else this.jTextFieldDUV_A.setEditable(false);
+        if(dat && DUV_DA.before(today) && DUV_DA.before(DUV_A)) this.jTextFieldDUV_A.setText(pz.NuovoFormatoData(today.toString(), "dd-MM-yyyy", "dd-MM-yyyy"));
+         if(dat && DUV_DA.after(today) && DUV_DA.after(DUV_A)) this.jTextFieldDUV_DA.setText(pz.NuovoFormatoData(today.toString(), "dd-MM-yyyy", "dd-MM-yyyy"));
+        
+            this.jTextFieldDUV_A.selectAll();
     }//GEN-LAST:event_jTextFieldDUV_AFocusGained
 
     private void jTextFieldDN_DaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDN_DaFocusGained
    // TODO add your handling code here:
+         
+        ProgettoZoo pz = new ProgettoZoo();
+      boolean dat = pz.isThisDateValid(this.jTextFieldDN_Da.getText(), "dd-MM-yyyy");
+      
+      Date DN_DA = pz.ConvertStringToDate(this.jTextFieldDN_Da.getText(), "dd-MM-yyyy");
+      Date DN_A = pz.ConvertStringToDate(this.jTextFieldDN_A.getText(), "dd-MM-yyyy");
+      Date today = new Date();
+      
+        if(dat && DN_DA.after(today) && DN_DA.after(DN_A)) this.jTextFieldDN_Da.setText(pz.NuovoFormatoData(today.toString(), "dd-MM-yyyy", "dd-MM-yyyy"));
     this.jTextFieldDN_Da.selectAll();        
     }//GEN-LAST:event_jTextFieldDN_DaFocusGained
 
     private void jTextFieldDUV_DAFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDUV_DAFocusGained
         // TODO add your handling code here:
+        ProgettoZoo pz = new ProgettoZoo();
+      boolean dat = pz.isThisDateValid(this.jTextFieldDUV_DA.getText(), "dd-MM-yyyy");
+      
+      Date DUV_DA = pz.ConvertStringToDate(this.jTextFieldDUV_DA.getText(), "dd-MM-yyyy");
+      Date DUV_A = pz.ConvertStringToDate(this.jTextFieldDUV_A.getText(), "dd-MM-yyyy");
+      Date today = new Date();
+      
+        if(dat && DUV_DA.after(today) && DUV_DA.after(DUV_A)) this.jTextFieldDUV_DA.setText(pz.NuovoFormatoData(today.toString(), "dd-MM-yyyy", "dd-MM-yyyy"));
         this.jTextFieldDUV_DA.selectAll();
     }//GEN-LAST:event_jTextFieldDUV_DAFocusGained
 
@@ -526,6 +549,7 @@ public class JVeterinario extends javax.swing.JFrame {
       
       if(dat && DN_DA.before(today) && DN_DA.before(DN_A)) this.jTextFieldDN_A.setEditable(true);
       else this.jTextFieldDN_A.setEditable(false);
+           if(!dat) this.jTextFieldDN_A.setText("");
     }//GEN-LAST:event_jTextFieldDN_DaFocusLost
 
     private void jTextFieldDUV_DAFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDUV_DAFocusLost
@@ -536,10 +560,20 @@ public class JVeterinario extends javax.swing.JFrame {
       Date DUV_DA = pz.ConvertStringToDate(this.jTextFieldDUV_DA.getText(), "dd-MM-yyyy");
       Date DUV_A = pz.ConvertStringToDate(this.jTextFieldDUV_A.getText(), "dd-MM-yyyy");
       Date today = new Date();
-      
+     
+       if(!dat) this.jTextFieldDUV_A.setText(""); 
       if(dat && DUV_DA.before(today) && DUV_DA.before(DUV_A)) this.jTextFieldDUV_A.setEditable(true);
       else this.jTextFieldDUV_A.setEditable(false);
     }//GEN-LAST:event_jTextFieldDUV_DAFocusLost
+
+    private void jTextFieldDN_AFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDN_AFocusLost
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTextFieldDN_AFocusLost
+
+    private void jTextFieldDUV_AFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDUV_AFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDUV_AFocusLost
     
     //Restituisce il valore di una certa colonna di una tabella in base alla riga selezionata.
     public String getTableSelectedItem(JTable table, String item)
