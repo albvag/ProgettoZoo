@@ -75,14 +75,14 @@ public class JVeterinario extends javax.swing.JFrame {
         
         this.jTextFieldDN_A.setEditable(false);
         this.jTextFieldDUV_A.setEditable(false);
-        Show_Animali_In_JTable(this.jTableAnimali);
+        Show_Animali_In_JTable(this.jTableAnimali, filtri);
         
          DBConnect conn=new DBConnect();
          ArrayList<Animale> list = conn.selezionaAnimaliSpecie();
         for(int i = 0; i < list.size(); i++)  
             this.jComboBoxSpecie.addItem(list.get(i).getSpecie()); 
         
-        if( this.jTextFieldDN_A.getText().equals("") || this.jTextFieldDUV_A.getText().equals("") )
+     /*   if( this.jTextFieldDN_A.getText().equals("") || this.jTextFieldDUV_A.getText().equals("") )
         { 
             Date today = new Date();
             String oggi = pz.NuovoFormatoData(today.toString(), "yyyy-MM-dd", "dd-MM-yyyy");
@@ -92,7 +92,7 @@ public class JVeterinario extends javax.swing.JFrame {
         else{
             
             
-        }
+        }*/
     }
 
     /**
@@ -633,13 +633,15 @@ public void selectmode(JTable table)
     table.setModel(tableModel);
     }
         
-   public void Show_Animali_In_JTable(JTable table)
+    @SuppressWarnings("empty-statement")
+   public void Show_Animali_In_JTable(JTable table, String[] Filtri)
    {
        DBConnect conn = new DBConnect();
        ProgettoZoo pz = new ProgettoZoo();          
        
-       ArrayList<Animale> list = conn.animaliList(filtri);
-       
+       ArrayList<Animale> list = new ArrayList<>();
+       if(user.getRuolo().equals("Veterinario")) list = conn.animaliList(filtri);
+       else list = conn.animaliList(Filtri);
        
        DefaultTableModel model = (DefaultTableModel) table.getModel();
        Object[] row = new Object[8];

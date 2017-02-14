@@ -34,7 +34,9 @@ public class jListaAnimali_Direttore extends javax.swing.JFrame {
         v.selectmode(this.jTableAnimali);   
         v.creaTabella(this.jTableAnimali, jTableAnimaliHeaders);
         this.jTableAnimali.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-        v.Show_Animali_In_JTable(this.jTableAnimali);
+        String[] FILTRI = new String[7];
+        for(int i=0; i<FILTRI.length; i++) FILTRI[i] = "";
+        v.Show_Animali_In_JTable(this.jTableAnimali, FILTRI);
            
        
     }
