@@ -700,10 +700,10 @@ public class DBConnect {
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd  HH:mm:ss");
         format.format(date);
-        
+        double ricavo = q*p.getPrezzo();
         
         try {
-         st.executeUpdate("INSERT INTO vende values ('"+0+"','"+u.getUsername()+"','"+p.getTipo()+"','"+q+"','"+format.format(date)+"')");
+         st.executeUpdate("INSERT INTO vende values ('"+0+"','"+u.getUsername()+"','"+p.getTipo()+"','"+q+"','"+ricavo+"','"+format.format(date)+"')");
             }   catch (SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
