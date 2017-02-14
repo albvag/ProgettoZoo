@@ -118,6 +118,9 @@ public class JRimuoviProdotto_Direttore extends javax.swing.JFrame {
                 if (reply == JOptionPane.YES_OPTION)
                 { conn.deleteProdotto(tipoPro);
          JOptionPane.showMessageDialog(null, "IL PRODOTTO E' STATO RIMOSSO CORRETTAMENTE");
+             JListaProdotti_Direttore lispro=new JListaProdotti_Direttore();
+       lispro.setLocationRelativeTo(null);
+       lispro.setVisible(true);
           setVisible(false);}
     }//GEN-LAST:event_jRimuoviActionPerformed
 

@@ -473,7 +473,7 @@ else
       conn.inserisciUtente(username, password, stato, ruolo);
  
   JOptionPane.showMessageDialog(null, "UTENTE INSERITO CORRETTAMENTE");
-    setVisible(false);
+   
   if( null!=this.jRuolo.getSelectedItem().toString())
       switch (this.jRuolo.getSelectedItem().toString()) {
           case "Direttore":
@@ -490,7 +490,12 @@ else
               break;
           default:
               break;
-      }}
+      }
+   JListaPersonale_Direttore lisper = new JListaPersonale_Direttore();
+        lisper.setLocationRelativeTo(null);
+        lisper.setVisible(true);
+         setVisible(false);
+      }
   }else{JOptionPane.showMessageDialog(null, "ALCUNI CAMPI NON SONO INSERITI CORRETTAMENTE");}
        
     }//GEN-LAST:event_jButtonSaveActionPerformed

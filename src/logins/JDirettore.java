@@ -10,12 +10,18 @@ import javax.swing.event.*;
 import javax.swing.table.*;
 import progettozoo.Animale;
 import progettozoo.DBConnect;
+import progettozoo.Habitat;
+import progettozoo.Prodotto;
+import progettozoo.ProgettoZoo;
 import progettozoo.Utente;
 import schede.JAggiungiAnimale_Direttore;
 import schede.JAggiungiHabitat_Direttore;
 import schede.JAggiungiPersonale_Direttore;
 import schede.JAggiungiProdotto_Direttore;
 import schede.JAggiungiSpecie_Direttore;
+import schede.JListaHabitat_Direttore;
+import schede.JListaPersonale_Direttore;
+import schede.JListaProdotti_Direttore;
 import schede.JRimuoviAnimale_Direttore;
 import schede.JRimuoviHabitat_Direttore;
 import schede.JRimuoviPersonale_Direttore;
@@ -64,9 +70,9 @@ public class JDirettore extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jlistahabitat = new javax.swing.JButton();
+        jlistapersonale = new javax.swing.JButton();
+        jlistaprodotti = new javax.swing.JButton();
         jCreaSpecie = new javax.swing.JButton();
         jRimuoviSpecie = new javax.swing.JButton();
 
@@ -156,11 +162,26 @@ public class JDirettore extends javax.swing.JFrame {
 
         jLabel4.setText("           Gestione Prodotti");
 
-        jButton1.setText("Lista Habitat");
+        jlistahabitat.setText("Lista Habitat");
+        jlistahabitat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jlistahabitatActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Lista Personale");
+        jlistapersonale.setText("Lista Personale");
+        jlistapersonale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jlistapersonaleActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Lista Prodotti");
+        jlistaprodotti.setText("Lista Prodotti");
+        jlistaprodotti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jlistaprodottiActionPerformed(evt);
+            }
+        });
 
         jCreaSpecie.setText("Crea Specie");
         jCreaSpecie.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +204,7 @@ public class JDirettore extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlistapersonale, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jAggiungiPersonale, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jRimuoviPersonale, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -207,12 +228,12 @@ public class JDirettore extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel2)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jlistahabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jAggiungiHabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jRimuoviHabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(72, 72, 72)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jlistaprodotti, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel4)
                                         .addComponent(jAggiungiProdotto, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jRimuoviProdotto, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -230,10 +251,10 @@ public class JDirettore extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlistapersonale, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlistaprodotti, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jListaanimali, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlistahabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jAggiungiHabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -338,10 +359,102 @@ public class JDirettore extends javax.swing.JFrame {
       rimspe.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_jRimuoviSpecieActionPerformed
 
+    private void jlistapersonaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jlistapersonaleActionPerformed
+        JListaPersonale_Direttore lisper = new JListaPersonale_Direttore();
+        lisper.setLocationRelativeTo(null);
+        lisper.setVisible(true);
+    }//GEN-LAST:event_jlistapersonaleActionPerformed
+
+    private void jlistahabitatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jlistahabitatActionPerformed
+         JListaHabitat_Direttore lishab= new JListaHabitat_Direttore();
+       lishab.setLocationRelativeTo(null);
+       lishab.setVisible(true);
+    }//GEN-LAST:event_jlistahabitatActionPerformed
+
+    private void jlistaprodottiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jlistaprodottiActionPerformed
+          JListaProdotti_Direttore lispro=new JListaProdotti_Direttore();
+       lispro.setLocationRelativeTo(null);
+       lispro.setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_jlistaprodottiActionPerformed
+
     /**
      * @param args the command line arguments
      */
+public void Show_Prodotti_In_JTable(JTable table)
+   {
+       DBConnect conn=new DBConnect();
+       ArrayList<Prodotto> list = conn.listaProdotti();
+       DefaultTableModel model = (DefaultTableModel) table.getModel();
+       Object[] row = new Object[3];
+       
+        table.changeSelection(0, 0, false, false);
+       for(int i = 0; i < list.size(); i++)
+       {
+     
+           row[0] = list.get(i).getTipo();
+           
+           row[1] = list.get(i).getPrezzo();
+           
+           row[2] = list.get(i).getGiacenza();
+           
+          
+                   
+           model.addRow(row);
+           
+       }
+    }
 
+   public void Show_Habitat_In_JTable(JTable table)
+   {
+       DBConnect conn=new DBConnect();
+       ArrayList<Habitat> list = conn.selezionaHabitat();
+       DefaultTableModel model = (DefaultTableModel) table.getModel();
+       Object[] row = new Object[1];
+       
+        table.changeSelection(0, 0, false, false);
+       for(int i = 0; i < list.size(); i++)
+       {
+     
+           row[0] = list.get(i).getHabitat();
+                 
+           model.addRow(row);
+           
+       }
+    }
+    public void Show_Utenti_In_JTable(JTable table)
+   {
+       ProgettoZoo pz=new ProgettoZoo();
+       DBConnect conn=new DBConnect();
+       ArrayList<Utente> list = conn.selezionaImpiegato();
+       DefaultTableModel model = (DefaultTableModel) table.getModel();
+       Object[] row = new Object[8];
+       
+        table.changeSelection(0, 0, false, false);
+       for(int i = 0; i < list.size(); i++)
+       {
+     
+           row[0] = list.get(i).getUsername();
+           
+           row[1] = list.get(i).getNome();
+           
+           row[2] = list.get(i).getCognome();
+           
+           String DataNascita = list.get(i).getData().toString();
+                String DataNascita_String = pz.NuovoFormatoData(DataNascita, "yyyy/MM/dd", "dd/MM/yyyy");
+           row[3] = DataNascita_String;
+           
+           row[4] = list.get(i).getResidenza();
+           
+           row[5] = list.get(i).getIndirizzo();
+           
+           row[6] = list.get(i).getTelefono();
+           
+           row[7] = list.get(i).getRuolo();
+           
+           model.addRow(row);
+           
+       }
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -379,9 +492,6 @@ public class JDirettore extends javax.swing.JFrame {
     private javax.swing.JButton jAggiungiHabitat;
     private javax.swing.JButton jAggiungiPersonale;
     private javax.swing.JButton jAggiungiProdotto;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonLogout;
@@ -396,5 +506,8 @@ public class JDirettore extends javax.swing.JFrame {
     private javax.swing.JButton jRimuoviPersonale;
     private javax.swing.JButton jRimuoviProdotto;
     private javax.swing.JButton jRimuoviSpecie;
+    private javax.swing.JButton jlistahabitat;
+    private javax.swing.JButton jlistapersonale;
+    private javax.swing.JButton jlistaprodotti;
     // End of variables declaration//GEN-END:variables
 }

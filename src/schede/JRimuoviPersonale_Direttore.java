@@ -166,7 +166,7 @@ public class JRimuoviPersonale_Direttore extends javax.swing.JFrame {
                 { conn.deletePersonaleImpiegato(cod);
          conn.deletePersonaleUtente(cod);
          JOptionPane.showMessageDialog(null, "L'UTENTE SELEZIONATO E' STATO RIMOSSO");
-         setVisible(false);
+
           if(null == this.jselruolo.getSelectedItem().toString()) {
               JOptionPane.showMessageDialog(null, "ERRORE");
         } else switch (this.jselruolo.getSelectedItem().toString()) {
@@ -187,6 +187,10 @@ public class JRimuoviPersonale_Direttore extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "ERRORE");
                 break;
         }
+           JListaPersonale_Direttore lisper = new JListaPersonale_Direttore();
+        lisper.setLocationRelativeTo(null);
+        lisper.setVisible(true);
+                 setVisible(false);
         }
          
     }//GEN-LAST:event_jRimuoviActionPerformed

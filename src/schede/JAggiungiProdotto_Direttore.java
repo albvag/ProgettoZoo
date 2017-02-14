@@ -171,11 +171,15 @@ public class JAggiungiProdotto_Direttore extends javax.swing.JFrame {
              int reply = JOptionPane.showConfirmDialog(null, "Vuoi aggiungere il prodotto "+this.jaggiunginome.getText()+" al prezzo di "+this.jaggiungiprezzo.getText()+" con una giacenza di "+this.jaggiungigiacenza.getText()+" prodotti nel magazzino?", "Confermare?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION)
                 { JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE");
-            setVisible(false);
+            
       int g=Integer.parseInt(giacenza);
       double p=Double.parseDouble(prezzo);
       DBConnect conn=new DBConnect();
       conn.addProdotto(nome, p, g);}
+                    JListaProdotti_Direttore lispro=new JListaProdotti_Direttore();
+       lispro.setLocationRelativeTo(null);
+       lispro.setVisible(true);
+       setVisible(false);
         }
       
       

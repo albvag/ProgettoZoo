@@ -306,6 +306,33 @@ public class DBConnect {
             }   
            return speclist; 
     }
+         public ArrayList<Utente> selezionaImpiegato()
+    {
+        ArrayList<Utente> implist = new ArrayList<Utente>();
+        String query = "Select * from impiegato JOIN utente on impiegato.Codice_Impiegato=utente.Codice_Utente ";
+        try{
+            Utente ut;
+            rs=st.executeQuery(query);
+            
+            while(rs.next())
+            {
+                ut=new Utente();
+                ut.setUsername(rs.getString("utente.Codice_Utente"));
+                ut.setNome(rs.getString("impiegato.Nome"));
+                ut.setCognome(rs.getString("impiegato.Cognome"));
+                ut.setData(rs.getDate("impiegato.DataNascita"));
+                ut.setResidenza(rs.getString("impiegato.Residenza"));
+                ut.setIndirizzo(rs.getString("impiegato.Indirizzo"));
+                ut.setTelefono(rs.getString("impiegato.Telefono"));
+                ut.setRuolo(rs.getString("utente.Ruolo_Utente"));
+                implist.add(ut);
+            }  
+        } catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+           return implist; 
+    }
      public ArrayList<Utente> selezionaPersonaleRuolo()
     {
         ArrayList<Utente> ruololist = new ArrayList<Utente>();

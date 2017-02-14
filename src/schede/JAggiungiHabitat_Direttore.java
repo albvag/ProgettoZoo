@@ -112,6 +112,9 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
                 if (reply == JOptionPane.YES_OPTION)
                 {  
                     conn.insertHabitat(habitat);
+                      JListaHabitat_Direttore lishab= new JListaHabitat_Direttore();
+       lishab.setLocationRelativeTo(null);
+       lishab.setVisible(true);
                     setVisible(false);
                 }
     }
