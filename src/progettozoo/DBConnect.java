@@ -6,10 +6,13 @@
 package progettozoo;
 
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import java.util.Date;
 
 /**
  *
@@ -694,14 +697,28 @@ public class DBConnect {
     
     }
     public void vendiProdotto(Prodotto p, int q, Utente u){
-        Date d = new Date(25515102);
+        Date date = new Date();
+        DateFormat format = new SimpleDateFormat("yyyy.MM.dd  HH:mm:ss");
+        format.format(date);
+        
         
         try {
-         st.executeUpdate("INSERT INTO vende values ('"+0+"','"+u.getUsername()+"','"+p.getTipo()+"','"+q+"','"+d+"')");
+         st.executeUpdate("INSERT INTO vende values ('"+0+"','"+u.getUsername()+"','"+p.getTipo()+"','"+q+"','"+format.format(date)+"')");
             }   catch (SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
         int newGiacenza = p.getGiacenza()-q;
+        try {
+         st.executeUpdate("UPDATE `prodotto` SET `Giacenza` = '"+newGiacenza+"' WHERE `prodotto`.`Codice_Prodotto` = '"+p.getTipo()+"' ");
+            }   catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    public void addToGiacenza(Prodotto p,int q){
+        int newGiacenza = q + p.getGiacenza();
+        
         try {
          st.executeUpdate("UPDATE `prodotto` SET `Giacenza` = '"+newGiacenza+"' WHERE `prodotto`.`Codice_Prodotto` = '"+p.getTipo()+"' ");
             }   catch (SQLException ex) {
