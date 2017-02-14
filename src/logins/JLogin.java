@@ -158,7 +158,8 @@ DBConnect conn = new DBConnect();
                     break;
                 }
                 case "Veterinario": {
-                    JVeterinario vet = new JVeterinario(user_login);
+                    String[] vett = {"","","","","","","",""};
+                    JVeterinario vet = new JVeterinario(user_login, vett );
                     vet.setLocationRelativeTo(null);
                     vet.setVisible(true);
                     break;
@@ -213,7 +214,8 @@ DBConnect conn = new DBConnect();
                     break;
                 }
                 case "Veterinario": {
-                    JVeterinario vet = new JVeterinario(user_login);
+                    String[] vett = {"","","","","","","",""};
+                    JVeterinario vet = new JVeterinario(user_login, vett );
                     vet.setLocationRelativeTo(null);
                     vet.setVisible(true);
                     break;
@@ -274,7 +276,8 @@ DBConnect conn = new DBConnect();
                     break;
                 }
                 case "Veterinario": {
-                    JVeterinario vet = new JVeterinario(user_login);
+                    String[] vett = {"","","","","","","",""};
+                    JVeterinario vet = new JVeterinario(user_login, vett );
                     vet.setLocationRelativeTo(null);
                     vet.setVisible(true);
                     break;

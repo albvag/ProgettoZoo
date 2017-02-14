@@ -575,13 +575,35 @@ public class DBConnect {
         }
         return utente;
     }
-    
+
     //Estrae le informazioni sull'animale da poter mettere sulla tabella
-       public ArrayList<Animale> animaliList()
+       public ArrayList<Animale> animaliList(String[] Filtri)
        {
         ArrayList<Animale> animaliList = new ArrayList<Animale>();
         String query = "Select * from animale LEFT JOIN situato on situato.Cod_Animale = animale.Codice_Animale";
+        String[] f_where = new String[7];
 
+            f_where[0] = "animale.Genere";
+            f_where[1] = "animale.Specie";
+            f_where[2] = "animale.Presente";
+
+       int count_nofilter = 0;
+       for(int i=0; i<Filtri.length; i++){
+           System.out.println("Dalla QUERY: "+Filtri[i]);
+           
+           if(!Filtri[i].equals("") && count_nofilter !=0) {
+               query = query + " AND "+ f_where[i] + " = '"+ Filtri[i] +"'";
+               
+               System.out.println("Query al passaggio di "+Filtri[i]+ "con count "+count_nofilter+ ": "+query);
+           }
+           else if(!Filtri[i].equals("") && count_nofilter == 0)
+           {
+               System.out.println("Query al passaggio di "+Filtri[i]+ "con count "+count_nofilter+ ": "+query);
+               query = query + " where "+f_where[i] + " = '"+ Filtri[i] + "'";
+               count_nofilter++;
+           }
+       }
+       
            try{
                Animale anim;
                rs = st.executeQuery(query);
@@ -598,6 +620,7 @@ public class DBConnect {
 
                 System.out.println(ex);
             }   
+           System.out.println(query);
            return animaliList;   
         }       
        

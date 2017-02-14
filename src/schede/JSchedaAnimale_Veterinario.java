@@ -6,18 +6,13 @@
 package schede;
 
 import java.awt.*;
-import java.awt.event.MouseListener;
-import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.ButtonGroup;
 ;
 import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
 import progettozoo.DBConnect;
 import logins.JVeterinario;
 import progettozoo.Animale;
@@ -44,7 +39,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         public Animale anim = new Animale();
         public Visita vis = new Visita();  
        
-        
+        public String[] filters = {"","","","","",""};
      ButtonGroup bG = new ButtonGroup();
      
     public JSchedaAnimale_Veterinario() {
@@ -65,7 +60,6 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         utente.setUsername(user_log.getUsername());
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
-        System.out.println("utente: "+utente.getNome() + " " + utente.getCognome());
         setLocationRelativeTo(null);
          setSize(900, 550);
         setTitle("Scheda Animale");
@@ -408,7 +402,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
         // TODO add your handling code here: 
         setVisible(false);
-        new JVeterinario(utente);
+        new JVeterinario(utente, filters);
     }//GEN-LAST:event_jButtonCloseActionPerformed
 
     private void jButtonLeggiNoteVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLeggiNoteVisitaActionPerformed
