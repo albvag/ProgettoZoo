@@ -100,10 +100,10 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void inserisciUtente(String user,String password,int stato,String ruolo)
+    public void inserisciUtente(String user,String password,String ruolo)
     {
         try {
-            st.executeUpdate("INSERT INTO utente values ('"+user+"','"+password+"',"+stato+",'"+ruolo+"')");
+            st.executeUpdate("INSERT INTO utente values ('"+user+"','"+password+"',"+ruolo+"')");
         } catch (SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }

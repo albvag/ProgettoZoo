@@ -460,7 +460,6 @@ else
     errconfpass.setText("Caratteri validi");
  DBConnect conn =new DBConnect();
    String Cod_pers=(this.jAggiungiUser.getText());
-   int stato=1;
    ProgettoZoo pz= new ProgettoZoo();
   
   
@@ -470,7 +469,7 @@ else
        int reply = JOptionPane.showConfirmDialog(null, "Stai inserendo l'utente "+this.jNomePersonale.getText()+" "+this.jAggiungiCognome.getText()+"\n Data di nascita: "+this.jDatanascita.getText()+"\n Città: "+this.jAggiungiResidenza.getText()+"\n Indirizzo: "+this.jAggiungiIndirizzo.getText()+"\n Telefono: "+this.jAggiungiNumeroTelefono.getText()+"\n Username: "+this.jAggiungiUser.getText()+"\n Password: "+this.jAggiungiPassword.getText()+"\n Conferma Password: "+this.jRipetiPassword.getText()+"\n Ruolo: "+this.jRuolo.getSelectedItem().toString(), "Confermare?", JOptionPane.YES_NO_OPTION);
       if (reply == JOptionPane.YES_OPTION)
       {     conn.insertImpiegato(username,nome, cognome,sqlDate, residenza, indirizzo, telefono);
-      conn.inserisciUtente(username, password, stato, ruolo);
+      conn.inserisciUtente(username, password, ruolo);
  
   JOptionPane.showMessageDialog(null, "UTENTE INSERITO CORRETTAMENTE");
    

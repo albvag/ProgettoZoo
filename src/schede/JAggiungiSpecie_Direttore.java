@@ -117,6 +117,12 @@ public static boolean check(String regex, String input){
                 {
         DBConnect conn=new DBConnect();
         conn.insertSpecie(specie);
+        JOptionPane.showMessageDialog(null, "Hai inserito la specie "+this.jaggiungispecie.getText());
+         JListaHabitat_Direttore lishab= new JListaHabitat_Direttore();
+                       lishab.setLocationRelativeTo(null);
+                       lishab.setVisible(true);
+        
+        setVisible(false);
                 }
           }
     }//GEN-LAST:event_jSalvaActionPerformed
