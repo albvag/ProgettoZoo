@@ -112,13 +112,10 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
                 if (reply == JOptionPane.YES_OPTION)
                 {  
                        
-                      
-                      
-                }
-                 
-              
-                int reply1 = JOptionPane.showConfirmDialog(null, "Vuoi creare anche la nuova specie? ", "Confermare?", JOptionPane.YES_NO_OPTION);
-                 
+                        int reply1 = JOptionPane.showConfirmDialog(null, "Vuoi creare anche la nuova specie? ", "Confermare?", JOptionPane.YES_NO_OPTION);
+                 while(reply1 != JOptionPane.YES_OPTION)
+                 {  JOptionPane.showMessageDialog(null, "ERRORE:DEVI CREARE LA SPECIE SE CREI L'HABITAT","ERRORE",JOptionPane.ERROR_MESSAGE);
+                     reply1=JOptionPane.showConfirmDialog(null, "Vuoi creare anche la nuova specie? ", "Confermare?", JOptionPane.YES_NO_OPTION);}
                 if (reply1 == JOptionPane.YES_OPTION)
                 {    JAggiungiSpecie_Direttore aggspe= new JAggiungiSpecie_Direttore();
                       aggspe.setLocationRelativeTo(null);
@@ -126,11 +123,11 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
                     conn.insertHabitat(habitat);
                       
                     setVisible(false);
-                }else{
-                    
-                 JOptionPane.showMessageDialog(null, "ERRORE:DEVI CREARE LA SPECIE SE CREI L'HABITAT","ERRORE",JOptionPane.ERROR_MESSAGE);
-                  JOptionPane.showConfirmDialog(null, "Vuoi creare anche la nuova specie? ", "Confermare?", JOptionPane.YES_NO_OPTION);
+                }          
                 }
+                 
+              
+              
                 
     
     }//GEN-LAST:event_jSalvaActionPerformed

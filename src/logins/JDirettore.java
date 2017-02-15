@@ -73,7 +73,6 @@ public class JDirettore extends javax.swing.JFrame {
         jlistahabitat = new javax.swing.JButton();
         jlistapersonale = new javax.swing.JButton();
         jlistaprodotti = new javax.swing.JButton();
-        jCreaSpecie = new javax.swing.JButton();
         jRimuoviSpecie = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -183,13 +182,6 @@ public class JDirettore extends javax.swing.JFrame {
             }
         });
 
-        jCreaSpecie.setText("Crea Specie");
-        jCreaSpecie.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCreaSpecieActionPerformed(evt);
-            }
-        });
-
         jRimuoviSpecie.setText("Rimuovi Specie");
         jRimuoviSpecie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,7 +214,7 @@ public class JDirettore extends javax.swing.JFrame {
                             .addGap(79, 79, 79)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jCreaSpecie, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jRimuoviSpecie, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(72, 72, 72)
                                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
@@ -236,8 +228,7 @@ public class JDirettore extends javax.swing.JFrame {
                                         .addComponent(jlistaprodotti, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel4)
                                         .addComponent(jAggiungiProdotto, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jRimuoviProdotto, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(jRimuoviSpecie, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(jRimuoviProdotto, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -273,11 +264,9 @@ public class JDirettore extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jCreaSpecie, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jRimuoviSpecie, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jRimuoviSpecie, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addComponent(jButtonLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
@@ -346,12 +335,6 @@ public class JDirettore extends javax.swing.JFrame {
       rimpro.setLocationRelativeTo(null);
       rimpro.setVisible(true);
     }//GEN-LAST:event_jRimuoviProdottoActionPerformed
-
-    private void jCreaSpecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCreaSpecieActionPerformed
-      JAggiungiSpecie_Direttore aggspe= new JAggiungiSpecie_Direttore();
-      aggspe.setLocationRelativeTo(null);
-      aggspe.setVisible(true);
-    }//GEN-LAST:event_jCreaSpecieActionPerformed
 
     private void jRimuoviSpecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRimuoviSpecieActionPerformed
          JRimuoviSpecie_Direttore rimspe= new JRimuoviSpecie_Direttore();
@@ -495,7 +478,6 @@ public void Show_Prodotti_In_JTable(JTable table)
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonLogout;
-    private javax.swing.JButton jCreaSpecie;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
