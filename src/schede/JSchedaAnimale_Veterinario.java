@@ -39,7 +39,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         public Animale anim = new Animale();
         public Visita vis = new Visita();  
        
-        public String[] filters = new String[9];
+        public String[] filters = new String[8];
      ButtonGroup bG = new ButtonGroup();
      
     public JSchedaAnimale_Veterinario() {
@@ -403,7 +403,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         // TODO add your handling code here: 
         setVisible(false);
         
-        String[] FILTRI = new String[9];
+        String[] FILTRI = new String[8];
         for(int i=0; i<FILTRI.length; i++) FILTRI[i] = "";
         
         new JVeterinario(utente, FILTRI);
