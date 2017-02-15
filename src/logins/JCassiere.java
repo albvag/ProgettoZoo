@@ -249,7 +249,32 @@ public class JCassiere extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "CARATTERI NON VALIDI");
             }      
         }
-        
+        ArrayList vendita = new ArrayList();
+        for(int i = 0;i< pro.size()&&avanza; i++){
+           
+            Object go = this.jTableProdotti.getValueAt(i+1, 3);
+            String gs = go.toString();
+            int gi = Integer.parseInt(gs);
+            if(pro.get(i).getGiacenza()<gi){
+                avanza = false;
+                JOptionPane.showMessageDialog(null, "RICHIESTA ECCEDE GIACENZA");
+            }
+            if(gi!=0&&avanza){
+                String v=String.format("%s %-40s %-20s", pro.get(i).getTipo(),gi,Double.toString(gi*pro.get(i).getPrezzo()) + " €");
+                vendita.add(v);
+                vendita.add("\n");
+                
+            }
+            
+        }
+        String venString = vendita.toString();
+        venString = venString.replace('[', ' ');
+        venString = venString.replace(']', ' ');
+        venString = venString.replace(',', ' ');
+        if(avanza){
+            int reply = JOptionPane.showConfirmDialog(null,venString,"Confermare?", JOptionPane.YES_NO_OPTION);
+            if (reply == JOptionPane.NO_OPTION)avanza=false;
+            }
         for(int i = 0;i< pro.size()&&avanza; i++){
             
             Object go = this.jTableProdotti.getValueAt(i+1, 3);
