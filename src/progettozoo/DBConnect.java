@@ -612,16 +612,18 @@ public class DBConnect {
            ProgettoZoo pz = new ProgettoZoo();
         ArrayList<Animale> animaliList = new ArrayList<Animale>();
         String query = "Select * from animale LEFT JOIN situato on situato.Cod_Animale = animale.Codice_Animale";
-        String[] f_where = new String[8];
+        String[] f_where = new String[9];
 
             f_where[0] = "animale.Genere";
             f_where[1] = "animale.Specie";
             f_where[2] = "animale.Presente";
             f_where[3] = "animale.Salute";
-            f_where[4] = "animale.Data_Nascita";
+            f_where[4] = "animale.Codice_Animale";
             f_where[5] = "animale.Data_Nascita";
-            f_where[6] = "visita.Data_Visita";
+            f_where[6] = "animale.Data_Nascita";
             f_where[7] = "visita.Data_Visita";
+            f_where[8] = "visita.Data_Visita";
+            
 
        int count_nofilter = 0;
        for(int i=0; i<Filtri.length-4; i++)
@@ -635,9 +637,11 @@ public class DBConnect {
            else if(Filtri[3].equals("MALATO")) Filtri[3] = "0";
            
            
+           
            if(!Filtri[i].equals("") && count_nofilter !=0) {
-
-               query = query + " AND "+ f_where[i] + " = '"+ Filtri[i] +"'";
+               
+               if(i==4) query = query + " AND "+f_where[i]+" LIKE '%"+Filtri[4]+"%'";
+               else query = query + " AND "+ f_where[i] + " = '"+ Filtri[i] +"'";
                
                System.out.println("Query al passaggio di "+Filtri[i]+ "con count "+count_nofilter+ ": "+query);
            }
@@ -646,7 +650,11 @@ public class DBConnect {
            {
 
                System.out.println("Query al passaggio di "+Filtri[i]+ "con count "+count_nofilter+ ": "+query);
-               query = query + " where "+f_where[i] + " = '"+ Filtri[i] + "'";
+               if(i==4) {
+                   System.out.println("PASSO QUA SAI");
+                   query = query + " where "+f_where[i]+" like '%"+Filtri[4]+"%'";
+               }
+                  else query = query + " where "+f_where[i] + " = '"+ Filtri[i] + "'";
                count_nofilter++;
            }
            
@@ -655,10 +663,10 @@ public class DBConnect {
        for(int i=Filtri.length-4; i<Filtri.length; i+=2)
        {      if(!Filtri[i].equals("") && count_nofilter !=0) {
                 String dt_da = pz.NuovoFormatoData(Filtri[i], "dd-MM-yyyy", "yyyy-MM-dd");
-                Date dt_da_new = pz.ConvertStringToDate(dt_da,"yyyy-MM-dd");
+             //   Date dt_da_new = pz.ConvertStringToDate(dt_da,"yyyy-MM-dd");
                 
                 String dt_a = pz.NuovoFormatoData(Filtri[i+1], "dd-MM-yyyy", "yyyy-MM-dd");
-                Date dt_a_new = pz.ConvertStringToDate(dt_a,"yyyy-MM-dd");
+              //  Date dt_a_new = pz.ConvertStringToDate(dt_a,"yyyy-MM-dd");
                 
                query = query + " AND "+f_where[i] + " >= '"+ dt_da + "' AND "+f_where[i] +" <= '"+dt_a+"'";
                System.out.println("Query al passaggio di "+dt_da+ "con count "+count_nofilter+ ": "+query);

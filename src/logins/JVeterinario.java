@@ -33,15 +33,9 @@ public class JVeterinario extends javax.swing.JFrame {
     
     public Utente user = new Utente();
     
-       public String filtro_genere;
-       public String filtro_specie;
-       public String filtro_presente;
-       public String filtro_salute;
-       public String DN_Da;
-       public String DN_A;
-       public String DUV_Da;
-       public String DUV_A;
-       public String[] filtri = {filtro_genere, filtro_specie,filtro_presente, filtro_salute, DN_Da, DN_A, DUV_Da, DUV_A };
+       public String filtro_genere, filtro_specie, filtro_presente, filtro_salute, filtro_codice;
+       public String DN_Da, DN_A, DUV_Da, DUV_A;
+       public String[] filtri = {filtro_genere, filtro_specie,filtro_presente, filtro_salute, filtro_codice, DN_Da, DN_A, DUV_Da, DUV_A };
     
     public JVeterinario() {
        
@@ -51,7 +45,7 @@ public class JVeterinario extends javax.swing.JFrame {
     }
     
     public JVeterinario(Utente user_login, String[] filter) {
-       ProgettoZoo pz = new ProgettoZoo();
+       
 
         initComponents();
         setLocationRelativeTo(null);
@@ -115,6 +109,9 @@ public class JVeterinario extends javax.swing.JFrame {
         jTextFieldDUV_A = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jTextFieldCodAni_Filtro = new javax.swing.JTextField();
+        jButtonReset_Filtri = new javax.swing.JButton();
         jCheckBoxFiltri = new javax.swing.JCheckBox();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(7, 9), new java.awt.Dimension(7, 9), new java.awt.Dimension(7, 9));
 
@@ -231,6 +228,15 @@ public class JVeterinario extends javax.swing.JFrame {
 
         jLabel9.setText("e");
 
+        jLabel10.setText("Codice:");
+
+        jButtonReset_Filtri.setText("Reset");
+        jButtonReset_Filtri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReset_FiltriActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelFiltriLayout = new javax.swing.GroupLayout(jPanelFiltri);
         jPanelFiltri.setLayout(jPanelFiltriLayout);
         jPanelFiltriLayout.setHorizontalGroup(
@@ -249,11 +255,13 @@ public class JVeterinario extends javax.swing.JFrame {
                     .addGroup(jPanelFiltriLayout.createSequentialGroup()
                         .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel5))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel10))
                         .addGap(30, 30, 30)
-                        .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxPresente, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxSalute, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBoxPresente, 0, 109, Short.MAX_VALUE)
+                            .addComponent(jComboBoxSalute, 0, 109, Short.MAX_VALUE)
+                            .addComponent(jTextFieldCodAni_Filtro))))
                 .addGap(26, 76, Short.MAX_VALUE)
                 .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFiltriLayout.createSequentialGroup()
@@ -269,15 +277,19 @@ public class JVeterinario extends javax.swing.JFrame {
                                 .addGap(26, 26, 26)
                                 .addComponent(jLabel8)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextFieldDN_A, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButtonFiltra))
+                                .addComponent(jTextFieldDN_A, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFiltriLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(101, 101, 101))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFiltriLayout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addGap(68, 68, 68))))
+                        .addGap(68, 68, 68))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFiltriLayout.createSequentialGroup()
+                        .addComponent(jButtonFiltra)
+                        .addGap(95, 95, 95)
+                        .addComponent(jButtonReset_Filtri)
+                        .addGap(44, 44, 44))))
         );
         jPanelFiltriLayout.setVerticalGroup(
             jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,7 +335,13 @@ public class JVeterinario extends javax.swing.JFrame {
                                 .addComponent(jTextFieldDUV_DA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(jButtonFiltra)
+                .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonFiltra)
+                        .addComponent(jButtonReset_Filtri))
+                    .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel10)
+                        .addComponent(jTextFieldCodAni_Filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -357,10 +375,9 @@ public class JVeterinario extends javax.swing.JFrame {
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jButtonSchedaAnimale))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jButtonLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jButtonSchedaAnimale, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jButtonLogout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 131, Short.MAX_VALUE)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -470,7 +487,7 @@ public class JVeterinario extends javax.swing.JFrame {
       Date DN_A = pz.ConvertStringToDate(this.jTextFieldDN_A.getText(), "dd-MM-yyyy");
       Date today = new Date();
       
-        if(dat && DN_DA.before(today) && DN_DA.before(DN_A)) this.jTextFieldDN_A.setText(pz.NuovoFormatoData(today.toString(), "dd-MM-yyyy", "dd-MM-yyyy"));
+        if(dat && DN_DA.before(today) && DN_DA.before(DN_A) ) this.jTextFieldDN_A.setText(pz.NuovoFormatoData(today.toString(), "dd-MM-yyyy", "dd-MM-yyyy"));
         if(dat && DN_DA.after(today) && DN_DA.after(DN_A)) this.jTextFieldDN_Da.setText(pz.NuovoFormatoData(today.toString(), "dd-MM-yyyy", "dd-MM-yyyy"));
    
         this.jTextFieldDN_A.selectAll();       
@@ -521,16 +538,17 @@ public class JVeterinario extends javax.swing.JFrame {
     private void jButtonFiltraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltraActionPerformed
         // TODO add your handling code here:
        
-      setVisible(false);    
+        setVisible(false);    
         
            filtri[0] = this.jComboBoxGenere.getSelectedItem().toString();
            filtri[1] = this.jComboBoxSpecie.getSelectedItem().toString();
            filtri[2] = this.jComboBoxPresente.getSelectedItem().toString();
            filtri[3] = this.jComboBoxSalute.getSelectedItem().toString();
-           filtri[4] = this.jTextFieldDN_Da.getText();
-           filtri[5] = this.jTextFieldDN_A.getText();
-           filtri[6] = this.jTextFieldDUV_DA.getText();
-           filtri[7] = this.jTextFieldDUV_A.getText();
+           filtri[4] = this.jTextFieldCodAni_Filtro.getText();
+           filtri[5] = this.jTextFieldDN_Da.getText();
+           filtri[6] = this.jTextFieldDN_A.getText();
+           filtri[7] = this.jTextFieldDUV_DA.getText();
+           filtri[8] = this.jTextFieldDUV_A.getText();
            
            for(int i=0; i<filtri.length;i++)
     System.out.println("filtri[i] = "+filtri[i]);
@@ -545,10 +563,16 @@ public class JVeterinario extends javax.swing.JFrame {
       
       Date DN_DA = pz.ConvertStringToDate(this.jTextFieldDN_Da.getText(), "dd-MM-yyyy");
       Date DN_A = pz.ConvertStringToDate(this.jTextFieldDN_A.getText(), "dd-MM-yyyy");
-      Date today = new Date();
+      Date today = new Date(); 
+      Date limite_inf = pz.ConvertStringToDate("01-01-1900", "dd-MM-yyyy");
       
-      if(dat && DN_DA.before(today) && DN_DA.before(DN_A)) this.jTextFieldDN_A.setEditable(true);
-      else this.jTextFieldDN_A.setEditable(false);
+      if(dat && DN_DA.before(today) && DN_DA.before(DN_A) && DN_DA.after(limite_inf)){
+          this.jTextFieldDN_A.setEditable(true);
+      }
+      else {
+          this.jTextFieldDN_Da.setText("");
+          this.jTextFieldDN_A.setEditable(false);
+      }
            if(!dat) this.jTextFieldDN_A.setText("");
     }//GEN-LAST:event_jTextFieldDN_DaFocusLost
 
@@ -560,20 +584,45 @@ public class JVeterinario extends javax.swing.JFrame {
       Date DUV_DA = pz.ConvertStringToDate(this.jTextFieldDUV_DA.getText(), "dd-MM-yyyy");
       Date DUV_A = pz.ConvertStringToDate(this.jTextFieldDUV_A.getText(), "dd-MM-yyyy");
       Date today = new Date();
+      Date limite_inf = pz.ConvertStringToDate("01-01-1900", "dd-MM-yyyy");
+      
      
        if(!dat) this.jTextFieldDUV_A.setText(""); 
-      if(dat && DUV_DA.before(today) && DUV_DA.before(DUV_A)) this.jTextFieldDUV_A.setEditable(true);
-      else this.jTextFieldDUV_A.setEditable(false);
+      if(dat && DUV_DA.before(today) && DUV_DA.before(DUV_A) && DUV_DA.after(limite_inf)) this.jTextFieldDUV_A.setEditable(true);
+      else {
+          this.jTextFieldDUV_DA.setText("");
+          this.jTextFieldDUV_A.setEditable(false);
+      }
     }//GEN-LAST:event_jTextFieldDUV_DAFocusLost
 
     private void jTextFieldDN_AFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDN_AFocusLost
         // TODO add your handling code here:
+        if(this.jTextFieldDN_A.getText().equals("")) {
+            this.jTextFieldDN_Da.setText("");
         
+          this.jTextFieldDN_A.setEditable(false);}
     }//GEN-LAST:event_jTextFieldDN_AFocusLost
 
     private void jTextFieldDUV_AFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDUV_AFocusLost
         // TODO add your handling code here:
+        if(this.jTextFieldDUV_A.getText().equals("")) {this.jTextFieldDUV_DA.setText("");
+          this.jTextFieldDUV_A.setEditable(false);}
     }//GEN-LAST:event_jTextFieldDUV_AFocusLost
+
+    private void jButtonReset_FiltriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReset_FiltriActionPerformed
+        // TODO add your handling code here:
+        this.jComboBoxGenere.setSelectedIndex(0);
+        this.jComboBoxSpecie.setSelectedIndex(0);
+        this.jComboBoxSalute.setSelectedIndex(0);
+        this.jComboBoxPresente.setSelectedIndex(0);
+        this.jTextFieldCodAni_Filtro.setText("");
+        this.jTextFieldDN_Da.setText("");
+        this.jTextFieldDN_A.setText("");
+        this.jTextFieldDN_A.setEditable(false);
+        this.jTextFieldDUV_DA.setText("");
+        this.jTextFieldDUV_A.setText("");
+        this.jTextFieldDUV_A.setEditable(false);
+    }//GEN-LAST:event_jButtonReset_FiltriActionPerformed
     
     //Restituisce il valore di una certa colonna di una tabella in base alla riga selezionata.
     public String getTableSelectedItem(JTable table, String item)
@@ -678,7 +727,7 @@ public void selectmode(JTable table)
        else list = conn.animaliList(Filtri);
        
        DefaultTableModel model = (DefaultTableModel) table.getModel();
-       Object[] row = new Object[8];
+       Object[] row = new Object[9];
 
        table.changeSelection(0, 0, false, false);
        
@@ -724,6 +773,7 @@ public void selectmode(JTable table)
     private javax.swing.Box.Filler filler1;
     private javax.swing.JButton jButtonFiltra;
     private javax.swing.JButton jButtonLogout;
+    private javax.swing.JButton jButtonReset_Filtri;
     private javax.swing.JButton jButtonSchedaAnimale;
     private javax.swing.JCheckBox jCheckBoxFiltri;
     private javax.swing.JComboBox<String> jComboBoxGenere;
@@ -731,6 +781,7 @@ public void selectmode(JTable table)
     private javax.swing.JComboBox<String> jComboBoxSalute;
     private javax.swing.JComboBox<String> jComboBoxSpecie;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -742,6 +793,7 @@ public void selectmode(JTable table)
     private javax.swing.JPanel jPanelFiltri;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTableAnimali;
+    private javax.swing.JTextField jTextFieldCodAni_Filtro;
     private javax.swing.JTextField jTextFieldDN_A;
     private javax.swing.JTextField jTextFieldDN_Da;
     private javax.swing.JTextField jTextFieldDUV_A;

@@ -403,7 +403,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         // TODO add your handling code here: 
         setVisible(false);
         
-        String[] FILTRI = new String[8];
+        String[] FILTRI = new String[9];
         for(int i=0; i<FILTRI.length; i++) FILTRI[i] = "";
         
         new JVeterinario(utente, FILTRI);
