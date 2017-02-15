@@ -660,7 +660,7 @@ public class DBConnect {
            
        }
        
-       for(int i=Filtri.length-4; i<Filtri.length; i+=2)
+       for(int i=Filtri.length-4; i<Filtri.length-1; i+=2)
        {      if(!Filtri[i].equals("") && count_nofilter !=0) {
                 String dt_da = pz.NuovoFormatoData(Filtri[i], "dd-MM-yyyy", "yyyy-MM-dd");
              //   Date dt_da_new = pz.ConvertStringToDate(dt_da,"yyyy-MM-dd");
@@ -683,6 +683,8 @@ public class DBConnect {
            }
            
        }
+       
+ 
        
        
        

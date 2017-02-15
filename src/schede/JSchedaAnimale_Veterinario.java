@@ -39,7 +39,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         public Animale anim = new Animale();
         public Visita vis = new Visita();  
        
-        public String[] filters = new String[7];
+        public String[] filters = new String[9];
      ButtonGroup bG = new ButtonGroup();
      
     public JSchedaAnimale_Veterinario() {
