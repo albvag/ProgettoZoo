@@ -626,7 +626,7 @@ public class DBConnect {
             
 
        int count_nofilter = 0;
-       for(int i=0; i<Filtri.length-4; i++)
+       for(int i=0; i<Filtri.length-3; i++)
        {
            System.out.println("Dalla QUERY: "+Filtri[i]);
            
@@ -660,13 +660,12 @@ public class DBConnect {
            
        }
        
-       for(int i=Filtri.length-4; i<Filtri.length-1; i+=2)
-       {      if(!Filtri[i].equals("") && count_nofilter !=0) {
+       for(int i=Filtri.length-3; i<Filtri.length-1; i+=2)
+       {     
+           if(!Filtri[i].equals("") && count_nofilter !=0) {
                 String dt_da = pz.NuovoFormatoData(Filtri[i], "dd-MM-yyyy", "yyyy-MM-dd");
-             //   Date dt_da_new = pz.ConvertStringToDate(dt_da,"yyyy-MM-dd");
                 
                 String dt_a = pz.NuovoFormatoData(Filtri[i+1], "dd-MM-yyyy", "yyyy-MM-dd");
-              //  Date dt_a_new = pz.ConvertStringToDate(dt_a,"yyyy-MM-dd");
                 
                query = query + " AND "+f_where[i] + " >= '"+ dt_da + "' AND "+f_where[i] +" <= '"+dt_a+"'";
                System.out.println("Query al passaggio di "+dt_da+ "con count "+count_nofilter+ ": "+query);

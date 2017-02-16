@@ -63,7 +63,6 @@ public class JVeterinario extends javax.swing.JFrame {
         String[] jTableAnimaliHeaders  = {"Codice Animale","Nome Animale","Specie","Data di Nascita","Genere","Ultima Visita","Salute","Presente"};
         selectmode(this.jTableAnimali);   
         creaTabella(this.jTableAnimali, jTableAnimaliHeaders);
-        this.jTableAnimali.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         
         for(int i=0; i< filter.length; i++)
            filtri[i] = filter[i];
@@ -357,8 +356,8 @@ public class JVeterinario extends javax.swing.JFrame {
                                             .addComponent(jButtonSchedaAnimale, javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(jButtonLogout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 131, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(131, 131, 131)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)))
                         .addGap(82, 82, 82))))
         );
         layout.setVerticalGroup(
