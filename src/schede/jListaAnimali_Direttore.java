@@ -30,6 +30,7 @@ public class jListaAnimali_Direttore extends javax.swing.JFrame {
     public jListaAnimali_Direttore() {
         initComponents();
         JVeterinario v=new JVeterinario();
+        this.jTableAnimali.getTableHeader().setReorderingAllowed(false);
            String[] jTableAnimaliHeaders  = {"Codice Animale","Nome Animale","Specie","Data di Nascita","Genere","Ultima Visita","Salute","Presente"};
         v.selectmode(this.jTableAnimali);   
         v.creaTabella(this.jTableAnimali, jTableAnimaliHeaders);

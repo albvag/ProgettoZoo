@@ -111,19 +111,13 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
             int reply = JOptionPane.showConfirmDialog(null, "L'habitat che vuoi inserire è: "+this.jInseriscihabitat.getText(), "Confermare?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION)
                 {  
-                       
-                        int reply1 = JOptionPane.showConfirmDialog(null, "Vuoi creare anche la nuova specie? ", "Confermare?", JOptionPane.YES_NO_OPTION);
-                 while(reply1 != JOptionPane.YES_OPTION)
-                 {  JOptionPane.showMessageDialog(null, "ERRORE:DEVI CREARE LA SPECIE SE CREI L'HABITAT","ERRORE",JOptionPane.ERROR_MESSAGE);
-                     reply1=JOptionPane.showConfirmDialog(null, "Vuoi creare anche la nuova specie? ", "Confermare?", JOptionPane.YES_NO_OPTION);}
-                if (reply1 == JOptionPane.YES_OPTION)
-                {    JAggiungiSpecie_Direttore aggspe= new JAggiungiSpecie_Direttore();
+                       JOptionPane.showMessageDialog(null, "Devi Inserire anche la nuova specie");
+              
+                    JAggiungiSpecie_Direttore aggspe= new JAggiungiSpecie_Direttore();
                       aggspe.setLocationRelativeTo(null);
                       aggspe.setVisible(true);
                     conn.insertHabitat(habitat);
-                      
-                    setVisible(false);
-                }          
+                    setVisible(false);          
                 }
                  
               
