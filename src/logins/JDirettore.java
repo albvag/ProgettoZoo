@@ -73,7 +73,6 @@ public class JDirettore extends javax.swing.JFrame {
         jlistahabitat = new javax.swing.JButton();
         jlistapersonale = new javax.swing.JButton();
         jlistaprodotti = new javax.swing.JButton();
-        jRimuoviSpecie = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Direttore");
@@ -182,13 +181,6 @@ public class JDirettore extends javax.swing.JFrame {
             }
         });
 
-        jRimuoviSpecie.setText("Rimuovi Specie");
-        jRimuoviSpecie.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRimuoviSpecieActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -214,8 +206,7 @@ public class JDirettore extends javax.swing.JFrame {
                             .addGap(79, 79, 79)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jRimuoviSpecie, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(72, 72, 72)
+                                    .addGap(213, 213, 213)
                                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,9 +253,7 @@ public class JDirettore extends javax.swing.JFrame {
                         .addComponent(jRimuoviHabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jRimuoviSpecie, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addComponent(jButtonLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -335,12 +324,6 @@ public class JDirettore extends javax.swing.JFrame {
       rimpro.setLocationRelativeTo(null);
       rimpro.setVisible(true);
     }//GEN-LAST:event_jRimuoviProdottoActionPerformed
-
-    private void jRimuoviSpecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRimuoviSpecieActionPerformed
-         JRimuoviSpecie_Direttore rimspe= new JRimuoviSpecie_Direttore();
-      rimspe.setLocationRelativeTo(null);
-      rimspe.setVisible(true);// TODO add your handling code here:
-    }//GEN-LAST:event_jRimuoviSpecieActionPerformed
 
     private void jlistapersonaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jlistapersonaleActionPerformed
         JListaPersonale_Direttore lisper = new JListaPersonale_Direttore();
@@ -487,7 +470,6 @@ public void Show_Prodotti_In_JTable(JTable table)
     private javax.swing.JButton jRimuoviHabitat;
     private javax.swing.JButton jRimuoviPersonale;
     private javax.swing.JButton jRimuoviProdotto;
-    private javax.swing.JButton jRimuoviSpecie;
     private javax.swing.JButton jlistahabitat;
     private javax.swing.JButton jlistapersonale;
     private javax.swing.JButton jlistaprodotti;

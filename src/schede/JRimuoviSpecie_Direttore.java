@@ -116,9 +116,12 @@ public class JRimuoviSpecie_Direttore extends javax.swing.JFrame {
          int reply = JOptionPane.showConfirmDialog(null, "Hai Selezionato: "+this.jselspecie.getSelectedItem().toString(),  "Confermare?", JOptionPane.YES_NO_OPTION);
                  if (reply == JOptionPane.YES_OPTION)
                  {   conn.deleteSpecie(specie);
-                      setVisible(false);}
-                 
-                    
+                        JListaHabitat_Direttore lishab= new JListaHabitat_Direttore();
+                        lishab.setLocationRelativeTo(null);
+                        lishab.setVisible(true);
+                        JOptionPane.showMessageDialog(null, "HAI CANCELLATO HABITAT E SPECIE");
+                        setVisible(false);
+                 }   
          
     }//GEN-LAST:event_jrimuovispecieActionPerformed
 

@@ -121,8 +121,7 @@ public static boolean check(String regex, String input){
          JListaHabitat_Direttore lishab= new JListaHabitat_Direttore();
                        lishab.setLocationRelativeTo(null);
                        lishab.setVisible(true);
-        
-        setVisible(false);
+                       setVisible(false);
                 }
           }
     }//GEN-LAST:event_jSalvaActionPerformed
