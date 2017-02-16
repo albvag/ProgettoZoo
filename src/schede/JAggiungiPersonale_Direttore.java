@@ -67,6 +67,7 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jDatanascita = new javax.swing.JTextField();
         erroredata = new javax.swing.JLabel();
+        erroreruolo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -196,7 +197,7 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
 
         jLabel9.setText("            Ruolo");
 
-        jRuolo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Direttore", "Custode", "Veterinario", "Cassiere" }));
+        jRuolo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Direttore", "Custode", "Veterinario", "Cassiere" }));
         jRuolo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRuoloActionPerformed(evt);
@@ -279,7 +280,8 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
                                                 .addComponent(jRipetiPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(jRuolo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(jAggiungiPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(errorepass, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                .addComponent(errorepass, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(erroreruolo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addGap(26, 26, 26))))))
         );
         layout.setVerticalGroup(
@@ -291,12 +293,10 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jAggiungiNumeroTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jNomePersonale))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jAggiungiNumeroTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jNomePersonale)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -326,8 +326,10 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
                                     .addComponent(jRipetiPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jAggiungiResidenza, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(11, 11, 11)
-                                .addComponent(erroreindirizzo, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(7, 7, 7)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(erroreindirizzo, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(erroreruolo, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -458,12 +460,16 @@ if(rpass==false)
     errconfpass.setText("Caratteri non validi");
 else
     errconfpass.setText("Caratteri validi");
+if(this.jRuolo.getSelectedItem().toString().equals(" "))
+    erroreruolo.setText("Non hai inserito il ruolo");
+else
+    erroreruolo.setText("Caratteri Validi");
  DBConnect conn =new DBConnect();
    String Cod_pers=(this.jAggiungiUser.getText());
    ProgettoZoo pz= new ProgettoZoo();
   
   
-  if(nom==true && cog==true && dat==true && res==true && ind==true && tel==true && user==true && pass==true && rpass==true )
+  if(nom==true && cog==true && dat==true && res==true && ind==true && tel==true && user==true && pass==true && rpass==true && this.jRuolo.getSelectedItem().toString().equals(" ")==true)
   {   Date d= pz.ConvertStringToDate(data, "dd/MM/yyyy");
       java.sql.Date sqlDate = new java.sql.Date(d.getTime());
        int reply = JOptionPane.showConfirmDialog(null, "Stai inserendo l'utente "+this.jNomePersonale.getText()+" "+this.jAggiungiCognome.getText()+"\n Data di nascita: "+this.jDatanascita.getText()+"\n Città: "+this.jAggiungiResidenza.getText()+"\n Indirizzo: "+this.jAggiungiIndirizzo.getText()+"\n Telefono: "+this.jAggiungiNumeroTelefono.getText()+"\n Username: "+this.jAggiungiUser.getText()+"\n Password: "+this.jAggiungiPassword.getText()+"\n Conferma Password: "+this.jRipetiPassword.getText()+"\n Ruolo: "+this.jRuolo.getSelectedItem().toString(), "Confermare?", JOptionPane.YES_NO_OPTION);
@@ -638,6 +644,7 @@ else
     private javax.swing.JLabel errorenome;
     private javax.swing.JLabel errorepass;
     private javax.swing.JLabel erroreresidenza;
+    private javax.swing.JLabel erroreruolo;
     private javax.swing.JLabel erroretel;
     private javax.swing.JLabel erroreuser;
     private javax.swing.JTextField jAggiungiCognome;

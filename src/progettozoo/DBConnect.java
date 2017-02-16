@@ -239,6 +239,7 @@ public class DBConnect {
             }   
            return spelist; 
     }
+      
      public ArrayList<Prodotto> selezionaProdotto()
     {
         ArrayList<Prodotto> prolist = new ArrayList<Prodotto>();

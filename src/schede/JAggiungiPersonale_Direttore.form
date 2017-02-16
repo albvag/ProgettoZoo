@@ -90,6 +90,7 @@
                                               <Component id="jRuolo" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
                                               <Component id="jAggiungiPassword" alignment="0" min="-2" pref="448" max="-2" attributes="0"/>
                                               <Component id="errorepass" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                                              <Component id="erroreruolo" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -151,8 +152,11 @@
                                   <Component id="jLabel2" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                                   <Component id="jAggiungiResidenza" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                              <Component id="erroreindirizzo" min="-2" pref="10" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="erroreindirizzo" min="-2" pref="10" max="-2" attributes="0"/>
+                                  <Component id="erroreruolo" min="-2" pref="10" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel9" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
@@ -339,11 +343,12 @@
     <Component class="javax.swing.JComboBox" name="jRuolo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Direttore"/>
-            <StringItem index="1" value="Custode"/>
-            <StringItem index="2" value="Veterinario"/>
-            <StringItem index="3" value="Cassiere"/>
+          <StringArray count="5">
+            <StringItem index="0" value=" "/>
+            <StringItem index="1" value="Direttore"/>
+            <StringItem index="2" value="Custode"/>
+            <StringItem index="3" value="Veterinario"/>
+            <StringItem index="4" value="Cassiere"/>
           </StringArray>
         </Property>
       </Properties>
@@ -388,6 +393,8 @@
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="erroredata">
+    </Component>
+    <Component class="javax.swing.JLabel" name="erroreruolo">
     </Component>
   </SubComponents>
 </Form>

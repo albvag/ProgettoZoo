@@ -97,9 +97,12 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
 
         jAggiunginomeanimale.setForeground(new java.awt.Color(153, 153, 153));
         jAggiunginomeanimale.setText("Nome formato da sole lettere");
-        jAggiunginomeanimale.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jAggiunginomeanimaleMouseClicked(evt);
+        jAggiunginomeanimale.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jAggiunginomeanimaleFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jAggiunginomeanimaleFocusLost(evt);
             }
         });
         jAggiunginomeanimale.addActionListener(new java.awt.event.ActionListener() {
@@ -111,9 +114,12 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
         jDatadinascita.setForeground(new java.awt.Color(153, 153, 153));
         jDatadinascita.setText("dd/mm/aaaa");
         jDatadinascita.setToolTipText("");
-        jDatadinascita.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jDatadinascitaMouseClicked(evt);
+        jDatadinascita.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jDatadinascitaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jDatadinascitaFocusLost(evt);
             }
         });
         jDatadinascita.addActionListener(new java.awt.event.ActionListener() {
@@ -366,27 +372,6 @@ else
                // TODO add your handling code here:
     }//GEN-LAST:event_jGenereActionPerformed
 
-    private void jDatadinascitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDatadinascitaMouseClicked
-        if(jDatadinascita.getText().equals("dd/mm/aaaa"))
-        {jDatadinascita.setText("");
-         jDatadinascita.setForeground(Color.black);
-        }
-        else
-            jDatadinascita.getText();
-        
-       
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jDatadinascitaMouseClicked
-
-    private void jAggiunginomeanimaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jAggiunginomeanimaleMouseClicked
-          if(jAggiunginomeanimale.getText().equals("Nome formato da sole lettere"))
-          {jAggiunginomeanimale.setText("");
-           jAggiunginomeanimale.setForeground(Color.black);
-          }
-        else
-            jAggiunginomeanimale.getText();   // TODO add your handling code here:
-    }//GEN-LAST:event_jAggiunginomeanimaleMouseClicked
-
     private void jnostroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jnostroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jnostroActionPerformed
@@ -398,6 +383,37 @@ else
     private void jselhabitatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jselhabitatActionPerformed
        // TODO add your handling code here:
     }//GEN-LAST:event_jselhabitatActionPerformed
+
+    private void jDatadinascitaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jDatadinascitaFocusGained
+        if(jDatadinascita.getText().equals("dd/mm/aaaa"))
+        {jDatadinascita.setText("");
+         jDatadinascita.setForeground(Color.black);
+        }
+        else
+            jDatadinascita.getText(); // TODO add your handling code here:
+    }//GEN-LAST:event_jDatadinascitaFocusGained
+
+    private void jDatadinascitaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jDatadinascitaFocusLost
+       if(jDatadinascita.getText().equals(""))
+        jDatadinascita.setForeground(Color.gray);   
+        jDatadinascita.setText("dd/mm/aaaa");   
+    }//GEN-LAST:event_jDatadinascitaFocusLost
+
+    private void jAggiunginomeanimaleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiunginomeanimaleFocusGained
+          
+        if(jAggiunginomeanimale.getText().equals("Nome formato da sole lettere"))
+          {jAggiunginomeanimale.setText("");
+           jAggiunginomeanimale.setForeground(Color.black);
+          }
+        else
+            jAggiunginomeanimale.getText();
+    }//GEN-LAST:event_jAggiunginomeanimaleFocusGained
+
+    private void jAggiunginomeanimaleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiunginomeanimaleFocusLost
+        if(jAggiunginomeanimale.getText().equals(""))
+        jAggiunginomeanimale.setForeground(Color.gray);   
+        jAggiunginomeanimale.setText("Nome formato da sole lettere"); 
+    }//GEN-LAST:event_jAggiunginomeanimaleFocusLost
 
     /**
      * @param args the command line arguments

@@ -61,9 +61,9 @@ public class JDirettore extends javax.swing.JFrame {
         jRimuoviAnimale = new javax.swing.JButton();
         jAggiungiHabitat = new javax.swing.JButton();
         jRimuoviHabitat = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        jVediincassi = new javax.swing.JButton();
         jListaanimali = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        jPrestaanimale = new javax.swing.JButton();
         jAggiungiProdotto = new javax.swing.JButton();
         jRimuoviProdotto = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -127,7 +127,12 @@ public class JDirettore extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setText("Vedi Incassi");
+        jVediincassi.setText("Vedi Incassi");
+        jVediincassi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jVediincassiActionPerformed(evt);
+            }
+        });
 
         jListaanimali.setText("Lista Animali");
         jListaanimali.addActionListener(new java.awt.event.ActionListener() {
@@ -136,7 +141,12 @@ public class JDirettore extends javax.swing.JFrame {
             }
         });
 
-        jButton9.setText("Presta Animale");
+        jPrestaanimale.setText("Presta Animale");
+        jPrestaanimale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPrestaanimaleActionPerformed(evt);
+            }
+        });
 
         jAggiungiProdotto.setText("Aggiungi Prodotto");
         jAggiungiProdotto.addActionListener(new java.awt.event.ActionListener() {
@@ -202,12 +212,12 @@ public class JDirettore extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addComponent(jListaanimali, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jAggiungiAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jPrestaanimale, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(79, 79, 79)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(213, 213, 213)
-                                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jVediincassi, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel2)
@@ -253,8 +263,8 @@ public class JDirettore extends javax.swing.JFrame {
                         .addComponent(jRimuoviHabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jVediincassi, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPrestaanimale, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addComponent(jButtonLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
@@ -343,6 +353,14 @@ public class JDirettore extends javax.swing.JFrame {
        lispro.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_jlistaprodottiActionPerformed
 
+    private void jPrestaanimaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPrestaanimaleActionPerformed
+        
+    }//GEN-LAST:event_jPrestaanimaleActionPerformed
+
+    private void jVediincassiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVediincassiActionPerformed
+        
+    }//GEN-LAST:event_jVediincassiActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -406,7 +424,9 @@ public void Show_Prodotti_In_JTable(JTable table)
            row[2] = list.get(i).getCognome();
            
            String DataNascita = list.get(i).getData().toString();
-                String DataNascita_String = pz.NuovoFormatoData(DataNascita, "yyyy/MM/dd", "dd/MM/yyyy");
+           
+           String DataNascita_String = pz.NuovoFormatoData(DataNascita, "yyyy-MM-dd", "dd-MM-yyyy");
+           
            row[3] = DataNascita_String;
            
            row[4] = list.get(i).getResidenza();
@@ -458,18 +478,18 @@ public void Show_Prodotti_In_JTable(JTable table)
     private javax.swing.JButton jAggiungiHabitat;
     private javax.swing.JButton jAggiungiPersonale;
     private javax.swing.JButton jAggiungiProdotto;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonLogout;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JButton jListaanimali;
+    private javax.swing.JButton jPrestaanimale;
     private javax.swing.JButton jRimuoviAnimale;
     private javax.swing.JButton jRimuoviHabitat;
     private javax.swing.JButton jRimuoviPersonale;
     private javax.swing.JButton jRimuoviProdotto;
+    private javax.swing.JButton jVediincassi;
     private javax.swing.JButton jlistahabitat;
     private javax.swing.JButton jlistapersonale;
     private javax.swing.JButton jlistaprodotti;
