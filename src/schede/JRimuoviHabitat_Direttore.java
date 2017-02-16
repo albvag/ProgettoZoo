@@ -129,18 +129,13 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
                 if (reply == JOptionPane.YES_OPTION)
                 { 
                         JOptionPane.showMessageDialog(null, "Devi cancellare anche la specie presente nell'habitat");
-             /*        int reply1 = JOptionPane.showConfirmDialog(null, "Vuoi cancellare anche la specie? ", "Confermare?", JOptionPane.YES_NO_OPTION);
-               while(reply1 != JOptionPane.YES_OPTION)
-                 {  JOptionPane.showMessageDialog(null, "ERRORE:DEVI CANCELLARE ANCHE LA SPECIE SE CANCELLI L'HABITAT","ERRORE",JOptionPane.ERROR_MESSAGE);
-                     reply1=JOptionPane.showConfirmDialog(null, "Vuoi cancellare anche la specie? ", "Confermare?", JOptionPane.YES_NO_OPTION);}
-                     if (reply1 == JOptionPane.YES_OPTION)*/
-                    // {   
+            
                          JRimuoviSpecie_Direttore rimspe= new JRimuoviSpecie_Direttore();
                            rimspe.setLocationRelativeTo(null);
                            rimspe.setVisible(true);
                            conn.deleteHabitat(sel);
                            setVisible(false); 
-                     //}      // TODO add your handling code here:
+                         // TODO add your handling code here:
     }//GEN-LAST:event_jRimuoviActionPerformed
     }
     /**
