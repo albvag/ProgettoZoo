@@ -111,7 +111,7 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
             int reply = JOptionPane.showConfirmDialog(null, "L'habitat che vuoi inserire è: "+this.jInseriscihabitat.getText(), "Confermare?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION)
                 {  
-                       JOptionPane.showMessageDialog(null, "Devi Inserire anche la nuova specie");
+                       JOptionPane.showMessageDialog(null, "Devi inserire anche la nuova specie");
               
                     JAggiungiSpecie_Direttore aggspe= new JAggiungiSpecie_Direttore();
                       aggspe.setLocationRelativeTo(null);

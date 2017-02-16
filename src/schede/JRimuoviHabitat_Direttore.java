@@ -135,7 +135,7 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
                            rimspe.setVisible(true);
                            conn.deleteHabitat(sel);
                            setVisible(false); 
-                         // TODO add your handling code here:
+                         
     }//GEN-LAST:event_jRimuoviActionPerformed
     }
     /**
