@@ -34,14 +34,16 @@
                   <Component id="jNomeAnimale" alignment="1" min="-2" pref="80" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="erroredata" max="32767" attributes="0"/>
-                  <Component id="errorespecie" max="32767" attributes="0"/>
-                  <Component id="errorenome" max="32767" attributes="0"/>
-                  <Component id="jAggiunginomeanimale" pref="190" max="32767" attributes="0"/>
-                  <Component id="jDatadinascita" pref="190" max="32767" attributes="0"/>
-                  <Component id="jAggiungispecie" alignment="0" pref="190" max="32767" attributes="0"/>
-                  <Component id="jGenere" alignment="0" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="erroredata" max="32767" attributes="0"/>
+                      <Component id="errorespecie" max="32767" attributes="0"/>
+                      <Component id="errorenome" max="32767" attributes="0"/>
+                      <Component id="jAggiunginomeanimale" pref="190" max="32767" attributes="0"/>
+                      <Component id="jDatadinascita" pref="190" max="32767" attributes="0"/>
+                      <Component id="jGenere" alignment="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="jselspecie" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -66,10 +68,13 @@
                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                       <Component id="jButtonClose" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel4" min="-2" pref="80" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jselhabitat" min="-2" pref="190" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="errorehabitat" max="32767" attributes="0"/>
+                          <Component id="jselhabitat" pref="190" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -80,7 +85,10 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="errorenome" min="-2" pref="10" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="errorenome" min="-2" pref="10" max="-2" attributes="0"/>
+                  <Component id="errorehabitat" min="-2" pref="10" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jNomeAnimale" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
@@ -92,9 +100,11 @@
               <Component id="errorespecie" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jSpecieAnimale" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jSpecieAnimale" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="jselspecie" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                      <Component id="jAggiungispecie" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="jLabel1" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="jsalute" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
@@ -156,18 +166,6 @@
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jAggiunginomeanimaleMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jAggiunginomeanimaleActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jAggiungispecie">
-      <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="99" green="99" red="99" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Es.leone,orso,pinguino,ecc."/>
-      </Properties>
-      <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jAggiungispecieMouseClicked"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jAggiungispecieActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jDatadinascita">
@@ -295,7 +293,9 @@
     <Component class="javax.swing.JComboBox" name="jselhabitat">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="1">
+            <StringItem index="0" value=" "/>
+          </StringArray>
         </Property>
       </Properties>
       <Events>
@@ -304,6 +304,20 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jselspecie">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="1">
+            <StringItem index="0" value=" "/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="errorehabitat">
     </Component>
   </SubComponents>
 </Form>
