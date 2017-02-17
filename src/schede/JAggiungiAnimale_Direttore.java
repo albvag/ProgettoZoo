@@ -395,14 +395,14 @@ else
 
     private void jDatadinascitaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jDatadinascitaFocusLost
        if(jDatadinascita.getText().equals(""))
-        jDatadinascita.setForeground(Color.gray);   
-        jDatadinascita.setText("dd/mm/aaaa");   
+       { jDatadinascita.setForeground(Color.gray);   
+        jDatadinascita.setText("dd/mm/aaaa");}   
     }//GEN-LAST:event_jDatadinascitaFocusLost
 
     private void jAggiunginomeanimaleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiunginomeanimaleFocusLost
         if(jAggiunginomeanimale.getText().equals(""))
-        jAggiunginomeanimale.setForeground(Color.gray);   
-        jAggiunginomeanimale.setText("Nome formato da sole lettere"); 
+        { jAggiunginomeanimale.setForeground(Color.gray);   
+        jAggiunginomeanimale.setText("Nome formato da sole lettere");} 
     }//GEN-LAST:event_jAggiunginomeanimaleFocusLost
 
     private void jAggiunginomeanimaleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiunginomeanimaleFocusGained

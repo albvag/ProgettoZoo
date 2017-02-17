@@ -569,8 +569,8 @@ else
 
     private void jNomePersonaleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jNomePersonaleFocusLost
          if(jNomePersonale.getText().equals(""))
-        jNomePersonale.setForeground(Color.gray);   
-        jNomePersonale.setText("Es.Mario"); 
+         { jNomePersonale.setForeground(Color.gray);   
+        jNomePersonale.setText("Es.Mario"); }
     }//GEN-LAST:event_jNomePersonaleFocusLost
 
     private void jAggiungiCognomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiungiCognomeFocusGained
@@ -584,8 +584,8 @@ else
 
     private void jAggiungiCognomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiungiCognomeFocusLost
           if(jAggiungiCognome.getText().equals(""))
-        jAggiungiCognome.setForeground(Color.gray);   
-        jAggiungiCognome.setText("Es.Rossi"); 
+          { jAggiungiCognome.setForeground(Color.gray);   
+        jAggiungiCognome.setText("Es.Rossi");} 
     }//GEN-LAST:event_jAggiungiCognomeFocusLost
 
     private void jDatanascitaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jDatanascitaFocusGained
@@ -599,8 +599,8 @@ else
 
     private void jDatanascitaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jDatanascitaFocusLost
            if(jDatanascita.getText().equals(""))
-        jDatanascita.setForeground(Color.gray);   
-        jDatanascita.setText("Es.22/01/1995"); 
+           { jDatanascita.setForeground(Color.gray);   
+        jDatanascita.setText("Es.22/01/1995");} 
     }//GEN-LAST:event_jDatanascitaFocusLost
 
     private void jAggiungiResidenzaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiungiResidenzaFocusGained
@@ -614,8 +614,8 @@ else
 
     private void jAggiungiResidenzaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiungiResidenzaFocusLost
             if(jAggiungiResidenza.getText().equals(""))
-        jAggiungiResidenza.setForeground(Color.gray);   
-        jAggiungiResidenza.setText("Es.Roma"); 
+            { jAggiungiResidenza.setForeground(Color.gray);   
+        jAggiungiResidenza.setText("Es.Roma"); }
     }//GEN-LAST:event_jAggiungiResidenzaFocusLost
 
     private void jAggiungiIndirizzoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiungiIndirizzoFocusGained
@@ -629,8 +629,8 @@ else
 
     private void jAggiungiIndirizzoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiungiIndirizzoFocusLost
              if(jAggiungiIndirizzo.getText().equals(""))
-        jAggiungiIndirizzo.setForeground(Color.gray);   
-        jAggiungiIndirizzo.setText("Es.via indirizzo 1"); 
+             { jAggiungiIndirizzo.setForeground(Color.gray);   
+        jAggiungiIndirizzo.setText("Es.via indirizzo 1"); }
     }//GEN-LAST:event_jAggiungiIndirizzoFocusLost
 
     private void jAggiungiNumeroTelefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiungiNumeroTelefonoFocusGained
@@ -644,8 +644,8 @@ else
 
     private void jAggiungiNumeroTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiungiNumeroTelefonoFocusLost
               if(jAggiungiNumeroTelefono.getText().equals(""))
-        jAggiungiNumeroTelefono.setForeground(Color.gray);   
-        jAggiungiNumeroTelefono.setText("Es.0147852369");
+              { jAggiungiNumeroTelefono.setForeground(Color.gray);   
+        jAggiungiNumeroTelefono.setText("Es.0147852369");}
     }//GEN-LAST:event_jAggiungiNumeroTelefonoFocusLost
 
     private void jAggiungiUserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiungiUserFocusGained
@@ -659,8 +659,8 @@ else
 
     private void jAggiungiUserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiungiUserFocusLost
                 if(jAggiungiUser.getText().equals(""))
-        jAggiungiUser.setForeground(Color.gray);   
-        jAggiungiUser.setText("Campo formato da soli caratteri alfanumerici più  _ e – di lungezza min 3 e max 15");
+                {  jAggiungiUser.setForeground(Color.gray);   
+        jAggiungiUser.setText("Campo formato da soli caratteri alfanumerici più  _ e – di lungezza min 3 e max 15");}
     }//GEN-LAST:event_jAggiungiUserFocusLost
 
     /**

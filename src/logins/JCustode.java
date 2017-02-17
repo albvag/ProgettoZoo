@@ -34,7 +34,7 @@ public class JCustode extends javax.swing.JFrame {
     
     public JCustode(Utente user_login) {
         initComponents();
-        initComponents();
+        
         setLocationRelativeTo(null);
         setVisible(true);
         this.jPulizie.setVisible(false);
@@ -49,7 +49,7 @@ public class JCustode extends javax.swing.JFrame {
         String[] jTableAiutiHeaders  = {"Gabbia","Custode"};
         v.selectmode(this.jTablePulizie);   
         v.creaTabella(this.jTablePulizie, jTablePulizieHeaders);
-        v.creaTabella(this.jTablePulizie, jTableAiutiHeaders);
+        v.creaTabella(this.jTableAiuti, jTableAiutiHeaders);
         this.jTablePulizie.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         Show_Pulizie_In_JTable(this.jTablePulizie);
         Show_Aiuti_In_JTable(this.jTableAiuti);
@@ -58,6 +58,7 @@ public class JCustode extends javax.swing.JFrame {
     
     public void Show_Pulizie_In_JTable(JTable table)
     {
+        
        ArrayList<Pulizia> list = conn.listPulizieDisponibili();
        DefaultTableModel model = (DefaultTableModel) table.getModel();
        Object[] row = new Object[1];

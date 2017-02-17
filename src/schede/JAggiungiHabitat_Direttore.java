@@ -5,8 +5,10 @@
  */
 package schede;
 import java.awt.Color;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import progettozoo.DBConnect;
+import static schede.JAggiungiPersonale_Direttore.check;
 
 /**
  *
@@ -114,8 +116,12 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
 
     private void jSalvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalvaActionPerformed
        String habitat= this.jInseriscihabitat.getText();
+       String formhabitat = "[a-zA-Z]{1,}";
+       Pattern pattern = Pattern.compile(formhabitat);
+       boolean hab=check(formhabitat,habitat);
        DBConnect conn= new DBConnect();
-       if(conn.habitatExists(habitat))
+       if(hab==true)
+       {if(conn.habitatExists(habitat))
        {
             JOptionPane.showMessageDialog(null, "Errore! L'Habitat è già esistente");
        }else{
@@ -130,23 +136,26 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
                     conn.insertHabitat(habitat);
                     setVisible(false);          
                 }
+       }
     }//GEN-LAST:event_jSalvaActionPerformed
+   else {JOptionPane.showMessageDialog(null, "Caratteri non validi");}
     }
     private void jInseriscihabitatFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jInseriscihabitatFocusGained
-        if(jInseriscihabitat.getText().equals("Es.Leoni"))
-          {jInseriscihabitat.setText("");
-           jInseriscihabitat.setForeground(Color.black);
-          }
+         if(jInseriscihabitat.getText().equals("Es.Leoni"))
+        {jInseriscihabitat.setText("");
+         jInseriscihabitat.setForeground(Color.black);
+        }
         else
             jInseriscihabitat.getText();
     }//GEN-LAST:event_jInseriscihabitatFocusGained
 
     private void jInseriscihabitatFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jInseriscihabitatFocusLost
-             if(jInseriscihabitat.getText().equals(""))
-        jInseriscihabitat.setForeground(Color.gray);   
-        jInseriscihabitat.setText("Es.Leoni"); 
+         if(jInseriscihabitat.getText().equals(""))
+       { jInseriscihabitat.setForeground(Color.gray);   
+        jInseriscihabitat.setText("Es.Leoni");} 
     }//GEN-LAST:event_jInseriscihabitatFocusLost
     
+      
     /**
      * @param args the command line arguments
      */

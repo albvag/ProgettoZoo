@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import progettozoo.DBConnect;
+import static schede.JAggiungiAnimale_Direttore.check;
 import static schede.JAggiungiPersonale_Direttore.check;
 
 /**
@@ -191,12 +192,17 @@ public class JAggiungiProdotto_Direttore extends javax.swing.JFrame {
       String nome=this.jaggiunginome.getText();
       String prezzo=this.jaggiungiprezzo.getText();
       String giacenza=this.jaggiungigiacenza.getText();
+        String formnome = "[a-zA-Z]{1,}";
         String formprezzo1 = "[0-9]*+[.]+[0-9]*";
         String formprezzo2 = "[0-9]*";
+        Pattern pattern = Pattern.compile(formnome);
+        Pattern pattern1 = Pattern.compile(formprezzo1);
+        Pattern pattern2 = Pattern.compile(formprezzo2);
+         boolean nom=check(formnome,nome);
         boolean pre=check(formprezzo1,prezzo);
         boolean pre2=check(formprezzo2,prezzo);
         boolean gia=check(formprezzo2,giacenza);
-        if(pre==false && pre2==false || gia==false)
+        if(nom== false || pre==false && pre2==false || gia==false)
       JOptionPane.showMessageDialog(null, "CARATTERI NON VALIDI");
         else{ 
              int reply = JOptionPane.showConfirmDialog(null, "Vuoi aggiungere il prodotto "+this.jaggiunginome.getText()+" al prezzo di "+this.jaggiungiprezzo.getText()+" con una giacenza di "+this.jaggiungigiacenza.getText()+" prodotti nel magazzino?", "Confermare?", JOptionPane.YES_NO_OPTION);
@@ -206,11 +212,12 @@ public class JAggiungiProdotto_Direttore extends javax.swing.JFrame {
       int g=Integer.parseInt(giacenza);
       double p=Double.parseDouble(prezzo);
       DBConnect conn=new DBConnect();
-      conn.addProdotto(nome, p, g);}
+      conn.addProdotto(nome, p, g);
                     JListaProdotti_Direttore lispro=new JListaProdotti_Direttore();
        lispro.setLocationRelativeTo(null);
        lispro.setVisible(true);
        setVisible(false);
+                }
         }
       
       
@@ -231,8 +238,8 @@ public class JAggiungiProdotto_Direttore extends javax.swing.JFrame {
 
     private void jaggiunginomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jaggiunginomeFocusLost
               if(jaggiunginome.getText().equals(""))
-        jaggiunginome.setForeground(Color.gray);   
-        jaggiunginome.setText("Es.Biglietto");
+              { jaggiunginome.setForeground(Color.gray);   
+        jaggiunginome.setText("Es.Biglietto");}
     }//GEN-LAST:event_jaggiunginomeFocusLost
 
     private void jaggiungiprezzoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jaggiungiprezzoFocusGained
@@ -246,8 +253,8 @@ public class JAggiungiProdotto_Direttore extends javax.swing.JFrame {
 
     private void jaggiungiprezzoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jaggiungiprezzoFocusLost
               if(jaggiungiprezzo.getText().equals(""))
-        jaggiungiprezzo.setForeground(Color.gray);   
-        jaggiungiprezzo.setText("Es.10.99");
+              { jaggiungiprezzo.setForeground(Color.gray);   
+        jaggiungiprezzo.setText("Es.10.99");}
     }//GEN-LAST:event_jaggiungiprezzoFocusLost
 
     private void jaggiungigiacenzaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jaggiungigiacenzaFocusGained
@@ -261,8 +268,8 @@ public class JAggiungiProdotto_Direttore extends javax.swing.JFrame {
 
     private void jaggiungigiacenzaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jaggiungigiacenzaFocusLost
                 if(jaggiungigiacenza.getText().equals(""))
-        jaggiungigiacenza.setForeground(Color.gray);   
-        jaggiungigiacenza.setText("Es.200");
+                { jaggiungigiacenza.setForeground(Color.gray);   
+        jaggiungigiacenza.setText("Es.200");}
     }//GEN-LAST:event_jaggiungigiacenzaFocusLost
 
     /**
