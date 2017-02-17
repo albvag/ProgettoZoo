@@ -5,8 +5,14 @@
  */
 package logins;
 
+import java.util.ArrayList;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import progettozoo.DBConnect;
+import progettozoo.Prodotto;
+import progettozoo.Pulizia;
 import progettozoo.Utente;
-import schede.JPulizia_Custode;
+
 
 /**
  *
@@ -15,6 +21,8 @@ import schede.JPulizia_Custode;
 public class JCustode extends javax.swing.JFrame {
 
     Utente user = new Utente();
+    JVeterinario v = new JVeterinario();
+    DBConnect conn = new DBConnect();
     
     /**
      * Creates new form JCustode
@@ -29,13 +37,65 @@ public class JCustode extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setVisible(true);
+        this.jPulizie.setVisible(false);
+        this.jNutrire.setVisible(false);
         setTitle("Benvenuto, "+user_login.getNome()+ " " + user_login.getCognome() );
-        
+        pack();
         user.setUsername(user_login.getUsername());
         user.setNome(user_login.getNome());
         user.setCognome(user_login.getCognome());
+        
+        String[] jTablePulizieHeaders  = {"Gabbia"};
+        String[] jTableAiutiHeaders  = {"Gabbia","Custode"};
+        v.selectmode(this.jTablePulizie);   
+        v.creaTabella(this.jTablePulizie, jTablePulizieHeaders);
+        v.creaTabella(this.jTablePulizie, jTableAiutiHeaders);
+        this.jTablePulizie.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        Show_Pulizie_In_JTable(this.jTablePulizie);
+        Show_Aiuti_In_JTable(this.jTableAiuti);
+        
     }
     
+    public void Show_Pulizie_In_JTable(JTable table)
+    {
+       ArrayList<Pulizia> list = new ArrayList<>();
+       DefaultTableModel model = (DefaultTableModel) table.getModel();
+       Object[] row = new Object[1];
+       
+        table.changeSelection(0, 0, false, false);
+       for(int i = 0; i < list.size(); i++)
+       {
+           
+           row[0] = list.get(i);
+           System.out.print(list.get(i));
+                   
+           model.addRow(row);
+           
+       }
+    }   
+       public void Show_Aiuti_In_JTable(JTable table)
+    {
+       ArrayList<Prodotto> list = conn.listaProdotti();
+       DefaultTableModel model = (DefaultTableModel) table.getModel();
+       Object[] row = new Object[4];
+       
+        table.changeSelection(0, 0, false, false);
+       for(int i = 0; i < list.size(); i++)
+       {
+     
+           row[0] = list.get(i).getTipo();
+           
+           row[1] = list.get(i).getPrezzo();
+           
+           row[2] = list.get(i).getGiacenza();
+           
+           row[3] = 0;
+                   
+           model.addRow(row);
+           
+       }
+       
+    }  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,34 +106,184 @@ public class JCustode extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonLogout = new javax.swing.JButton();
+        jInternalFrame1 = new javax.swing.JInternalFrame();
+        jNutrire = new javax.swing.JInternalFrame();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jAccettaNutri = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jPulisce = new javax.swing.JButton();
+        jNutri = new javax.swing.JButton();
+        jPulizie = new javax.swing.JInternalFrame();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTablePulizie = new javax.swing.JTable();
+        AccettaPulizia = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTableAiuti = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLogout = new javax.swing.JButton();
+
+        jInternalFrame1.setVisible(true);
+
+        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
+        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
+        jInternalFrame1Layout.setHorizontalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jInternalFrame1Layout.setVerticalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Custode");
 
-        jButtonLogout.setText("Logout");
-        jButtonLogout.addActionListener(new java.awt.event.ActionListener() {
+        jNutrire.setVisible(true);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jAccettaNutri.setText("Accetta");
+        jAccettaNutri.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLogoutActionPerformed(evt);
+                jAccettaNutriActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("SELEZIONA COMPITO");
+        javax.swing.GroupLayout jNutrireLayout = new javax.swing.GroupLayout(jNutrire.getContentPane());
+        jNutrire.getContentPane().setLayout(jNutrireLayout);
+        jNutrireLayout.setHorizontalGroup(
+            jNutrireLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jNutrireLayout.createSequentialGroup()
+                .addGroup(jNutrireLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jNutrireLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jNutrireLayout.createSequentialGroup()
+                        .addGap(172, 172, 172)
+                        .addComponent(jAccettaNutri)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jNutrireLayout.setVerticalGroup(
+            jNutrireLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jNutrireLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jAccettaNutri)
+                .addContainerGap())
+        );
 
-        jButton1.setText("Pulizia");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setText("SCEGLI COMPITO");
+
+        jPulisce.setText("Pulizie");
+        jPulisce.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jPulisceActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Nutrire Animali");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jNutri.setText("Nutri");
+        jNutri.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jNutriActionPerformed(evt);
+            }
+        });
+
+        jPulizie.setVisible(true);
+
+        jTablePulizie.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTablePulizie);
+
+        AccettaPulizia.setText("Accetta Pulizia");
+        AccettaPulizia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AccettaPuliziaActionPerformed(evt);
+            }
+        });
+
+        jTableAiuti.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTableAiuti);
+
+        jLabel2.setText("PULIZIE RIMANENTI");
+
+        jLabel3.setText("RICHIESTE AIUTO");
+
+        javax.swing.GroupLayout jPulizieLayout = new javax.swing.GroupLayout(jPulizie.getContentPane());
+        jPulizie.getContentPane().setLayout(jPulizieLayout);
+        jPulizieLayout.setHorizontalGroup(
+            jPulizieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPulizieLayout.createSequentialGroup()
+                .addGroup(jPulizieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPulizieLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPulizieLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPulizieLayout.createSequentialGroup()
+                        .addGap(157, 157, 157)
+                        .addComponent(jLabel2))
+                    .addGroup(jPulizieLayout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addComponent(AccettaPulizia))
+                    .addGroup(jPulizieLayout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(jLabel3)))
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+        jPulizieLayout.setVerticalGroup(
+            jPulizieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPulizieLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(AccettaPulizia)
+                .addContainerGap())
+        );
+
+        jLogout.setText("Logout");
+        jLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jLogoutActionPerformed(evt);
             }
         });
 
@@ -81,59 +291,72 @@ public class JCustode extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonLogout)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(55, 55, 55))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPulizie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jPulisce)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                                .addComponent(jNutri))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(65, 65, 65)
+                                .addComponent(jLabel1)))
+                        .addGap(10, 10, 10))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLogout)
+                        .addGap(57, 57, 57)))
+                .addComponent(jNutrire, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+            .addComponent(jNutrire)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(30, 30, 30)
-                .addComponent(jButtonLogout)
-                .addGap(30, 30, 30))
+                    .addComponent(jPulisce)
+                    .addComponent(jNutri))
+                .addGap(39, 39, 39)
+                .addComponent(jLogout)
+                .addContainerGap(247, Short.MAX_VALUE))
+            .addComponent(jPulizie)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogoutActionPerformed
+    private void jNutriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNutriActionPerformed
+        // TODO add your handling code here:
+        this.jNutrire.setVisible(true);
+        pack();
+    }//GEN-LAST:event_jNutriActionPerformed
+
+    private void jLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLogoutActionPerformed
         // TODO add your handling code here:
         JLogin log = new JLogin();
         log.setLocationRelativeTo(null);
         log.setVisible(true);
         log.close(this);
-    }//GEN-LAST:event_jButtonLogoutActionPerformed
+    }//GEN-LAST:event_jLogoutActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jPulisceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPulisceActionPerformed
         // TODO add your handling code here:
-        JPulizia_Custode pul = new JPulizia_custode();
-        pul.setLocationRelativeTo(null);
-        pul.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        this.jPulizie.setVisible(true);
+        pack();
+    }//GEN-LAST:event_jPulisceActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jAccettaNutriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAccettaNutriActionPerformed
         // TODO add your handling code here:
-        JCibo_Custode cib = new JCibo_Custode();
-        cib.setLocationRelativeTo(null);
-        cib.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jAccettaNutriActionPerformed
+
+    private void AccettaPuliziaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccettaPuliziaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AccettaPuliziaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,10 +395,23 @@ public class JCustode extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButtonLogout;
+    private javax.swing.JButton AccettaPulizia;
+    private javax.swing.JButton jAccettaNutri;
+    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton jLogout;
+    private javax.swing.JButton jNutri;
+    private javax.swing.JInternalFrame jNutrire;
+    private javax.swing.JButton jPulisce;
+    private javax.swing.JInternalFrame jPulizie;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableAiuti;
+    private javax.swing.JTable jTablePulizie;
     // End of variables declaration//GEN-END:variables
 
     public void close(schede.JCibo_Custode aThis) {
