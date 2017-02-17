@@ -825,4 +825,44 @@ public class DBConnect {
         
     }
     
+    public ArrayList <Pulizia> listPulizieDisponibili(){
+        ArrayList<Pulizia> listaPulizie = new ArrayList<Pulizia>();
+        String query = "Select * from pulizia WHERE pulizia.Disponibile = '"+true+"'";
+
+           try{
+               Pulizia pul;
+               rs = st.executeQuery(query);
+                while(rs.next())
+                {
+                    pul = new Pulizia(rs.getInt("Codice_Pulizia"),rs.getString("Cod_Gabbia"), rs.getDate("Data_Inizio_Pulizia"),rs.getDate("Data_Fine_Pulizia"),rs.getBoolean("Disponibile"),rs.getBoolean("ServeAiuto"),rs.getString("NotePulizia"));
+                    listaPulizie.add(pul);
+                }
+            }catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+           return listaPulizie;
+           
+    }
+    
+    public ArrayList <Pulizia> listRichiesteAiuto(){
+        ArrayList<Pulizia> listaPulizie = new ArrayList<Pulizia>();
+        String query = "Select * from pulizia WHERE 'pulizia'.'ServeAiuto' = '"+true+"'";
+
+           try{
+               Pulizia pul;
+               rs = st.executeQuery(query);
+                while(rs.next())
+                {
+                    pul = new Pulizia(rs.getInt("Codice_Pulizia"),rs.getString("Cod_Gabbia"), rs.getDate("Data_Inizio_Pulizia"),rs.getDate("Data_Fine_Pulizia"),rs.getBoolean("Disponibile"),rs.getBoolean("ServeAiuto"),rs.getString("NotePulizia"));
+                    listaPulizie.add(pul);
+                }
+            }catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+           return listaPulizie;
+           
+    }
+    
 }
