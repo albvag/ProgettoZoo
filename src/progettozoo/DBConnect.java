@@ -163,6 +163,17 @@ public class DBConnect {
         return salute;
     }
     
+      public double updatePrezzoProdotto(double prezzo, String prodotto)
+    {
+       
+        try {
+            st.executeUpdate("UPDATE prodotto SET Prezzo = '"+ prezzo + "' where Codice_Prodotto = '"+ prodotto + "'");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return prezzo;
+    }
+    
     
     public String checkAnimalHabitat(String Codice_Animale)
     {
@@ -240,10 +251,14 @@ public class DBConnect {
            return spelist; 
     }
       
-     public ArrayList<Prodotto> selezionaProdotto()
+     public ArrayList<Prodotto> selezionaProdotto(String prodotto)
     {
         ArrayList<Prodotto> prolist = new ArrayList<Prodotto>();
-        String query = "Select * from prodotto ";
+        String query="";
+        if(prodotto.equals(""))
+        query = "Select * from prodotto ";
+        else
+            query = "Select * from prodotto where prodotto.Codice_Prodotto=  '"+prodotto+"'";
 
            try{
                Prodotto pro;
@@ -252,7 +267,7 @@ public class DBConnect {
                
                 while(rs.next())
                 {
-                    pro = new Prodotto(rs.getString("prodotto.Codice_Prodotto"),rs.getDouble("prodotto.prezzo"),rs.getInt("prodotto.giacenza"));
+                    pro = new Prodotto(rs.getString("prodotto.Codice_Prodotto"),rs.getDouble("prodotto.Prezzo"),rs.getInt("prodotto.Giacenza"));
                     prolist.add(pro);
                 }
             }catch(Exception ex){
@@ -262,6 +277,7 @@ public class DBConnect {
            return prolist; 
     }
     
+   
     public ArrayList<Animale> selezionaAnimaliSpecie()
     {
         ArrayList<Animale> animlist = new ArrayList<Animale>();

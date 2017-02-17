@@ -105,17 +105,41 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jaggiunginome">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="99" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Es.Biglietto"/>
+      </Properties>
       <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jaggiunginomeFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jaggiunginomeFocusLost"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jaggiunginomeActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jaggiungiprezzo">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="99" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Es.10.99"/>
+      </Properties>
       <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jaggiungiprezzoFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jaggiungiprezzoFocusLost"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jaggiungiprezzoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jaggiungigiacenza">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="99" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Es.200"/>
+      </Properties>
       <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jaggiungigiacenzaFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jaggiungigiacenzaFocusLost"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jaggiungigiacenzaActionPerformed"/>
       </Events>
     </Component>

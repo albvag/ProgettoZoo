@@ -23,7 +23,7 @@ public class JRimuoviProdotto_Direttore extends javax.swing.JFrame {
     public JRimuoviProdotto_Direttore() {
         initComponents(); 
         DBConnect conn =new DBConnect();
-        ArrayList<Prodotto> list = conn.selezionaProdotto();
+        ArrayList<Prodotto> list = conn.selezionaProdotto("");
         
         
         for(int i = 0; i < list.size(); i++)

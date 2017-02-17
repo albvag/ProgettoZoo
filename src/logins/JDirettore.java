@@ -19,6 +19,7 @@ import schede.JAggiungiHabitat_Direttore;
 import schede.JAggiungiPersonale_Direttore;
 import schede.JAggiungiProdotto_Direttore;
 import schede.JAggiungiSpecie_Direttore;
+import schede.JCambiaPrezzi_Direttore;
 import schede.JListaHabitat_Direttore;
 import schede.JListaPersonale_Direttore;
 import schede.JListaProdotti_Direttore;
@@ -73,6 +74,7 @@ public class JDirettore extends javax.swing.JFrame {
         jlistahabitat = new javax.swing.JButton();
         jlistapersonale = new javax.swing.JButton();
         jlistaprodotti = new javax.swing.JButton();
+        jCambiaprezzi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Direttore");
@@ -191,6 +193,13 @@ public class JDirettore extends javax.swing.JFrame {
             }
         });
 
+        jCambiaprezzi.setText("Cambia Prezzi");
+        jCambiaprezzi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCambiaprezziActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -213,12 +222,9 @@ public class JDirettore extends javax.swing.JFrame {
                                 .addComponent(jListaanimali, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jAggiungiAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jPrestaanimale, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(79, 79, 79)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGap(213, 213, 213)
-                                    .addComponent(jVediincassi, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(79, 79, 79)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel2)
                                         .addComponent(jlistahabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -229,7 +235,11 @@ public class JDirettore extends javax.swing.JFrame {
                                         .addComponent(jlistaprodotti, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel4)
                                         .addComponent(jAggiungiProdotto, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jRimuoviProdotto, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(jRimuoviProdotto, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(292, 292, 292)
+                                    .addComponent(jCambiaprezzi, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jVediincassi, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -262,10 +272,12 @@ public class JDirettore extends javax.swing.JFrame {
                         .addComponent(jRimuoviProdotto, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jRimuoviHabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jVediincassi, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPrestaanimale, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jPrestaanimale, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCambiaprezzi, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jVediincassi, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(jButtonLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
@@ -360,6 +372,12 @@ public class JDirettore extends javax.swing.JFrame {
     private void jVediincassiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVediincassiActionPerformed
         
     }//GEN-LAST:event_jVediincassiActionPerformed
+
+    private void jCambiaprezziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCambiaprezziActionPerformed
+        JCambiaPrezzi_Direttore campre = new JCambiaPrezzi_Direttore();
+        campre.setLocationRelativeTo(null);
+        campre.setVisible(true);
+    }//GEN-LAST:event_jCambiaprezziActionPerformed
 
     /**
      * @param args the command line arguments
@@ -479,6 +497,7 @@ public void Show_Prodotti_In_JTable(JTable table)
     private javax.swing.JButton jAggiungiPersonale;
     private javax.swing.JButton jAggiungiProdotto;
     private javax.swing.JButton jButtonLogout;
+    private javax.swing.JButton jCambiaprezzi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

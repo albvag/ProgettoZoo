@@ -45,13 +45,9 @@
                               <Component id="jAggiungiAnimale" min="-2" pref="141" max="-2" attributes="0"/>
                               <Component id="jPrestaanimale" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="213" max="-2" attributes="0"/>
-                                  <Component id="jVediincassi" min="-2" pref="141" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                       <Component id="jlistahabitat" min="-2" pref="141" max="-2" attributes="0"/>
@@ -66,8 +62,13 @@
                                       <Component id="jRimuoviProdotto" min="-2" pref="141" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="292" max="-2" attributes="0"/>
+                                  <Component id="jCambiaprezzi" min="-2" pref="141" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
+                      <Component id="jVediincassi" alignment="1" min="-2" pref="141" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="51" max="32767" attributes="0"/>
@@ -110,11 +111,13 @@
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jVediincassi" min="-2" pref="38" max="-2" attributes="0"/>
-                  <Component id="jPrestaanimale" min="-2" pref="38" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jPrestaanimale" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                  <Component id="jCambiaprezzi" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="108" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jVediincassi" min="-2" pref="38" max="-2" attributes="0"/>
+              <EmptySpace pref="52" max="32767" attributes="0"/>
               <Component id="jButtonLogout" min="-2" pref="33" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
           </Group>
@@ -260,6 +263,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jlistaprodottiActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jCambiaprezzi">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cambia Prezzi"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCambiaprezziActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -5,6 +5,7 @@
  */
 package schede;
 
+import java.awt.Color;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import progettozoo.DBConnect;
@@ -53,18 +54,48 @@ public class JAggiungiProdotto_Direttore extends javax.swing.JFrame {
 
         jLabel4.setText("  Giacenza");
 
+        jaggiunginome.setForeground(new java.awt.Color(153, 153, 153));
+        jaggiunginome.setText("Es.Biglietto");
+        jaggiunginome.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jaggiunginomeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jaggiunginomeFocusLost(evt);
+            }
+        });
         jaggiunginome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jaggiunginomeActionPerformed(evt);
             }
         });
 
+        jaggiungiprezzo.setForeground(new java.awt.Color(153, 153, 153));
+        jaggiungiprezzo.setText("Es.10.99");
+        jaggiungiprezzo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jaggiungiprezzoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jaggiungiprezzoFocusLost(evt);
+            }
+        });
         jaggiungiprezzo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jaggiungiprezzoActionPerformed(evt);
             }
         });
 
+        jaggiungigiacenza.setForeground(new java.awt.Color(153, 153, 153));
+        jaggiungigiacenza.setText("Es.200");
+        jaggiungigiacenza.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jaggiungigiacenzaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jaggiungigiacenzaFocusLost(evt);
+            }
+        });
         jaggiungigiacenza.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jaggiungigiacenzaActionPerformed(evt);
@@ -188,6 +219,51 @@ public class JAggiungiProdotto_Direttore extends javax.swing.JFrame {
     private void jChiudiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChiudiActionPerformed
        setVisible(false);
     }//GEN-LAST:event_jChiudiActionPerformed
+
+    private void jaggiunginomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jaggiunginomeFocusGained
+         if(jaggiunginome.getText().equals("Es.Biglietto"))
+          {jaggiunginome.setText("");
+           jaggiunginome.setForeground(Color.black);
+          }
+        else
+            jaggiunginome.getText();
+    }//GEN-LAST:event_jaggiunginomeFocusGained
+
+    private void jaggiunginomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jaggiunginomeFocusLost
+              if(jaggiunginome.getText().equals(""))
+        jaggiunginome.setForeground(Color.gray);   
+        jaggiunginome.setText("Es.Biglietto");
+    }//GEN-LAST:event_jaggiunginomeFocusLost
+
+    private void jaggiungiprezzoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jaggiungiprezzoFocusGained
+         if(jaggiungiprezzo.getText().equals("Es.10.99"))
+          {jaggiungiprezzo.setText("");
+           jaggiungiprezzo.setForeground(Color.black);
+          }
+        else
+            jaggiungiprezzo.getText();
+    }//GEN-LAST:event_jaggiungiprezzoFocusGained
+
+    private void jaggiungiprezzoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jaggiungiprezzoFocusLost
+              if(jaggiungiprezzo.getText().equals(""))
+        jaggiungiprezzo.setForeground(Color.gray);   
+        jaggiungiprezzo.setText("Es.10.99");
+    }//GEN-LAST:event_jaggiungiprezzoFocusLost
+
+    private void jaggiungigiacenzaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jaggiungigiacenzaFocusGained
+        if(jaggiungigiacenza.getText().equals("Es.200"))
+          {jaggiungigiacenza.setText("");
+           jaggiungigiacenza.setForeground(Color.black);
+          }
+        else
+            jaggiungigiacenza.getText();
+    }//GEN-LAST:event_jaggiungigiacenzaFocusGained
+
+    private void jaggiungigiacenzaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jaggiungigiacenzaFocusLost
+                if(jaggiungigiacenza.getText().equals(""))
+        jaggiungigiacenza.setForeground(Color.gray);   
+        jaggiungigiacenza.setText("Es.200");
+    }//GEN-LAST:event_jaggiungigiacenzaFocusLost
 
     /**
      * @param args the command line arguments

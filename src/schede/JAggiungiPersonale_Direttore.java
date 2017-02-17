@@ -83,9 +83,12 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
 
         jNomePersonale.setForeground(new java.awt.Color(153, 153, 153));
         jNomePersonale.setText("Es.Mario");
-        jNomePersonale.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jNomePersonaleMouseClicked(evt);
+        jNomePersonale.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jNomePersonaleFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jNomePersonaleFocusLost(evt);
             }
         });
         jNomePersonale.addActionListener(new java.awt.event.ActionListener() {
@@ -96,9 +99,12 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
 
         jAggiungiCognome.setForeground(new java.awt.Color(153, 153, 153));
         jAggiungiCognome.setText("Es.Rossi");
-        jAggiungiCognome.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jAggiungiCognomeMouseClicked(evt);
+        jAggiungiCognome.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jAggiungiCognomeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jAggiungiCognomeFocusLost(evt);
             }
         });
         jAggiungiCognome.addActionListener(new java.awt.event.ActionListener() {
@@ -109,9 +115,12 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
 
         jAggiungiResidenza.setForeground(new java.awt.Color(153, 153, 153));
         jAggiungiResidenza.setText("Es.Roma");
-        jAggiungiResidenza.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jAggiungiResidenzaMouseClicked(evt);
+        jAggiungiResidenza.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jAggiungiResidenzaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jAggiungiResidenzaFocusLost(evt);
             }
         });
         jAggiungiResidenza.addActionListener(new java.awt.event.ActionListener() {
@@ -122,9 +131,12 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
 
         jAggiungiIndirizzo.setForeground(new java.awt.Color(153, 153, 153));
         jAggiungiIndirizzo.setText("Es.via indirizzo 1");
-        jAggiungiIndirizzo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jAggiungiIndirizzoMouseClicked(evt);
+        jAggiungiIndirizzo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jAggiungiIndirizzoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jAggiungiIndirizzoFocusLost(evt);
             }
         });
         jAggiungiIndirizzo.addActionListener(new java.awt.event.ActionListener() {
@@ -135,9 +147,12 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
 
         jAggiungiNumeroTelefono.setForeground(new java.awt.Color(153, 153, 153));
         jAggiungiNumeroTelefono.setText("Es.0147852369");
-        jAggiungiNumeroTelefono.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jAggiungiNumeroTelefonoMouseClicked(evt);
+        jAggiungiNumeroTelefono.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jAggiungiNumeroTelefonoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jAggiungiNumeroTelefonoFocusLost(evt);
             }
         });
         jAggiungiNumeroTelefono.addActionListener(new java.awt.event.ActionListener() {
@@ -155,9 +170,12 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
         jAggiungiUser.setForeground(new java.awt.Color(153, 153, 153));
         jAggiungiUser.setText("Campo formato da soli caratteri alfanumerici più  _ e – di lungezza min 3 e max 15");
         jAggiungiUser.setToolTipText("Username formato da soli caratteri alfanumerici più  _ e – di lungezza min 3 e max 15");
-        jAggiungiUser.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jAggiungiUserMouseClicked(evt);
+        jAggiungiUser.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jAggiungiUserFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jAggiungiUserFocusLost(evt);
             }
         });
         jAggiungiUser.addActionListener(new java.awt.event.ActionListener() {
@@ -208,9 +226,12 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
 
         jDatanascita.setForeground(new java.awt.Color(153, 153, 153));
         jDatanascita.setText("Es.22/01/1995");
-        jDatanascita.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jDatanascitaMouseClicked(evt);
+        jDatanascita.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jDatanascitaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jDatanascitaFocusLost(evt);
             }
         });
         jDatanascita.addActionListener(new java.awt.event.ActionListener() {
@@ -533,72 +554,114 @@ else
       // TODO add your handling code here:
     }//GEN-LAST:event_jRuoloActionPerformed
 
-    private void jNomePersonaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNomePersonaleMouseClicked
+    private void jDatanascitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDatanascitaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jDatanascitaActionPerformed
+
+    private void jNomePersonaleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jNomePersonaleFocusGained
          if(jNomePersonale.getText().equals("Es.Mario"))
          { jNomePersonale.setText("");
          jNomePersonale.setForeground(Color.black);
          }
         else
-            jNomePersonale.getText(); // TODO add your handling code here:
-    }//GEN-LAST:event_jNomePersonaleMouseClicked
+            jNomePersonale.getText(); 
+    }//GEN-LAST:event_jNomePersonaleFocusGained
 
-    private void jAggiungiCognomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jAggiungiCognomeMouseClicked
-        if(jAggiungiCognome.getText().equals("Es.Rossi"))
+    private void jNomePersonaleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jNomePersonaleFocusLost
+         if(jNomePersonale.getText().equals(""))
+        jNomePersonale.setForeground(Color.gray);   
+        jNomePersonale.setText("Es.Mario"); 
+    }//GEN-LAST:event_jNomePersonaleFocusLost
+
+    private void jAggiungiCognomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiungiCognomeFocusGained
+         if(jAggiungiCognome.getText().equals("Es.Rossi"))
         {jAggiungiCognome.setText("");
         jAggiungiCognome.setForeground(Color.black);
         }
         else
-            jAggiungiCognome.getText();// TODO add your handling code here:
-    }//GEN-LAST:event_jAggiungiCognomeMouseClicked
+            jAggiungiCognome.getText();
+    }//GEN-LAST:event_jAggiungiCognomeFocusGained
 
-    private void jAggiungiResidenzaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jAggiungiResidenzaMouseClicked
-           if(jAggiungiResidenza.getText().equals("Es.Roma"))
-           {jAggiungiResidenza.setText("");
-            jAggiungiResidenza.setForeground(Color.black);
-           }
-        else
-            jAggiungiResidenza.getText();      // TODO add your handling code here:
-    }//GEN-LAST:event_jAggiungiResidenzaMouseClicked
+    private void jAggiungiCognomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiungiCognomeFocusLost
+          if(jAggiungiCognome.getText().equals(""))
+        jAggiungiCognome.setForeground(Color.gray);   
+        jAggiungiCognome.setText("Es.Rossi"); 
+    }//GEN-LAST:event_jAggiungiCognomeFocusLost
 
-    private void jAggiungiIndirizzoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jAggiungiIndirizzoMouseClicked
-          if(jAggiungiIndirizzo.getText().equals("Es.via indirizzo 1"))
-          {jAggiungiIndirizzo.setText("");
-          jAggiungiIndirizzo.setForeground(Color.black);
-          }
-        else
-            jAggiungiIndirizzo.getText();// TODO add your handling code here:
-    }//GEN-LAST:event_jAggiungiIndirizzoMouseClicked
-
-    private void jAggiungiNumeroTelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jAggiungiNumeroTelefonoMouseClicked
-         if(jAggiungiNumeroTelefono.getText().equals("Es.0147852369"))
-         {jAggiungiNumeroTelefono.setText("");
-          jAggiungiNumeroTelefono.setForeground(Color.black);
-         }
-        else
-            jAggiungiNumeroTelefono.getText();      // TODO add your handling code here:
-    }//GEN-LAST:event_jAggiungiNumeroTelefonoMouseClicked
-
-    private void jAggiungiUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jAggiungiUserMouseClicked
-       if(jAggiungiUser.getText().equals("Campo formato da soli caratteri alfanumerici più  _ e – di lungezza min 3 e max 15"))
-       {jAggiungiUser.setText("");
-        jAggiungiUser.setForeground(Color.black);
-       }
-        else
-            jAggiungiUser.getText(); // TODO add your handling code here:
-    }//GEN-LAST:event_jAggiungiUserMouseClicked
-
-    private void jDatanascitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDatanascitaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jDatanascitaActionPerformed
-
-    private void jDatanascitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDatanascitaMouseClicked
-         if(jDatanascita.getText().equals("Es.22/01/1995"))
+    private void jDatanascitaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jDatanascitaFocusGained
+           if(jDatanascita.getText().equals("Es.22/01/1995"))
        {jDatanascita.setText("");
         jDatanascita.setForeground(Color.black);
        }
          else
             jDatanascita.getText();
-    }//GEN-LAST:event_jDatanascitaMouseClicked
+    }//GEN-LAST:event_jDatanascitaFocusGained
+
+    private void jDatanascitaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jDatanascitaFocusLost
+           if(jDatanascita.getText().equals(""))
+        jDatanascita.setForeground(Color.gray);   
+        jDatanascita.setText("Es.22/01/1995"); 
+    }//GEN-LAST:event_jDatanascitaFocusLost
+
+    private void jAggiungiResidenzaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiungiResidenzaFocusGained
+           if(jAggiungiResidenza.getText().equals("Es.Roma"))
+           {jAggiungiResidenza.setText("");
+            jAggiungiResidenza.setForeground(Color.black);
+           }
+        else
+            jAggiungiResidenza.getText(); 
+    }//GEN-LAST:event_jAggiungiResidenzaFocusGained
+
+    private void jAggiungiResidenzaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiungiResidenzaFocusLost
+            if(jAggiungiResidenza.getText().equals(""))
+        jAggiungiResidenza.setForeground(Color.gray);   
+        jAggiungiResidenza.setText("Es.Roma"); 
+    }//GEN-LAST:event_jAggiungiResidenzaFocusLost
+
+    private void jAggiungiIndirizzoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiungiIndirizzoFocusGained
+         if(jAggiungiIndirizzo.getText().equals("Es.via indirizzo 1"))
+          {jAggiungiIndirizzo.setText("");
+          jAggiungiIndirizzo.setForeground(Color.black);
+          }
+        else
+            jAggiungiIndirizzo.getText();
+    }//GEN-LAST:event_jAggiungiIndirizzoFocusGained
+
+    private void jAggiungiIndirizzoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiungiIndirizzoFocusLost
+             if(jAggiungiIndirizzo.getText().equals(""))
+        jAggiungiIndirizzo.setForeground(Color.gray);   
+        jAggiungiIndirizzo.setText("Es.via indirizzo 1"); 
+    }//GEN-LAST:event_jAggiungiIndirizzoFocusLost
+
+    private void jAggiungiNumeroTelefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiungiNumeroTelefonoFocusGained
+          if(jAggiungiNumeroTelefono.getText().equals("Es.0147852369"))
+         {jAggiungiNumeroTelefono.setText("");
+          jAggiungiNumeroTelefono.setForeground(Color.black);
+         }
+        else
+            jAggiungiNumeroTelefono.getText(); 
+    }//GEN-LAST:event_jAggiungiNumeroTelefonoFocusGained
+
+    private void jAggiungiNumeroTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiungiNumeroTelefonoFocusLost
+              if(jAggiungiNumeroTelefono.getText().equals(""))
+        jAggiungiNumeroTelefono.setForeground(Color.gray);   
+        jAggiungiNumeroTelefono.setText("Es.0147852369");
+    }//GEN-LAST:event_jAggiungiNumeroTelefonoFocusLost
+
+    private void jAggiungiUserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiungiUserFocusGained
+         if(jAggiungiUser.getText().equals("Campo formato da soli caratteri alfanumerici più  _ e – di lungezza min 3 e max 15"))
+       {jAggiungiUser.setText("");
+        jAggiungiUser.setForeground(Color.black);
+       }
+        else
+            jAggiungiUser.getText();
+    }//GEN-LAST:event_jAggiungiUserFocusGained
+
+    private void jAggiungiUserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiungiUserFocusLost
+                if(jAggiungiUser.getText().equals(""))
+        jAggiungiUser.setForeground(Color.gray);   
+        jAggiungiUser.setText("Campo formato da soli caratteri alfanumerici più  _ e – di lungezza min 3 e max 15");
+    }//GEN-LAST:event_jAggiungiUserFocusLost
 
     /**
      * @param args the command line arguments

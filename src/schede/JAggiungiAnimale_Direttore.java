@@ -399,21 +399,20 @@ else
         jDatadinascita.setText("dd/mm/aaaa");   
     }//GEN-LAST:event_jDatadinascitaFocusLost
 
-    private void jAggiunginomeanimaleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiunginomeanimaleFocusGained
-          
-        if(jAggiunginomeanimale.getText().equals("Nome formato da sole lettere"))
-          {jAggiunginomeanimale.setText("");
-           jAggiunginomeanimale.setForeground(Color.black);
-          }
-        else
-            jAggiunginomeanimale.getText();
-    }//GEN-LAST:event_jAggiunginomeanimaleFocusGained
-
     private void jAggiunginomeanimaleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiunginomeanimaleFocusLost
         if(jAggiunginomeanimale.getText().equals(""))
         jAggiunginomeanimale.setForeground(Color.gray);   
         jAggiunginomeanimale.setText("Nome formato da sole lettere"); 
     }//GEN-LAST:event_jAggiunginomeanimaleFocusLost
+
+    private void jAggiunginomeanimaleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiunginomeanimaleFocusGained
+         if(jAggiunginomeanimale.getText().equals("Nome formato da sole lettere"))
+          {jAggiunginomeanimale.setText("");
+           jAggiunginomeanimale.setForeground(Color.black);
+          }
+        else
+            jAggiunginomeanimale.getText(); // TODO add your handling code here:
+    }//GEN-LAST:event_jAggiunginomeanimaleFocusGained
 
     /**
      * @param args the command line arguments
