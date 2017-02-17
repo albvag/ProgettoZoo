@@ -827,7 +827,7 @@ public class DBConnect {
     
     public ArrayList <Pulizia> listPulizieDisponibili(){
         ArrayList<Pulizia> listaPulizie = new ArrayList<Pulizia>();
-        String query = "Select * from pulizia WHERE pulizia.Disponibile = '"+true+"'";
+        String query = "Select * from pulizia WHERE Disponibile = '"+true+"'";
 
            try{
                Pulizia pul;
@@ -847,7 +847,7 @@ public class DBConnect {
     
     public ArrayList <Pulizia> listRichiesteAiuto(){
         ArrayList<Pulizia> listaPulizie = new ArrayList<Pulizia>();
-        String query = "Select * from pulizia WHERE 'pulizia'.'ServeAiuto' = '"+true+"'";
+        String query = "Select * from pulizia WHERE ServeAiuto = '"+true+"'";
 
            try{
                Pulizia pul;

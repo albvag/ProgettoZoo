@@ -58,7 +58,7 @@ public class JCustode extends javax.swing.JFrame {
     
     public void Show_Pulizie_In_JTable(JTable table)
     {
-       ArrayList<Pulizia> list = new ArrayList<>();
+       ArrayList<Pulizia> list = conn.listPulizieDisponibili();
        DefaultTableModel model = (DefaultTableModel) table.getModel();
        Object[] row = new Object[1];
        
@@ -67,7 +67,6 @@ public class JCustode extends javax.swing.JFrame {
        {
            
            row[0] = list.get(i);
-           System.out.print(list.get(i));
                    
            model.addRow(row);
            
@@ -75,7 +74,7 @@ public class JCustode extends javax.swing.JFrame {
     }   
        public void Show_Aiuti_In_JTable(JTable table)
     {
-       ArrayList<Prodotto> list = conn.listaProdotti();
+       ArrayList<Pulizia> list = conn.listRichiesteAiuto();
        DefaultTableModel model = (DefaultTableModel) table.getModel();
        Object[] row = new Object[4];
        
@@ -83,14 +82,10 @@ public class JCustode extends javax.swing.JFrame {
        for(int i = 0; i < list.size(); i++)
        {
      
-           row[0] = list.get(i).getTipo();
+           row[0] = list.get(i);
            
-           row[1] = list.get(i).getPrezzo();
-           
-           row[2] = list.get(i).getGiacenza();
-           
-           row[3] = 0;
-                   
+           row[1] = list.get(i);
+       
            model.addRow(row);
            
        }
