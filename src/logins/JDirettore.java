@@ -23,6 +23,7 @@ import schede.JCambiaPrezzi_Direttore;
 import schede.JListaHabitat_Direttore;
 import schede.JListaPersonale_Direttore;
 import schede.JListaProdotti_Direttore;
+import schede.JPrestaAnimale_Direttore;
 import schede.JRimuoviAnimale_Direttore;
 import schede.JRimuoviHabitat_Direttore;
 import schede.JRimuoviPersonale_Direttore;
@@ -378,7 +379,9 @@ public class JDirettore extends javax.swing.JFrame {
     }//GEN-LAST:event_jlistaprodottiActionPerformed
 
     private void jPrestaanimaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPrestaanimaleActionPerformed
-        
+        JPrestaAnimale_Direttore presanim = new JPrestaAnimale_Direttore();
+        presanim.setLocationRelativeTo(null);
+        presanim.setVisible(true);
     }//GEN-LAST:event_jPrestaanimaleActionPerformed
 
     private void jVediincassiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVediincassiActionPerformed

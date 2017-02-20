@@ -163,6 +163,17 @@ public class DBConnect {
         return salute;
     }
     
+     public void updateAnimalePresente(boolean presente,Animale an)
+    {
+        
+        try {
+            st.executeUpdate("UPDATE animale SET Presente = "+ presente + " where Codice_Animale = '"+ an.getId()+ "'");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
       public double updatePrezzoProdotto(double prezzo, String prodotto)
     {
        
@@ -323,6 +334,60 @@ public class DBConnect {
             }   
            return speclist; 
     }
+          public ArrayList<Animale> selezionaAnimaliPresenti()
+    {
+        ArrayList<Animale> anpreslist = new ArrayList<Animale>();
+        String query = "Select * from animale where animale.Presente= "+true+" AND animale.Nostro= "+true+"";
+
+           try{
+               Animale an;
+               rs = st.executeQuery(query);
+               
+               
+                while(rs.next())
+                {   
+                    
+                    an = new Animale();
+                    an.setId(rs.getString("animale.Codice_Animale"));
+                    an.setNome(rs.getString("animale.Nome"));
+                    an.setSpecie(rs.getString("animale.Specie"));
+                    an.setSesso(rs.getString("animale.Genere"));
+                    an.setDataNascita(rs.getDate("animale.Data_Nascita"));
+                    anpreslist.add(an);
+                }
+            }catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+           return anpreslist; 
+    } 
+                 public ArrayList<Animale> selezionaAnimaliInPrestito()
+    {
+        ArrayList<Animale> prestitolist = new ArrayList<Animale>();
+        String query = "Select * from animale where animale.Presente= "+false+" AND animale.Nostro= "+true+"";
+
+           try{
+               Animale an;
+               rs = st.executeQuery(query);
+               
+               
+                while(rs.next())
+                {   
+                    
+                    an = new Animale();
+                    an.setId(rs.getString("animale.Codice_Animale"));
+                    an.setNome(rs.getString("animale.Nome"));
+                    an.setSpecie(rs.getString("animale.Specie"));
+                    an.setSesso(rs.getString("animale.Genere"));
+                    an.setDataNascita(rs.getDate("animale.Data_Nascita"));
+                    prestitolist.add(an);
+                }
+            }catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+           return prestitolist; 
+    } 
          public ArrayList<Utente> selezionaImpiegato()
     {
         ArrayList<Utente> implist = new ArrayList<Utente>();
