@@ -312,6 +312,11 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
         boolean nom=check(formnome,nome); 
         boolean dat=check(fordata,data);
         
+         ProgettoZoo pz= new ProgettoZoo();
+   Date today=new Date();
+   Date d= pz.ConvertStringToDate(data,"dd/MM/yyyy");
+   java.sql.Date sqlDate = new java.sql.Date(d.getTime());
+        
         if(nom== false)
  errorenome.setText("Caratteri non validi");
 else
@@ -320,7 +325,7 @@ if(this.jselspecie.getSelectedItem().toString().equals(" "))
     errorespecie.setText("Non hai selezionato alcuna specie");
 else
     errorespecie.setText("Caratteri validi");
-if(dat==false)
+if(dat==false || d.after(today))
     erroredata.setText("Caratteri non validi");
 else
     erroredata.setText("Caratteri validi");
@@ -336,9 +341,7 @@ else
    
    String Cod_anim=(this.jselspecie.getSelectedItem().toString()+cod);
    
-   ProgettoZoo pz= new ProgettoZoo();
-   Date d= pz.ConvertStringToDate(data,"dd/MM/yyyy");
-   java.sql.Date sqlDate = new java.sql.Date(d.getTime());
+  
    
    
    int salute;
@@ -355,7 +358,8 @@ else
    else{presente=0;}
      if(nom==true  && dat==true && this.jselspecie.getSelectedItem().toString().equals(" ")==false && this.jselhabitat.getSelectedItem().toString().equals(" ")==false)
     {
-         int reply = JOptionPane.showConfirmDialog(null, "Stai inserendo l'animale: "+this.jAggiunginomeanimale.getText()+"\n Specie: "+this.jselspecie.getSelectedItem().toString()+"\n Sesso: "+this.jGenere.getSelectedItem().toString()+"\n Nato il: "+this.jDatadinascita.getText()+"\n Habitat: "+this.jselhabitat.getSelectedItem().toString()+"\n Salute: "+this.jsalute.getSelectedItem().toString()+"\n Nostro: "+this.jnostro.getSelectedItem().toString()+"\n Presente: "+this.jpresente.getSelectedItem().toString(), "Confermare?", JOptionPane.YES_NO_OPTION);
+        if(d.before(today))
+        {int reply = JOptionPane.showConfirmDialog(null, "Stai inserendo l'animale: "+this.jAggiunginomeanimale.getText()+"\n Specie: "+this.jselspecie.getSelectedItem().toString()+"\n Sesso: "+this.jGenere.getSelectedItem().toString()+"\n Nato il: "+this.jDatadinascita.getText()+"\n Habitat: "+this.jselhabitat.getSelectedItem().toString()+"\n Salute: "+this.jsalute.getSelectedItem().toString()+"\n Nostro: "+this.jnostro.getSelectedItem().toString()+"\n Presente: "+this.jpresente.getSelectedItem().toString(), "Confermare?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION)
                 { conn.insertAnimale(Cod_anim, nome,specie,genere , sqlDate, salute,nostro, presente);
     String codiceanim=conn.selezionacodiceAnimale(nome);
@@ -365,7 +369,10 @@ else
      lis.setLocationRelativeTo(null);
      lis.setVisible(true);
     setVisible(false);}
-    }else{JOptionPane.showMessageDialog(null, "ALCUNI CAMPI NON SONO INSERITI CORRETTAMENTE");}
+    }else{JOptionPane.showMessageDialog(null, "NON PUOI INSERIRE UNA DATA FUTURA");}
+    }  else{JOptionPane.showMessageDialog(null, "ALCUNI CAMPI NON SONO INSERITI CORRETTAMENTE");}
+    
+    
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jGenereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGenereActionPerformed

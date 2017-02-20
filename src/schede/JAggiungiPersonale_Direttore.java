@@ -444,6 +444,13 @@ boolean tel=check(formtel,telefono);
 boolean user=check(formuser,username);
 boolean pass=check(formpass,password);
 boolean rpass=check(password,rippass);
+
+DBConnect conn =new DBConnect();
+   String Cod_pers=(this.jAggiungiUser.getText());
+   ProgettoZoo pz= new ProgettoZoo();
+   Date today =new Date();
+Date d= pz.ConvertStringToDate(data, "dd/MM/yyyy");
+      java.sql.Date sqlDate = new java.sql.Date(d.getTime());
 //nel caso i caratteri inseriti non siano quelli richiesti appare un messaggio d'errore
 if(nom== false)
  errorenome.setText("Caratteri non validi");
@@ -453,7 +460,7 @@ if(cog==false)
     errorecognome.setText("Caratteri non validi");
 else
     errorecognome.setText("Caratteri validi");
-if(dat==false)
+if(dat==false || d.after(today) )
     erroredata.setText("Caratteri non validi");
 else
     erroredata.setText("Caratteri validi");
@@ -485,14 +492,13 @@ if(this.jRuolo.getSelectedItem().toString().equals(" "))
     erroreruolo.setText("Non hai inserito il ruolo");
 else
     erroreruolo.setText("Caratteri Validi");
- DBConnect conn =new DBConnect();
-   String Cod_pers=(this.jAggiungiUser.getText());
-   ProgettoZoo pz= new ProgettoZoo();
+ 
   
   
-  if(nom==true && cog==true && dat==true && res==true && ind==true && tel==true && user==true && pass==true && rpass==true && this.jRuolo.getSelectedItem().toString().equals(" ")==true)
-  {   Date d= pz.ConvertStringToDate(data, "dd/MM/yyyy");
-      java.sql.Date sqlDate = new java.sql.Date(d.getTime());
+  if(nom==true && cog==true && dat==true && res==true && ind==true && tel==true && user==true && pass==true && rpass==true && this.jRuolo.getSelectedItem().toString().equals(" ")==false)
+  { 
+      if(d.before(today))
+      {
        int reply = JOptionPane.showConfirmDialog(null, "Stai inserendo l'utente "+this.jNomePersonale.getText()+" "+this.jAggiungiCognome.getText()+"\n Data di nascita: "+this.jDatanascita.getText()+"\n Città: "+this.jAggiungiResidenza.getText()+"\n Indirizzo: "+this.jAggiungiIndirizzo.getText()+"\n Telefono: "+this.jAggiungiNumeroTelefono.getText()+"\n Username: "+this.jAggiungiUser.getText()+"\n Password: "+this.jAggiungiPassword.getText()+"\n Conferma Password: "+this.jRipetiPassword.getText()+"\n Ruolo: "+this.jRuolo.getSelectedItem().toString(), "Confermare?", JOptionPane.YES_NO_OPTION);
       if (reply == JOptionPane.YES_OPTION)
       {     conn.insertImpiegato(username,nome, cognome,sqlDate, residenza, indirizzo, telefono);
@@ -522,6 +528,7 @@ else
         lisper.setVisible(true);
          setVisible(false);
       }
+  }else{JOptionPane.showMessageDialog(null, "NON PUOI INSERIRE UNA DATA FUTURA");}
   }else{JOptionPane.showMessageDialog(null, "ALCUNI CAMPI NON SONO INSERITI CORRETTAMENTE");}
        
     }//GEN-LAST:event_jButtonSaveActionPerformed
