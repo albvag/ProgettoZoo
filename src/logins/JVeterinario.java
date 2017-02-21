@@ -307,7 +307,7 @@ public class JVeterinario extends javax.swing.JFrame {
                                 .addGap(28, 28, 28)
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jRadioButtonDUV_CRE)
                                     .addComponent(jRadioButtonDUV_DECR)))))
                     .addComponent(jLabel5))
@@ -500,8 +500,6 @@ public class JVeterinario extends javax.swing.JFrame {
            if(this.jRadioButtonDUV_CRE.isSelected()) filtri[7] = "DUV_CRESCENTE";
            if(this.jRadioButtonDUV_DECR.isSelected()) filtri[7] = "DUV_DECRESCENTE";
            
-           for(int i=0; i<filtri.length;i++)
-    System.out.println("filtri[i] = "+filtri[i]);
            
         new JVeterinario(user, filtri);
     }//GEN-LAST:event_jButtonFiltraActionPerformed
@@ -653,7 +651,7 @@ public void selectmode(JTable table)
 
        table.changeSelection(0, 0, false, false);
        
-    pz.quicksortTAB_ANIM(list, 0, list.size()-1, filtri[7], 0);
+    pz.quicksortTAB_ANIM(list, 0, list.size()-1, filtri[7]);
     
             for(int i = 0; i < list.size(); i++)
             {

@@ -87,7 +87,7 @@ public Date ConvertStringToDate(String Data, String FORMAT)
 
 			//if not valid, it will throw ParseException
 			Date date = sdf.parse(dateToValidate);
-			System.out.println(date);
+			
 
 		} catch (ParseException e) {
 
@@ -110,8 +110,6 @@ public Date ConvertStringToDate(String Data, String FORMAT)
             pivotElem = arrayDate.get(start).getDV();
             cod_v = arrayDate.get(start).getVeterinario();
             note_visita = arrayDate.get(start).getNote();
-            
- System.out.println("start: "+start+"\nend: "+end + "\nPIVOTELEM: "+pivotElem);
  
             switch(ordine){
                 case "crescente":{
@@ -179,7 +177,7 @@ public Date ConvertStringToDate(String Data, String FORMAT)
             }
         }
      
- public void quicksortTAB_ANIM(ArrayList<Animale> list, int start, int end, String ordine, int count)
+ public void quicksortTAB_ANIM(ArrayList<Animale> list, int start, int end, String ordine)
  { 
      DBConnect conn = new DBConnect();
      ProgettoZoo pz = new ProgettoZoo();
@@ -187,7 +185,7 @@ public Date ConvertStringToDate(String Data, String FORMAT)
           
      Date[] DateDUV = new Date[list.size()];
 
-         System.out.println(count);
+         
             for(int i = 0; i < list.size(); i++)
             {
                ArrayList<Visita> visList = conn.visitaList(list.get(i).getId());    
@@ -198,7 +196,6 @@ public Date ConvertStringToDate(String Data, String FORMAT)
                    DateDUV[i] = pz.ConvertStringToDate(zero, "yyyy-MM-dd");
 
                }
-            System.out.println("Data["+i+"] = "+DateDUV[i]);
             }
   
      Date pivotElem, tmp;
@@ -223,12 +220,9 @@ public Date ConvertStringToDate(String Data, String FORMAT)
       salute = list.get(start).getSalute();
       nascita = list.get(start).getDataNascita();
       
-      for(int i = 0; i<DateDUV.length; i++) System.out.println("Data["+i+"] = "+DateDUV[i]);
-        System.out.println("start: "+start+"\nend: "+end + "\nPIVOTELEM: "+pivotElem);
             switch(ordine){
                 
                 case "DUV_CRESCENTE":{
-                        System.out.println("ERR CRES");
                       
                 for(int i = start+1; i <= end; i++) {
                     if (DateDUV[i].before(pivotElem) ) {
@@ -284,12 +278,11 @@ public Date ConvertStringToDate(String Data, String FORMAT)
 
                 // Sort the two parts of the array
                 
-                quicksortTAB_ANIM(list, start, endS1-1,ordine, count);
-                quicksortTAB_ANIM(list, endS1+1, end, ordine, count);
+                quicksortTAB_ANIM(list, start, endS1-1,ordine);
+                quicksortTAB_ANIM(list, endS1+1, end, ordine);
                 }break;
                 case "DUV_DECRESCENTE":{
                     for(int i = start+1; i <= end; i++) {
-                        System.out.println("ERR DECR");
                     if (DateDUV[i].after(pivotElem) ) {
                         endS1++;
                         tmp = DateDUV[endS1];
@@ -343,8 +336,8 @@ public Date ConvertStringToDate(String Data, String FORMAT)
 
                 // Sort the two parts of the array
                 
-                quicksortTAB_ANIM(list, start, endS1-1,ordine, count);
-                quicksortTAB_ANIM(list, endS1+1, end, ordine, count); 
+                quicksortTAB_ANIM(list, start, endS1-1,ordine);
+                quicksortTAB_ANIM(list, endS1+1, end, ordine); 
                 }
                     
             }

@@ -710,7 +710,6 @@ public class DBConnect {
        int count_nofilter = 0;
        for(int i=0; i<Filtri.length-3; i++)
        {
-           System.out.println("Dalla QUERY: "+Filtri[i]);
            
            if(Filtri[2].equals("SI") ) Filtri[2] = "1";
            else if(Filtri[2].equals("NO")) Filtri[2] = "0";
@@ -725,15 +724,12 @@ public class DBConnect {
                if(i==4) query = query + " AND "+f_where[i]+" LIKE '%"+Filtri[4]+"%'";
                else query = query + " AND "+ f_where[i] + " = '"+ Filtri[i] +"'";
                
-               System.out.println("Query al passaggio di "+Filtri[i]+ "con count "+count_nofilter+ ": "+query);
            }
            
            else if(!Filtri[i].equals("") && count_nofilter == 0)
            {
 
-               System.out.println("Query al passaggio di "+Filtri[i]+ "con count "+count_nofilter+ ": "+query);
                if(i==4) {
-                   System.out.println("PASSO QUA SAI");
                    query = query + " where "+f_where[i]+" like '%"+Filtri[4]+"%'";
                }
                   else query = query + " where "+f_where[i] + " = '"+ Filtri[i] + "'";
@@ -750,7 +746,6 @@ public class DBConnect {
                 String dt_a = pz.NuovoFormatoData(Filtri[i+1], "dd-MM-yyyy", "yyyy-MM-dd");
                 
                query = query + " AND "+f_where[i] + " >= '"+ dt_da + "' AND "+f_where[i] +" <= '"+dt_a+"'";
-               System.out.println("Query al passaggio di "+dt_da+ "con count "+count_nofilter+ ": "+query);
            }
             else if(!Filtri[i].equals("") && count_nofilter == 0)
            {
@@ -759,7 +754,6 @@ public class DBConnect {
                 String dt_a = pz.NuovoFormatoData(Filtri[i+1], "dd-MM-yyyy", "yyyy-MM-dd");
                 
                query = query + " where "+f_where[i] + " >= '"+ dt_da + "' AND "+f_where[i] +" <= '"+dt_a+"'";
-               System.out.println("Query al passaggio di "+dt_da+ "con count "+count_nofilter+ ": "+query);
                count_nofilter++;
            }
            
@@ -786,7 +780,6 @@ public class DBConnect {
 
                 System.out.println(ex);
             }   
-           System.out.println(query);
            return animaliList;   
         }       
        

@@ -50,8 +50,6 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         v.creaTabella(this.jTableVisite, jTableVisiteHeaders); 
         v.selectmode(this.jTableVisite); 
      
-        
-        System.out.println(this.jTableVisite.getTableHeader());
 
     }
         
