@@ -210,7 +210,7 @@ public class JVeterinario extends javax.swing.JFrame {
 
         jLabel10.setText("Codice:");
 
-        jButtonReset_Filtri.setText("Reset");
+        jButtonReset_Filtri.setText("Reset Filtri");
         jButtonReset_Filtri.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonReset_FiltriActionPerformed(evt);
@@ -259,13 +259,13 @@ public class JVeterinario extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addGap(101, 101, 101))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFiltriLayout.createSequentialGroup()
-                        .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jRadioButtonDUV_CRE)
-                            .addComponent(jButtonFiltra))
-                        .addGap(53, 53, 53)
                         .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonReset_Filtri, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jRadioButtonDUV_DECR, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jRadioButtonDUV_CRE)
+                            .addComponent(jButtonFiltra, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jRadioButtonDUV_DECR, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonReset_Filtri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(44, 44, 44))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFiltriLayout.createSequentialGroup()
                         .addComponent(jLabel7)
@@ -311,15 +311,13 @@ public class JVeterinario extends javax.swing.JFrame {
                                     .addComponent(jRadioButtonDUV_CRE)
                                     .addComponent(jRadioButtonDUV_DECR)))))
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonFiltra)
-                        .addComponent(jButtonReset_Filtri))
-                    .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel10)
-                        .addComponent(jTextFieldCodAni_Filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGap(22, 22, 22)
+                .addGroup(jPanelFiltriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonFiltra)
+                    .addComponent(jButtonReset_Filtri)
+                    .addComponent(jTextFieldCodAni_Filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         jCheckBoxFiltri.setText("Attiva/Disattiva");
@@ -655,7 +653,8 @@ public void selectmode(JTable table)
 
        table.changeSelection(0, 0, false, false);
        
-
+    pz.quicksortTAB_ANIM(list, 0, list.size()-1, filtri[7], 0);
+    
             for(int i = 0; i < list.size(); i++)
             {
                 ArrayList<Visita> visList = conn.visitaList(list.get(i).getId());
