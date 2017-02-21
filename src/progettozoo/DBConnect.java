@@ -843,6 +843,52 @@ public class DBConnect {
            return listaProdotti;   
         }
     
+    public ArrayList<Vende> getIncassi(ArrayList<Prodotto> prodlist,Date dat)
+    {
+        ArrayList<Vende> venlist = new ArrayList<Vende>();
+        for(int i=0;i<prodlist.size();i++)
+        {
+        Vende ven;
+         String prodotto="";
+         String data1=dat.toString()+" 00:00:00";
+         String data2=dat.toString()+" 23:59:59";
+        int quantita=0;
+        double ricavi=0;
+        String query = "Select * from vende where vende.Cod_Prodotto= '"+prodlist.get(i).getTipo()+"'AND vende.DataTime_Vendita >=  '"+data1+"' AND vende.DataTime_Vendita <= '"+data2+"'";
+        try {
+            
+            rs=st.executeQuery(query);
+            
+             while(rs.next())  
+        {
+            
+            prodotto=rs.getString("Cod_Prodotto");
+            quantita=quantita+rs.getInt("Quantita");
+            ricavi=ricavi+rs.getDouble("Ricavo");
+            
+            
+        }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ven=new Vende();
+        ven.setCod_Prodotto(prodotto);
+        ven.setQuantita(quantita);
+        ven.setRicavi(ricavi);
+        venlist.add(ven);
+        }
+        return venlist;
+    }
+    public double totaleIncassi(ArrayList<Vende> venlist)
+    {
+        double totale=0;
+        for(int i=0;i<venlist.size();i++)
+        {
+            totale=totale+venlist.get(i).getRicavi();
+        }
+        return totale;
+    }
+    
     
     public void addProdotto(String Codice_Prodotto, double Prezzo, int Giacenza){
       try {
@@ -854,7 +900,7 @@ public class DBConnect {
     }
     public void vendiProdotto(Prodotto p, int q, Utente u){
         Date date = new Date();
-        DateFormat format = new SimpleDateFormat("yyyy.MM.dd  HH:mm:ss");
+        DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
         format.format(date);
         double ricavo = q*p.getPrezzo();
         

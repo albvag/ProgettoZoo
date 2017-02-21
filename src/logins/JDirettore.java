@@ -29,6 +29,7 @@ import schede.JRimuoviHabitat_Direttore;
 import schede.JRimuoviPersonale_Direttore;
 import schede.JRimuoviProdotto_Direttore;
 import schede.JRimuoviSpecie_Direttore;
+import schede.JVediIncassi_Direttore;
 import schede.jListaAnimali_Direttore;
 
 /**
@@ -385,7 +386,9 @@ public class JDirettore extends javax.swing.JFrame {
     }//GEN-LAST:event_jPrestaanimaleActionPerformed
 
     private void jVediincassiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVediincassiActionPerformed
-        
+        JVediIncassi_Direttore vedinc = new JVediIncassi_Direttore();
+        vedinc.setLocationRelativeTo(null);
+        vedinc.setVisible(true);
     }//GEN-LAST:event_jVediincassiActionPerformed
 
     private void jCambiaprezziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCambiaprezziActionPerformed
