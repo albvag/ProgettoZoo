@@ -125,7 +125,8 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
     private void jRimuoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRimuoviActionPerformed
         String sel =this.jrimuoviHabitat.getSelectedItem().toString();
         DBConnect conn =new DBConnect();
-         int reply = JOptionPane.showConfirmDialog(null, "L'habitat che vuoi eliminare è: "+this.jrimuoviHabitat.getSelectedItem().toString(), "Confermare?", JOptionPane.YES_NO_OPTION);
+        if(conn.habitatisEmpty(sel)==true)
+        {int reply = JOptionPane.showConfirmDialog(null, "L'habitat che vuoi eliminare è: "+this.jrimuoviHabitat.getSelectedItem().toString(), "Confermare?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION)
                 { 
                         JOptionPane.showMessageDialog(null, "Devi cancellare anche la specie presente nell'habitat");
@@ -135,9 +136,12 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
                            rimspe.setVisible(true);
                            conn.deleteHabitat(sel);
                            setVisible(false); 
-                         
+                }
+        }else{JOptionPane.showMessageDialog(null, "L'habitat selezionato non è vuoto, devi prima cancellare gli animali al suo interno");
+        setVisible(false);}
+    
     }//GEN-LAST:event_jRimuoviActionPerformed
-    }
+    
     /**
      * @param args the command line arguments
      */

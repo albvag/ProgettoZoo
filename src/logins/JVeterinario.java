@@ -650,8 +650,8 @@ public void selectmode(JTable table)
        Object[] row = new Object[8];
 
        table.changeSelection(0, 0, false, false);
-       
-    pz.quicksortTAB_ANIM(list, 0, list.size()-1, filtri[7]);
+       if(user.getRuolo()=="Veterinario")
+       {pz.quicksortTAB_ANIM(list, 0, list.size()-1, filtri[7]);}
     
             for(int i = 0; i < list.size(); i++)
             {

@@ -639,6 +639,19 @@ public class DBConnect {
         }
         return false;
     }
+     public boolean habitatisEmpty(String Cod_Gabbia)
+    {
+        try{
+            String query = "Select * from situato where situato.Cod_Gabbia = '"+Cod_Gabbia+"'";
+            rs = st.executeQuery(query);
+           
+            while(rs.next())  return false;
+            
+        }catch(Exception ex){
+               
+        }
+        return true;
+    }
     
     
     
@@ -867,7 +880,7 @@ public class DBConnect {
             }   
            return prodlist; 
     }
-
+    
     public ArrayList<Vende> getIncassi(ArrayList<String> prodlist,Date dat)
     {
         ArrayList<Vende> venlist = new ArrayList<Vende>();
