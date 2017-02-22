@@ -1108,4 +1108,23 @@ public class DBConnect {
     
     }
     
+        public boolean ciSonoCompiti(){
+        
+        Date date = new Date();
+        DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+        String data = format.format(date).toString()+" 00:00:00";
+        try{
+            String query = "Select * from pulizia where Data_Inizio_Pulizia = '"+data+"'";
+            rs = st.executeQuery(query);
+           
+            while(rs.next())  return true;
+            
+        }catch(Exception ex){
+            
+
+        }
+        return false;
+    }   
+            
+        
 }

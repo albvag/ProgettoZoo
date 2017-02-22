@@ -25,7 +25,12 @@ public class ProgettoZoo {
      */
     public static void main(String[] args) 
     {
-        // TODO code application logic here
+        DBConnect conn = new DBConnect();
+        if(!conn.ciSonoCompiti()){
+            conn.addPulizieGionaliere();
+            conn.addPranziGionalieri();
+            conn.addCeneGionaliere();
+        }
         JLogin login = new JLogin();
         login.setLocationRelativeTo(null);
         login.setVisible(true);
