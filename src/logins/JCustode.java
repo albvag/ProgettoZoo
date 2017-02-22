@@ -61,6 +61,7 @@ public class JCustode extends javax.swing.JFrame {
         Show_Pulizie_In_JTable(this.jTablePulizie);
         Show_Aiuti_In_JTable(this.jTableAiuti);
         Show_Pasti_In_JTable(this.jPasti);
+        conn.addPulizieGionaliere();
         
     }
     

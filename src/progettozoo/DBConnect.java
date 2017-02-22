@@ -928,7 +928,7 @@ public class DBConnect {
     }
     public void vendiProdotto(Prodotto p, int q, Utente u){
         Date date = new Date();
-        DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+        DateFormat format = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
         format.format(date);
         double ricavo = q*p.getPrezzo();
         
@@ -1041,10 +1041,15 @@ public class DBConnect {
     
     public void addPulizieGionaliere(){
         
+        Date date = new Date();
+        DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+        String dataInizio = format.format(date).toString()+" 00:00:00";
+        String dataFine ="0000/00/00 00:00:00";
+                
         ArrayList<Habitat> list = selezionaHabitat();
         for(int i=0;i<list.size();i++){
             try{
-            st.executeUpdate("INSERT INTO veterinario values("+0+",'"+list.get(i).getHabitat()+"',)");
+            st.executeUpdate("INSERT INTO Pulizia values("+0+",'"+list.get(i).getHabitat()+"','"+dataInizio+"','"+dataFine+"',"+true+","+false+",' ')");
             }catch(SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
             }
