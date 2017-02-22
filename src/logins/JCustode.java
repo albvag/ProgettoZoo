@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import progettozoo.DBConnect;
+import progettozoo.Pasto;
 import progettozoo.Prodotto;
 import progettozoo.Pulizia;
 import progettozoo.Utente;
@@ -32,9 +33,8 @@ public class JCustode extends javax.swing.JFrame {
     }
     
     
-    public JCustode(Utente user_login) {
+     public JCustode(Utente user_login) {
         initComponents();
-        
         setLocationRelativeTo(null);
         setVisible(true);
         this.jPulizie.setVisible(false);
@@ -47,12 +47,20 @@ public class JCustode extends javax.swing.JFrame {
         
         String[] jTablePulizieHeaders  = {"Gabbia"};
         String[] jTableAiutiHeaders  = {"Gabbia","Custode"};
-        v.selectmode(this.jTablePulizie);   
+        String[] jTablePastiHeaders  = {"Gabbia"};
+        v.selectmode(this.jTablePulizie); 
+        v.selectmode(this.jPasti);
+        v.selectmode(this.jTableAiuti);
         v.creaTabella(this.jTablePulizie, jTablePulizieHeaders);
         v.creaTabella(this.jTableAiuti, jTableAiutiHeaders);
+        v.creaTabella(this.jPasti, jTablePastiHeaders);
         this.jTablePulizie.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        this.jTableAiuti.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        this.jPasti.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        
         Show_Pulizie_In_JTable(this.jTablePulizie);
         Show_Aiuti_In_JTable(this.jTableAiuti);
+        Show_Pasti_In_JTable(this.jPasti);
         
     }
     
@@ -67,7 +75,7 @@ public class JCustode extends javax.swing.JFrame {
        for(int i = 0; i < list.size(); i++)
        {
            
-           row[0] = list.get(i);
+           row[0] = list.get(i).getCodice_Gabbia();
                    
            model.addRow(row);
            
@@ -77,19 +85,36 @@ public class JCustode extends javax.swing.JFrame {
     {
        ArrayList<Pulizia> list = conn.listRichiesteAiuto();
        DefaultTableModel model = (DefaultTableModel) table.getModel();
-       Object[] row = new Object[4];
+       Object[] row = new Object[2];
        
         table.changeSelection(0, 0, false, false);
        for(int i = 0; i < list.size(); i++)
        {
      
-           row[0] = list.get(i);
+           row[0] = list.get(i).getCodice_Gabbia();
            
-           row[1] = list.get(i);
+           row[1] = list.get(i).getDisponibile();
        
            model.addRow(row);
            
        }
+    }
+       
+    public void Show_Pasti_In_JTable(JTable table)
+    {
+       ArrayList<Pasto> list = conn.listaPastiDisponibili();
+       DefaultTableModel model = (DefaultTableModel) table.getModel();
+       Object[] row = new Object[1];
+       
+       table.changeSelection(0, 0, false, false);
+       for(int i = 0; i < list.size(); i++)
+       {
+     
+           row[0] = list.get(i).getCodice_Gabbia();
+          
+           model.addRow(row);
+           
+       }   
        
     }  
 
@@ -105,7 +130,7 @@ public class JCustode extends javax.swing.JFrame {
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jNutrire = new javax.swing.JInternalFrame();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jPasti = new javax.swing.JTable();
         jAccettaNutri = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPulisce = new javax.swing.JButton();
@@ -138,7 +163,7 @@ public class JCustode extends javax.swing.JFrame {
 
         jNutrire.setVisible(true);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jPasti.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -149,7 +174,7 @@ public class JCustode extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jPasti);
 
         jAccettaNutri.setText("Accetta");
         jAccettaNutri.addActionListener(new java.awt.event.ActionListener() {
@@ -400,12 +425,12 @@ public class JCustode extends javax.swing.JFrame {
     private javax.swing.JButton jLogout;
     private javax.swing.JButton jNutri;
     private javax.swing.JInternalFrame jNutrire;
+    private javax.swing.JTable jPasti;
     private javax.swing.JButton jPulisce;
     private javax.swing.JInternalFrame jPulizie;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTableAiuti;
     private javax.swing.JTable jTablePulizie;
     // End of variables declaration//GEN-END:variables

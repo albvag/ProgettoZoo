@@ -959,7 +959,7 @@ public class DBConnect {
     
     public ArrayList <Pulizia> listPulizieDisponibili(){
         ArrayList<Pulizia> listaPulizie = new ArrayList<Pulizia>();
-        String query = "Select * from pulizia WHERE Disponibile = '"+true+"'";
+        String query = "Select * from pulizia WHERE Disponibile = "+true+" AND ServeAiuto="+false+"";
 
            try{
                Pulizia pul;
@@ -979,7 +979,7 @@ public class DBConnect {
     
     public ArrayList <Pulizia> listRichiesteAiuto(){
         ArrayList<Pulizia> listaPulizie = new ArrayList<Pulizia>();
-        String query = "Select * from pulizia WHERE ServeAiuto = '"+true+"'";
+        String query = "Select * from pulizia WHERE ServeAiuto = "+true+" AND Disponibile = "+false+"";
 
            try{
                Pulizia pul;
@@ -995,6 +995,61 @@ public class DBConnect {
             }   
            return listaPulizie;
            
+    }
+    
+     public ArrayList <Pasto> listaPasti(){
+        String query = "Select * from pasti ";
+        ArrayList<Pasto> listaPasti = new ArrayList<Pasto>();
+
+           try{
+               Pasto pas;
+               rs = st.executeQuery(query);
+                while(rs.next())
+                {
+                    pas = new Pasto(rs.getInt("Codice_Pasto"),rs.getString("Cod_Gabbia"), rs.getDate("Data_Pasto"),rs.getBoolean("Disponibile"),rs.getBoolean("Terminato"));
+                    listaPasti.add(pas);
+                    
+                }
+            }catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+           return listaPasti;
+        
+    }
+    
+    public ArrayList <Pasto> listaPastiDisponibili(){
+        String query = "Select * from pasti WHERE Disponibile = "+true+" AND Terminato= "+false+" ";
+        ArrayList<Pasto> listaPasti = new ArrayList();
+
+           try{
+               Pasto pas;
+               rs = st.executeQuery(query);
+                while(rs.next())
+                {
+                    pas = new Pasto(rs.getInt("Codice_Pasto"),rs.getString("Cod_Gabbia"), rs.getDate("Data_Pasto"),rs.getBoolean("Disponibile"),rs.getBoolean("Terminato"));
+                    listaPasti.add(pas);
+                    
+                }
+            }catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+           return listaPasti;
+        
+    }
+    
+    public void addPulizieGionaliere(){
+        
+        ArrayList<Habitat> list = selezionaHabitat();
+        for(int i=0;i<list.size();i++){
+            try{
+            st.executeUpdate("INSERT INTO veterinario values("+0+",'"+list.get(i).getHabitat()+"',)");
+            }catch(SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    
     }
     
 }

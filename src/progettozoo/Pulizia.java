@@ -31,31 +31,31 @@ public class Pulizia {
        this.NotePulizia = NotePulizia;
        
     }
-    int getCodice_Pulizia(){
+    public int getCodice_Pulizia(){
         return this.Codice_Pulizia;
     }
     
-    String getCodice_Gabbia(){
+    public String getCodice_Gabbia(){
         return this.Cod_Gabbia;
     }
     
-    Date getData_Inizio_Pulizia(){
+    public Date getData_Inizio_Pulizia(){
         return this.Data_Inizio_Pulizia;
     }
     
-    Date getData_Fine_Pulizia(){
+    public Date getData_Fine_Pulizia(){
         return this.Data_Fine_Pulizia;
     }
     
-    boolean getDisponibile(){
+    public boolean getDisponibile(){
         return this.Disponibile;
     }
     
-    boolean getServeAiuto(){
+    public boolean getServeAiuto(){
         return this.ServeAiuto;
     }
     
-    String getNotePulizia(){
+    public String getNotePulizia(){
         return this.NotePulizia;
     }
        
