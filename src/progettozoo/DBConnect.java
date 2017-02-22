@@ -1057,7 +1057,7 @@ public class DBConnect {
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
         String dataInizio = format.format(date).toString()+" 00:00:00";
-        String dataFine ="0000/00/00 00:00:00";
+        String dataFine ="1980/01/01 01:00:00";
                 
         ArrayList<Habitat> list = selezionaHabitat();
         for(int i=0;i<list.size();i++){
