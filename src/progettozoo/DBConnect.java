@@ -1049,7 +1049,45 @@ public class DBConnect {
         ArrayList<Habitat> list = selezionaHabitat();
         for(int i=0;i<list.size();i++){
             try{
-            st.executeUpdate("INSERT INTO Pulizia values("+0+",'"+list.get(i).getHabitat()+"','"+dataInizio+"','"+dataFine+"',"+true+","+false+",' ')");
+            st.executeUpdate("INSERT INTO pulizia values("+0+",'"+list.get(i).getHabitat()+"','"+dataInizio+"','"+dataFine+"',"+true+","+false+",' ')");
+            }catch(SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    
+    }
+    
+    
+
+        public void addPranziGionalieri(){
+        
+        Date date = new Date();
+        DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+        String dataPasto = format.format(date).toString()+" 12:00:00";
+        
+                
+        ArrayList<Habitat> list = selezionaHabitat();
+        for(int i=0;i<list.size();i++){
+            try{
+            st.executeUpdate("INSERT INTO pasti values("+0+",'"+list.get(i).getHabitat()+"','"+dataPasto+"',"+true+","+false+")");
+            }catch(SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    
+    }
+    
+        public void addCeneGionaliere(){
+        
+        Date date = new Date();
+        DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+        String dataPasto = format.format(date).toString()+" 19:00:00";
+        
+                
+        ArrayList<Habitat> list = selezionaHabitat();
+        for(int i=0;i<list.size();i++){
+            try{
+            st.executeUpdate("INSERT INTO pasti values("+0+",'"+list.get(i).getHabitat()+"','"+dataPasto+"',"+true+","+false+")");
             }catch(SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
             }
