@@ -77,7 +77,7 @@ public class JVediIncassi_Direttore extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("                       SELEZIONA IL GIORNO:");
+        jLabel2.setText("                DI QUALE DATA VUOI VEDERE L'INCASSO? ");
 
         jConferma.setText("Conferma");
         jConferma.addActionListener(new java.awt.event.ActionListener() {
@@ -132,17 +132,18 @@ public class JVediIncassi_Direttore extends javax.swing.JFrame {
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
+                                .addGap(38, 38, 38))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jdataincassi)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jConferma, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                                .addComponent(jChiudi, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(56, 56, 56)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jConferma, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jChiudi, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)))
                         .addComponent(jInternalFrameTableIncassi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(23, 23, 23))
         );
@@ -195,7 +196,18 @@ public class JVediIncassi_Direttore extends javax.swing.JFrame {
          
          Date d= pz.ConvertStringToDate(data, "dd/MM/yyyy");
         java.sql.Date sqlDate = new java.sql.Date(d.getTime());
-       if(data.isEmpty())
+        if(dat==false)
+              {  
+        this.jInternalFrameTableIncassi.setVisible(false);
+   
+      this.jTableIncassi.getTableHeader().setVisible(false);
+       this.jTableIncassi.setVisible(false);
+        
+       this.jLabel1.setVisible(false);
+       this.jTextField1.setVisible(false);
+       pack();
+       JOptionPane.showMessageDialog(null, "CARATTERI NON VALIDI");}
+        else if(data.isEmpty())
        {  
         this.jInternalFrameTableIncassi.setVisible(false);
    
@@ -217,9 +229,15 @@ public class JVediIncassi_Direttore extends javax.swing.JFrame {
        this.jTextField1.setVisible(false);
        pack();
        JOptionPane.showMessageDialog(null, "NON PUOI INSERIRE UNA DATA FUTURA");} 
-       else if(dat==false)
-              {  
-        this.jInternalFrameTableIncassi.setVisible(false);
+       
+       
+       else{
+       
+      
+            venlist=conn.getIncassi(conn.selezionaProdVenduti(),sqlDate);
+             if (venlist.isEmpty())
+       {
+             this.jInternalFrameTableIncassi.setVisible(false);
    
       this.jTableIncassi.getTableHeader().setVisible(false);
        this.jTableIncassi.setVisible(false);
@@ -227,37 +245,24 @@ public class JVediIncassi_Direttore extends javax.swing.JFrame {
        this.jLabel1.setVisible(false);
        this.jTextField1.setVisible(false);
        pack();
-       JOptionPane.showMessageDialog(null, "CARATTERI NON VALIDI");} 
-       else{
-       
-             this.jTableIncassi.getTableHeader().setVisible(true);
+           JOptionPane.showMessageDialog(null, "NON E' STATO VENDUTO NESSUN PRODOTTO IN QUELLA DATA");}
+             else{
+                        this.jTableIncassi.getTableHeader().setVisible(true);
         this.jTableIncassi.setVisible(true);
        this.jLabel1.setVisible(true);
        this.jTextField1.setVisible(true);
        this.jInternalFrameTableIncassi.setVisible(true);
        
        pack();
-            venlist=conn.getIncassi(conn.listaProdotti(),sqlDate);
           this.jTableIncassi.getTableHeader().setReorderingAllowed(false);
            String[] jTableAnimaliHeaders  = {"Nome Prodotto","Quantità","Ricavi"};
         v.selectmode(this.jTableIncassi);   
         v.creaTabella(this.jTableIncassi, jTableAnimaliHeaders);
         this.jTableIncassi.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         Show_Incassi_In_JTable(this.jTableIncassi);
-        
-        
         Double totale=conn.totaleIncassi(venlist);
         this.jTextField1.setText(totale.toString());
-        for(int i=0;i<venlist.size();i++)
-        {
-        
-            System.out.print(venlist.get(i).getCod_Prodotto()+" ");
-        System.out.print(venlist.get(i).getQuantita()+" ");
-        System.out.println(venlist.get(i).getRicavi());
-        
-        }
-        System.out.println(totale);
-        System.out.println(sqlDate);
+             }
        }
     }//GEN-LAST:event_jConfermaActionPerformed
 
@@ -299,7 +304,7 @@ public class JVediIncassi_Direttore extends javax.swing.JFrame {
    {
        ProgettoZoo pz=new ProgettoZoo();
        DBConnect conn=new DBConnect();
-       ArrayList<Prodotto> prodlist=conn.listaProdotti();
+       ArrayList<String> prodlist=conn.selezionaProdVenduti();
         String data=this.jdataincassi.getText();
         Date d=pz.ConvertStringToDate(data, "dd/MM/yyyy");
        
@@ -308,7 +313,7 @@ public class JVediIncassi_Direttore extends javax.swing.JFrame {
        ArrayList<Vende> venlist = conn.getIncassi(prodlist,sqlDate );
        DefaultTableModel model = (DefaultTableModel) table.getModel();
        Object[] row = new Object[3];
-       System.out.println(sqlDate);
+       
        
         table.changeSelection(0, 0, false, false);
        for(int i = 0; i < venlist.size(); i++)

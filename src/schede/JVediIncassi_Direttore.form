@@ -33,19 +33,21 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jdataincassi" max="32767" attributes="0"/>
-                                  <Component id="jLabel2" pref="248" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel2" pref="289" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jConferma" min="-2" pref="85" max="-2" attributes="0"/>
-                              <EmptySpace pref="43" max="32767" attributes="0"/>
-                              <Component id="jChiudi" min="-2" pref="93" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jdataincassi" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jConferma" min="-2" pref="120" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jChiudi" min="-2" pref="121" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="jInternalFrameTableIncassi" min="-2" max="-2" attributes="0"/>
@@ -108,7 +110,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="                       SELEZIONA IL GIORNO:"/>
+        <Property name="text" type="java.lang.String" value="                DI QUALE DATA VUOI VEDERE L&apos;INCASSO? "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jConferma">

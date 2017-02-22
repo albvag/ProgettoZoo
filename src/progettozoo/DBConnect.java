@@ -842,19 +842,44 @@ public class DBConnect {
             }   
            return listaProdotti;   
         }
-    
-    public ArrayList<Vende> getIncassi(ArrayList<Prodotto> prodlist,Date dat)
+    public ArrayList<String> selezionaProdVenduti()
+    {
+         ArrayList<String> prodlist = new ArrayList<String>();
+        String query = "SELECT DISTINCT Cod_Prodotto from vende";
+
+           try{
+               String prod;
+               rs = st.executeQuery(query);
+               
+               
+                while(rs.next())
+                {   
+                    
+                    prod = new String();
+                    prod = rs.getString("Cod_Prodotto");
+                    
+                    prodlist.add(prod);
+                    
+                }
+            }catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+           return prodlist; 
+    }
+
+    public ArrayList<Vende> getIncassi(ArrayList<String> prodlist,Date dat)
     {
         ArrayList<Vende> venlist = new ArrayList<Vende>();
         for(int i=0;i<prodlist.size();i++)
         {
         Vende ven;
-         String prodotto="";
+         String prodotto=prodlist.get(i);
          String data1=dat.toString()+" 00:00:00";
          String data2=dat.toString()+" 23:59:59";
         int quantita=0;
         double ricavi=0;
-        String query = "Select * from vende where vende.Cod_Prodotto= '"+prodlist.get(i).getTipo()+"'AND vende.DataTime_Vendita >=  '"+data1+"' AND vende.DataTime_Vendita <= '"+data2+"'";
+        String query = "Select * from vende where vende.Cod_Prodotto= '"+prodlist.get(i)+"'AND vende.DataTime_Vendita >=  '"+data1+"' AND vende.DataTime_Vendita <= '"+data2+"'";
         try {
             
             rs=st.executeQuery(query);
@@ -862,7 +887,7 @@ public class DBConnect {
              while(rs.next())  
         {
             
-            prodotto=rs.getString("Cod_Prodotto");
+            
             quantita=quantita+rs.getInt("Quantita");
             ricavi=ricavi+rs.getDouble("Ricavo");
             
@@ -871,11 +896,14 @@ public class DBConnect {
         } catch (SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
+        if(quantita>0)
+        {
         ven=new Vende();
         ven.setCod_Prodotto(prodotto);
         ven.setQuantita(quantita);
         ven.setRicavi(ricavi);
         venlist.add(ven);
+        }
         }
         return venlist;
     }
