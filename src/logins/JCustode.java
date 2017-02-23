@@ -353,6 +353,7 @@ public class JCustode extends javax.swing.JFrame {
 
     private void jNutriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNutriActionPerformed
         // TODO add your handling code here:
+        this.jPulizie.setVisible(false);
         this.jNutrire.setVisible(true);
         pack();
     }//GEN-LAST:event_jNutriActionPerformed
@@ -368,6 +369,7 @@ public class JCustode extends javax.swing.JFrame {
     private void jPulisceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPulisceActionPerformed
         // TODO add your handling code here:
         this.jPulizie.setVisible(true);
+        this.jNutrire.setVisible(false);
         pack();
     }//GEN-LAST:event_jPulisceActionPerformed
 

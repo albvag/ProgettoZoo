@@ -1038,7 +1038,7 @@ public class DBConnect {
            return listaPasti;
         
     }
-    
+ 
     public ArrayList <Pasto> listaPastiDisponibili(){
         Date date = new Date();
         DateFormat formatDate = new SimpleDateFormat("yyyy.MM.dd");
