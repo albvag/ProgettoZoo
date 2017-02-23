@@ -971,8 +971,12 @@ public class DBConnect {
     }
     
     public ArrayList <Pulizia> listPulizieDisponibili(){
+        Date date = new Date();
+        DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+        String dataInizio = format.format(date).toString()+" 00:00:00";
+        
         ArrayList<Pulizia> listaPulizie = new ArrayList<Pulizia>();
-        String query = "Select * from pulizia WHERE Disponibile = "+true+" AND ServeAiuto="+false+"";
+        String query = "Select * from pulizia WHERE Disponibile = "+true+" AND ServeAiuto="+false+" AND Data_Inizio_Pulizia='"+dataInizio+"'";
 
            try{
                Pulizia pul;
@@ -991,8 +995,12 @@ public class DBConnect {
     }
     
     public ArrayList <Pulizia> listRichiesteAiuto(){
+        Date date = new Date();
+        DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+        String dataInizio = format.format(date).toString()+" 00:00:00";
         ArrayList<Pulizia> listaPulizie = new ArrayList<Pulizia>();
-        String query = "Select * from pulizia WHERE ServeAiuto = "+true+" AND Disponibile = "+false+"";
+        
+        String query = "Select * from pulizia WHERE ServeAiuto = "+true+" AND Disponibile = "+false+" AND Data_Inizio_Pulizia='"+dataInizio+"'";
 
            try{
                Pulizia pul;
@@ -1032,7 +1040,13 @@ public class DBConnect {
     }
     
     public ArrayList <Pasto> listaPastiDisponibili(){
-        String query = "Select * from pasti WHERE Disponibile = "+true+" AND Terminato= "+false+" ";
+        Date date = new Date();
+        DateFormat formatDate = new SimpleDateFormat("yyyy.MM.dd");
+        DateFormat formatDateTime = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+        String adesso= formatDateTime.format(date).toString();
+        String dataInizio = formatDate.format(date).toString()+" 00:00:00";
+        
+        String query = "Select * from pasti WHERE Disponibile = "+true+" AND Terminato= "+false+" AND Data_Pasto<'"+adesso+"'AND Data_Pasto>'"+dataInizio+"'";
         ArrayList<Pasto> listaPasti = new ArrayList();
 
            try{
