@@ -6,6 +6,7 @@
 package logins;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import progettozoo.DBConnect;
@@ -375,10 +376,26 @@ public class JCustode extends javax.swing.JFrame {
 
     private void jAccettaNutriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAccettaNutriActionPerformed
         // TODO add your handling code here:
+        if(this.jPasti.getSelectedRow()==0){
+            JOptionPane.showMessageDialog(null, "DEVI SELEZIONARE UN COMPITO");
+        }else conn.accettaPasto(conn.listaPastiDisponibili().get(this.jPasti.getSelectedRow()+1), user);
     }//GEN-LAST:event_jAccettaNutriActionPerformed
 
     private void AccettaPuliziaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccettaPuliziaActionPerformed
         // TODO add your handling code here:
+        if(this.jTablePulizie.getSelectedRow()==0&& this.jTableAiuti.getSelectedRow() ==0){
+            JOptionPane.showMessageDialog(null, "DEVI SELEZIONARE UN COMPITO");
+        }else if(this.jTablePulizie.getSelectedRow()!=0&& this.jTableAiuti.getSelectedRow() !=0){
+            JOptionPane.showMessageDialog(null, "DEVI SEZIONARE SOLO UN COMPITO");
+        }else if(this.jTablePulizie.getSelectedRow()!=0){
+            conn.accettaPulizia(conn.listPulizieDisponibili().get(this.jTablePulizie.getSelectedRow()+1), user);
+            setVisible(false); 
+            JCustode cus = new JCustode(user);
+        }else {
+            conn.accettaPulizia(conn.listRichiesteAiuto().get(this.jTableAiuti.getSelectedRow()+1), user);
+            setVisible(false); 
+            JCustode cus = new JCustode(user);
+        }
     }//GEN-LAST:event_AccettaPuliziaActionPerformed
 
     /**

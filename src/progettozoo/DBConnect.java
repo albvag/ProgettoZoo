@@ -1139,6 +1139,64 @@ public class DBConnect {
         }
         return false;
     }   
+        
+    public void accettaPulizia(Pulizia pul,Utente user){
+        Date date = new Date();
+        DateFormat format = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+        format.format(date);
+        
+        try{
+            st.executeUpdate("INSERT INTO pulisce values("+0+",'"+user.getUsername()+"','"+pul.getCodice_Pulizia()+"')");
+            }catch(SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        try{
+            st.executeUpdate("UPDATE pulizia SET Disponibile = "+ false + " where Codice_Pulizia = '"+ pul.getCodice_Pulizia() + "' SET Data_Inizio_Pulizia = "+ format.format(date) + " where Codice_Pulizia = '"+ pul.getCodice_Pulizia() + "'");
+            }catch(SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+    }    
+    
+    public void accettaPasto(Pasto pas,Utente user){
+        Date date = new Date();
+        DateFormat format = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+        
+        
+        try{
+            st.executeUpdate("INSERT INTO pulisce values("+0+",'"+user.getUsername()+"','"+pas.getCodice_Pasto()+")");
+            }catch(SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        try{
+            st.executeUpdate("UPDATE pasto SET Disponibile = "+ false + " where Codice_Pasto = '"+ pas.getCodice_Pasto() + "' SET Data_Pasto = "+ format.format(date) + " where Codice_Pasto = '"+ pas.getCodice_Pasto() + "'");
+            }catch(SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }    
+    
+    public void richiediAiutoPulizia(Pulizia pul,Utente user){
+        try{
+            st.executeUpdate("UPDATE pulizia SET ServeAito = "+ true + " where Codice_Pulizia = '"+ pul.getCodice_Pulizia() + "'");
+            }catch(SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+    }    
+    
+    public boolean hoUnCompito(String compito,Utente user){
+        try{
+            String query = "Select * from pulisce JOIN pulizia where animale.Codice_Animale = '"+2+"'";
+            rs = st.executeQuery(query);
+           
+            while(rs.next())  return true;
             
+        }catch(Exception ex){
+            
+            JOptionPane.showMessageDialog(null, "Errore! L'animale è già esistente");
+            return false;
+        }
+        return false;
+    }
         
 }
