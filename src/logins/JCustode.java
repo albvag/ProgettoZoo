@@ -145,6 +145,7 @@ public class JCustode extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLogout = new javax.swing.JButton();
+        jLabelCompito = new javax.swing.JLabel();
 
         jInternalFrame1.setVisible(true);
 
@@ -309,6 +310,10 @@ public class JCustode extends javax.swing.JFrame {
             }
         });
 
+        if(conn.hoUnCompito( user)){
+            this.jLabelCompito.setText("Scegli un compito");
+        }else this.jLabelCompito.setText("Hai un compito");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -330,7 +335,11 @@ public class JCustode extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLogout)
-                        .addGap(57, 57, 57)))
+                        .addGap(57, 57, 57))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelCompito, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jNutrire, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -339,7 +348,9 @@ public class JCustode extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelCompito, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jPulisce)
                     .addComponent(jNutri))
@@ -378,7 +389,11 @@ public class JCustode extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(this.jPasti.getSelectedRow()==0){
             JOptionPane.showMessageDialog(null, "DEVI SELEZIONARE UN COMPITO");
-        }else conn.accettaPasto(conn.listaPastiDisponibili().get(this.jPasti.getSelectedRow()-1), user);
+        }else {
+            conn.accettaPasto(conn.listaPastiDisponibili().get(this.jPasti.getSelectedRow()-1), user);
+            setVisible(false); 
+            JCustode cus = new JCustode(user);
+        }
     }//GEN-LAST:event_jAccettaNutriActionPerformed
 
     private void AccettaPuliziaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccettaPuliziaActionPerformed
@@ -441,6 +456,7 @@ public class JCustode extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelCompito;
     private javax.swing.JButton jLogout;
     private javax.swing.JButton jNutri;
     private javax.swing.JInternalFrame jNutrire;

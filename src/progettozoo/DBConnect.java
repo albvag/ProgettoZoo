@@ -1151,7 +1151,7 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
             }
         try{
-            st.executeUpdate("UPDATE pulizia SET Disponibile = "+ false + " where Codice_Pulizia = '"+ pul.getCodice_Pulizia() + "' AND SET Data_Inizio_Pulizia = "+ format.format(date) + " where Codice_Pulizia = '"+ pul.getCodice_Pulizia() + "'");
+            st.executeUpdate("UPDATE pulizia SET Disponibile = "+ false + " where Codice_Pulizia = "+ pul.getCodice_Pulizia() + "");
             }catch(SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1164,12 +1164,12 @@ public class DBConnect {
         
         
         try{
-            st.executeUpdate("INSERT INTO pulisce values("+0+",'"+user.getUsername()+"','"+pas.getCodice_Pasto()+")");
+            st.executeUpdate("INSERT INTO pulisce values("+0+",'"+user.getUsername()+"','"+pas.getCodice_Pasto()+"')");
             }catch(SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
             }
         try{
-            st.executeUpdate("UPDATE pasto SET Disponibile = "+ false + " where Codice_Pasto = '"+ pas.getCodice_Pasto() + "' AND SET Data_Pasto = "+ format.format(date) + " where Codice_Pasto = "+ pas.getCodice_Pasto() + " ");
+            st.executeUpdate("UPDATE pasti SET Disponibile = "+ false + " where Codice_Pasto = '"+ pas.getCodice_Pasto() + "' ");
             }catch(SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1184,16 +1184,20 @@ public class DBConnect {
         
     }    
     
-    public boolean hoUnCompito(String compito,Utente user){
+    public boolean hoUnCompito(Utente user){
+        Date date = new Date();
+        DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+        String data = format.format(date).toString()+" 00:00:00";
+        
         try{
-            String query = "Select * from pulisce JOIN pulizia where animale.Codice_Animale = '"+2+"'";
+            String query = "Select * from pulisce JOIN pulizia  WHERE pulisce.Cod_Custode = '"+user.getUsername()+"' AND WHERE pulizia.Data_Inizio_Pulizia = '"+data+"' ";
             rs = st.executeQuery(query);
            
             while(rs.next())  return true;
             
         }catch(Exception ex){
             
-            JOptionPane.showMessageDialog(null, "Errore! L'animale è già esistente");
+            
             return false;
         }
         return false;

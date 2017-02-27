@@ -67,6 +67,11 @@
                       <Component id="jLogout" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jLabelCompito" min="-2" pref="144" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
               </Group>
               <Component id="jNutrire" min="-2" max="-2" attributes="0"/>
           </Group>
@@ -78,7 +83,9 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="28" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jLabelCompito" min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jPulisce" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jNutri" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -303,6 +310,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jLogoutActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelCompito">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="if(conn.hoUnCompito( user)){&#xa;    this.jLabelCompito.setText(&quot;Scegli un compito&quot;);&#xa;}else this.jLabelCompito.setText(&quot;Hai un compito&quot;);"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
