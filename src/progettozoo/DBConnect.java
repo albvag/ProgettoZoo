@@ -1151,7 +1151,7 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
             }
         try{
-            st.executeUpdate("UPDATE pulizia SET Disponibile = "+ false + " where Codice_Pulizia = '"+ pul.getCodice_Pulizia() + "' SET Data_Inizio_Pulizia = "+ format.format(date) + " where Codice_Pulizia = '"+ pul.getCodice_Pulizia() + "'");
+            st.executeUpdate("UPDATE pulizia SET Disponibile = "+ false + " where Codice_Pulizia = '"+ pul.getCodice_Pulizia() + "' AND SET Data_Inizio_Pulizia = "+ format.format(date) + " where Codice_Pulizia = '"+ pul.getCodice_Pulizia() + "'");
             }catch(SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1169,7 +1169,7 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
             }
         try{
-            st.executeUpdate("UPDATE pasto SET Disponibile = "+ false + " where Codice_Pasto = '"+ pas.getCodice_Pasto() + "' SET Data_Pasto = "+ format.format(date) + " where Codice_Pasto = '"+ pas.getCodice_Pasto() + "'");
+            st.executeUpdate("UPDATE pasto SET Disponibile = "+ false + " where Codice_Pasto = '"+ pas.getCodice_Pasto() + "' AND SET Data_Pasto = "+ format.format(date) + " where Codice_Pasto = "+ pas.getCodice_Pasto() + " ");
             }catch(SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
             }
