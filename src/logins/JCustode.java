@@ -63,6 +63,10 @@ public class JCustode extends javax.swing.JFrame {
         Show_Aiuti_In_JTable(this.jTableAiuti);
         Show_Pasti_In_JTable(this.jPasti);
         
+        if(!conn.stoPulendo( user)){
+            this.jLabelCompito.setText("Scegli un compito");
+        }else this.jLabelCompito.setText("Hai un compito");
+        
     }
     
     public void Show_Pulizie_In_JTable(JTable table)
@@ -309,10 +313,6 @@ public class JCustode extends javax.swing.JFrame {
                 jLogoutActionPerformed(evt);
             }
         });
-
-        if(conn.hoUnCompito( user)){
-            this.jLabelCompito.setText("Scegli un compito");
-        }else this.jLabelCompito.setText("Hai un compito");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

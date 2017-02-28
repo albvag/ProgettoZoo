@@ -312,9 +312,6 @@
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelCompito">
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="if(conn.hoUnCompito( user)){&#xa;    this.jLabelCompito.setText(&quot;Scegli un compito&quot;);&#xa;}else this.jLabelCompito.setText(&quot;Hai un compito&quot;);"/>
-      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
