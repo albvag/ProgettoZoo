@@ -823,7 +823,7 @@ public class DBConnect {
        {
            ProgettoZoo pz = new ProgettoZoo();
         ArrayList<Animale> animaliList = new ArrayList<Animale>();
-        String query = "Select * from animale LEFT JOIN situato on situato.Cod_Animale = animale.Codice_Animale";
+        String query = "Select  * from animale LEFT JOIN situato on situato.Cod_Animale = animale.Codice_Animale";
         String[] f_where = new String[9];
 
             f_where[0] = "animale.Genere";
