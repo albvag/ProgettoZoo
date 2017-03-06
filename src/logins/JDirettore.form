@@ -32,6 +32,7 @@
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <Component id="jAggiungiPersonale" min="-2" pref="141" max="-2" attributes="0"/>
                   <Component id="jRimuoviPersonale" min="-2" pref="141" max="-2" attributes="0"/>
+                  <Component id="jModificaPersonale" min="-2" pref="141" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="17" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
@@ -42,11 +43,14 @@
                               <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jAggiungiAnimale" min="-2" pref="141" max="-2" attributes="0"/>
-                                  <Component id="jListaanimali" min="-2" pref="141" max="-2" attributes="0"/>
-                                  <Component id="jRimuoviAnimale" alignment="1" min="-2" pref="141" max="-2" attributes="0"/>
-                                  <Component id="jPrestaanimale" alignment="1" min="-2" pref="141" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jModificaAnimale" min="-2" pref="141" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jAggiungiAnimale" min="-2" pref="141" max="-2" attributes="0"/>
+                                      <Component id="jListaanimali" min="-2" pref="141" max="-2" attributes="0"/>
+                                      <Component id="jRimuoviAnimale" alignment="1" min="-2" pref="141" max="-2" attributes="0"/>
+                                      <Component id="jPrestaanimale" alignment="1" min="-2" pref="141" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
@@ -115,14 +119,16 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jPrestaanimale" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                   <Component id="jCambiaprezzi" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                   <Component id="jButton1" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                  <Component id="jModificaPersonale" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                  <Component id="jModificaAnimale" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jVediincassi" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                   <Component id="jButton2" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                  <Component id="jPrestaanimale" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="46" max="32767" attributes="0"/>
               <Component id="jButtonLogout" min="-2" pref="33" max="-2" attributes="0"/>
@@ -289,6 +295,22 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Controllo Pulizie"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jModificaPersonale">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Modifica Personale"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jModificaPersonaleActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jModificaAnimale">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Modifica Animale"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jModificaAnimaleActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

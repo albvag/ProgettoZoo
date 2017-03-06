@@ -51,6 +51,9 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
         jrimuoviHabitat = new javax.swing.JComboBox<>();
         jRimuovi = new javax.swing.JButton();
         jChiudi = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jselspecie = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,46 +79,59 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("NOME DELL'HABITAT:");
+
+        jLabel3.setText("NOME DELLA SPECIE:");
+
+        jselspecie.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jrimuoviHabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addComponent(jRimuovi)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jChiudi)
                 .addGap(85, 85, 85))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jselspecie, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jrimuoviHabitat, javax.swing.GroupLayout.Alignment.LEADING, 0, 357, Short.MAX_VALUE)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jrimuoviHabitat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jselspecie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRimuovi)
                     .addComponent(jChiudi))
-                .addGap(70, 70, 70))
+                .addGap(53, 53, 53))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jrimuoviHabitatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrimuoviHabitatActionPerformed
-    /*  DBConnect conn = new DBConnect();
-      ArrayList<Habitat> list=conn.selezionaHabitat();
-    
-       
-        conn.selezionaHabitat();  */    // TODO add your handling code here:
+      DBConnect conn = new DBConnect();
+        this.jselspecie.setText(conn.selezionaSpecieHabitat(this.jrimuoviHabitat.getSelectedItem().toString()).getSpecie());
     }//GEN-LAST:event_jrimuoviHabitatActionPerformed
 
     private void jChiudiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChiudiActionPerformed
@@ -124,18 +140,20 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
 
     private void jRimuoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRimuoviActionPerformed
         String sel =this.jrimuoviHabitat.getSelectedItem().toString();
+        String specie=this.jselspecie.getText();
         DBConnect conn =new DBConnect();
         if(conn.habitatisEmpty(sel)==true)
-        {int reply = JOptionPane.showConfirmDialog(null, "L'habitat che vuoi eliminare è: "+this.jrimuoviHabitat.getSelectedItem().toString(), "Confermare?", JOptionPane.YES_NO_OPTION);
+        {int reply = JOptionPane.showConfirmDialog(null, "Vuoi eliminare l'habitat: "+this.jrimuoviHabitat.getSelectedItem().toString()+"\n contenente la specie: "+this.jselspecie.getText()+"\n Sia l'habitat che la specie selezionati saranno rimossi", "Confermare?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION)
                 { 
-                        JOptionPane.showMessageDialog(null, "Devi cancellare anche la specie presente nell'habitat");
-            
-                         JRimuoviSpecie_Direttore rimspe= new JRimuoviSpecie_Direttore();
-                           rimspe.setLocationRelativeTo(null);
-                           rimspe.setVisible(true);
-                           conn.deleteHabitat(sel);
-                           setVisible(false); 
+                       
+                         conn.deleteHabitat(sel);
+                         conn.deleteSpecie(specie);
+                        JListaHabitat_Direttore lishab= new JListaHabitat_Direttore();
+                        lishab.setLocationRelativeTo(null);
+                        lishab.setVisible(true);
+                        JOptionPane.showMessageDialog(null, "HAI CANCELLATO HABITAT E SPECIE");
+                        setVisible(false);
                 }
         }else{JOptionPane.showMessageDialog(null, "L'habitat selezionato non è vuoto, devi prima cancellare gli animali al suo interno");
         setVisible(false);}
@@ -180,7 +198,10 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jChiudi;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton jRimuovi;
     private javax.swing.JComboBox<String> jrimuoviHabitat;
+    private javax.swing.JTextField jselspecie;
     // End of variables declaration//GEN-END:variables
 }

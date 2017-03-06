@@ -161,7 +161,7 @@ public class JRimuoviPersonale_Direttore extends javax.swing.JFrame {
         int no=nom.length-1;
         String n=nom[no];  
          String cod=conn.selezionacodiceImpiegato(n);
-           int reply = JOptionPane.showConfirmDialog(null, "Vuoi eliminare l'utente "+this.jselnome.getSelectedItem().toString()+" di ruolo "+this.jselruolo.getSelectedItem().toString()+"?" , "Confermare?", JOptionPane.YES_NO_OPTION);
+           int reply = JOptionPane.showConfirmDialog(null, "Vuoi eliminare l'utente "+this.jselnome.getSelectedItem().toString()+"\n di ruolo "+this.jselruolo.getSelectedItem().toString()+"?" , "Confermare?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION)
                 { conn.deletePersonaleImpiegato(cod);
          conn.deletePersonaleUtente(cod);

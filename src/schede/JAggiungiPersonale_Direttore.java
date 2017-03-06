@@ -168,7 +168,7 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
         jLabel8.setText("  Conferma Password");
 
         jAggiungiUser.setForeground(new java.awt.Color(153, 153, 153));
-        jAggiungiUser.setText("Campo formato da soli caratteri alfanumerici più  _ e – di lungezza min 3 e max 15");
+        jAggiungiUser.setText("Campo formato da soli caratteri alfanumerici più  _ e – di lungezza min 3 e max 8");
         jAggiungiUser.setToolTipText("Username formato da soli caratteri alfanumerici più  _ e – di lungezza min 3 e max 15");
         jAggiungiUser.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -415,17 +415,17 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
         
         
       
-          String formnome = "[a-zA-Z]{1,}";
-          String formcog = "[a-zA-Z]{1,}";
+          String formnome = "[a-zA-Z ]{1,}";
+          String formcog = "[a-zA-Z ]{1,}";
           String fordata="(0[1-9]|1[0-9]|2[0-9]|3[01])[ /](0[1-9]|1[0-2])[/](19|20)[0-9]{2}";
-          String formres = "[a-zA-Z]{1,}";
+          String formres = "[a-zA-Z ]{1,}";
           String formind = "[a-zA-Z ]{1,}+[ 0-9]{1,}";
           //Numero di telefono formato da soli numeri,minimo 1 e massimo 10
           String formtel = "[0-9]{1,10}";
-          //nome utente formato da soli caratteri alfanumerici più  _ e – di lungezza min 3 e max 15
-          String formuser ="^[a-z0-9_-]{3,15}$";
+          //nome utente formato da soli caratteri alfanumerici più  _ e – di lungezza min 3 e max 8
+          String formuser ="^[a-z0-9_-]{3,8}$";
           //password che deve contenere un numero, un carattere minuscolo, uno maiuscolo e un carattere speciale tra !@#$% e deve avere lunghezza min 8 e max 20)
-          String formpass= "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%]).{8,20})";
+          String formpass= "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%]).{8,16})";
         //questa partecontiene le funzioni per validare il contenuto delle form
            Pattern pattern = Pattern.compile(formnome);
            Pattern pattern1 = Pattern.compile(formcog);
@@ -460,8 +460,10 @@ if(cog==false)
     errorecognome.setText("Caratteri non validi");
 else
     errorecognome.setText("Caratteri validi");
-if(dat==false || d.after(today) )
+if(dat==false)
     erroredata.setText("Caratteri non validi");
+else if(d.after(today))
+     erroredata.setText("Non puoi inserire una data futura");
 else
     erroredata.setText("Caratteri validi");
 if(res==false)
@@ -484,7 +486,7 @@ if(pass==false)
     errorepass.setText("Caratteri non validi");
 else
     errorepass.setText("Caratteri validi");
-if(rpass==false)
+if(rpass==false || pass==false )
     errconfpass.setText("Caratteri non validi");
 else
     errconfpass.setText("Caratteri validi");
@@ -656,7 +658,7 @@ else
     }//GEN-LAST:event_jAggiungiNumeroTelefonoFocusLost
 
     private void jAggiungiUserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiungiUserFocusGained
-         if(jAggiungiUser.getText().equals("Campo formato da soli caratteri alfanumerici più  _ e – di lungezza min 3 e max 15"))
+         if(jAggiungiUser.getText().equals("Campo formato da soli caratteri alfanumerici più  _ e – di lungezza min 3 e max 8"))
        {jAggiungiUser.setText("");
         jAggiungiUser.setForeground(Color.black);
        }

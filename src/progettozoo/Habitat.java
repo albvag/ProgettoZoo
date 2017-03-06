@@ -12,20 +12,30 @@ package progettozoo;
 public class Habitat {
     
     private String Codice_Gabbia;
+    private String Cod_Specie;
     public Habitat()
     {
        this.Codice_Gabbia="";
     }
-    public Habitat(String Cod)
+    public Habitat(String Cod,String specie)
     {
         this.Codice_Gabbia=Cod;
+        this.Cod_Specie=specie;
     }
     public String getHabitat()
     {
         return this.Codice_Gabbia;
     }
-    public String setHabitat(String Cod)
+    public void setHabitat(String Cod)
     {
-        return this.Codice_Gabbia=Cod;
+       this.Codice_Gabbia=Cod;
+    }
+    public String getSpecie()
+    {
+        return this.Cod_Specie;
+    }
+    public void setSpecie(String specie)
+    {
+        this.Cod_Specie=specie;
     }
 }

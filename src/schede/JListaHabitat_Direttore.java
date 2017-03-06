@@ -22,7 +22,7 @@ public class JListaHabitat_Direttore extends javax.swing.JFrame {
         initComponents();
            JVeterinario v=new JVeterinario();
         JDirettore d=new JDirettore();
-         String[] jTableProdottiHeaders  = {"Habitat"};
+         String[] jTableProdottiHeaders  = {"Habitat","Specie"};
         v.selectmode(this.jTableHabitat);   
         v.creaTabella(this.jTableHabitat, jTableProdottiHeaders);
         this.jTableHabitat.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);

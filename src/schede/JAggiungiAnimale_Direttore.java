@@ -33,14 +33,7 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
     public JAggiungiAnimale_Direttore() {
         initComponents();
           DBConnect conn =new DBConnect();
-        ArrayList<Habitat> list = conn.selezionaHabitat();
-        
-        for(int i = 0; i < list.size(); i++)
-        {
-            
-            this.jselhabitat.addItem(list.get(i).getHabitat());
-            
-        }
+       
              
         ArrayList<Animale> lista = conn.selezionaSpecie();
         
@@ -78,12 +71,10 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
         jsalute = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jnostro = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
-        jpresente = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        jselhabitat = new javax.swing.JComboBox<>();
         jselspecie = new javax.swing.JComboBox<>();
         errorehabitat = new javax.swing.JLabel();
+        jselhabitat = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -167,20 +158,16 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("     Presente");
-
-        jpresente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
-
         jLabel4.setText("      Habitat");
 
-        jselhabitat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
-        jselhabitat.addActionListener(new java.awt.event.ActionListener() {
+        jselspecie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        jselspecie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jselhabitatActionPerformed(evt);
+                jselspecieActionPerformed(evt);
             }
         });
 
-        jselspecie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        jselhabitat.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -207,10 +194,6 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jpresente, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jnostro, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -227,8 +210,8 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(errorehabitat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jselhabitat, 0, 190, Short.MAX_VALUE))))
+                            .addComponent(errorehabitat, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                            .addComponent(jselhabitat))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -239,11 +222,12 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
                     .addComponent(errorenome, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(errorehabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jNomeAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jAggiunginomeanimale, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jselhabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jselhabitat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jNomeAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jAggiunginomeanimale, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(errorespecie, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -265,9 +249,7 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jDataAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDatadinascita, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpresente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDatadinascita, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSave)
@@ -302,9 +284,9 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
         String genere = this.jGenere.getSelectedItem().toString();
         //data in formato dd/mm/aaaa
         String data = this.jDatadinascita.getText();
-        String habitat=this.jselhabitat.getSelectedItem().toString();
+        
       
-         String formnome = "[a-zA-Z]{1,}";
+         String formnome = "[a-zA-Z ]{1,}";
          //inserire la data in formato dd/mm/aaaa (giorno/mese/anno)
          String fordata ="(0[1-9]|1[0-9]|2[0-9]|3[01])[ /](0[1-9]|1[0-2])[/](19|20)[0-9]{2}";
           Pattern pattern = Pattern.compile(formnome);
@@ -325,15 +307,13 @@ if(this.jselspecie.getSelectedItem().toString().equals(" "))
     errorespecie.setText("Non hai selezionato alcuna specie");
 else
     errorespecie.setText("Caratteri validi");
-if(dat==false || d.after(today))
+if(dat==false  )
     erroredata.setText("Caratteri non validi");
+else if(d.after(today))
+ erroredata.setText("Non puoi inserire una data futura");
 else
     erroredata.setText("Caratteri validi");
 
-if(this.jselhabitat.getSelectedItem().toString().equals(" "))
-    errorehabitat.setText("Non hai selezionato nessun habitat");
-else
-    errorehabitat.setText("Caratteri Validi");
     
    DBConnect conn =new DBConnect();
    
@@ -343,7 +323,7 @@ else
    
   
    
-   
+   int presente=1;
    int salute;
  if(this.jsalute.getSelectedItem()== "SANO")
        salute=1;
@@ -352,18 +332,15 @@ else
     if(this.jnostro.getSelectedItem()== "SI")
        nostro=1;
    else{nostro=0;}
-    int presente;
-     if(this.jpresente.getSelectedItem()== "SI")
-       presente=1;
-   else{presente=0;}
-     if(nom==true  && dat==true && this.jselspecie.getSelectedItem().toString().equals(" ")==false && this.jselhabitat.getSelectedItem().toString().equals(" ")==false)
+   
+     if(nom==true  && dat==true && this.jselspecie.getSelectedItem().toString().equals(" ")==false )
     {
         if(d.before(today))
-        {int reply = JOptionPane.showConfirmDialog(null, "Stai inserendo l'animale: "+this.jAggiunginomeanimale.getText()+"\n Specie: "+this.jselspecie.getSelectedItem().toString()+"\n Sesso: "+this.jGenere.getSelectedItem().toString()+"\n Nato il: "+this.jDatadinascita.getText()+"\n Habitat: "+this.jselhabitat.getSelectedItem().toString()+"\n Salute: "+this.jsalute.getSelectedItem().toString()+"\n Nostro: "+this.jnostro.getSelectedItem().toString()+"\n Presente: "+this.jpresente.getSelectedItem().toString(), "Confermare?", JOptionPane.YES_NO_OPTION);
+        {int reply = JOptionPane.showConfirmDialog(null, "Stai inserendo l'animale: "+this.jAggiunginomeanimale.getText()+"\n Specie: "+this.jselspecie.getSelectedItem().toString()+"\n Sesso: "+this.jGenere.getSelectedItem().toString()+"\n Nato il: "+this.jDatadinascita.getText()+"\n Habitat: "+this.jselhabitat.getText()+"\n Salute: "+this.jsalute.getSelectedItem().toString()+"\n Nostro: "+this.jnostro.getSelectedItem().toString(), "Confermare?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION)
-                { conn.insertAnimale(Cod_anim, nome,specie,genere , sqlDate, salute,nostro, presente);
+                { conn.insertAnimale(Cod_anim, nome,specie,genere , sqlDate, salute,nostro,presente);
     String codiceanim=conn.selezionacodiceAnimale(nome);
-    conn.insertAnimaleSituato(0,codiceanim, habitat);
+    conn.insertAnimaleSituato(0,codiceanim, this.jselhabitat.getText());
     JOptionPane.showMessageDialog(null, "ANIMALE INSERITO CORRETTAMENTE");
      jListaAnimali_Direttore lis = new jListaAnimali_Direttore();
      lis.setLocationRelativeTo(null);
@@ -386,10 +363,6 @@ else
     private void jsaluteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jsaluteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jsaluteActionPerformed
-
-    private void jselhabitatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jselhabitatActionPerformed
-       // TODO add your handling code here:
-    }//GEN-LAST:event_jselhabitatActionPerformed
 
     private void jDatadinascitaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jDatadinascitaFocusGained
         if(jDatadinascita.getText().equals("dd/mm/aaaa"))
@@ -420,6 +393,13 @@ else
         else
             jAggiunginomeanimale.getText(); // TODO add your handling code here:
     }//GEN-LAST:event_jAggiunginomeanimaleFocusGained
+
+    private void jselspecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jselspecieActionPerformed
+        DBConnect conn=new DBConnect();
+        this.jselhabitat.setText(conn.selezionaHabitatSpecie(this.jselspecie.getSelectedItem().toString()).getHabitat());
+        
+       
+    }//GEN-LAST:event_jselspecieActionPerformed
 
     /**
      * @param args the command line arguments
@@ -470,14 +450,12 @@ else
     private javax.swing.JLabel jGenereAnimale;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jNomeAnimale;
     private javax.swing.JLabel jSpecieAnimale;
     private javax.swing.JComboBox<String> jnostro;
-    private javax.swing.JComboBox<String> jpresente;
     private javax.swing.JComboBox<String> jsalute;
-    private javax.swing.JComboBox<String> jselhabitat;
+    private javax.swing.JTextField jselhabitat;
     private javax.swing.JComboBox<String> jselspecie;
     // End of variables declaration//GEN-END:variables
 }

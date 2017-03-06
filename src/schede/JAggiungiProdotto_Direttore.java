@@ -192,7 +192,7 @@ public class JAggiungiProdotto_Direttore extends javax.swing.JFrame {
       String nome=this.jaggiunginome.getText();
       String prezzo=this.jaggiungiprezzo.getText();
       String giacenza=this.jaggiungigiacenza.getText();
-        String formnome = "[a-zA-Z]{1,}";
+        String formnome = "[a-zA-Z ]{1,}";
         String formprezzo1 = "[0-9]*+[.]+[0-9]*";
         String formprezzo2 = "[0-9]*";
         Pattern pattern = Pattern.compile(formnome);
@@ -205,7 +205,7 @@ public class JAggiungiProdotto_Direttore extends javax.swing.JFrame {
         if(nom== false || pre==false && pre2==false || gia==false)
       JOptionPane.showMessageDialog(null, "CARATTERI NON VALIDI");
         else{ 
-             int reply = JOptionPane.showConfirmDialog(null, "Vuoi aggiungere il prodotto "+this.jaggiunginome.getText()+" al prezzo di "+this.jaggiungiprezzo.getText()+" con una giacenza di "+this.jaggiungigiacenza.getText()+" prodotti nel magazzino?", "Confermare?", JOptionPane.YES_NO_OPTION);
+             int reply = JOptionPane.showConfirmDialog(null, "Vuoi aggiungere il prodotto "+this.jaggiunginome.getText()+"\n al prezzo di "+this.jaggiungiprezzo.getText()+"\n con una giacenza di "+this.jaggiungigiacenza.getText()+"\n prodotti nel magazzino?", "Confermare?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION)
                 { JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE");
             

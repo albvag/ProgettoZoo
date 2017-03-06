@@ -23,6 +23,7 @@ public class Animale {
     private Date data_nascita;
     private boolean salute, nostro, presente;
     
+    
 
     public Animale()
     {

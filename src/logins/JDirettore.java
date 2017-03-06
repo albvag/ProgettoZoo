@@ -18,17 +18,17 @@ import schede.JAggiungiAnimale_Direttore;
 import schede.JAggiungiHabitat_Direttore;
 import schede.JAggiungiPersonale_Direttore;
 import schede.JAggiungiProdotto_Direttore;
-import schede.JAggiungiSpecie_Direttore;
 import schede.JCambiaPrezzi_Direttore;
 import schede.JListaHabitat_Direttore;
 import schede.JListaPersonale_Direttore;
 import schede.JListaProdotti_Direttore;
+import schede.JModificaAnimale_Direttore;
+import schede.JModificaPersonale_Direttore;
 import schede.JPrestaAnimale_Direttore;
 import schede.JRimuoviAnimale_Direttore;
 import schede.JRimuoviHabitat_Direttore;
 import schede.JRimuoviPersonale_Direttore;
 import schede.JRimuoviProdotto_Direttore;
-import schede.JRimuoviSpecie_Direttore;
 import schede.JVediIncassi_Direttore;
 import schede.jListaAnimali_Direttore;
 
@@ -79,6 +79,8 @@ public class JDirettore extends javax.swing.JFrame {
         jCambiaprezzi = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jModificaPersonale = new javax.swing.JButton();
+        jModificaAnimale = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Direttore");
@@ -208,6 +210,20 @@ public class JDirettore extends javax.swing.JFrame {
 
         jButton2.setText("Controllo Pulizie");
 
+        jModificaPersonale.setText("Modifica Personale");
+        jModificaPersonale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jModificaPersonaleActionPerformed(evt);
+            }
+        });
+
+        jModificaAnimale.setText("Modifica Animale");
+        jModificaAnimale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jModificaAnimaleActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -218,7 +234,8 @@ public class JDirettore extends javax.swing.JFrame {
                     .addComponent(jlistapersonale, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jAggiungiPersonale, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRimuoviPersonale, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jRimuoviPersonale, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jModificaPersonale, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -227,11 +244,13 @@ public class JDirettore extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addGap(69, 69, 69))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jAggiungiAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jListaanimali, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jRimuoviAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPrestaanimale, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jModificaAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jAggiungiAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jListaanimali, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jRimuoviAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jPrestaanimale, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(26, 26, 26)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -284,13 +303,15 @@ public class JDirettore extends javax.swing.JFrame {
                         .addComponent(jRimuoviAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPrestaanimale, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCambiaprezzi, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jModificaPersonale, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jModificaAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jVediincassi, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPrestaanimale, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(jButtonLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
@@ -397,6 +418,18 @@ public class JDirettore extends javax.swing.JFrame {
         campre.setVisible(true);
     }//GEN-LAST:event_jCambiaprezziActionPerformed
 
+    private void jModificaAnimaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jModificaAnimaleActionPerformed
+       JModificaAnimale_Direttore moddir =new JModificaAnimale_Direttore();
+       moddir.setLocationRelativeTo(null);
+       moddir.setVisible(true);
+    }//GEN-LAST:event_jModificaAnimaleActionPerformed
+
+    private void jModificaPersonaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jModificaPersonaleActionPerformed
+        JModificaPersonale_Direttore modper = new JModificaPersonale_Direttore();
+        modper.setLocationRelativeTo(null);
+        modper.setVisible(true);
+    }//GEN-LAST:event_jModificaPersonaleActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -429,13 +462,14 @@ public void Show_Prodotti_In_JTable(JTable table)
        DBConnect conn=new DBConnect();
        ArrayList<Habitat> list = conn.selezionaHabitat();
        DefaultTableModel model = (DefaultTableModel) table.getModel();
-       Object[] row = new Object[1];
+       Object[] row = new Object[2];
        
         table.changeSelection(0, 0, false, false);
        for(int i = 0; i < list.size(); i++)
        {
      
            row[0] = list.get(i).getHabitat();
+           row[1] = list.get(i).getSpecie();
                  
            model.addRow(row);
            
@@ -523,6 +557,8 @@ public void Show_Prodotti_In_JTable(JTable table)
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JButton jListaanimali;
+    private javax.swing.JButton jModificaAnimale;
+    private javax.swing.JButton jModificaPersonale;
     private javax.swing.JButton jPrestaanimale;
     private javax.swing.JButton jRimuoviAnimale;
     private javax.swing.JButton jRimuoviHabitat;

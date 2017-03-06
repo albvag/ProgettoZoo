@@ -66,10 +66,10 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void insertHabitat(String Cod_Gabbia)
+    public void insertHabitat(String Cod_Gabbia,String Cod_Specie)
     {
         try {
-            st.executeUpdate("INSERT INTO gabbia values ('"+Cod_Gabbia+"')");
+            st.executeUpdate("INSERT INTO gabbia values ('"+Cod_Gabbia+"','"+Cod_Specie+"')");
         } catch (SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -95,7 +95,7 @@ public class DBConnect {
     public void insertImpiegato(String user,String nome,String cognome,Date data,String residenza,String indirizzo,String telefono)
     {
      try {
-         st.executeUpdate("INSERT INTO impiegato values ('"+user+"','"+nome+"','"+cognome+"','"+data+"','"+residenza+"','"+indirizzo+"','"+telefono+"')");
+         st.executeUpdate("INSERT INTO impiegato values ('"+user+"','"+nome+"','"+cognome+"','"+residenza+"','"+indirizzo+"','"+telefono+"','"+data+"')");
      }   catch (SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -103,7 +103,7 @@ public class DBConnect {
     public void inserisciUtente(String user,String password,String ruolo)
     {
         try {
-            st.executeUpdate("INSERT INTO utente values ('"+user+"','"+password+"',"+ruolo+"')");
+            st.executeUpdate("INSERT INTO utente values ('"+user+"','"+password+"','"+ruolo+"')");
         } catch (SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -184,8 +184,20 @@ public class DBConnect {
         }
         return prezzo;
     }
-    
-    
+      public void updatePersonale(String user,String nome,String cognome,Date data,String residenza,String indirizzo,String telefono,String password,String ruolo)
+      {
+        try {
+            st.executeUpdate("UPDATE impiegato SET Nome = '"+nome+"',Cognome = '"+cognome+"', DataNascita= '"+data.toString()+"', Residenza= '"+residenza+"',Indirizzo= '"+indirizzo+"',Telefono= '"+telefono+"' where Codice_Impiegato= '"+user+"' ");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try{
+            st.executeUpdate("UPDATE utente SET Password= '"+password+"', Ruolo_Utente= '"+ruolo+"' where Codice_Utente= '"+user+"'");
+        }catch(SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+      }
     public String checkAnimalHabitat(String Codice_Animale)
     {
     try{
@@ -221,7 +233,7 @@ public class DBConnect {
       public ArrayList<Habitat> selezionaHabitat()
     {
         ArrayList<Habitat> hablist = new ArrayList<Habitat>();
-        String query = "Select distinct Codice_Gabbia from gabbia ";
+        String query = "Select *  from gabbia ";
 
            try{
                Habitat hab;
@@ -230,7 +242,7 @@ public class DBConnect {
                
                 while(rs.next())
                 {
-                    hab = new Habitat(rs.getString("gabbia.Codice_Gabbia"));
+                    hab = new Habitat(rs.getString("gabbia.Codice_Gabbia"),rs.getString("gabbia.Cod_Specie"));
                     hablist.add(hab);
                 }
             }catch(Exception ex){
@@ -239,6 +251,47 @@ public class DBConnect {
             }   
            return hablist; 
     }
+      
+      public Habitat selezionaHabitatSpecie(String specie)
+      {
+          Habitat hab= new Habitat();
+          String query="Select * from gabbia where gabbia.Cod_Specie= '"+specie+"'";
+           try{
+               
+               rs = st.executeQuery(query);
+               
+               
+                while(rs.next())
+                {
+                    hab = new Habitat(rs.getString("gabbia.Codice_Gabbia"),rs.getString("gabbia.Cod_Specie"));
+                    
+                }
+            }catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+          return hab;
+      }
+       public Habitat selezionaSpecieHabitat(String habitat)
+      {
+          Habitat hab= new Habitat();
+          String query="Select * from gabbia where gabbia.Codice_Gabbia= '"+habitat+"'";
+           try{
+               
+               rs = st.executeQuery(query);
+               
+               
+                while(rs.next())
+                {
+                    hab = new Habitat(rs.getString("gabbia.Codice_Gabbia"),rs.getString("gabbia.Cod_Specie"));
+                    
+                }
+            }catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+          return hab;
+      }
       public ArrayList<Animale> selezionaSpecie()
     {
         ArrayList<Animale> spelist = new ArrayList<Animale>();
@@ -288,6 +341,34 @@ public class DBConnect {
            return prolist; 
     }
     
+     public Animale selezionaAnimale(String nome,String specie)
+    {
+       Animale an= new Animale();
+        String query = "Select * from animale where animale.Nome= '"+nome+"' AND animale.Specie= '"+specie+"'";
+
+           try{
+               
+               rs = st.executeQuery(query);
+               
+               
+                while(rs.next())
+                {
+                    an = new Animale();
+                    an.setNome(rs.getString("animale.Nome"));
+                    an.setSpecie(rs.getString("animale.Specie"));
+                    an.setSesso(rs.getString("animale.Genere"));
+                    an.setDataNascita(rs.getDate("animale.Data_Nascita"));
+                    an.setSalute(rs.getBoolean("animale.Salute"));
+                    an.setNostro(rs.getBoolean("animale.Nostro"));
+                    
+                   
+                }
+            }catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+           return an; 
+    }
    
     public ArrayList<Animale> selezionaAnimaliSpecie()
     {
@@ -388,6 +469,34 @@ public class DBConnect {
             }   
            return prestitolist; 
     } 
+       public Utente selezionaPersonale(String ruolo,String nome)
+    {
+        Utente ut=new Utente();
+        String query = "Select distinct * from impiegato JOIN utente on impiegato.Codice_Impiegato=utente.Codice_Utente where utente.Ruolo_Utente= '"+ruolo+"' AND impiegato.Cognome= '"+nome+"'";
+        try{
+            
+            rs=st.executeQuery(query);
+            
+            while(rs.next())
+            {
+                
+                ut.setUsername(rs.getString("utente.Codice_Utente"));
+                ut.setNome(rs.getString("impiegato.Nome"));
+                ut.setCognome(rs.getString("impiegato.Cognome"));
+                ut.setData(rs.getDate("impiegato.DataNascita"));
+                ut.setResidenza(rs.getString("impiegato.Residenza"));
+                ut.setIndirizzo(rs.getString("impiegato.Indirizzo"));
+                ut.setTelefono(rs.getString("impiegato.Telefono"));
+                ut.setRuolo(rs.getString("utente.Ruolo_Utente"));
+                ut.setPassword(rs.getString("utente.Password"));
+               
+            }  
+        } catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+           return ut; 
+    }
          public ArrayList<Utente> selezionaImpiegato()
     {
         ArrayList<Utente> implist = new ArrayList<Utente>();

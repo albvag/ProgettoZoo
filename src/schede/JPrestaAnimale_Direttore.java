@@ -163,6 +163,9 @@ public class JPrestaAnimale_Direttore extends javax.swing.JFrame {
     private void jPrestaAnimaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPrestaAnimaliActionPerformed
         DBConnect conn=new DBConnect();
         ArrayList<Animale> list = conn.selezionaAnimaliPresenti();
+        if(this.jTablePresenti.getSelectedRow()==0)
+        {JOptionPane.showMessageDialog(null, "Non hai selezionato nessun animale");}
+        else{
          int reply = JOptionPane.showConfirmDialog(null, "Vuoi prestare l'animale: "+this.jTablePresenti.getValueAt(this.jTablePresenti.getSelectedRow(), 0)+"?", "Confermare?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION)
                 {
@@ -172,11 +175,15 @@ public class JPrestaAnimale_Direttore extends javax.swing.JFrame {
         presanim.setLocationRelativeTo(null);
         presanim.setVisible(true);
                 }
+        }
     }//GEN-LAST:event_jPrestaAnimaliActionPerformed
 
     private void jRichiamaAnimaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRichiamaAnimaliActionPerformed
          DBConnect conn=new DBConnect();
         ArrayList<Animale> list = conn.selezionaAnimaliInPrestito();
+         if(this.jTableInPrestito.getSelectedRow()==0)
+        {JOptionPane.showMessageDialog(null, "Non hai selezionato nessun animale");}
+        else{
         int reply = JOptionPane.showConfirmDialog(null, "Vuoi richiamare dal prestito l'animale: "+this.jTableInPrestito.getValueAt(this.jTableInPrestito.getSelectedRow(), 0)+"?", "Confermare?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION)
                 {
@@ -186,6 +193,7 @@ public class JPrestaAnimale_Direttore extends javax.swing.JFrame {
         presanim.setLocationRelativeTo(null);
         presanim.setVisible(true);
                 }
+         }
     }//GEN-LAST:event_jRichiamaAnimaliActionPerformed
 
     /**

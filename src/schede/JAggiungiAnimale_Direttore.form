@@ -48,11 +48,6 @@
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabel3" min="-2" pref="80" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jpresente" min="-2" pref="190" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel2" min="-2" pref="80" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jnostro" min="-2" pref="190" max="-2" attributes="0"/>
@@ -72,8 +67,8 @@
                       <Component id="jLabel4" min="-2" pref="80" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="errorehabitat" max="32767" attributes="0"/>
-                          <Component id="jselhabitat" pref="190" max="32767" attributes="0"/>
+                          <Component id="errorehabitat" pref="190" max="32767" attributes="0"/>
+                          <Component id="jselhabitat" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -90,11 +85,13 @@
                   <Component id="errorehabitat" min="-2" pref="10" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jNomeAnimale" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="jAggiunginomeanimale" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="jselhabitat" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jselhabitat" alignment="1" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jNomeAnimale" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="jAggiunginomeanimale" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="jLabel4" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="errorespecie" min="-2" pref="10" max="-2" attributes="0"/>
@@ -122,8 +119,6 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jDataAnimale" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="jDatadinascita" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="jLabel3" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="jpresente" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -269,43 +264,10 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="     Presente"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="jpresente">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
-            <StringItem index="0" value="SI"/>
-            <StringItem index="1" value="NO"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
         <Property name="text" type="java.lang.String" value="      Habitat"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="jselhabitat">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="1">
-            <StringItem index="0" value=" "/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jselhabitatActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
     </Component>
     <Component class="javax.swing.JComboBox" name="jselspecie">
       <Properties>
@@ -315,11 +277,19 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jselspecieActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="errorehabitat">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jselhabitat">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

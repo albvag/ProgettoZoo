@@ -36,11 +36,14 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
         jSalva = new javax.swing.JButton();
         jButtonClose = new javax.swing.JButton();
         jInseriscihabitat = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jaggiungispecie = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        jLabel1.setText("                 QUALE TIPO DI HABITAT  VUOI INSERIRE?");
+        jLabel1.setText("                                   INSERISCI HABITAT:");
 
         jSalva.setText("Salva");
         jSalva.addActionListener(new java.awt.event.ActionListener() {
@@ -72,35 +75,59 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("NOME DELL'HABITAT:");
+
+        jLabel3.setText("SPECIE CHE LO ABITA:");
+
+        jaggiungispecie.setForeground(new java.awt.Color(153, 153, 153));
+        jaggiungispecie.setText("Es.Leone");
+        jaggiungispecie.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jaggiungispecieFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jaggiungispecieFocusLost(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(161, 161, 161)
                 .addComponent(jSalva)
-                .addGap(43, 43, 43)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addComponent(jButtonClose)
-                .addGap(36, 36, 36))
+                .addGap(42, 42, 42))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
-                    .addComponent(jInseriscihabitat))
-                .addContainerGap(56, Short.MAX_VALUE))
+                    .addComponent(jInseriscihabitat)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jaggiungispecie))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jInseriscihabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jaggiungispecie, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jSalva)
                     .addComponent(jButtonClose))
-                .addGap(46, 46, 46))
+                .addGap(45, 45, 45))
         );
 
         pack();
@@ -116,25 +143,32 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
 
     private void jSalvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalvaActionPerformed
        String habitat= this.jInseriscihabitat.getText();
-       String formhabitat = "[a-zA-Z]{1,}";
-       Pattern pattern = Pattern.compile(formhabitat);
+        String specie=this.jaggiungispecie.getText();
+         String formspecie = "[a-zA-Z ]{1,}";
+         String formhabitat = "[a-zA-Z ]{1,}";
+         Pattern pattern = Pattern.compile(formspecie); 
+       Pattern pattern1 = Pattern.compile(formhabitat);
+        boolean spe=check(formspecie,specie);
        boolean hab=check(formhabitat,habitat);
        DBConnect conn= new DBConnect();
-       if(hab==true)
+       if(hab==true && spe==true)
        {if(conn.habitatExists(habitat))
        {
             JOptionPane.showMessageDialog(null, "Errore! L'Habitat è già esistente");
        }else{
-            int reply = JOptionPane.showConfirmDialog(null, "L'habitat che vuoi inserire è: "+this.jInseriscihabitat.getText(), "Confermare?", JOptionPane.YES_NO_OPTION);
+            int reply = JOptionPane.showConfirmDialog(null, "L'habitat che vuoi inserire è: "+this.jInseriscihabitat.getText()+"\n con all'interno la specie: "+this.jaggiungispecie.getText() , "Confermare?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION)
                 {  
-                       JOptionPane.showMessageDialog(null, "Devi inserire anche la nuova specie");
-              
-                    JAggiungiSpecie_Direttore aggspe= new JAggiungiSpecie_Direttore();
-                      aggspe.setLocationRelativeTo(null);
-                      aggspe.setVisible(true);
-                    conn.insertHabitat(habitat);
-                    setVisible(false);          
+                   
+                    
+                     conn.insertSpecie(specie);  
+                    conn.insertHabitat(habitat,specie);
+                    JOptionPane.showMessageDialog(null, "Habitat e specie inseriti correttamente"); 
+                    JListaHabitat_Direttore lishab= new JListaHabitat_Direttore();
+                       lishab.setLocationRelativeTo(null);
+                       lishab.setVisible(true);
+                       setVisible(false);
+                            
                 }
        }
     }//GEN-LAST:event_jSalvaActionPerformed
@@ -154,6 +188,21 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
        { jInseriscihabitat.setForeground(Color.gray);   
         jInseriscihabitat.setText("Es.Leoni");} 
     }//GEN-LAST:event_jInseriscihabitatFocusLost
+
+    private void jaggiungispecieFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jaggiungispecieFocusGained
+          if(jaggiungispecie.getText().equals("Es.Leone"))
+        {jaggiungispecie.setText("");
+         jaggiungispecie.setForeground(Color.black);
+        }
+        else
+            jaggiungispecie.getText();
+    }//GEN-LAST:event_jaggiungispecieFocusGained
+
+    private void jaggiungispecieFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jaggiungispecieFocusLost
+          if(jaggiungispecie.getText().equals(""))
+       { jaggiungispecie.setForeground(Color.gray);   
+        jaggiungispecie.setText("Es.Leone");} 
+    }//GEN-LAST:event_jaggiungispecieFocusLost
     
       
     /**
@@ -195,6 +244,9 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
     private javax.swing.JButton jButtonClose;
     private javax.swing.JTextField jInseriscihabitat;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton jSalva;
+    private javax.swing.JTextField jaggiungispecie;
     // End of variables declaration//GEN-END:variables
 }

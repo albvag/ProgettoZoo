@@ -149,7 +149,7 @@ public class JRimuoviAnimale_Direttore extends javax.swing.JFrame {
           DBConnect conn= new DBConnect();
           String Cod_anim=this.jselanim.getSelectedItem().toString();
           String codice=conn.selezionacodiceAnimale(Cod_anim);
-           int reply = JOptionPane.showConfirmDialog(null, "Vuoi eliminare l'animale "+this.jselanim.getSelectedItem().toString()+" di specie "+this.jselspecie.getSelectedItem().toString() , "Confermare?", JOptionPane.YES_NO_OPTION);
+           int reply = JOptionPane.showConfirmDialog(null, "Vuoi eliminare l'animale "+this.jselanim.getSelectedItem().toString()+"\n di specie "+this.jselspecie.getSelectedItem().toString() , "Confermare?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION)
                 { conn.deleteAnimale(Cod_anim);
           conn.deleteAnimaleVisita(codice);
