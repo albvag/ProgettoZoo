@@ -195,8 +195,15 @@ public class DBConnect {
             st.executeUpdate("UPDATE utente SET Password= '"+password+"', Ruolo_Utente= '"+ruolo+"' where Codice_Utente= '"+user+"'");
         }catch(SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+      }
+      public void updateAnimale(String nome,String genere,Date data,int nostro,String codice)
+      {
+        try {
+            st.executeUpdate("UPDATE animale SET Nome= '"+nome+"',Genere= '"+genere+"',Data_Nascita= '"+data.toString()+"',Nostro= "+nostro+" where Codice_Animale= '"+codice+"'" );
+                    } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
       }
     public String checkAnimalHabitat(String Codice_Animale)
     {
@@ -354,6 +361,7 @@ public class DBConnect {
                 while(rs.next())
                 {
                     an = new Animale();
+                    an.setId(rs.getString("animale.Codice_Animale"));
                     an.setNome(rs.getString("animale.Nome"));
                     an.setSpecie(rs.getString("animale.Specie"));
                     an.setSesso(rs.getString("animale.Genere"));

@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import progettozoo.DBConnect;
 import progettozoo.ProgettoZoo;
+import static schede.JAggiungiAnimale_Direttore.check;
 /**
  *
  * @author Roberto
@@ -417,7 +418,8 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
       
           String formnome = "[a-zA-Z ]{1,}";
           String formcog = "[a-zA-Z ]{1,}";
-          String fordata="(0[1-9]|1[0-9]|2[0-9]|3[01])[ /](0[1-9]|1[0-2])[/](19|20)[0-9]{2}";
+          String fordata="(0[1-9]|1[0-9]|2[0-9]|3[01])[-](0[1-9]|1[0-2])[-](19|20)[0-9]{2}";
+          String fordata2 ="(0[1-9]|1[0-9]|2[0-9]|3[01])[/](0[1-9]|1[0-2])[/](19|20)[0-9]{2}";
           String formres = "[a-zA-Z ]{1,}";
           String formind = "[a-zA-Z ]{1,}+[ 0-9]{1,}";
           //Numero di telefono formato da soli numeri,minimo 1 e massimo 10
@@ -435,6 +437,7 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
            Pattern pattern5 = Pattern.compile(formuser);
            Pattern pattern6 = Pattern.compile(formpass);
            Pattern pattern7 = Pattern.compile(fordata);
+           Pattern pattern8 = Pattern.compile(fordata2);
 boolean nom=check(formnome,nome);
 boolean cog=check(formcog,cognome);
 boolean dat=check(fordata,data);
@@ -444,12 +447,19 @@ boolean tel=check(formtel,telefono);
 boolean user=check(formuser,username);
 boolean pass=check(formpass,password);
 boolean rpass=check(password,rippass);
+boolean dat2=check(fordata2,data);
 
 DBConnect conn =new DBConnect();
    String Cod_pers=(this.jAggiungiUser.getText());
    ProgettoZoo pz= new ProgettoZoo();
    Date today =new Date();
-Date d= pz.ConvertStringToDate(data, "dd/MM/yyyy");
+ Date d= new Date();
+   Date d1= pz.ConvertStringToDate(data,"dd-MM-yyyy");
+   Date d2= pz.ConvertStringToDate(data,"dd/MM/yyyy");
+   if(dat)
+   {d=d1;}
+   else if(dat2)
+   {d=d2;}
       java.sql.Date sqlDate = new java.sql.Date(d.getTime());
 //nel caso i caratteri inseriti non siano quelli richiesti appare un messaggio d'errore
 if(nom== false)
@@ -460,7 +470,7 @@ if(cog==false)
     errorecognome.setText("Caratteri non validi");
 else
     errorecognome.setText("Caratteri validi");
-if(dat==false)
+if(dat==false && dat2==false)
     erroredata.setText("Caratteri non validi");
 else if(d.after(today))
      erroredata.setText("Non puoi inserire una data futura");
@@ -495,9 +505,9 @@ if(this.jRuolo.getSelectedItem().toString().equals(" "))
 else
     erroreruolo.setText("Caratteri Validi");
  
+ 
   
-  
-  if(nom==true && cog==true && dat==true && res==true && ind==true && tel==true && user==true && pass==true && rpass==true && this.jRuolo.getSelectedItem().toString().equals(" ")==false)
+  if(nom==true && cog==true && (dat==true || dat2==true) && res==true && ind==true && tel==true && user==true && pass==true && rpass==true && this.jRuolo.getSelectedItem().toString().equals(" ")==false)
   { 
       if(d.before(today))
       {

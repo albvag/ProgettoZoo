@@ -288,16 +288,27 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
       
          String formnome = "[a-zA-Z ]{1,}";
          //inserire la data in formato dd/mm/aaaa (giorno/mese/anno)
-         String fordata ="(0[1-9]|1[0-9]|2[0-9]|3[01])[ /](0[1-9]|1[0-2])[/](19|20)[0-9]{2}";
+         String fordata ="(0[1-9]|1[0-9]|2[0-9]|3[01])[-](0[1-9]|1[0-2])[-](19|20)[0-9]{2}";
+         String fordata2 ="(0[1-9]|1[0-9]|2[0-9]|3[01])[/](0[1-9]|1[0-2])[/](19|20)[0-9]{2}";
           Pattern pattern = Pattern.compile(formnome);
           Pattern pattern2 = Pattern.compile(fordata);
+           Pattern pattern3 = Pattern.compile(fordata2);
         boolean nom=check(formnome,nome); 
         boolean dat=check(fordata,data);
-        
+         boolean dat2=check(fordata2,data);        
          ProgettoZoo pz= new ProgettoZoo();
    Date today=new Date();
-   Date d= pz.ConvertStringToDate(data,"dd/MM/yyyy");
+   Date d= new Date();
+   Date d1= pz.ConvertStringToDate(data,"dd-MM-yyyy");
+   Date d2= pz.ConvertStringToDate(data,"dd/MM/yyyy");
+   if(dat)
+   {d=d1;}
+   else if(dat2)
+   {d=d2;}
    java.sql.Date sqlDate = new java.sql.Date(d.getTime());
+   
+  
+   
         
         if(nom== false)
  errorenome.setText("Caratteri non validi");
@@ -307,7 +318,7 @@ if(this.jselspecie.getSelectedItem().toString().equals(" "))
     errorespecie.setText("Non hai selezionato alcuna specie");
 else
     errorespecie.setText("Caratteri validi");
-if(dat==false  )
+if(dat==false && dat2==false )
     erroredata.setText("Caratteri non validi");
 else if(d.after(today))
  erroredata.setText("Non puoi inserire una data futura");
@@ -333,7 +344,7 @@ else
        nostro=1;
    else{nostro=0;}
    
-     if(nom==true  && dat==true && this.jselspecie.getSelectedItem().toString().equals(" ")==false )
+     if(nom==true  && (dat==true || dat2==true) && this.jselspecie.getSelectedItem().toString().equals(" ")==false )
     {
         if(d.before(today))
         {int reply = JOptionPane.showConfirmDialog(null, "Stai inserendo l'animale: "+this.jAggiunginomeanimale.getText()+"\n Specie: "+this.jselspecie.getSelectedItem().toString()+"\n Sesso: "+this.jGenere.getSelectedItem().toString()+"\n Nato il: "+this.jDatadinascita.getText()+"\n Habitat: "+this.jselhabitat.getText()+"\n Salute: "+this.jsalute.getSelectedItem().toString()+"\n Nostro: "+this.jnostro.getSelectedItem().toString(), "Confermare?", JOptionPane.YES_NO_OPTION);

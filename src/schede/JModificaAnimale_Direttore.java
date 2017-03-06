@@ -7,10 +7,14 @@ package schede;
 
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 import progettozoo.Animale;
 import progettozoo.DBConnect;
 import progettozoo.Habitat;
 import progettozoo.ProgettoZoo;
+import static schede.JAggiungiAnimale_Direttore.check;
 
 /**
  *
@@ -26,13 +30,9 @@ public class JModificaAnimale_Direttore extends javax.swing.JFrame {
           DBConnect conn =new DBConnect();
          
         ArrayList<Animale> list = conn.selezionaAnimaliSpecie();
-        
-        
-        for(int i = 0; i < list.size(); i++)
+        for(int i=0;i<list.size();i++)
         {
-            
-            this.jselezionaspecie.addItem(list.get(i).getSpecie());
-           
+          this.jselezionaspecie.addItem(list.get(i).getSpecie());
         }
         this.jInternalFrame1.setVisible(false);
         pack();
@@ -52,23 +52,19 @@ public class JModificaAnimale_Direttore extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jGenereAnimale = new javax.swing.JLabel();
         jAggiunginomeanimale = new javax.swing.JTextField();
-        jButtonSave = new javax.swing.JButton();
+        jModifica = new javax.swing.JButton();
         jSpecieAnimale = new javax.swing.JLabel();
-        errorehabitat = new javax.swing.JLabel();
-        jsalute = new javax.swing.JComboBox<>();
         jDataAnimale = new javax.swing.JLabel();
         jnostro = new javax.swing.JComboBox<>();
         jNomeAnimale = new javax.swing.JLabel();
         jGenere = new javax.swing.JComboBox<>();
-        errorespecie = new javax.swing.JLabel();
-        jselspecie = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         errorenome = new javax.swing.JLabel();
         erroredata = new javax.swing.JLabel();
         jDatadinascita = new javax.swing.JTextField();
 
         jselhabitat = new javax.swing.JTextField();
+        jselspecie = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jselezionaspecie = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
@@ -91,11 +87,14 @@ public class JModificaAnimale_Direttore extends javax.swing.JFrame {
 
         jGenereAnimale.setText("        Genere");
 
-        jButtonSave.setText("Salva");
+        jModifica.setText("Salva");
+        jModifica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jModificaActionPerformed(evt);
+            }
+        });
 
         jSpecieAnimale.setText("        Specie");
-
-        jsalute.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SANO", "MALATO", " " }));
 
         jDataAnimale.setText("  Data di nascita");
 
@@ -105,20 +104,13 @@ public class JModificaAnimale_Direttore extends javax.swing.JFrame {
 
         jGenere.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "F" }));
 
-        jselspecie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
-        jselspecie.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jselspecieActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("       Salute");
-
         jLabel2.setText("      Nostro");
 
         jDatadinascita.setToolTipText("");
 
         jselhabitat.setEditable(false);
+
+        jselspecie.setEditable(false);
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
@@ -133,42 +125,33 @@ public class JModificaAnimale_Direttore extends javax.swing.JFrame {
                         .addComponent(jDataAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jNomeAnimale, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(erroredata, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(errorespecie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(errorenome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jAggiunginomeanimale)
-                        .addComponent(jDatadinascita)
-                        .addComponent(jGenere, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jselspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(erroredata, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(errorenome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jAggiunginomeanimale)
+                    .addComponent(jDatadinascita)
+                    .addComponent(jGenere, 0, 190, Short.MAX_VALUE)
+                    .addComponent(jselspecie))
                 .addGap(37, 37, 37)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jsalute, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(errorehabitat, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                            .addComponent(jselhabitat)))
+                        .addComponent(jselhabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                        .addGap(98, 98, 98)
+                        .addComponent(jModifica, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jnostro, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jnostro, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(errorenome, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(errorehabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(errorenome, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jselhabitat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -176,30 +159,25 @@ public class JModificaAnimale_Direttore extends javax.swing.JFrame {
                         .addComponent(jNomeAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jAggiunginomeanimale, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(errorespecie, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(22, 22, 22)
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jSpecieAnimale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jSpecieAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jselspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jsalute, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jselspecie)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jnostro, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(27, 27, 27)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jGenereAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jGenere, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jnostro, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jGenere, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(erroredata, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jDataAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDatadinascita, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
-                .addComponent(jButtonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addComponent(jModifica, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
         );
 
@@ -263,7 +241,7 @@ public class JModificaAnimale_Direttore extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonClose)
                             .addComponent(jConferma))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
@@ -312,16 +290,11 @@ public class JModificaAnimale_Direttore extends javax.swing.JFrame {
             
           
        
-              for(int i = 0; i < lista.size(); i++)
-        {
-            
-            this.jselspecie.addItem(lista.get(i).getSpecie());
-            
-        }
-              this.jselspecie.setSelectedItem(an.getSpecie()); 
+      
+              this.jselspecie.setText(an.getSpecie()); 
             
                
-               this.jselhabitat.setText(conn.selezionaHabitatSpecie(this.jselspecie.getSelectedItem().toString()).getHabitat());
+               this.jselhabitat.setText(conn.selezionaHabitatSpecie(this.jselspecie.getText()).getHabitat());
             
             
             
@@ -336,24 +309,71 @@ public class JModificaAnimale_Direttore extends javax.swing.JFrame {
             }else{nostro="NO";
              this.jnostro.setSelectedItem(nostro);
             }
-           
-             if(an.getSalute()== true)
-             {
-                 salute="SANO";
-                 this.jsalute.setSelectedItem(salute);
-             }else{
-                 salute="MALATO";
-                 this.jsalute.setSelectedItem(salute);
-             }
             this.jInternalFrame1.setVisible(true);
             pack();
         
     }//GEN-LAST:event_jConfermaActionPerformed
 
-    private void jselspecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jselspecieActionPerformed
-        DBConnect conn = new DBConnect();
-        this.jselhabitat.setText(conn.selezionaHabitatSpecie(this.jselspecie.getSelectedItem().toString()).getHabitat());
-    }//GEN-LAST:event_jselspecieActionPerformed
+    private void jModificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jModificaActionPerformed
+        Animale an=new Animale();
+          DBConnect conn = new DBConnect();
+        ProgettoZoo pz =new ProgettoZoo();
+        String specie = this.jselezionaspecie.getSelectedItem().toString();
+        String nome = this.jselanim.getSelectedItem().toString();
+        String name= this.jAggiunginomeanimale.getText();
+        String genere = this.jGenere.getSelectedItem().toString();
+        String data= this.jDatadinascita.getText();
+        
+         String formname = "[a-zA-Z ]{1,}";
+         //inserire la data in formato dd/mm/aaaa (giorno/mese/anno)
+         String fordata ="(0[1-9]|1[0-9]|2[0-9]|3[01])[-](0[1-9]|1[0-2])[-](19|20)[0-9]{2}";
+         String fordata2 ="(0[1-9]|1[0-9]|2[0-9]|3[01])[/](0[1-9]|1[0-2])[/](19|20)[0-9]{2}";
+          Pattern pattern = Pattern.compile(formname);
+          Pattern pattern2 = Pattern.compile(fordata);
+          Pattern pattern3 = Pattern.compile(fordata2);
+        boolean nom=check(formname,name); 
+        boolean dat=check(fordata,data);
+        boolean dat2=check(fordata2,data);   
+         int nostro;
+    if(this.jnostro.getSelectedItem()== "SI")
+       nostro=1;
+   else{nostro=0;}
+        
+         Date today =new Date();
+  Date d= new Date();
+   Date d1= pz.ConvertStringToDate(data,"dd-MM-yyyy");
+   Date d2= pz.ConvertStringToDate(data,"dd/MM/yyyy");
+   if(dat)
+   {d=d1;}
+   else if(dat2)
+   {d=d2;}
+      java.sql.Date sqlDate = new java.sql.Date(d.getTime());
+      
+                     if(nom== false)
+ errorenome.setText("Caratteri non validi");
+else
+    errorenome.setText("Caratteri validi");
+      if(dat==false && dat2==false  )
+    erroredata.setText("Caratteri non validi");
+else if(d.after(today))
+ erroredata.setText("Non puoi inserire una data futura");
+else
+    erroredata.setText("Caratteri validi");
+      
+        
+         if(nom==true  && (dat==true || dat2==true))
+         {
+              if(d.before(today))
+        {int reply = JOptionPane.showConfirmDialog(null, "Vuoi modificare l'animale: "+this.jAggiunginomeanimale.getText()+"\n Specie: "+this.jselspecie.getText()+"\n Sesso: "+this.jGenere.getSelectedItem().toString()+"\n Nato il: "+this.jDatadinascita.getText()+"\n Habitat: "+this.jselhabitat.getText()+"\n Nostro: "+this.jnostro.getSelectedItem().toString(), "Confermare?", JOptionPane.YES_NO_OPTION);
+                if (reply == JOptionPane.YES_OPTION)
+                {  String Cod_Animale=conn.selezionaAnimale(nome, specie).getId();
+                   conn.updateAnimale(name, genere, sqlDate,nostro , Cod_Animale);
+                    JOptionPane.showMessageDialog(null, "ANIMALE MODIFICATO CORRETTAMENTE");
+          setVisible(false);
+                }
+        }else{JOptionPane.showMessageDialog(null, "NON PUOI INSERIRE UNA DATA FUTURA");}
+         }else{JOptionPane.showMessageDialog(null, "ALCUNI CAMPI NON SONO INSERITI CORRETTAMENTE");}
+    }//GEN-LAST:event_jModificaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -392,31 +412,27 @@ public class JModificaAnimale_Direttore extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel erroredata;
-    private javax.swing.JLabel errorehabitat;
     private javax.swing.JLabel errorenome;
-    private javax.swing.JLabel errorespecie;
     private javax.swing.JTextField jAggiunginomeanimale;
     private javax.swing.JButton jButtonClose;
-    private javax.swing.JButton jButtonSave;
     private javax.swing.JButton jConferma;
     private javax.swing.JLabel jDataAnimale;
     private javax.swing.JTextField jDatadinascita;
     private javax.swing.JComboBox<String> jGenere;
     private javax.swing.JLabel jGenereAnimale;
     private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton jModifica;
     private javax.swing.JLabel jNomeAnimale;
     private javax.swing.JLabel jSpecieAnimale;
     private javax.swing.JComboBox<String> jnostro;
-    private javax.swing.JComboBox<String> jsalute;
     private javax.swing.JComboBox<String> jselanim;
     private javax.swing.JComboBox<String> jselezionaspecie;
     private javax.swing.JTextField jselhabitat;
-    private javax.swing.JComboBox<String> jselspecie;
+    private javax.swing.JTextField jselspecie;
     // End of variables declaration//GEN-END:variables
 }

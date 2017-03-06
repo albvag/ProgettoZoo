@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import progettozoo.DBConnect;
 import progettozoo.ProgettoZoo;
 import progettozoo.Utente;
+
 import static schede.JAggiungiPersonale_Direttore.check;
 
 /**
@@ -364,7 +365,8 @@ public class JModificaPersonale_Direttore extends javax.swing.JFrame {
        
         String formnome = "[a-zA-Z ]{1,}";
           String formcog = "[a-zA-Z ]{1,}";
-          String fordata="(0[1-9]|1[0-9]|2[0-9]|3[01])[-/](0[1-9]|1[0-2])[-/](19|20)[0-9]{2}";
+           String fordata="(0[1-9]|1[0-9]|2[0-9]|3[01])[-](0[1-9]|1[0-2])[-](19|20)[0-9]{2}";
+          String fordata2 ="(0[1-9]|1[0-9]|2[0-9]|3[01])[/](0[1-9]|1[0-2])[/](19|20)[0-9]{2}";
           String formres = "[a-zA-Z ]{1,}";
           String formind = "[a-zA-Z ]{1,}+[ 0-9]{1,}";
           //Numero di telefono formato da soli numeri,minimo 1 e massimo 10
@@ -381,6 +383,7 @@ public class JModificaPersonale_Direttore extends javax.swing.JFrame {
            
            Pattern pattern6 = Pattern.compile(formpass);
            Pattern pattern7 = Pattern.compile(fordata);
+           Pattern pattern8 = Pattern.compile(fordata2);
 boolean nom=check(formnome,nome);
 boolean cog=check(formcog,cognome);
 boolean dat=check(fordata,data);
@@ -389,13 +392,20 @@ boolean ind=check(formind,indirizzo);
 boolean tel=check(formtel,telefono);
 boolean pass=check(formpass,password);
 boolean rpass=check(password,rippass);
+ boolean dat2=check(fordata2,data); 
 
 DBConnect conn =new DBConnect();
    
    ProgettoZoo pz= new ProgettoZoo();
    
    Date today =new Date();
-Date d= pz.ConvertStringToDate(data, "dd-MM-yyyy");
+ Date d= new Date();
+   Date d1= pz.ConvertStringToDate(data,"dd-MM-yyyy");
+   Date d2= pz.ConvertStringToDate(data,"dd/MM/yyyy");
+   if(dat)
+   {d=d1;}
+   else if(dat2)
+   {d=d2;}
       java.sql.Date sqlDate = new java.sql.Date(d.getTime());
       
       //nel caso i caratteri inseriti non siano quelli richiesti appare un messaggio d'errore
@@ -407,7 +417,7 @@ if(cog==false)
     errorecognome1.setText("Caratteri non validi");
 else
     errorecognome1.setText("Caratteri validi");
-if(dat==false)
+if(dat==false && dat2==false)
     erroredata1.setText("Caratteri non validi");
 else if(d.after(today))
      erroredata1.setText("Non puoi inserire una data futura");
@@ -438,12 +448,12 @@ if(this.jRuolo1.getSelectedItem().toString().equals(" "))
     erroreruolo1.setText("Non hai inserito il ruolo");
 else
     erroreruolo1.setText("Caratteri Validi");
-
+ 
  String [] nom1=name.split(" ");
         int no1=nom1.length-1;
         String n1=nom1[no1]; 
  
-         if(nom==true && cog==true && dat==true && res==true && ind==true && tel==true  && pass==true && rpass==true && this.jRuolo1.getSelectedItem().toString().equals(" ")==false)
+         if(nom==true && cog==true && (dat==true ||dat2==true) && res==true && ind==true && tel==true  && pass==true && rpass==true && this.jRuolo1.getSelectedItem().toString().equals(" ")==false)
   { 
       if(d.before(today))
       {

@@ -27,12 +27,12 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jlistapersonale" min="-2" pref="141" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jlistapersonale" min="-2" pref="143" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jAggiungiPersonale" min="-2" pref="141" max="-2" attributes="0"/>
-                  <Component id="jRimuoviPersonale" min="-2" pref="141" max="-2" attributes="0"/>
-                  <Component id="jModificaPersonale" min="-2" pref="141" max="-2" attributes="0"/>
+                  <Component id="jAggiungiPersonale" min="-2" pref="143" max="-2" attributes="0"/>
+                  <Component id="jRimuoviPersonale" min="-2" pref="143" max="-2" attributes="0"/>
+                  <Component id="jModificaPersonale" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="17" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
@@ -44,12 +44,12 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jModificaAnimale" min="-2" pref="141" max="-2" attributes="0"/>
+                                  <Component id="jModificaAnimale" min="-2" pref="143" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jAggiungiAnimale" min="-2" pref="141" max="-2" attributes="0"/>
-                                      <Component id="jListaanimali" min="-2" pref="141" max="-2" attributes="0"/>
-                                      <Component id="jRimuoviAnimale" alignment="1" min="-2" pref="141" max="-2" attributes="0"/>
-                                      <Component id="jPrestaanimale" alignment="1" min="-2" pref="141" max="-2" attributes="0"/>
+                                      <Component id="jAggiungiAnimale" min="-2" pref="143" max="-2" attributes="0"/>
+                                      <Component id="jListaanimali" min="-2" pref="143" max="-2" attributes="0"/>
+                                      <Component id="jRimuoviAnimale" alignment="1" min="-2" pref="143" max="-2" attributes="0"/>
+                                      <Component id="jPrestaanimale" alignment="1" min="-2" pref="143" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
@@ -59,25 +59,25 @@
                           <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                              <Component id="jlistahabitat" min="-2" pref="141" max="-2" attributes="0"/>
+                              <Component id="jlistahabitat" min="-2" pref="143" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jAggiungiHabitat" alignment="1" min="-2" pref="141" max="-2" attributes="0"/>
-                          <Component id="jRimuoviHabitat" alignment="1" min="-2" pref="141" max="-2" attributes="0"/>
-                          <Component id="jButton1" alignment="1" min="-2" pref="141" max="-2" attributes="0"/>
+                          <Component id="jAggiungiHabitat" alignment="1" min="-2" pref="143" max="-2" attributes="0"/>
+                          <Component id="jRimuoviHabitat" alignment="1" min="-2" pref="143" max="-2" attributes="0"/>
+                          <Component id="jButton1" alignment="1" min="-2" pref="143" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="jButton2" min="-2" pref="141" max="-2" attributes="0"/>
+                  <Component id="jButton2" min="-2" pref="143" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jAggiungiProdotto" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
-                  <Component id="jRimuoviProdotto" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
-                  <Component id="jCambiaprezzi" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
-                  <Component id="jlistaprodotti" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
+                  <Component id="jAggiungiProdotto" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
+                  <Component id="jRimuoviProdotto" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
+                  <Component id="jCambiaprezzi" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
+                  <Component id="jlistaprodotti" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
                   <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                       <Component id="jButtonLogout" min="-2" pref="89" max="-2" attributes="0"/>
-                      <Component id="jVediincassi" min="-2" pref="141" max="-2" attributes="0"/>
+                      <Component id="jVediincassi" min="-2" pref="143" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="65" max="32767" attributes="0"/>
@@ -246,7 +246,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="          Gestione Personale"/>
+        <Property name="text" type="java.lang.String" value="        Gestione Personale"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">

@@ -190,13 +190,23 @@ public class JVediIncassi_Direttore extends javax.swing.JFrame {
         
         ArrayList<Vende> venlist=new ArrayList<Vende>();
         String data=this.jdataincassi.getText();
-        String fordata ="(0[1-9]|1[0-9]|2[0-9]|3[01])[ /](0[1-9]|1[0-2])[/](19|20)[0-9]{2}";
+        String fordata ="(0[1-9]|1[0-9]|2[0-9]|3[01])[-](0[1-9]|1[0-2])[-](19|20)[0-9]{2}";
+        String fordata2 ="(0[1-9]|1[0-9]|2[0-9]|3[01])[/](0[1-9]|1[0-2])[/](19|20)[0-9]{2}";
         Pattern pattern = Pattern.compile(fordata);
+        Pattern pattern2 = Pattern.compile(fordata2);
          boolean dat=check(fordata,data);
+         boolean dat2=check(fordata2,data);
          
-         Date d= pz.ConvertStringToDate(data, "dd/MM/yyyy");
+          Date d= new Date();
+   Date d1= pz.ConvertStringToDate(data,"dd-MM-yyyy");
+   Date d2= pz.ConvertStringToDate(data,"dd/MM/yyyy");
+   
+   if(dat)
+   {d=d1;}
+   else if(dat2)
+   {d=d2;}
         java.sql.Date sqlDate = new java.sql.Date(d.getTime());
-        if(dat==false)
+        if(!(dat || dat2))
               {  
         this.jInternalFrameTableIncassi.setVisible(false);
    
@@ -259,7 +269,7 @@ public class JVediIncassi_Direttore extends javax.swing.JFrame {
         v.selectmode(this.jTableIncassi);   
         v.creaTabella(this.jTableIncassi, jTableAnimaliHeaders);
         this.jTableIncassi.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-        Show_Incassi_In_JTable(this.jTableIncassi);
+        Show_Incassi_In_JTable(this.jTableIncassi,sqlDate);
         Double totale=conn.totaleIncassi(venlist);
         this.jTextField1.setText(totale.toString());
              }
@@ -300,17 +310,13 @@ public class JVediIncassi_Direttore extends javax.swing.JFrame {
             }
         });
     }
- public void Show_Incassi_In_JTable(JTable table)
+ public void Show_Incassi_In_JTable(JTable table,Date data)
    {
        ProgettoZoo pz=new ProgettoZoo();
        DBConnect conn=new DBConnect();
        ArrayList<String> prodlist=conn.selezionaProdVenduti();
-        String data=this.jdataincassi.getText();
-        Date d=pz.ConvertStringToDate(data, "dd/MM/yyyy");
-       
-        
-        java.sql.Date sqlDate = new java.sql.Date(d.getTime());
-       ArrayList<Vende> venlist = conn.getIncassi(prodlist,sqlDate );
+      
+       ArrayList<Vende> venlist = conn.getIncassi(prodlist,data);
        DefaultTableModel model = (DefaultTableModel) table.getModel();
        Object[] row = new Object[3];
        
