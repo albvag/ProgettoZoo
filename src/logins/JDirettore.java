@@ -11,6 +11,7 @@ import javax.swing.table.*;
 import progettozoo.Animale;
 import progettozoo.DBConnect;
 import progettozoo.Habitat;
+import progettozoo.Pasto;
 import progettozoo.Prodotto;
 import progettozoo.ProgettoZoo;
 import progettozoo.Utente;
@@ -19,6 +20,7 @@ import schede.JAggiungiHabitat_Direttore;
 import schede.JAggiungiPersonale_Direttore;
 import schede.JAggiungiProdotto_Direttore;
 import schede.JCambiaPrezzi_Direttore;
+import schede.JControlloPasti_Direttore;
 import schede.JListaHabitat_Direttore;
 import schede.JListaPersonale_Direttore;
 import schede.JListaProdotti_Direttore;
@@ -37,7 +39,8 @@ import schede.jListaAnimali_Direttore;
  * @author Alberto
  */
 public class JDirettore extends javax.swing.JFrame {
-
+ public Utente user = new Utente();
+ 
     /**
      * Creates new form JDirettore
      */
@@ -46,7 +49,12 @@ public class JDirettore extends javax.swing.JFrame {
     }
     public JDirettore(Utente user_login) {
         initComponents();
+        
         setTitle("Benvenuto, "+user_login.getNome()+ " " + user_login.getCognome() );
+         user.setUsername(user_login.getUsername());
+        user.setNome(user_login.getNome());
+        user.setCognome(user_login.getCognome());
+        user.setRuolo(user_login.getRuolo());
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,7 +85,7 @@ public class JDirettore extends javax.swing.JFrame {
         jlistapersonale = new javax.swing.JButton();
         jlistaprodotti = new javax.swing.JButton();
         jCambiaprezzi = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jControlloPasti = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jModificaPersonale = new javax.swing.JButton();
         jModificaAnimale = new javax.swing.JButton();
@@ -206,7 +214,12 @@ public class JDirettore extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Controllo Pasti");
+        jControlloPasti.setText("Controllo Pasti");
+        jControlloPasti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jControlloPastiActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Controllo Pulizie");
 
@@ -259,7 +272,7 @@ public class JDirettore extends javax.swing.JFrame {
                                 .addComponent(jlistahabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jAggiungiHabitat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jRimuoviHabitat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jControlloPasti, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -304,7 +317,7 @@ public class JDirettore extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCambiaprezzi, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jControlloPasti, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jModificaPersonale, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jModificaAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -329,106 +342,130 @@ public class JDirettore extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLogoutActionPerformed
 
     private void jRimuoviHabitatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRimuoviHabitatActionPerformed
-         JRimuoviHabitat_Direttore rim = new JRimuoviHabitat_Direttore();
+         JRimuoviHabitat_Direttore rim = new JRimuoviHabitat_Direttore(user);
                     rim.setLocationRelativeTo(null);
-                    rim.setVisible(true);// TODO add your handling code here:
+                    rim.setVisible(true);
+                    setVisible(false);
     }//GEN-LAST:event_jRimuoviHabitatActionPerformed
 
     private void jAggiungiPersonaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAggiungiPersonaleActionPerformed
-       JAggiungiPersonale_Direttore per = new JAggiungiPersonale_Direttore();
+       JAggiungiPersonale_Direttore per = new JAggiungiPersonale_Direttore(user);
                     per.setLocationRelativeTo(null);
-                    per.setVisible(true);        // TODO add your handling code here:
+                    per.setVisible(true);        
+                    setVisible(false);
     }//GEN-LAST:event_jAggiungiPersonaleActionPerformed
 
     private void jAggiungiAnimaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAggiungiAnimaleActionPerformed
-       JAggiungiAnimale_Direttore an = new JAggiungiAnimale_Direttore();
+       JAggiungiAnimale_Direttore an = new JAggiungiAnimale_Direttore(user);
                    an.setLocationRelativeTo(null);
-                   an.setVisible(true);    // TODO add your handling code here:
+                   an.setVisible(true);  
+                   setVisible(false);
     }//GEN-LAST:event_jAggiungiAnimaleActionPerformed
 
     private void jAggiungiHabitatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAggiungiHabitatActionPerformed
-        JAggiungiHabitat_Direttore hab = new JAggiungiHabitat_Direttore();
+        JAggiungiHabitat_Direttore hab = new JAggiungiHabitat_Direttore(user);
          hab.setLocationRelativeTo(null);
-                   hab.setVisible(true);         // TODO add your handling code here:
+                   hab.setVisible(true);
+                   setVisible(false);
     }//GEN-LAST:event_jAggiungiHabitatActionPerformed
 
     private void jListaanimaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListaanimaliActionPerformed
-        jListaAnimali_Direttore lis = new jListaAnimali_Direttore();
+        jListaAnimali_Direttore lis = new jListaAnimali_Direttore(user);
          lis.setLocationRelativeTo(null);
-                   lis.setVisible(true); // TODO add your handling code here:
+                   lis.setVisible(true); 
+                   setVisible(false);
     }//GEN-LAST:event_jListaanimaliActionPerformed
 
     private void jRimuoviPersonaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRimuoviPersonaleActionPerformed
-      JRimuoviPersonale_Direttore rimpers = new JRimuoviPersonale_Direttore();
+      JRimuoviPersonale_Direttore rimpers = new JRimuoviPersonale_Direttore(user);
       rimpers.setLocationRelativeTo(null);
           rimpers.setVisible(true);
+          setVisible(false);
     }//GEN-LAST:event_jRimuoviPersonaleActionPerformed
 
     private void jRimuoviAnimaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRimuoviAnimaleActionPerformed
-       JRimuoviAnimale_Direttore riman = new JRimuoviAnimale_Direttore();
+       JRimuoviAnimale_Direttore riman = new JRimuoviAnimale_Direttore(user);
        riman.setLocationRelativeTo(null);
        riman.setVisible(true);
+       setVisible(false);
     }//GEN-LAST:event_jRimuoviAnimaleActionPerformed
 
     private void jAggiungiProdottoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAggiungiProdottoActionPerformed
-      JAggiungiProdotto_Direttore aggpro= new JAggiungiProdotto_Direttore();
+      JAggiungiProdotto_Direttore aggpro= new JAggiungiProdotto_Direttore(user);
       aggpro.setLocationRelativeTo(null);
       aggpro.setVisible(true);
+      setVisible(false);
     }//GEN-LAST:event_jAggiungiProdottoActionPerformed
 
     private void jRimuoviProdottoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRimuoviProdottoActionPerformed
-      JRimuoviProdotto_Direttore rimpro= new JRimuoviProdotto_Direttore();
+      JRimuoviProdotto_Direttore rimpro= new JRimuoviProdotto_Direttore(user);
       rimpro.setLocationRelativeTo(null);
       rimpro.setVisible(true);
+      setVisible(false);
     }//GEN-LAST:event_jRimuoviProdottoActionPerformed
 
     private void jlistapersonaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jlistapersonaleActionPerformed
-        JListaPersonale_Direttore lisper = new JListaPersonale_Direttore();
+        JListaPersonale_Direttore lisper = new JListaPersonale_Direttore(user);
         lisper.setLocationRelativeTo(null);
         lisper.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jlistapersonaleActionPerformed
 
     private void jlistahabitatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jlistahabitatActionPerformed
-         JListaHabitat_Direttore lishab= new JListaHabitat_Direttore();
+         JListaHabitat_Direttore lishab= new JListaHabitat_Direttore(user);
        lishab.setLocationRelativeTo(null);
        lishab.setVisible(true);
+       setVisible(false);
     }//GEN-LAST:event_jlistahabitatActionPerformed
 
     private void jlistaprodottiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jlistaprodottiActionPerformed
-          JListaProdotti_Direttore lispro=new JListaProdotti_Direttore();
+          JListaProdotti_Direttore lispro=new JListaProdotti_Direttore(user);
        lispro.setLocationRelativeTo(null);
-       lispro.setVisible(true);// TODO add your handling code here:
+       lispro.setVisible(true);
+       setVisible(false);
     }//GEN-LAST:event_jlistaprodottiActionPerformed
 
     private void jPrestaanimaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPrestaanimaleActionPerformed
-        JPrestaAnimale_Direttore presanim = new JPrestaAnimale_Direttore();
+        JPrestaAnimale_Direttore presanim = new JPrestaAnimale_Direttore(user);
         presanim.setLocationRelativeTo(null);
         presanim.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jPrestaanimaleActionPerformed
 
     private void jVediincassiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVediincassiActionPerformed
-        JVediIncassi_Direttore vedinc = new JVediIncassi_Direttore();
+        JVediIncassi_Direttore vedinc = new JVediIncassi_Direttore(user);
         vedinc.setLocationRelativeTo(null);
         vedinc.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jVediincassiActionPerformed
 
     private void jCambiaprezziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCambiaprezziActionPerformed
-        JCambiaPrezzi_Direttore campre = new JCambiaPrezzi_Direttore();
+        JCambiaPrezzi_Direttore campre = new JCambiaPrezzi_Direttore(user);
         campre.setLocationRelativeTo(null);
         campre.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jCambiaprezziActionPerformed
 
     private void jModificaAnimaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jModificaAnimaleActionPerformed
-       JModificaAnimale_Direttore moddir =new JModificaAnimale_Direttore();
+       JModificaAnimale_Direttore moddir =new JModificaAnimale_Direttore(user);
        moddir.setLocationRelativeTo(null);
        moddir.setVisible(true);
+       setVisible(false);
     }//GEN-LAST:event_jModificaAnimaleActionPerformed
 
     private void jModificaPersonaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jModificaPersonaleActionPerformed
-        JModificaPersonale_Direttore modper = new JModificaPersonale_Direttore();
+        JModificaPersonale_Direttore modper = new JModificaPersonale_Direttore(user);
         modper.setLocationRelativeTo(null);
         modper.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jModificaPersonaleActionPerformed
+
+    private void jControlloPastiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jControlloPastiActionPerformed
+        JControlloPasti_Direttore conpas = new JControlloPasti_Direttore(user);
+        conpas.setLocationRelativeTo(null);
+        conpas.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_jControlloPastiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -511,6 +548,7 @@ public void Show_Prodotti_In_JTable(JTable table)
            
        }
     }
+  
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -548,10 +586,10 @@ public void Show_Prodotti_In_JTable(JTable table)
     private javax.swing.JButton jAggiungiHabitat;
     private javax.swing.JButton jAggiungiPersonale;
     private javax.swing.JButton jAggiungiProdotto;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonLogout;
     private javax.swing.JButton jCambiaprezzi;
+    private javax.swing.JButton jControlloPasti;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

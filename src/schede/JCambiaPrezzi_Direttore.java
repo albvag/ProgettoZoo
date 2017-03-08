@@ -7,21 +7,27 @@ package schede;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import logins.JDirettore;
 import progettozoo.DBConnect;
 import progettozoo.Prodotto;
+import progettozoo.Utente;
 import static schede.JAggiungiProdotto_Direttore.check;
+
 
 /**
  *
  * @author Roberto
  */
 public class JCambiaPrezzi_Direttore extends javax.swing.JFrame {
-
+    public static Utente utente = new Utente();
     /**
      * Creates new form JCambiaPrezzi_Direttore
      */
-    public JCambiaPrezzi_Direttore() {
+    public JCambiaPrezzi_Direttore(Utente user_log) {
         initComponents();
+          utente.setUsername(user_log.getUsername());
+        utente.setNome(user_log.getNome());
+        utente.setCognome(user_log.getCognome());
            DBConnect conn =new DBConnect();
         ArrayList<Prodotto> list = conn.selezionaProdotto("");
         
@@ -149,6 +155,7 @@ public class JCambiaPrezzi_Direttore extends javax.swing.JFrame {
 
     private void jChiudiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChiudiActionPerformed
        setVisible(false);
+        new JDirettore(utente).setVisible(true);
     }//GEN-LAST:event_jChiudiActionPerformed
 
     private void jConfermaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConfermaActionPerformed
@@ -164,7 +171,7 @@ public class JCambiaPrezzi_Direttore extends javax.swing.JFrame {
                 if (reply == JOptionPane.YES_OPTION)
                 {    double p=Double.parseDouble(prezzo);
       conn.updatePrezzoProdotto(p, prodotto);
-                          JListaProdotti_Direttore lispro=new JListaProdotti_Direttore();
+                          JListaProdotti_Direttore lispro=new JListaProdotti_Direttore(utente);
        lispro.setLocationRelativeTo(null);
        lispro.setVisible(true);
        setVisible(false);}
@@ -201,7 +208,7 @@ public class JCambiaPrezzi_Direttore extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JCambiaPrezzi_Direttore().setVisible(true);
+                new JCambiaPrezzi_Direttore(utente).setVisible(true);
             }
         });
     }

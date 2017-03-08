@@ -7,22 +7,27 @@ package schede;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import logins.JDirettore;
 import progettozoo.Animale;
 import progettozoo.DBConnect;
 import progettozoo.Utente;
+
 
 /**
  *
  * @author Roberto
  */
 public class JRimuoviPersonale_Direttore extends javax.swing.JFrame {
-
+    public static Utente utente = new Utente();
     /**
      * Creates new form JRimuoviPersonale_Direttore
      */
-    public JRimuoviPersonale_Direttore() {
+    public JRimuoviPersonale_Direttore(Utente user_log) {
         initComponents();
          DBConnect conn =new DBConnect();
+         utente.setUsername(user_log.getUsername());
+        utente.setNome(user_log.getNome());
+        utente.setCognome(user_log.getCognome());
          
         ArrayList<Utente> list = conn.selezionaPersonaleRuolo();
         
@@ -187,7 +192,7 @@ public class JRimuoviPersonale_Direttore extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "ERRORE");
                 break;
         }
-           JListaPersonale_Direttore lisper = new JListaPersonale_Direttore();
+           JListaPersonale_Direttore lisper = new JListaPersonale_Direttore(utente);
         lisper.setLocationRelativeTo(null);
         lisper.setVisible(true);
                  setVisible(false);
@@ -197,6 +202,7 @@ public class JRimuoviPersonale_Direttore extends javax.swing.JFrame {
 
     private void jChiudiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChiudiActionPerformed
       setVisible(false);
+      new JDirettore(utente).setVisible(true);
     }//GEN-LAST:event_jChiudiActionPerformed
 
     /**
@@ -229,7 +235,7 @@ public class JRimuoviPersonale_Direttore extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JRimuoviPersonale_Direttore().setVisible(true);
+                new JRimuoviPersonale_Direttore(utente).setVisible(true);
             }
         });
     }

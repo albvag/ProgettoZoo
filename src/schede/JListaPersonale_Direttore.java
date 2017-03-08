@@ -8,18 +8,22 @@ package schede;
 import javax.swing.JTable;
 import logins.JDirettore;
 import logins.JVeterinario;
+import progettozoo.Utente;
 
 /**
  *
  * @author Roberto
  */
 public class JListaPersonale_Direttore extends javax.swing.JFrame {
-
+    public static Utente utente = new Utente();
     /**
      * Creates new form JListaPersonale_Direttore
      */
-    public JListaPersonale_Direttore() {
+    public JListaPersonale_Direttore(Utente user_log) {
         initComponents();
+         utente.setUsername(user_log.getUsername());
+        utente.setNome(user_log.getNome());
+        utente.setCognome(user_log.getCognome());
           JVeterinario v=new JVeterinario();
         JDirettore d=new JDirettore();
          String[] jTableProdottiHeaders  = {"Username","Nome","Cognome","Data di Nascita","Città","Indirizzo","Telefono","Ruolo"};
@@ -91,7 +95,8 @@ public class JListaPersonale_Direttore extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jChiudiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChiudiActionPerformed
-       setVisible(false); // TODO add your handling code here:
+       setVisible(false); 
+       new JDirettore(utente).setVisible(true);
     }//GEN-LAST:event_jChiudiActionPerformed
 
     /**
@@ -124,7 +129,7 @@ public class JListaPersonale_Direttore extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JListaPersonale_Direttore().setVisible(true);
+                new JListaPersonale_Direttore(utente).setVisible(true);
             }
         });
     }

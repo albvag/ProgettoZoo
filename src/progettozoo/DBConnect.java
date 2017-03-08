@@ -998,6 +998,77 @@ public class DBConnect {
            return prodlist; 
     }
     
+     public Utente[] getPasti(Date dat,ArrayList<Pasto> listaPasti)
+    {
+        
+       
+        Pasto pas;
+        
+         String data1=dat.toString()+" 00:00:00";
+         String data2=dat.toString()+" 23:59:59";
+         
+        
+       String query2 = "Select * from pasti  where  pasti.Data_Pasto >=  '"+data1+"' AND pasti.Data_Pasto <= '"+data2+"'";
+        try {
+            
+            rs=st.executeQuery(query2);
+            
+             while(rs.next())  
+        {
+            
+            
+             pas = new Pasto(rs.getInt("Codice_Pasto"),rs.getString("Cod_Gabbia"), rs.getDate("Data_Pasto"),rs.getBoolean("Disponibile"),rs.getBoolean("Terminato"));
+                    listaPasti.add(pas);
+   
+        }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Utente[] utlist= new Utente[listaPasti.size()];
+        
+        for(int i =0;i<listaPasti.size();i++)
+        {
+           Utente  ut=new Utente();
+           utlist[i]=ut;
+        String query = "Select * from nutre  where Cod_Pasto= '"+listaPasti.get(i).getCodice_Pasto()+"'";
+        try {
+            
+            rs=st.executeQuery(query);
+            
+             while(rs.next())  
+        {
+            
+            
+             utlist[i].setUsername(rs.getString("nutre.Cod_Custode"));
+            
+             
+                
+  
+        }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+        for(int i=0;i<utlist.length;i++)
+        {
+             String query3 = "Select * from impiegato  where Codice_Impiegato= '"+utlist[i].getUsername()+"'";
+        try {
+            
+            rs=st.executeQuery(query3);
+            
+             while(rs.next())  
+        {
+           
+            utlist[i].setNome(rs.getString("Nome"));
+            utlist[i].setCognome(rs.getString("Cognome"));
+            
+        }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+        return utlist;
+    }
     public ArrayList<Vende> getIncassi(ArrayList<String> prodlist,Date dat)
     {
         ArrayList<Vende> venlist = new ArrayList<Vende>();

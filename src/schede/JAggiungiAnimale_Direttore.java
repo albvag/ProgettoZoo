@@ -21,17 +21,21 @@ import javax.swing.JOptionPane;
 import progettozoo.Animale;
 import progettozoo.Habitat;
 import progettozoo.ProgettoZoo;
+import progettozoo.Utente;
 /**
  *
  * @author Roberto
  */
 public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
-
+    public static Utente utente = new Utente();
     /**
      * Creates new form JAggiungiAnimale_Direttore
      */
-    public JAggiungiAnimale_Direttore() {
+    public JAggiungiAnimale_Direttore(Utente user_log) {
         initComponents();
+        utente.setUsername(user_log.getUsername());
+        utente.setNome(user_log.getNome());
+        utente.setCognome(user_log.getCognome());
           DBConnect conn =new DBConnect();
        
              
@@ -267,7 +271,8 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
 }
 
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
-        setVisible(false); // TODO add your handling code here:
+        setVisible(false);
+        new JDirettore(utente).setVisible(true);
     }//GEN-LAST:event_jButtonCloseActionPerformed
 
     private void jDatadinascitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDatadinascitaActionPerformed
@@ -353,7 +358,7 @@ else
     String codiceanim=conn.selezionacodiceAnimale(nome);
     conn.insertAnimaleSituato(0,codiceanim, this.jselhabitat.getText());
     JOptionPane.showMessageDialog(null, "ANIMALE INSERITO CORRETTAMENTE");
-     jListaAnimali_Direttore lis = new jListaAnimali_Direttore();
+     jListaAnimali_Direttore lis = new jListaAnimali_Direttore(utente);
      lis.setLocationRelativeTo(null);
      lis.setVisible(true);
     setVisible(false);}
@@ -442,7 +447,7 @@ else
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JAggiungiAnimale_Direttore().setVisible(true);
+                new JAggiungiAnimale_Direttore(utente).setVisible(true);
             }
         });
     }

@@ -7,21 +7,26 @@ package schede;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import logins.JDirettore;
 import progettozoo.DBConnect;
 import progettozoo.Prodotto;
 import progettozoo.Utente;
+
 
 /**
  *
  * @author Roberto
  */
 public class JRimuoviProdotto_Direttore extends javax.swing.JFrame {
-
+    public static Utente utente = new Utente();
     /**
      * Creates new form JRimuoviProdotto_Direttore
      */
-    public JRimuoviProdotto_Direttore() {
+    public JRimuoviProdotto_Direttore(Utente user_log) {
         initComponents(); 
+        utente.setUsername(user_log.getUsername());
+        utente.setNome(user_log.getNome());
+        utente.setCognome(user_log.getCognome());
         DBConnect conn =new DBConnect();
         ArrayList<Prodotto> list = conn.selezionaProdotto("");
         
@@ -118,7 +123,7 @@ public class JRimuoviProdotto_Direttore extends javax.swing.JFrame {
                 if (reply == JOptionPane.YES_OPTION)
                 { conn.deleteProdotto(tipoPro);
          JOptionPane.showMessageDialog(null, "IL PRODOTTO E' STATO RIMOSSO CORRETTAMENTE");
-             JListaProdotti_Direttore lispro=new JListaProdotti_Direttore();
+             JListaProdotti_Direttore lispro=new JListaProdotti_Direttore(utente);
        lispro.setLocationRelativeTo(null);
        lispro.setVisible(true);
           setVisible(false);}
@@ -126,6 +131,7 @@ public class JRimuoviProdotto_Direttore extends javax.swing.JFrame {
 
     private void jChiudiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChiudiActionPerformed
       setVisible(false);  
+      new JDirettore(utente).setVisible(true);
     }//GEN-LAST:event_jChiudiActionPerformed
 
     /**
@@ -158,7 +164,7 @@ public class JRimuoviProdotto_Direttore extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JRimuoviProdotto_Direttore().setVisible(true);
+                new JRimuoviProdotto_Direttore(utente).setVisible(true);
             }
         });
     }

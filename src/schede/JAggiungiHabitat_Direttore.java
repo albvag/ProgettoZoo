@@ -7,20 +7,26 @@ package schede;
 import java.awt.Color;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import logins.JDirettore;
 import progettozoo.DBConnect;
+import progettozoo.Utente;
 import static schede.JAggiungiPersonale_Direttore.check;
+
 
 /**
  *
  * @author Roberto
  */
 public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
-
+    public static Utente utente = new Utente();
     /**
      * Creates new form JAggiungiHabitat_Direttore
      */
-    public JAggiungiHabitat_Direttore() {
+    public JAggiungiHabitat_Direttore(Utente user_log) {
         initComponents();
+        utente.setUsername(user_log.getUsername());
+        utente.setNome(user_log.getNome());
+        utente.setCognome(user_log.getCognome());
     }
 
     /**
@@ -134,7 +140,8 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
-        setVisible(false);// TODO add your handling code here:
+        setVisible(false);
+        new JDirettore(utente).setVisible(true);
     }//GEN-LAST:event_jButtonCloseActionPerformed
 
     private void jInseriscihabitatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInseriscihabitatActionPerformed
@@ -164,7 +171,7 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
                      conn.insertSpecie(specie);  
                     conn.insertHabitat(habitat,specie);
                     JOptionPane.showMessageDialog(null, "Habitat e specie inseriti correttamente"); 
-                    JListaHabitat_Direttore lishab= new JListaHabitat_Direttore();
+                    JListaHabitat_Direttore lishab= new JListaHabitat_Direttore(utente);
                        lishab.setLocationRelativeTo(null);
                        lishab.setVisible(true);
                        setVisible(false);
@@ -235,7 +242,7 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JAggiungiHabitat_Direttore().setVisible(true);
+                new JAggiungiHabitat_Direttore(utente).setVisible(true);
             }
         });
     }

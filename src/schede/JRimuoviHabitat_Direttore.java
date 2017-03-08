@@ -8,22 +8,28 @@ package schede;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import logins.JDirettore;
 import progettozoo.Animale;
 import progettozoo.DBConnect;
 import progettozoo.Habitat;
 import progettozoo.ProgettoZoo;
+import progettozoo.Utente;
+
 
 /**
  *
  * @author Roberto
  */
 public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
-
+    public static Utente utente = new Utente();
     /**
      * Creates new form JRimuoviHabitat_Direttore
      */
-    public JRimuoviHabitat_Direttore() {
+    public JRimuoviHabitat_Direttore(Utente user_log) {
         initComponents();
+        utente.setUsername(user_log.getUsername());
+        utente.setNome(user_log.getNome());
+        utente.setCognome(user_log.getCognome());
         DBConnect conn =new DBConnect();
         ArrayList<Habitat> list = conn.selezionaHabitat();
         
@@ -135,7 +141,8 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
     }//GEN-LAST:event_jrimuoviHabitatActionPerformed
 
     private void jChiudiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChiudiActionPerformed
-       setVisible(false);        // TODO add your handling code here:
+       setVisible(false);  
+       new JDirettore(utente).setVisible(true);
     }//GEN-LAST:event_jChiudiActionPerformed
 
     private void jRimuoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRimuoviActionPerformed
@@ -149,7 +156,7 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
                        
                          conn.deleteHabitat(sel);
                          conn.deleteSpecie(specie);
-                        JListaHabitat_Direttore lishab= new JListaHabitat_Direttore();
+                        JListaHabitat_Direttore lishab= new JListaHabitat_Direttore(utente);
                         lishab.setLocationRelativeTo(null);
                         lishab.setVisible(true);
                         JOptionPane.showMessageDialog(null, "HAI CANCELLATO HABITAT E SPECIE");
@@ -190,7 +197,7 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JRimuoviHabitat_Direttore().setVisible(true);
+                new JRimuoviHabitat_Direttore(utente).setVisible(true);
             }
         });
     }

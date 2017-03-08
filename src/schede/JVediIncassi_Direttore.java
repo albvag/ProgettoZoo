@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import logins.JDirettore;
 import logins.JVeterinario;
 import progettozoo.DBConnect;
 import progettozoo.Prodotto;
@@ -20,17 +21,21 @@ import progettozoo.Utente;
 import progettozoo.Vende;
 import static schede.JAggiungiAnimale_Direttore.check;
 
+
 /**
  *
  * @author Roberto
  */
 public class JVediIncassi_Direttore extends javax.swing.JFrame {
-
+    public static Utente utente = new Utente();
     /**
      * Creates new form JVediIncassi_Direttore
      */
-    public JVediIncassi_Direttore() {
+    public JVediIncassi_Direttore(Utente user_log) {
         initComponents();
+        utente.setUsername(user_log.getUsername());
+        utente.setNome(user_log.getNome());
+        utente.setCognome(user_log.getCognome());
        this.jInternalFrameTableIncassi.setVisible(false);
    
       this.jTableIncassi.getTableHeader().setVisible(false);
@@ -175,6 +180,7 @@ public class JVediIncassi_Direttore extends javax.swing.JFrame {
 
     private void jChiudiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChiudiActionPerformed
        setVisible(false);
+       new JDirettore(utente).setVisible(true);
     }//GEN-LAST:event_jChiudiActionPerformed
 
     private void jdataincassiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jdataincassiActionPerformed
@@ -306,7 +312,7 @@ public class JVediIncassi_Direttore extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JVediIncassi_Direttore().setVisible(true);
+                new JVediIncassi_Direttore(utente).setVisible(true);
             }
         });
     }

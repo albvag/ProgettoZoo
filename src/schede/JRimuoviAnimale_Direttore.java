@@ -8,21 +8,27 @@ package schede;
 import java.util.ArrayList;
 import java.util.function.UnaryOperator;
 import javax.swing.JOptionPane;
+import logins.JDirettore;
 import progettozoo.Animale;
 import progettozoo.DBConnect;
 import progettozoo.Habitat;
+import progettozoo.Utente;
+
 
 /**
  *
  * @author Roberto
  */
 public class JRimuoviAnimale_Direttore extends javax.swing.JFrame {
-
+     public static Utente utente = new Utente();
     /**
      * Creates new form JRimuoviAnimale_Direttore
      */
-    public JRimuoviAnimale_Direttore() {
+    public JRimuoviAnimale_Direttore(Utente user_log) {
         initComponents();
+        utente.setUsername(user_log.getUsername());
+        utente.setNome(user_log.getNome());
+        utente.setCognome(user_log.getCognome());
          DBConnect conn =new DBConnect();
          
         ArrayList<Animale> list = conn.selezionaAnimaliSpecie();
@@ -142,7 +148,8 @@ public class JRimuoviAnimale_Direttore extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jChiudiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChiudiActionPerformed
-       setVisible(false); // TODO add your handling code here:
+       setVisible(false); 
+       new JDirettore(utente).setVisible(true);
     }//GEN-LAST:event_jChiudiActionPerformed
 
     private void jRimuoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRimuoviActionPerformed
@@ -155,7 +162,7 @@ public class JRimuoviAnimale_Direttore extends javax.swing.JFrame {
           conn.deleteAnimaleVisita(codice);
           conn.deleteAnimaleSituato(codice);
           JOptionPane.showMessageDialog(null, "L'ANIMALE E' STATO RIMOSSO CORRETTAMENTE");
-         jListaAnimali_Direttore lis = new jListaAnimali_Direttore();
+         jListaAnimali_Direttore lis = new jListaAnimali_Direttore(utente);
          lis.setLocationRelativeTo(null);
                    lis.setVisible(true);
           setVisible(false);}
@@ -218,7 +225,7 @@ public class JRimuoviAnimale_Direttore extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JRimuoviAnimale_Direttore().setVisible(true);
+                new JRimuoviAnimale_Direttore(utente).setVisible(true);
             }
         });
     }

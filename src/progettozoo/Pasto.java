@@ -50,4 +50,8 @@ public class Pasto {
         return this.Disponibile;
     }
     
+     public boolean getTerminato(){
+        return this.Terminato;
+    }
+    
 }

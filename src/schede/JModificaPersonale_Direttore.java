@@ -9,23 +9,29 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import logins.JDirettore;
 import progettozoo.DBConnect;
 import progettozoo.ProgettoZoo;
 import progettozoo.Utente;
 
 import static schede.JAggiungiPersonale_Direttore.check;
 
+
+
 /**
  *
  * @author Roberto
  */
 public class JModificaPersonale_Direttore extends javax.swing.JFrame {
-
+    public static Utente utente = new Utente();
     /**
      * Creates new form JModificaPersonale_Direttore
      */
-    public JModificaPersonale_Direttore() {
+    public JModificaPersonale_Direttore(Utente user_log) {
         initComponents();
+         utente.setUsername(user_log.getUsername());
+        utente.setNome(user_log.getNome());
+        utente.setCognome(user_log.getCognome());
            DBConnect conn =new DBConnect();
          
         ArrayList<Utente> list = conn.selezionaPersonaleRuolo();
@@ -348,6 +354,7 @@ public class JModificaPersonale_Direttore extends javax.swing.JFrame {
 
     private void jChiudiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChiudiActionPerformed
         setVisible(false);
+        new JDirettore(utente).setVisible(true);
     }//GEN-LAST:event_jChiudiActionPerformed
 
     private void jSalvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalvaActionPerformed
@@ -539,7 +546,7 @@ else
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JModificaPersonale_Direttore().setVisible(true);
+                new JModificaPersonale_Direttore(utente).setVisible(true);
             }
         });
     }

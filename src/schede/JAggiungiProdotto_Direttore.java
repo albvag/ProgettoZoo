@@ -8,22 +8,27 @@ package schede;
 import java.awt.Color;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import logins.JDirettore;
 import progettozoo.DBConnect;
+import progettozoo.Utente;
 import static schede.JAggiungiAnimale_Direttore.check;
 import static schede.JAggiungiPersonale_Direttore.check;
+
 
 /**
  *
  * @author Roberto
  */
 public class JAggiungiProdotto_Direttore extends javax.swing.JFrame {
-
+     public static Utente utente = new Utente();
     /**
      * Creates new form JAggiungiProdotto_Direttore
      */
-    public JAggiungiProdotto_Direttore() {
+    public JAggiungiProdotto_Direttore(Utente user_log) {
         initComponents();
- 
+        utente.setUsername(user_log.getUsername());
+        utente.setNome(user_log.getNome());
+        utente.setCognome(user_log.getCognome());
     }
 
     /**
@@ -213,7 +218,7 @@ public class JAggiungiProdotto_Direttore extends javax.swing.JFrame {
       double p=Double.parseDouble(prezzo);
       DBConnect conn=new DBConnect();
       conn.addProdotto(nome, p, g);
-                    JListaProdotti_Direttore lispro=new JListaProdotti_Direttore();
+                    JListaProdotti_Direttore lispro=new JListaProdotti_Direttore(utente);
        lispro.setLocationRelativeTo(null);
        lispro.setVisible(true);
        setVisible(false);
@@ -225,6 +230,7 @@ public class JAggiungiProdotto_Direttore extends javax.swing.JFrame {
 
     private void jChiudiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChiudiActionPerformed
        setVisible(false);
+       new JDirettore(utente).setVisible(true);
     }//GEN-LAST:event_jChiudiActionPerformed
 
     private void jaggiunginomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jaggiunginomeFocusGained
@@ -302,7 +308,7 @@ public class JAggiungiProdotto_Direttore extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JAggiungiProdotto_Direttore().setVisible(true);
+                new JAggiungiProdotto_Direttore(utente).setVisible(true);
             }
         });
     }

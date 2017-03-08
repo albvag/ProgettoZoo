@@ -9,23 +9,29 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import logins.JDirettore;
 import logins.JVeterinario;
 import progettozoo.Animale;
 import progettozoo.DBConnect;
 import progettozoo.ProgettoZoo;
+import progettozoo.Utente;
 import progettozoo.Visita;
+
 
 /**
  *
  * @author Roberto
  */
 public class JPrestaAnimale_Direttore extends javax.swing.JFrame {
-
+    public static Utente utente = new Utente();
     /**
      * Creates new form JPrestaAnimale_Direttore
      */
-    public JPrestaAnimale_Direttore() {
+    public JPrestaAnimale_Direttore(Utente user_log) {
         initComponents();
+        utente.setUsername(user_log.getUsername());
+        utente.setNome(user_log.getNome());
+        utente.setCognome(user_log.getCognome());
          JVeterinario v=new JVeterinario();
         this.jTablePresenti.getTableHeader().setReorderingAllowed(false);
            String[] jTableAnimaliHeaders  = {"Nome Animale","Specie","Genere","Data di Nascita"};
@@ -158,6 +164,7 @@ public class JPrestaAnimale_Direttore extends javax.swing.JFrame {
 
     private void jChiudiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChiudiActionPerformed
        setVisible(false);
+        new JDirettore(utente).setVisible(true);
     }//GEN-LAST:event_jChiudiActionPerformed
 
     private void jPrestaAnimaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPrestaAnimaliActionPerformed
@@ -171,7 +178,7 @@ public class JPrestaAnimale_Direttore extends javax.swing.JFrame {
                 {
                     conn.updateAnimalePresente(false, list.get(this.jTablePresenti.getSelectedRow()-1));
         setVisible(false);
-         JPrestaAnimale_Direttore presanim = new JPrestaAnimale_Direttore();
+         JPrestaAnimale_Direttore presanim = new JPrestaAnimale_Direttore(utente);
         presanim.setLocationRelativeTo(null);
         presanim.setVisible(true);
                 }
@@ -189,7 +196,7 @@ public class JPrestaAnimale_Direttore extends javax.swing.JFrame {
                 {
                     conn.updateAnimalePresente(true, list.get(this.jTableInPrestito.getSelectedRow()-1));
          setVisible(false);
-         JPrestaAnimale_Direttore presanim = new JPrestaAnimale_Direttore();
+         JPrestaAnimale_Direttore presanim = new JPrestaAnimale_Direttore(utente);
         presanim.setLocationRelativeTo(null);
         presanim.setVisible(true);
                 }
@@ -226,7 +233,7 @@ public class JPrestaAnimale_Direttore extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JPrestaAnimale_Direttore().setVisible(true);
+                new JPrestaAnimale_Direttore(utente).setVisible(true);
             }
         });
     }

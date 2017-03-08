@@ -10,23 +10,30 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import logins.JDirettore;
 import progettozoo.Animale;
 import progettozoo.DBConnect;
 import progettozoo.Habitat;
 import progettozoo.ProgettoZoo;
+import progettozoo.Utente;
 import static schede.JAggiungiAnimale_Direttore.check;
+
 
 /**
  *
  * @author Roberto
  */
 public class JModificaAnimale_Direttore extends javax.swing.JFrame {
-
+    public static Utente utente = new Utente();
     /**
      * Creates new form JModificaAnimale_Direttore
      */
-    public JModificaAnimale_Direttore() {
+    public JModificaAnimale_Direttore(Utente user_log) {
         initComponents();
+        utente.setUsername(user_log.getUsername());
+        utente.setNome(user_log.getNome());
+        utente.setCognome(user_log.getCognome());
+        
           DBConnect conn =new DBConnect();
          
         ArrayList<Animale> list = conn.selezionaAnimaliSpecie();
@@ -248,7 +255,8 @@ public class JModificaAnimale_Direttore extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
-        setVisible(false); // TODO add your handling code here:
+        setVisible(false); 
+        new JDirettore(utente).setVisible(true);
     }//GEN-LAST:event_jButtonCloseActionPerformed
 
     private void jselezionaspecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jselezionaspecieActionPerformed
@@ -405,7 +413,7 @@ else
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JModificaAnimale_Direttore().setVisible(true);
+                new JModificaAnimale_Direttore(utente).setVisible(true);
             }
         });
     }

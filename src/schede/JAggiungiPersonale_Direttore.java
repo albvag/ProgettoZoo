@@ -9,21 +9,26 @@ import java.awt.*;
 import java.util.Date;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import logins.JDirettore;
 import progettozoo.DBConnect;
 import progettozoo.ProgettoZoo;
+import progettozoo.Utente;
 import static schede.JAggiungiAnimale_Direttore.check;
+
 /**
  *
  * @author Roberto
  */
 public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
-
+    public static Utente utente = new Utente();
     /**
      * Creates new form JAggiungiPersonale_Direttore
      */
-    public JAggiungiPersonale_Direttore() {
+    public JAggiungiPersonale_Direttore(Utente user_log) {
         initComponents();
-        
+        utente.setUsername(user_log.getUsername());
+        utente.setNome(user_log.getNome());
+        utente.setCognome(user_log.getCognome());
     }
  
 
@@ -394,7 +399,8 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
     }//GEN-LAST:event_jNomePersonaleActionPerformed
 
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
-      setVisible(false);        // TODO add your handling code here:
+      setVisible(false); 
+      new JDirettore(utente).setVisible(true);
     }//GEN-LAST:event_jButtonCloseActionPerformed
 
     private void jAggiungiCognomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAggiungiCognomeActionPerformed
@@ -535,7 +541,7 @@ else
           default:
               break;
       }
-   JListaPersonale_Direttore lisper = new JListaPersonale_Direttore();
+   JListaPersonale_Direttore lisper = new JListaPersonale_Direttore(utente);
         lisper.setLocationRelativeTo(null);
         lisper.setVisible(true);
          setVisible(false);
@@ -713,7 +719,7 @@ else
        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JAggiungiPersonale_Direttore().setVisible(true);
+                new JAggiungiPersonale_Direttore(utente).setVisible(true);
             }
         });
     }

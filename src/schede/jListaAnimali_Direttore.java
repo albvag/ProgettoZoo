@@ -8,10 +8,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.*;
 import javax.swing.table.*;
+import logins.JDirettore;
 import logins.JVeterinario;
 import progettozoo.Animale;
 import progettozoo.DBConnect;
 import progettozoo.ProgettoZoo;
+import progettozoo.Utente;
 import progettozoo.Visita;
 import schede.JSchedaAnimale_Veterinario;
 
@@ -20,6 +22,7 @@ import schede.JSchedaAnimale_Veterinario;
  * @author Roberto
  */
 public class jListaAnimali_Direttore extends javax.swing.JFrame {
+    public static Utente utente = new Utente();
  public String COD_AN, NOME, SPECIE, GENERE, HABITAT;
     public Date DATANASCITA;
     public boolean NOSTRO,PRESENTE,SALUTE;
@@ -27,8 +30,11 @@ public class jListaAnimali_Direttore extends javax.swing.JFrame {
     /**
      * Creates new form jListaAnimali_Direttore
      */
-    public jListaAnimali_Direttore() {
+    public jListaAnimali_Direttore(Utente user_log) {
         initComponents();
+         utente.setUsername(user_log.getUsername());
+        utente.setNome(user_log.getNome());
+        utente.setCognome(user_log.getCognome());
         JVeterinario v=new JVeterinario();
         this.jTableAnimali.getTableHeader().setReorderingAllowed(false);
            String[] jTableAnimaliHeaders  = {"Codice Animale","Nome Animale","Specie","Data di Nascita","Genere","Ultima Visita","Salute","Presente"};
@@ -105,7 +111,8 @@ public class jListaAnimali_Direttore extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       setVisible(false);  // TODO add your handling code here:
+       setVisible(false); 
+       new JDirettore(utente).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
  
     /**
@@ -138,7 +145,7 @@ public class jListaAnimali_Direttore extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new jListaAnimali_Direttore().setVisible(true);
+                new jListaAnimali_Direttore(utente).setVisible(true);
             }
         });
     }
