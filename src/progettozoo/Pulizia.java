@@ -20,6 +20,9 @@ public class Pulizia {
     private boolean ServeAiuto;
     private String NotePulizia;
     
+    Pulizia(){
+        
+    }
     
     Pulizia(int Codice_Pulizia,String Cod_Gabbia, Date Data_Inizio_Pulizia, Date Data_Fine_Pulizia, boolean Disponibile, boolean ServeAiuto, String NotePulizia){
        this.Codice_Pulizia = Codice_Pulizia;

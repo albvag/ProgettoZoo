@@ -27,9 +27,10 @@ public class ProgettoZoo {
     {
         DBConnect conn = new DBConnect();
         if(!conn.ciSonoCompiti()){
-            conn.addPulizieGionaliere();
+            
             conn.addPranziGionalieri();
             conn.addCeneGionaliere();
+            conn.addPulizieGionaliere();
         }
         JLogin login = new JLogin();
         login.setLocationRelativeTo(null);

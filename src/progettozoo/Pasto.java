@@ -22,7 +22,9 @@ public class Pasto {
     private boolean Disponibile;
     private boolean Terminato;
     
-    
+    Pasto(){
+        
+    }
     
     Pasto(int Codice_Pasto,String Cod_Gabbia, Date Data_Pasto, boolean Disponibile, boolean Terminato){
        this.Codice_Pasto = Codice_Pasto;

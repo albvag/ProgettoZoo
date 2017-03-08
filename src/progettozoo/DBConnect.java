@@ -1334,20 +1334,122 @@ public class DBConnect {
         }catch(Exception ex) {
             
         }
-        System.out.println(list.size());
-        if(list.size()!=0){
+        
+        if(list.size()>0){
             for(int i=0;i<list.size();i++){
-            try{    
-            String query = "Select * from pulizia WHERE Codice_Pulizia='"+list.get(i)+"' AND Disponibile ="+false+" AND Data_Inizio_Pulizia => '"+data+"'";
-            while(rs.next())
-                System.out.println(i);
-                return true;
+                
+            try{  
+            
+            String query = "Select * from pulizia WHERE Codice_Pulizia='"+list.get(i)+"' AND Disponibile ="+false+" AND Data_Inizio_Pulizia > '"+data+"' AND Data_Fine_Pulizia < '"+data+"' ";
+            rs = st.executeQuery(query);
+            while(rs.next()){
+                System.out.println(list.get(i));
+                return true;}
             }catch(Exception ex) {
+                Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
             }
             }
         }
         return false;
     }
 
+    public boolean stoNutrendo(Utente user){
+        Date date = new Date();
+        DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+        String data = format.format(date).toString()+" 00:00:00";
+        ArrayList<String> list = new ArrayList<String>();
+        try{
+            String query = "Select * from nutre WHERE Cod_Custode='"+user.getUsername()+"'" ;
+            rs = st.executeQuery(query);
+           
+            while(rs.next())  
+            list.add(rs.getString("Cod_Pasto"));
+        }catch(Exception ex) {
+            
+        }
+        
+        if(list.size()>0){
+            for(int i=0;i<list.size();i++){
+                
+            try{  
+            
+            String query = "Select * from pasti WHERE Codice_Pasto='"+list.get(i)+"' AND Disponibile ="+false+" AND Data_Pasto > '"+data+"' AND Terminato="+false+" ";
+            rs = st.executeQuery(query);
+            while(rs.next()){
+                System.out.println(list.get(i));
+                return true;}
+            }catch(Exception ex) {
+                Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }
+        }
+        return false;
+    }
     
+    public Pulizia attualePulizia(Utente user){
+        Pulizia pul = new Pulizia();
+        Date date = new Date();
+        DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+        String data = format.format(date).toString()+" 00:00:00";
+        ArrayList<String> list = new ArrayList<String>();
+        try{
+            String query = "Select * from pulisce WHERE Cod_Custode='"+user.getUsername()+"'" ;
+            rs = st.executeQuery(query);
+           
+            while(rs.next())  
+            list.add(rs.getString("Cod_Pulizia"));
+        }catch(Exception ex) {
+            
+        }
+        
+        if(list.size()>0){
+            for(int i=0;i<list.size();i++){
+                
+            try{   
+            String query = "Select * from pulizia WHERE Codice_Pulizia='"+list.get(i)+"' AND Disponibile ="+false+" AND Data_Inizio_Pulizia > '"+data+"' AND Data_Fine_Pulizia < '"+data+"' ";
+            rs = st.executeQuery(query);
+            while(rs.next()){
+                pul = new Pulizia(rs.getInt("Codice_Pulizia"),rs.getString("Cod_Gabbia"), rs.getDate("Data_Inizio_Pulizia"),rs.getDate("Data_Fine_Pulizia"),rs.getBoolean("Disponibile"),rs.getBoolean("ServeAiuto"),rs.getString("NotePulizia"));
+            }
+            }catch(Exception ex){
+                Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }
+        }
+        return pul;
+    }
+
+    public Pasto pastoAttuale(Utente user){
+        Pasto pas = new Pasto();
+        Date date = new Date();
+        DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+        String data = format.format(date).toString()+" 00:00:00";
+        ArrayList<String> list = new ArrayList<String>();
+        try{
+            String query = "Select * from nutre WHERE Cod_Custode='"+user.getUsername()+"'" ;
+            rs = st.executeQuery(query);
+           
+            while(rs.next())  
+            list.add(rs.getString("Cod_Pasto"));
+        }catch(Exception ex) {
+            
+        }
+        
+        if(list.size()>0){
+            for(int i=0;i<list.size();i++){
+                
+            try{  
+            
+            String query = "Select * from pasti WHERE Codice_Pasto='"+list.get(i)+"' AND Disponibile ="+false+" AND Data_Pasto > '"+data+"' AND Terminato="+false+" ";
+            rs = st.executeQuery(query);
+            while(rs.next()){
+                pas = new Pasto(rs.getInt("Codice_Pasto"),rs.getString("Cod_Gabbia"), rs.getDate("Data_Pasto"),rs.getBoolean("Disponibile"),rs.getBoolean("Terminato"));
+            }
+            }catch(Exception ex) {
+                Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }
+        }
+        return pas;
+    }
 }
