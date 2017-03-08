@@ -6,6 +6,8 @@
 
 package schede;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.Pattern;
@@ -93,7 +95,7 @@ public class JControlloPasti_Direttore extends javax.swing.JFrame {
             .addGroup(jInternalFrameTablePastiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jInternalFrameTablePastiLayout.setVerticalGroup(
             jInternalFrameTablePastiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,9 +118,9 @@ public class JControlloPasti_Direttore extends javax.swing.JFrame {
                         .addComponent(jChiudi, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jseldata)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jInternalFrameTablePasti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,6 +171,7 @@ public class JControlloPasti_Direttore extends javax.swing.JFrame {
    else if(dat2)
    {d=d2;}
           java.sql.Date sqlDate = new java.sql.Date(d.getTime());
+       
           if(data.isEmpty())
        {  
         this.jInternalFrameTablePasti.setVisible(false);
@@ -196,7 +199,7 @@ public class JControlloPasti_Direttore extends javax.swing.JFrame {
        JOptionPane.showMessageDialog(null, "NON CI SONO PASTI IN QUELLA DATA"); 
            }    else{
             this.jTablePasti.getTableHeader().setReorderingAllowed(false);
-           String[] jTableAnimaliHeaders  = {"Habitat","Custode","Disponibile","Terminato"};
+           String[] jTableAnimaliHeaders  = {"Pasto","Custode","Disponibile","Terminato"};
         v.selectmode(this.jTablePasti);   
         v.creaTabella(this.jTablePasti, jTableAnimaliHeaders);
         this.jTablePasti.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -253,8 +256,12 @@ public class JControlloPasti_Direttore extends javax.swing.JFrame {
         table.changeSelection(0, 0, false, false);
        for(int i = 0; i < listaPasti.size(); i++)
        {
-     
-           row[0] = listaPasti.get(i).getCodice_Gabbia();
+           String time="";
+
+           if(listaPasti.get(i).getData_Pasto().getHours()< 19)
+           {time="Pranzo";}
+           else time="Cena";
+           row[0] = time+" "+listaPasti.get(i).getCodice_Gabbia();
            
            row[1] = utlist[i].getNome()+" "+utlist[i].getCognome();
            

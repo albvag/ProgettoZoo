@@ -1017,7 +1017,7 @@ public class DBConnect {
         {
             
             
-             pas = new Pasto(rs.getInt("Codice_Pasto"),rs.getString("Cod_Gabbia"), rs.getDate("Data_Pasto"),rs.getBoolean("Disponibile"),rs.getBoolean("Terminato"));
+             pas = new Pasto(rs.getInt("Codice_Pasto"),rs.getString("Cod_Gabbia"), rs.getTimestamp("Data_Pasto"),rs.getBoolean("Disponibile"),rs.getBoolean("Terminato"));
                     listaPasti.add(pas);
    
         }
