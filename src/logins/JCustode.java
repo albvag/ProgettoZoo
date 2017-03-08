@@ -489,7 +489,5 @@ public class JCustode extends javax.swing.JFrame {
     private javax.swing.JButton jTerminaCompito;
     // End of variables declaration//GEN-END:variables
 
-    public void close(schede.JCibo_Custode aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 }
