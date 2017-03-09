@@ -160,15 +160,21 @@ public class JRimuoviPersonale_Direttore extends javax.swing.JFrame {
         String ruolo=this.jselruolo.getSelectedItem().toString();
         
         String nome=nominativo.intern();
-        
+        System.out.println(conn.contaDirettore());
        
         String [] nom=nome.split(" ");
         int no=nom.length-1;
         String n=nom[no];  
          String cod=conn.selezionacodiceImpiegato(n);
+         
+         if(ruolo.equals("Direttore") && (conn.contaDirettore() <2))
+         { 
+             JOptionPane.showMessageDialog(null, "DEVE ESSERCI ALMENO UN DIRETTORE");
+         }else {
            int reply = JOptionPane.showConfirmDialog(null, "Vuoi eliminare l'utente "+this.jselnome.getSelectedItem().toString()+"\n di ruolo "+this.jselruolo.getSelectedItem().toString()+"?" , "Confermare?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION)
-                { conn.deletePersonaleImpiegato(cod);
+                { 
+                    conn.deletePersonaleImpiegato(cod);
          conn.deletePersonaleUtente(cod);
          JOptionPane.showMessageDialog(null, "L'UTENTE SELEZIONATO E' STATO RIMOSSO");
 
@@ -197,7 +203,7 @@ public class JRimuoviPersonale_Direttore extends javax.swing.JFrame {
         lisper.setVisible(true);
                  setVisible(false);
         }
-         
+         }  
     }//GEN-LAST:event_jRimuoviActionPerformed
 
     private void jChiudiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChiudiActionPerformed

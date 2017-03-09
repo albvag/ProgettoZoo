@@ -48,7 +48,7 @@ public class DBConnect {
                
                 while(rs.next())
                 {
-                    rs.getString("animale.Specie");
+                    
                     conta++;
                     
                 }
@@ -57,6 +57,29 @@ public class DBConnect {
                 System.out.println(ex);
             }   
            return conta+1; 
+    }
+    public int contaDirettore()
+    {
+        int conta=0;
+         String query="SELECT Ruolo_Utente from utente where Ruolo_Utente= 'Direttore'";
+         try{
+               
+               rs = st.executeQuery(query);
+               
+               
+                while(rs.next())
+                {
+                    
+                    conta++;
+                    
+                }
+            }catch(Exception ex){
+
+                System.out.println(ex);
+            }   
+         
+           return conta; 
+    
     }
      public void insertSpecie(String Cod_Specie)
     {
