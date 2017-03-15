@@ -19,6 +19,7 @@ import static schede.JAggiungiPersonale_Direttore.check;
  */
 public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
     public static Utente utente = new Utente();
+    DBConnect conn= new DBConnect();
     /**
      * Creates new form JAggiungiHabitat_Direttore
      */
@@ -157,7 +158,7 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
        Pattern pattern1 = Pattern.compile(formhabitat);
         boolean spe=check(formspecie,specie);
        boolean hab=check(formhabitat,habitat);
-       DBConnect conn= new DBConnect();
+       
        if(hab==true && spe==true)
        {if(conn.habitatExists(habitat))
        {

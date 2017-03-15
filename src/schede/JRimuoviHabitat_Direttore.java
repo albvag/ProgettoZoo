@@ -22,6 +22,7 @@ import progettozoo.Utente;
  */
 public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
     public static Utente utente = new Utente();
+    DBConnect conn =new DBConnect();
     /**
      * Creates new form JRimuoviHabitat_Direttore
      */
@@ -30,7 +31,6 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
         utente.setUsername(user_log.getUsername());
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
-        DBConnect conn =new DBConnect();
         ArrayList<Habitat> list = conn.selezionaHabitat();
         
         for(int i = 0; i < list.size(); i++)
@@ -136,8 +136,7 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jrimuoviHabitatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrimuoviHabitatActionPerformed
-      DBConnect conn = new DBConnect();
-        this.jselspecie.setText(conn.selezionaSpecieHabitat(this.jrimuoviHabitat.getSelectedItem().toString()).getSpecie());
+       this.jselspecie.setText(conn.selezionaSpecieHabitat(this.jrimuoviHabitat.getSelectedItem().toString()).getSpecie());
     }//GEN-LAST:event_jrimuoviHabitatActionPerformed
 
     private void jChiudiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChiudiActionPerformed
@@ -148,7 +147,6 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
     private void jRimuoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRimuoviActionPerformed
         String sel =this.jrimuoviHabitat.getSelectedItem().toString();
         String specie=this.jselspecie.getText();
-        DBConnect conn =new DBConnect();
         if(conn.habitatisEmpty(sel)==true)
         {int reply = JOptionPane.showConfirmDialog(null, "Vuoi eliminare l'habitat: "+this.jrimuoviHabitat.getSelectedItem().toString()+"\n contenente la specie: "+this.jselspecie.getText()+"\n Sia l'habitat che la specie selezionati saranno rimossi", "Confermare?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION)

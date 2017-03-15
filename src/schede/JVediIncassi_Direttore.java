@@ -28,6 +28,9 @@ import static schede.JAggiungiAnimale_Direttore.check;
  */
 public class JVediIncassi_Direttore extends javax.swing.JFrame {
     public static Utente utente = new Utente();
+    DBConnect conn =new DBConnect();
+    ProgettoZoo pz= new ProgettoZoo();
+    JVeterinario v=new JVeterinario();
     /**
      * Creates new form JVediIncassi_Direttore
      */
@@ -184,16 +187,11 @@ public class JVediIncassi_Direttore extends javax.swing.JFrame {
     }//GEN-LAST:event_jChiudiActionPerformed
 
     private void jdataincassiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jdataincassiActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jdataincassiActionPerformed
 
     private void jConfermaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConfermaActionPerformed
-        DBConnect conn =new DBConnect();
-        ProgettoZoo pz= new ProgettoZoo();
-        JVeterinario v=new JVeterinario();
         Date today=new Date();
-      
-        
         ArrayList<Vende> venlist=new ArrayList<Vende>();
         String data=this.jdataincassi.getText();
         String fordata ="(0[1-9]|1[0-9]|2[0-9]|3[01])[-](0[1-9]|1[0-2])[-](19|20)[0-9]{2}";
@@ -318,8 +316,6 @@ public class JVediIncassi_Direttore extends javax.swing.JFrame {
     }
  public void Show_Incassi_In_JTable(JTable table,Date data)
    {
-       ProgettoZoo pz=new ProgettoZoo();
-       DBConnect conn=new DBConnect();
        ArrayList<String> prodlist=conn.selezionaProdVenduti();
       
        ArrayList<Vende> venlist = conn.getIncassi(prodlist,data);

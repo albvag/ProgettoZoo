@@ -21,6 +21,7 @@ import progettozoo.Utente;
  */
 public class JRimuoviAnimale_Direttore extends javax.swing.JFrame {
      public static Utente utente = new Utente();
+     DBConnect conn =new DBConnect();
     /**
      * Creates new form JRimuoviAnimale_Direttore
      */
@@ -29,7 +30,6 @@ public class JRimuoviAnimale_Direttore extends javax.swing.JFrame {
         utente.setUsername(user_log.getUsername());
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
-         DBConnect conn =new DBConnect();
          
         ArrayList<Animale> list = conn.selezionaAnimaliSpecie();
         
@@ -153,7 +153,6 @@ public class JRimuoviAnimale_Direttore extends javax.swing.JFrame {
     }//GEN-LAST:event_jChiudiActionPerformed
 
     private void jRimuoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRimuoviActionPerformed
-          DBConnect conn= new DBConnect();
           String Cod_anim=this.jselanim.getSelectedItem().toString();
           String codice=conn.selezionacodiceAnimale(Cod_anim);
            int reply = JOptionPane.showConfirmDialog(null, "Vuoi eliminare l'animale "+this.jselanim.getSelectedItem().toString()+"\n di specie "+this.jselspecie.getSelectedItem().toString() , "Confermare?", JOptionPane.YES_NO_OPTION);
@@ -169,8 +168,7 @@ public class JRimuoviAnimale_Direttore extends javax.swing.JFrame {
     }//GEN-LAST:event_jRimuoviActionPerformed
 
     private void jselspecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jselspecieActionPerformed
-          DBConnect conn=new DBConnect();
-       String specie=this.jselspecie.getSelectedItem().toString();
+          String specie=this.jselspecie.getSelectedItem().toString();
        ArrayList<Animale> lista= new ArrayList<Animale>();
        
        lista=conn.selezionaAnimaliNome(specie);
@@ -184,15 +182,10 @@ public class JRimuoviAnimale_Direttore extends javax.swing.JFrame {
             
         }}
      
-     
-       
-        
-      // TODO add your handling code here:
     }//GEN-LAST:event_jselspecieActionPerformed
 
     private void jselanimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jselanimActionPerformed
     
-     
     }//GEN-LAST:event_jselanimActionPerformed
 
     /**

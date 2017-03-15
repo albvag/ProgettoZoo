@@ -24,6 +24,9 @@ import progettozoo.Visita;
  */
 public class JPrestaAnimale_Direttore extends javax.swing.JFrame {
     public static Utente utente = new Utente();
+    JVeterinario v=new JVeterinario();
+    DBConnect conn=new DBConnect();
+    ProgettoZoo pz = new ProgettoZoo();
     /**
      * Creates new form JPrestaAnimale_Direttore
      */
@@ -32,7 +35,6 @@ public class JPrestaAnimale_Direttore extends javax.swing.JFrame {
         utente.setUsername(user_log.getUsername());
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
-         JVeterinario v=new JVeterinario();
         this.jTablePresenti.getTableHeader().setReorderingAllowed(false);
            String[] jTableAnimaliHeaders  = {"Nome Animale","Specie","Genere","Data di Nascita"};
         v.selectmode(this.jTablePresenti);   
@@ -168,7 +170,6 @@ public class JPrestaAnimale_Direttore extends javax.swing.JFrame {
     }//GEN-LAST:event_jChiudiActionPerformed
 
     private void jPrestaAnimaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPrestaAnimaliActionPerformed
-        DBConnect conn=new DBConnect();
         ArrayList<Animale> list = conn.selezionaAnimaliPresenti();
         if(this.jTablePresenti.getSelectedRow()==0)
         {JOptionPane.showMessageDialog(null, "Non hai selezionato nessun animale");}
@@ -186,8 +187,7 @@ public class JPrestaAnimale_Direttore extends javax.swing.JFrame {
     }//GEN-LAST:event_jPrestaAnimaliActionPerformed
 
     private void jRichiamaAnimaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRichiamaAnimaliActionPerformed
-         DBConnect conn=new DBConnect();
-        ArrayList<Animale> list = conn.selezionaAnimaliInPrestito();
+         ArrayList<Animale> list = conn.selezionaAnimaliInPrestito();
          if(this.jTableInPrestito.getSelectedRow()==0)
         {JOptionPane.showMessageDialog(null, "Non hai selezionato nessun animale");}
         else{
@@ -240,9 +240,6 @@ public class JPrestaAnimale_Direttore extends javax.swing.JFrame {
 
    public void Show_AnimaliPresenti_In_JTable(JTable table)
    {
-       DBConnect conn = new DBConnect();
-       ProgettoZoo pz = new ProgettoZoo();          
-       
        ArrayList<Animale> list = conn.selezionaAnimaliPresenti();
       
        
@@ -269,9 +266,6 @@ public class JPrestaAnimale_Direttore extends javax.swing.JFrame {
    }
     public void Show_AnimaliInPrestito_In_JTable(JTable table)
    {
-       DBConnect conn = new DBConnect();
-       ProgettoZoo pz = new ProgettoZoo();          
-       
        ArrayList<Animale> list = conn.selezionaAnimaliInPrestito();
       
        

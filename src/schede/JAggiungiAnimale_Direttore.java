@@ -28,6 +28,8 @@ import progettozoo.Utente;
  */
 public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
     public static Utente utente = new Utente();
+    DBConnect conn =new DBConnect();
+    ProgettoZoo pz= new ProgettoZoo();
     /**
      * Creates new form JAggiungiAnimale_Direttore
      */
@@ -36,7 +38,7 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
         utente.setUsername(user_log.getUsername());
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
-          DBConnect conn =new DBConnect();
+          
        
              
         ArrayList<Animale> lista = conn.selezionaSpecie();
@@ -301,7 +303,7 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
         boolean nom=check(formnome,nome); 
         boolean dat=check(fordata,data);
          boolean dat2=check(fordata2,data);        
-         ProgettoZoo pz= new ProgettoZoo();
+         
    Date today=new Date();
    Date d= new Date();
    Date d1= pz.ConvertStringToDate(data,"dd-MM-yyyy");
@@ -331,7 +333,7 @@ else
     erroredata.setText("Caratteri validi");
 
     
-   DBConnect conn =new DBConnect();
+  
    
    int cod=conn.countSpecie(specie);
    
@@ -411,7 +413,7 @@ else
     }//GEN-LAST:event_jAggiunginomeanimaleFocusGained
 
     private void jselspecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jselspecieActionPerformed
-        DBConnect conn=new DBConnect();
+        
         this.jselhabitat.setText(conn.selezionaHabitatSpecie(this.jselspecie.getSelectedItem().toString()).getHabitat());
         
        

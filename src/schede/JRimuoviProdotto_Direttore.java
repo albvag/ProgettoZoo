@@ -19,6 +19,7 @@ import progettozoo.Utente;
  */
 public class JRimuoviProdotto_Direttore extends javax.swing.JFrame {
     public static Utente utente = new Utente();
+    DBConnect conn =new DBConnect();
     /**
      * Creates new form JRimuoviProdotto_Direttore
      */
@@ -27,7 +28,6 @@ public class JRimuoviProdotto_Direttore extends javax.swing.JFrame {
         utente.setUsername(user_log.getUsername());
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
-        DBConnect conn =new DBConnect();
         ArrayList<Prodotto> list = conn.selezionaProdotto("");
         
         
@@ -118,7 +118,6 @@ public class JRimuoviProdotto_Direttore extends javax.swing.JFrame {
 
     private void jRimuoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRimuoviActionPerformed
         String tipoPro = this.jrimuoviprodotto.getSelectedItem().toString();
-        DBConnect conn=new DBConnect();
          int reply = JOptionPane.showConfirmDialog(null, "Vuoi eliminare il prodotto "+this.jrimuoviprodotto.getSelectedItem().toString()+"?", "Confermare?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION)
                 { conn.deleteProdotto(tipoPro);

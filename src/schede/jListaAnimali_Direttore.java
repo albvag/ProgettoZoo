@@ -27,6 +27,7 @@ public class jListaAnimali_Direttore extends javax.swing.JFrame {
     public Date DATANASCITA;
     public boolean NOSTRO,PRESENTE,SALUTE;
     public Animale anim_sel = new Animale();
+    JVeterinario v=new JVeterinario();
     /**
      * Creates new form jListaAnimali_Direttore
      */
@@ -35,7 +36,6 @@ public class jListaAnimali_Direttore extends javax.swing.JFrame {
          utente.setUsername(user_log.getUsername());
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
-        JVeterinario v=new JVeterinario();
         this.jTableAnimali.getTableHeader().setReorderingAllowed(false);
            String[] jTableAnimaliHeaders  = {"Codice Animale","Nome Animale","Specie","Data di Nascita","Genere","Ultima Visita","Salute","Presente"};
         v.selectmode(this.jTableAnimali);   

@@ -21,6 +21,8 @@ import static schede.JAggiungiAnimale_Direttore.check;
  */
 public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
     public static Utente utente = new Utente();
+    DBConnect conn =new DBConnect();
+    ProgettoZoo pz= new ProgettoZoo();
     /**
      * Creates new form JAggiungiPersonale_Direttore
      */
@@ -387,15 +389,11 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
 }
   
     private void jAggiungiIndirizzoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAggiungiIndirizzoActionPerformed
-         String indirizzo= this.jAggiungiIndirizzo.getText();
-      // TODO add your handling code here:
+         
     }//GEN-LAST:event_jAggiungiIndirizzoActionPerformed
 
     private void jNomePersonaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNomePersonaleActionPerformed
-       String nome= this.jNomePersonale.getText();
        
-       
-// TODO add your handling code here:
     }//GEN-LAST:event_jNomePersonaleActionPerformed
 
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
@@ -404,7 +402,7 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCloseActionPerformed
 
     private void jAggiungiCognomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAggiungiCognomeActionPerformed
-       String cognome= this.jAggiungiCognome.getText();        // TODO add your handling code here:
+               
     }//GEN-LAST:event_jAggiungiCognomeActionPerformed
    
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
@@ -455,9 +453,8 @@ boolean pass=check(formpass,password);
 boolean rpass=check(password,rippass);
 boolean dat2=check(fordata2,data);
 
-DBConnect conn =new DBConnect();
+
    String Cod_pers=(this.jAggiungiUser.getText());
-   ProgettoZoo pz= new ProgettoZoo();
    Date today =new Date();
  Date d= new Date();
    Date d1= pz.ConvertStringToDate(data,"dd-MM-yyyy");
@@ -552,35 +549,31 @@ else
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jAggiungiResidenzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAggiungiResidenzaActionPerformed
-      String residenza =this.jAggiungiResidenza.getText();
-      
-// TODO add your handling code here:
+    
     }//GEN-LAST:event_jAggiungiResidenzaActionPerformed
 
     private void jAggiungiNumeroTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAggiungiNumeroTelefonoActionPerformed
-       String telefono=this.jAggiungiNumeroTelefono.getText();  
-      // TODO add your handling code here:
+     
     }//GEN-LAST:event_jAggiungiNumeroTelefonoActionPerformed
 
     private void jAggiungiUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAggiungiUserActionPerformed
-        // TODO add your handling code here:
+     
     }//GEN-LAST:event_jAggiungiUserActionPerformed
 
     private void jAggiungiPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAggiungiPasswordActionPerformed
-        String password=this.jAggiungiPassword.getText(); // TODO add your handling code here:
+       
     }//GEN-LAST:event_jAggiungiPasswordActionPerformed
 
     private void jRipetiPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRipetiPasswordActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jRipetiPasswordActionPerformed
 
     private void jRuoloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRuoloActionPerformed
-        
-      // TODO add your handling code here:
+  
     }//GEN-LAST:event_jRuoloActionPerformed
 
     private void jDatanascitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDatanascitaActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jDatanascitaActionPerformed
 
     private void jNomePersonaleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jNomePersonaleFocusGained

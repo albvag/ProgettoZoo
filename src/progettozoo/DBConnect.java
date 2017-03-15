@@ -1092,6 +1092,97 @@ public class DBConnect {
         }
         return utlist;
     }
+     
+     
+       public Utente[][] getPulizie(Date dat,ArrayList<Pulizia> listaPulizie)
+    {
+        
+       
+        Pulizia pul;
+        
+         String data1=dat.toString()+" 00:00:00";
+         String data2=dat.toString()+" 23:59:59";
+         
+        
+       String query2 = "Select * from pulizia  where  pulizia.Data_Inizio_Pulizia >=  '"+data1+"' AND pulizia.Data_Inizio_Pulizia <= '"+data2+"'";
+        try {
+            
+            rs=st.executeQuery(query2);
+            
+             while(rs.next())  
+        {
+            
+            
+             pul = new Pulizia(rs.getInt("Codice_Pulizia"),rs.getString("Cod_Gabbia"), rs.getTimestamp("Data_Inizio_Pulizia"),rs.getTimestamp("Data_Fine_Pulizia"),rs.getBoolean("Disponibile"),rs.getBoolean("ServeAiuto"),rs.getString("NotePulizia"));
+                    listaPulizie.add(pul);
+   
+        }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+       
+        Utente[][] utlist= new Utente[listaPulizie.size()][3];
+        
+        for(int i =0;i<listaPulizie.size();i++)
+        {
+            Utente  ut=new Utente();
+          for(int j=0;j<3;j++)
+          {
+               Utente user=new Utente();
+              utlist[i][j]=user;
+          }
+          
+           int j=0;
+           
+        String query = "Select * from pulisce  where Cod_Pulizia= '"+listaPulizie.get(i).getCodice_Pulizia()+"'";
+        try {
+           
+            rs=st.executeQuery(query);
+            
+             while(rs.next())  
+        {
+           
+            
+             utlist[i][j].setUsername(rs.getString("pulisce.Cod_Custode"));
+             
+              System.out.println(rs.getString("pulisce.Cod_Custode"));
+               System.out.println(j);
+            j++;    
+  
+        }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+        
+        
+        
+        for(int i=0;i<utlist.length;i++)
+        {
+            for(int j=0;j<2;j++)
+            {
+             String query3 = "Select * from impiegato  where Codice_Impiegato= '"+utlist[i][j].getUsername()+"'";
+        try {
+            
+            rs=st.executeQuery(query3);
+            
+             while(rs.next())  
+        {
+            System.out.println(j);
+            utlist[i][j].setNome(rs.getString("Nome"));
+            utlist[i][j].setCognome(rs.getString("Cognome"));
+            
+            
+        }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            }
+        }
+        
+        return utlist;
+    }
     public ArrayList<Vende> getIncassi(ArrayList<String> prodlist,Date dat)
     {
         ArrayList<Vende> venlist = new ArrayList<Vende>();
@@ -1211,7 +1302,7 @@ public class DBConnect {
         String dataInizio = format.format(date).toString()+" 00:00:00";
         ArrayList<Pulizia> listaPulizie = new ArrayList<Pulizia>();
         
-        String query = "Select * from pulizia WHERE ServeAiuto = "+true+" AND Disponibile = "+false+" AND Data_Inizio_Pulizia='"+dataInizio+"'";
+        String query = "Select * from pulizia WHERE ServeAiuto = "+true+" AND Disponibile = "+false+" AND Data_Inizio_Pulizia >='"+dataInizio+"'";
 
            try{
                Pulizia pul;

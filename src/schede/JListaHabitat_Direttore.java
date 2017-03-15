@@ -16,6 +16,8 @@ import progettozoo.Utente;
  */
 public class JListaHabitat_Direttore extends javax.swing.JFrame {
     public static Utente utente = new Utente();
+    JVeterinario v=new JVeterinario();
+    JDirettore d=new JDirettore();
     /**
      * Creates new form JListaHabitat_Direttore
      */
@@ -24,8 +26,6 @@ public class JListaHabitat_Direttore extends javax.swing.JFrame {
         utente.setUsername(user_log.getUsername());
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
-           JVeterinario v=new JVeterinario();
-        JDirettore d=new JDirettore();
          String[] jTableProdottiHeaders  = {"Habitat","Specie"};
         v.selectmode(this.jTableHabitat);   
         v.creaTabella(this.jTableHabitat, jTableProdottiHeaders);

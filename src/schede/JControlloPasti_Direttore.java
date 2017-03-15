@@ -28,6 +28,9 @@ import static schede.JAggiungiAnimale_Direttore.check;
  */
 public class JControlloPasti_Direttore extends javax.swing.JFrame {
      public static Utente utente = new Utente();
+     DBConnect conn= new DBConnect();
+     ProgettoZoo pz= new ProgettoZoo();
+     JVeterinario v= new JVeterinario();
     /** Creates new form JControlloPasti_Direttore */
     public JControlloPasti_Direttore( Utente user_log) {
         initComponents();
@@ -150,9 +153,7 @@ public class JControlloPasti_Direttore extends javax.swing.JFrame {
     }//GEN-LAST:event_jChiudiActionPerformed
 
     private void jConfermaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConfermaActionPerformed
-        DBConnect conn= new DBConnect();
-        ProgettoZoo pz= new ProgettoZoo();
-        JVeterinario v= new JVeterinario();
+       
         String data =this.jseldata.getText();
          String fordata ="(0[1-9]|1[0-9]|2[0-9]|3[01])[-](0[1-9]|1[0-2])[-](19|20)[0-9]{2}";
         String fordata2 ="(0[1-9]|1[0-9]|2[0-9]|3[01])[/](0[1-9]|1[0-2])[/](19|20)[0-9]{2}";
@@ -246,8 +247,7 @@ public class JControlloPasti_Direttore extends javax.swing.JFrame {
     }
    public void Show_ControlloPasti_In_JTable(JTable table,Date data)
    {
-       ProgettoZoo pz=new ProgettoZoo();
-       DBConnect conn=new DBConnect();
+      
        ArrayList<Pasto> listaPasti = new ArrayList<Pasto>();
        Utente[] utlist=conn.getPasti(data, listaPasti);
        DefaultTableModel model = (DefaultTableModel) table.getModel();

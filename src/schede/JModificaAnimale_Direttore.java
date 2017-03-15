@@ -25,6 +25,8 @@ import static schede.JAggiungiAnimale_Direttore.check;
  */
 public class JModificaAnimale_Direttore extends javax.swing.JFrame {
     public static Utente utente = new Utente();
+    DBConnect conn =new DBConnect();
+    ProgettoZoo pz =new ProgettoZoo();
     /**
      * Creates new form JModificaAnimale_Direttore
      */
@@ -34,8 +36,6 @@ public class JModificaAnimale_Direttore extends javax.swing.JFrame {
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
         
-          DBConnect conn =new DBConnect();
-         
         ArrayList<Animale> list = conn.selezionaAnimaliSpecie();
         for(int i=0;i<list.size();i++)
         {
@@ -260,7 +260,6 @@ public class JModificaAnimale_Direttore extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCloseActionPerformed
 
     private void jselezionaspecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jselezionaspecieActionPerformed
-             DBConnect conn=new DBConnect();
        String specie=this.jselezionaspecie.getSelectedItem().toString();
        ArrayList<Animale> lista= new ArrayList<Animale>();
        
@@ -279,8 +278,6 @@ public class JModificaAnimale_Direttore extends javax.swing.JFrame {
     private void jConfermaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConfermaActionPerformed
         String specie = this.jselezionaspecie.getSelectedItem().toString();
         String nome = this.jselanim.getSelectedItem().toString();
-        DBConnect conn = new DBConnect();
-        ProgettoZoo pz =new ProgettoZoo();
         String nostro;
         String salute;
         //ArrayList<Animale> animlist =new ArrayList<Animale>();
@@ -324,8 +321,6 @@ public class JModificaAnimale_Direttore extends javax.swing.JFrame {
 
     private void jModificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jModificaActionPerformed
         Animale an=new Animale();
-          DBConnect conn = new DBConnect();
-        ProgettoZoo pz =new ProgettoZoo();
         String specie = this.jselezionaspecie.getSelectedItem().toString();
         String nome = this.jselanim.getSelectedItem().toString();
         String name= this.jAggiunginomeanimale.getText();

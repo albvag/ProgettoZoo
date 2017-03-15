@@ -24,6 +24,8 @@ import static schede.JAggiungiPersonale_Direttore.check;
  */
 public class JModificaPersonale_Direttore extends javax.swing.JFrame {
     public static Utente utente = new Utente();
+    DBConnect conn =new DBConnect();
+    ProgettoZoo pz =new ProgettoZoo();
     /**
      * Creates new form JModificaPersonale_Direttore
      */
@@ -32,8 +34,7 @@ public class JModificaPersonale_Direttore extends javax.swing.JFrame {
          utente.setUsername(user_log.getUsername());
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
-           DBConnect conn =new DBConnect();
-         
+            
         ArrayList<Utente> list = conn.selezionaPersonaleRuolo();
         
         
@@ -306,8 +307,6 @@ public class JModificaPersonale_Direttore extends javax.swing.JFrame {
     private void jConfermaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConfermaActionPerformed
          String ruolo = this.jselruolo.getSelectedItem().toString();
         String nome = this.jselnome.getSelectedItem().toString();
-         DBConnect conn = new DBConnect();
-        ProgettoZoo pz =new ProgettoZoo();
         Utente ut=new Utente();
         ArrayList<Utente> ruololist = new ArrayList<Utente>();
         ruololist=conn.selezionaPersonaleRuolo();
@@ -336,7 +335,6 @@ public class JModificaPersonale_Direttore extends javax.swing.JFrame {
     }//GEN-LAST:event_jConfermaActionPerformed
 
     private void jselruoloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jselruoloActionPerformed
-        DBConnect conn = new DBConnect();
         String ruolo=this.jselruolo.getSelectedItem().toString();
        ArrayList<Utente> lista= new ArrayList<Utente>();
        
@@ -400,10 +398,6 @@ boolean tel=check(formtel,telefono);
 boolean pass=check(formpass,password);
 boolean rpass=check(password,rippass);
  boolean dat2=check(fordata2,data); 
-
-DBConnect conn =new DBConnect();
-   
-   ProgettoZoo pz= new ProgettoZoo();
    
    Date today =new Date();
  Date d= new Date();

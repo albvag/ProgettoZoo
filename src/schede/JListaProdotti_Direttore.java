@@ -17,6 +17,8 @@ import static schede.JControlloPasti_Direttore.utente;
  */
 public class JListaProdotti_Direttore extends javax.swing.JFrame {
     public static Utente utente = new Utente();
+    JVeterinario v=new JVeterinario();
+    JDirettore d=new JDirettore();
     /**
      * Creates new form JListaProdotti_Direttore
      */
@@ -25,8 +27,6 @@ public class JListaProdotti_Direttore extends javax.swing.JFrame {
         utente.setUsername(user_log.getUsername());
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
-         JVeterinario v=new JVeterinario();
-        JDirettore d=new JDirettore();
          String[] jTableProdottiHeaders  = {"Nome","Prezzo","Disponibilità"};
         v.selectmode(this.jTableProdotti);   
         v.creaTabella(this.jTableProdotti, jTableProdottiHeaders);

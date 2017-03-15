@@ -20,6 +20,7 @@ import static schede.JAggiungiProdotto_Direttore.check;
  */
 public class JCambiaPrezzi_Direttore extends javax.swing.JFrame {
     public static Utente utente = new Utente();
+    DBConnect conn =new DBConnect();
     /**
      * Creates new form JCambiaPrezzi_Direttore
      */
@@ -28,7 +29,6 @@ public class JCambiaPrezzi_Direttore extends javax.swing.JFrame {
           utente.setUsername(user_log.getUsername());
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
-           DBConnect conn =new DBConnect();
         ArrayList<Prodotto> list = conn.selezionaProdotto("");
         
         
@@ -145,8 +145,6 @@ public class JCambiaPrezzi_Direttore extends javax.swing.JFrame {
 
     private void jselprodottoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jselprodottoActionPerformed
         String prodotto =this.jselprodotto.getSelectedItem().toString();
-        DBConnect conn= new DBConnect();
-        
         ArrayList<Prodotto> prod =conn.selezionaProdotto(prodotto);
         Double a= prod.get(0).getPrezzo();
         this.joldprize.setText(a.toString());
@@ -166,7 +164,6 @@ public class JCambiaPrezzi_Direttore extends javax.swing.JFrame {
          if(pre==false)
          JOptionPane.showMessageDialog(null, "CARATTERI NON VALIDI");
          else{
-      DBConnect conn=new DBConnect();
        int reply = JOptionPane.showConfirmDialog(null, "Vuoi cambiare il prezzo del prodotto: "+this.jselprodotto.getSelectedItem().toString()+" da: "+this.joldprize.getText()+" a: "+this.jnewprize.getText(), "Confermare?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION)
                 {    double p=Double.parseDouble(prezzo);

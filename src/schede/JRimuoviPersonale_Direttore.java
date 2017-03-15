@@ -19,12 +19,12 @@ import progettozoo.Utente;
  */
 public class JRimuoviPersonale_Direttore extends javax.swing.JFrame {
     public static Utente utente = new Utente();
+    DBConnect conn =new DBConnect();
     /**
      * Creates new form JRimuoviPersonale_Direttore
      */
     public JRimuoviPersonale_Direttore(Utente user_log) {
-        initComponents();
-         DBConnect conn =new DBConnect();
+        initComponents(); 
          utente.setUsername(user_log.getUsername());
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
@@ -134,7 +134,6 @@ public class JRimuoviPersonale_Direttore extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jselruoloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jselruoloActionPerformed
-             DBConnect conn=new DBConnect();
        String ruolo=this.jselruolo.getSelectedItem().toString();
        ArrayList<Utente> lista= new ArrayList<Utente>();
        
@@ -151,11 +150,10 @@ public class JRimuoviPersonale_Direttore extends javax.swing.JFrame {
     }//GEN-LAST:event_jselruoloActionPerformed
 
     private void jselnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jselnomeActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jselnomeActionPerformed
 
     private void jRimuoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRimuoviActionPerformed
-        DBConnect conn=new DBConnect();
         String nominativo=this.jselnome.getSelectedItem().toString();
         String ruolo=this.jselruolo.getSelectedItem().toString();
         

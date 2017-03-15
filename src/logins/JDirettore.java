@@ -21,6 +21,7 @@ import schede.JAggiungiPersonale_Direttore;
 import schede.JAggiungiProdotto_Direttore;
 import schede.JCambiaPrezzi_Direttore;
 import schede.JControlloPasti_Direttore;
+import schede.JControlloPulizie_Direttore;
 import schede.JListaHabitat_Direttore;
 import schede.JListaPersonale_Direttore;
 import schede.JListaProdotti_Direttore;
@@ -40,7 +41,8 @@ import schede.jListaAnimali_Direttore;
  */
 public class JDirettore extends javax.swing.JFrame {
  public Utente user = new Utente();
- 
+ DBConnect conn=new DBConnect();
+ ProgettoZoo pz=new ProgettoZoo();
     /**
      * Creates new form JDirettore
      */
@@ -222,6 +224,11 @@ public class JDirettore extends javax.swing.JFrame {
         });
 
         jButton2.setText("Controllo Pulizie");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jModificaPersonale.setText("Modifica Personale");
         jModificaPersonale.addActionListener(new java.awt.event.ActionListener() {
@@ -467,12 +474,18 @@ public class JDirettore extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_jControlloPastiActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        JControlloPulizie_Direttore conpul= new JControlloPulizie_Direttore(user);
+        conpul.setLocationRelativeTo(null);
+        conpul.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
 public void Show_Prodotti_In_JTable(JTable table)
    {
-       DBConnect conn=new DBConnect();
        ArrayList<Prodotto> list = conn.listaProdotti();
        DefaultTableModel model = (DefaultTableModel) table.getModel();
        Object[] row = new Object[3];
@@ -496,7 +509,6 @@ public void Show_Prodotti_In_JTable(JTable table)
 
    public void Show_Habitat_In_JTable(JTable table)
    {
-       DBConnect conn=new DBConnect();
        ArrayList<Habitat> list = conn.selezionaHabitat();
        DefaultTableModel model = (DefaultTableModel) table.getModel();
        Object[] row = new Object[2];
@@ -514,8 +526,6 @@ public void Show_Prodotti_In_JTable(JTable table)
     }
     public void Show_Utenti_In_JTable(JTable table)
    {
-       ProgettoZoo pz=new ProgettoZoo();
-       DBConnect conn=new DBConnect();
        ArrayList<Utente> list = conn.selezionaImpiegato();
        DefaultTableModel model = (DefaultTableModel) table.getModel();
        Object[] row = new Object[8];

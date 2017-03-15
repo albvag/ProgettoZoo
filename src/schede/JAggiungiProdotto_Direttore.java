@@ -21,6 +21,7 @@ import static schede.JAggiungiPersonale_Direttore.check;
  */
 public class JAggiungiProdotto_Direttore extends javax.swing.JFrame {
      public static Utente utente = new Utente();
+     DBConnect conn=new DBConnect();
     /**
      * Creates new form JAggiungiProdotto_Direttore
      */
@@ -182,15 +183,15 @@ public class JAggiungiProdotto_Direttore extends javax.swing.JFrame {
     return false;
 }
     private void jaggiunginomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jaggiunginomeActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jaggiunginomeActionPerformed
 
     private void jaggiungiprezzoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jaggiungiprezzoActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jaggiungiprezzoActionPerformed
 
     private void jaggiungigiacenzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jaggiungigiacenzaActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jaggiungigiacenzaActionPerformed
 
     private void jSalvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalvaActionPerformed
@@ -216,7 +217,6 @@ public class JAggiungiProdotto_Direttore extends javax.swing.JFrame {
             
       int g=Integer.parseInt(giacenza);
       double p=Double.parseDouble(prezzo);
-      DBConnect conn=new DBConnect();
       conn.addProdotto(nome, p, g);
                     JListaProdotti_Direttore lispro=new JListaProdotti_Direttore(utente);
        lispro.setLocationRelativeTo(null);
