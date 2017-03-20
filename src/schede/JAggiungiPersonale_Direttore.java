@@ -499,7 +499,7 @@ if(pass==false)
     errorepass.setText("Caratteri non validi");
 else
     errorepass.setText("Caratteri validi");
-if(rpass==false || pass==false )
+if(rpass==false || pass==false)
     errconfpass.setText("Password non corrispondente");
 else
     errconfpass.setText("Caratteri validi");
