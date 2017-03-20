@@ -667,7 +667,7 @@ else
     }//GEN-LAST:event_jAggiungiNumeroTelefonoFocusLost
 
     private void jAggiungiUserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiungiUserFocusGained
-         if(jAggiungiUser.getText().equals("Campo formato da soli caratteri alfanumerici più  _ e – di lungezza min 3 e max 8"))
+         if(jAggiungiUser.getText().equals("Campo formato da soli caratteri alfanumerici più  _ e – di lunghezza min 3 e max 8"))
        {jAggiungiUser.setText("");
         jAggiungiUser.setForeground(Color.black);
        }
@@ -678,7 +678,7 @@ else
     private void jAggiungiUserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiungiUserFocusLost
                 if(jAggiungiUser.getText().equals(""))
                 {  jAggiungiUser.setForeground(Color.gray);   
-        jAggiungiUser.setText("Campo formato da soli caratteri alfanumerici più  _ e – di lungezza min 3 e max 15");}
+        jAggiungiUser.setText("Campo formato da soli caratteri alfanumerici più  _ e – di lunghezza min 3 e max 15");}
     }//GEN-LAST:event_jAggiungiUserFocusLost
 
     /**
