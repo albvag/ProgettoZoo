@@ -442,7 +442,7 @@ if(pass==false)
 else
     errorepass1.setText("Caratteri validi");
 if(rpass==false || pass==false )
-    errconfpass1.setText("Caratteri non validi");
+    errconfpass1.setText("Password non corrispondente");
 else
     errconfpass1.setText("Caratteri validi");
 if(this.jRuolo1.getSelectedItem().toString().equals(" "))

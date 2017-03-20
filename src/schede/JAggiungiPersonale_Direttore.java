@@ -429,7 +429,7 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
           //Numero di telefono formato da soli numeri,minimo 1 e massimo 10
           String formtel = "[0-9]{1,10}";
           //nome utente formato da soli caratteri alfanumerici più  _ e – di lungezza min 3 e max 8
-          String formuser ="^[a-z0-9_-]{3,8}$";
+          String formuser ="^[a-zA-Z0-9_-]{3,8}$";
           //password che deve contenere un numero, un carattere minuscolo, uno maiuscolo e un carattere speciale tra !@#$% e deve avere lunghezza min 8 e max 20)
           String formpass= "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%]).{8,16})";
         //questa partecontiene le funzioni per validare il contenuto delle form
@@ -500,7 +500,7 @@ if(pass==false)
 else
     errorepass.setText("Caratteri validi");
 if(rpass==false || pass==false )
-    errconfpass.setText("Caratteri non validi");
+    errconfpass.setText("Password non corrispondente");
 else
     errconfpass.setText("Caratteri validi");
 if(this.jRuolo.getSelectedItem().toString().equals(" "))

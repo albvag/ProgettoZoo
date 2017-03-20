@@ -148,7 +148,7 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
 
         jLabel1.setText("       Salute");
 
-        jsalute.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SANO", "MALATO", " " }));
+        jsalute.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SANO", "MALATO" }));
         jsalute.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jsaluteActionPerformed(evt);
