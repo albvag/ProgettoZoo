@@ -39,8 +39,9 @@ public class JCustode extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setVisible(true);
-        this.jPulizie.setVisible(false);
-        this.jNutrire.setVisible(false);
+        this.jTerminaCompito.setVisible(false);
+        this.jAnnullaCompito.setVisible(false);
+        this.jRichiestaAiuto.setVisible(false);
         setTitle("Benvenuto, "+user_login.getNome()+ " " + user_login.getCognome() );
         pack();
         user.setUsername(user_login.getUsername());
@@ -66,8 +67,12 @@ public class JCustode extends javax.swing.JFrame {
         
         if(conn.stoPulendo( user)|| conn.stoNutrendo(user)){
             this.jLabelCompito.setText("Hai un compito");
-            this.jPulisce.setVisible(false);
-            this.jNutri.setVisible(false);
+            this.jNutrireFrame.setVisible(false);
+            this.jPulizieFrame.setVisible(false);
+            this.jTerminaCompito.setVisible(true);
+            this.jAnnullaCompito.setVisible(true);
+            this.jRichiestaAiuto.setVisible(true);
+            pack();
             if(conn.stoPulendo( user)){
                 this.jTipoCompito.setText("Devi pulire l'habitat : "+conn.attualePulizia(user).getCodice_Gabbia());
             }else if(conn.stoNutrendo(user)){
@@ -141,26 +146,26 @@ public class JCustode extends javax.swing.JFrame {
     private void initComponents() {
 
         jInternalFrame1 = new javax.swing.JInternalFrame();
-        jNutrire = new javax.swing.JInternalFrame();
+        jNutrireFrame = new javax.swing.JInternalFrame();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPasti = new javax.swing.JTable();
         jAccettaNutri = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jPulisce = new javax.swing.JButton();
-        jNutri = new javax.swing.JButton();
-        jPulizie = new javax.swing.JInternalFrame();
+        jPulizieFrame = new javax.swing.JInternalFrame();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTablePulizie = new javax.swing.JTable();
-        AccettaPulizia = new javax.swing.JButton();
+        JAccettaRichiestaAiuto = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableAiuti = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        JAccettaPulizia = new javax.swing.JButton();
         jLogout = new javax.swing.JButton();
         jLabelCompito = new javax.swing.JLabel();
         jTipoCompito = new javax.swing.JLabel();
         jTerminaCompito = new javax.swing.JButton();
         jRichiestaAiuto = new javax.swing.JButton();
+        jAnnullaCompito = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -178,7 +183,7 @@ public class JCustode extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Custode");
 
-        jNutrire.setVisible(true);
+        jNutrireFrame.setVisible(true);
 
         jPasti.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -200,48 +205,33 @@ public class JCustode extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jNutrireLayout = new javax.swing.GroupLayout(jNutrire.getContentPane());
-        jNutrire.getContentPane().setLayout(jNutrireLayout);
-        jNutrireLayout.setHorizontalGroup(
-            jNutrireLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jNutrireLayout.createSequentialGroup()
-                .addGroup(jNutrireLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jNutrireLayout.createSequentialGroup()
+        javax.swing.GroupLayout jNutrireFrameLayout = new javax.swing.GroupLayout(jNutrireFrame.getContentPane());
+        jNutrireFrame.getContentPane().setLayout(jNutrireFrameLayout);
+        jNutrireFrameLayout.setHorizontalGroup(
+            jNutrireFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jNutrireFrameLayout.createSequentialGroup()
+                .addGroup(jNutrireFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jNutrireFrameLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jNutrireLayout.createSequentialGroup()
+                    .addGroup(jNutrireFrameLayout.createSequentialGroup()
                         .addGap(172, 172, 172)
                         .addComponent(jAccettaNutri)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jNutrireLayout.setVerticalGroup(
-            jNutrireLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jNutrireLayout.createSequentialGroup()
+        jNutrireFrameLayout.setVerticalGroup(
+            jNutrireFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jNutrireFrameLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
                 .addComponent(jAccettaNutri)
                 .addContainerGap())
         );
 
         jLabel1.setText("SCEGLI COMPITO");
 
-        jPulisce.setText("Pulizie");
-        jPulisce.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPulisceActionPerformed(evt);
-            }
-        });
-
-        jNutri.setText("Nutri");
-        jNutri.setPreferredSize(new java.awt.Dimension(61, 23));
-        jNutri.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jNutriActionPerformed(evt);
-            }
-        });
-
-        jPulizie.setVisible(true);
+        jPulizieFrame.setVisible(true);
 
         jTablePulizie.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -256,10 +246,10 @@ public class JCustode extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTablePulizie);
 
-        AccettaPulizia.setText("Accetta Pulizia");
-        AccettaPulizia.addActionListener(new java.awt.event.ActionListener() {
+        JAccettaRichiestaAiuto.setText("Accetta Pulizia");
+        JAccettaRichiestaAiuto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AccettaPuliziaActionPerformed(evt);
+                JAccettaRichiestaAiutoActionPerformed(evt);
             }
         });
 
@@ -280,42 +270,53 @@ public class JCustode extends javax.swing.JFrame {
 
         jLabel3.setText("RICHIESTE AIUTO");
 
-        javax.swing.GroupLayout jPulizieLayout = new javax.swing.GroupLayout(jPulizie.getContentPane());
-        jPulizie.getContentPane().setLayout(jPulizieLayout);
-        jPulizieLayout.setHorizontalGroup(
-            jPulizieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPulizieLayout.createSequentialGroup()
-                .addGroup(jPulizieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPulizieLayout.createSequentialGroup()
+        JAccettaPulizia.setText("Accetta Pulizia");
+        JAccettaPulizia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JAccettaPuliziaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPulizieFrameLayout = new javax.swing.GroupLayout(jPulizieFrame.getContentPane());
+        jPulizieFrame.getContentPane().setLayout(jPulizieFrameLayout);
+        jPulizieFrameLayout.setHorizontalGroup(
+            jPulizieFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPulizieFrameLayout.createSequentialGroup()
+                .addGroup(jPulizieFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPulizieFrameLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPulizieLayout.createSequentialGroup()
+                    .addGroup(jPulizieFrameLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPulizieLayout.createSequentialGroup()
+                    .addGroup(jPulizieFrameLayout.createSequentialGroup()
                         .addGap(157, 157, 157)
                         .addComponent(jLabel2))
-                    .addGroup(jPulizieLayout.createSequentialGroup()
+                    .addGroup(jPulizieFrameLayout.createSequentialGroup()
                         .addGap(149, 149, 149)
-                        .addComponent(AccettaPulizia))
-                    .addGroup(jPulizieLayout.createSequentialGroup()
+                        .addComponent(JAccettaRichiestaAiuto))
+                    .addGroup(jPulizieFrameLayout.createSequentialGroup()
                         .addGap(150, 150, 150)
-                        .addComponent(jLabel3)))
+                        .addGroup(jPulizieFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JAccettaPulizia)
+                            .addComponent(jLabel3))))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
-        jPulizieLayout.setVerticalGroup(
-            jPulizieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPulizieLayout.createSequentialGroup()
+        jPulizieFrameLayout.setVerticalGroup(
+            jPulizieFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPulizieFrameLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(JAccettaPulizia)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(AccettaPulizia)
+                .addComponent(JAccettaRichiestaAiuto)
                 .addContainerGap())
         );
 
@@ -335,45 +336,50 @@ public class JCustode extends javax.swing.JFrame {
 
         jRichiestaAiuto.setText("Richiedi Aiuto");
 
+        jAnnullaCompito.setText("Annulla");
+        jAnnullaCompito.setActionCommand("Annulla");
+        jAnnullaCompito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAnnullaCompitoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPulizie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPulizieFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(121, 121, 121)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jPulisce)
-                                        .addGap(136, 136, 136)
-                                        .addComponent(jNutri, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jTipoCompito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabelCompito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(121, 121, 121)
+                                    .addComponent(jLabel1))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jTipoCompito, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                        .addComponent(jLabelCompito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(63, 63, 63)
+                                    .addComponent(jRichiestaAiuto, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addComponent(jAnnullaCompito, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(91, 91, 91)
+                                .addComponent(jTerminaCompito)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLogout)
-                                .addGap(28, 28, 28))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jTerminaCompito)
-                                .addGap(91, 91, 91))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jRichiestaAiuto, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(64, 64, 64)))))
-                .addComponent(jNutrire, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLogout)
+                        .addGap(58, 58, 58)))
+                .addComponent(jNutrireFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jNutrire)
+            .addComponent(jNutrireFrame)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -381,29 +387,20 @@ public class JCustode extends javax.swing.JFrame {
                 .addComponent(jLabelCompito, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTipoCompito, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPulisce, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jNutri, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jRichiestaAiuto, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(jTerminaCompito)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jAnnullaCompito)
+                    .addComponent(jTerminaCompito))
+                .addGap(118, 118, 118)
                 .addComponent(jLogout)
-                .addGap(58, 58, 58))
-            .addComponent(jPulizie)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPulizieFrame)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jNutriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNutriActionPerformed
-        // TODO add your handling code here:
-        this.jPulizie.setVisible(false);
-        this.jNutrire.setVisible(true);
-        pack();
-    }//GEN-LAST:event_jNutriActionPerformed
 
     private void jLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLogoutActionPerformed
         // TODO add your handling code here:
@@ -412,13 +409,6 @@ public class JCustode extends javax.swing.JFrame {
         log.setVisible(true);
         log.close(this);
     }//GEN-LAST:event_jLogoutActionPerformed
-
-    private void jPulisceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPulisceActionPerformed
-        // TODO add your handling code here:
-        this.jPulizie.setVisible(true);
-        this.jNutrire.setVisible(false);
-        pack();
-    }//GEN-LAST:event_jPulisceActionPerformed
 
     private void jAccettaNutriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAccettaNutriActionPerformed
         // TODO add your handling code here:
@@ -431,22 +421,16 @@ public class JCustode extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jAccettaNutriActionPerformed
 
-    private void AccettaPuliziaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccettaPuliziaActionPerformed
+    private void JAccettaRichiestaAiutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JAccettaRichiestaAiutoActionPerformed
         // TODO add your handling code here:
-        if(this.jTablePulizie.getSelectedRow()==0&& this.jTableAiuti.getSelectedRow() ==0){
+        if(this.jTableAiuti.getSelectedRow() ==0){
             JOptionPane.showMessageDialog(null, "DEVI SELEZIONARE UN COMPITO");
-        }else if(this.jTablePulizie.getSelectedRow()!=0&& this.jTableAiuti.getSelectedRow() !=0){
-            JOptionPane.showMessageDialog(null, "DEVI SEZIONARE SOLO UN COMPITO");
-        }else if(this.jTablePulizie.getSelectedRow()!=0){
-            conn.accettaPulizia(conn.listPulizieDisponibili().get(this.jTablePulizie.getSelectedRow()-1), user);
-            setVisible(false); 
-            JCustode cus = new JCustode(user);
         }else {
             conn.accettaPulizia(conn.listRichiesteAiuto().get(this.jTableAiuti.getSelectedRow()-1), user);
             setVisible(false); 
             JCustode cus = new JCustode(user);
         }
-    }//GEN-LAST:event_AccettaPuliziaActionPerformed
+    }//GEN-LAST:event_JAccettaRichiestaAiutoActionPerformed
 
     private void jTerminaCompitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTerminaCompitoActionPerformed
        int reply =JOptionPane.showConfirmDialog(null,"Hai teminato il tuo compito ?","Conferma?" , JOptionPane.YES_NO_OPTION);
@@ -457,6 +441,27 @@ public class JCustode extends javax.swing.JFrame {
             cus.setVisible(true);
         }
     }//GEN-LAST:event_jTerminaCompitoActionPerformed
+
+    private void jAnnullaCompitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAnnullaCompitoActionPerformed
+        int reply =JOptionPane.showConfirmDialog(null,"Vuoi annullare il tuo compito ?","Conferma?" , JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION){
+            conn.annullaCompito(user);
+            setVisible(false);
+            JCustode cus = new JCustode(user);
+            cus.setVisible(true);
+        }
+    }//GEN-LAST:event_jAnnullaCompitoActionPerformed
+
+    private void JAccettaPuliziaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JAccettaPuliziaActionPerformed
+        // TODO add your handling code here:
+        if(this.jTablePulizie.getSelectedRow()==0){
+            JOptionPane.showMessageDialog(null, "DEVI SELEZIONARE UN COMPITO");
+        }else {
+            conn.accettaPulizia(conn.listPulizieDisponibili().get(this.jTablePulizie.getSelectedRow()-1), user);
+            setVisible(false); 
+            JCustode cus = new JCustode(user);
+        }
+    }//GEN-LAST:event_JAccettaPuliziaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -495,19 +500,19 @@ public class JCustode extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AccettaPulizia;
+    private javax.swing.JButton JAccettaPulizia;
+    private javax.swing.JButton JAccettaRichiestaAiuto;
     private javax.swing.JButton jAccettaNutri;
+    private javax.swing.JButton jAnnullaCompito;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelCompito;
     private javax.swing.JButton jLogout;
-    private javax.swing.JButton jNutri;
-    private javax.swing.JInternalFrame jNutrire;
+    private javax.swing.JInternalFrame jNutrireFrame;
     private javax.swing.JTable jPasti;
-    private javax.swing.JButton jPulisce;
-    private javax.swing.JInternalFrame jPulizie;
+    private javax.swing.JInternalFrame jPulizieFrame;
     private javax.swing.JButton jRichiestaAiuto;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
