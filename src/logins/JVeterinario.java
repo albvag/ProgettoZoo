@@ -74,7 +74,7 @@ public class JVeterinario extends javax.swing.JFrame {
          DBConnect conn=new DBConnect();
          ArrayList<Animale> list = conn.selezionaAnimaliSpecie();
         for(int i = 0; i < list.size(); i++)  
-            this.jComboBoxSpecie.addItem(list.get(i).getSpecie()); 
+            this.jComboBoxSpecie.addItem(list.get(i).getSpecie());
 
     }
 

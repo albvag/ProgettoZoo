@@ -52,6 +52,7 @@ public class JDirettore extends javax.swing.JFrame {
     public JDirettore(Utente user_login) {
         initComponents();
         
+        setLocationRelativeTo(null);
         setTitle("Benvenuto, "+user_login.getNome()+ " " + user_login.getCognome() );
          user.setUsername(user_login.getUsername());
         user.setNome(user_login.getNome());

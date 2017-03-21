@@ -58,6 +58,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         utente.setUsername(user_log.getUsername());
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
+        utente.setRuolo(user_log.getRuolo());
         setLocationRelativeTo(null);
          setSize(900, 550);
         setTitle("Scheda Animale");
