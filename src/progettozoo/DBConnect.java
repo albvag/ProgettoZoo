@@ -37,6 +37,15 @@ public class DBConnect {
             System.out.printf("Errore "+ex);
         };
     }
+    
+    public void close() {
+        try {
+            this.conn.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
     public int countSpecie(String specie)
     {
         int conta=0;
