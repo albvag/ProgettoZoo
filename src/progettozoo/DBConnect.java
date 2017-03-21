@@ -1486,24 +1486,54 @@ public class DBConnect {
         
     }    
     
-    public boolean hoUnCompito(Utente user){
+    public void terminaCompito(Utente user){
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
         String data = format.format(date).toString()+" 00:00:00";
         
+        if(stoNutrendo(user)){
+            Pasto pas =attualePasto(user);
         try{
-            String query = "Select * from pulisce JOIN pulizia  WHERE pulisce.Cod_Custode = '"+user.getUsername()+"' AND WHERE pulizia.Data_Inizio_Pulizia > '"+data+"' AND WHERE pulisce.Cod_Pulisce=pulizia." ;
-            rs = st.executeQuery(query);
+            st.executeUpdate("UPDATE pasti SET Terminato= "+true+" WHERE Codice_Pasto='"+pas.getCodice_Pasto()+"'");
+            }catch(SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+            }    
+        }else {
            
-            while(rs.next())  return true;
+            Pulizia pul =attualePulizia(user);
+            try{
+            st.executeUpdate("UPDATE pulizia SET Data_Fine_Pulizia= '"+data+"' WHERE Codice_Pulizia='"+pul.getCodice_Pulizia()+"'");
+            }catch(SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
-        }catch(Exception ex){
-            
-            
-            return false;
         }
-        return false;
+        }
+            
+    public void annullaCompito(Utente user){
+        Date date = new Date();
+        DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+        String data = format.format(date).toString()+" 00:00:00";
+            
+        if(stoNutrendo(user)){
+            Pasto pas =attualePasto(user);
+            try{
+            st.executeUpdate("UPDATE pasti SET Disponibile= "+true+" WHERE Codice_Pasto='"+pas.getCodice_Pasto()+"'");
+            }catch(SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }else {
+            
+            Pulizia pul =attualePulizia(user);
+            try{
+            st.executeUpdate("UPDATE pulizia SET Disponibile= "+true+" WHERE Codice_Pulizia='"+pul.getCodice_Pulizia()+"'");
+            }catch(SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
     }
+    
+        }
+        }
+    
     
     public boolean stoPulendo(Utente user){
         Date date = new Date();
@@ -1604,7 +1634,7 @@ public class DBConnect {
         return pul;
     }
 
-    public Pasto pastoAttuale(Utente user){
+    public Pasto attualePasto(Utente user){
         Pasto pas = new Pasto();
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
