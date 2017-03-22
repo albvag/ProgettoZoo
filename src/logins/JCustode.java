@@ -6,7 +6,10 @@
 package logins;
 
 import java.awt.event.ActionEvent;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -39,6 +42,7 @@ public class JCustode extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setVisible(true);
+        this.jLogout.setVisible(true);
         this.jTerminaCompito.setVisible(false);
         this.jAnnullaCompito.setVisible(false);
         this.jRichiestaAiuto.setVisible(false);
@@ -62,7 +66,11 @@ public class JCustode extends javax.swing.JFrame {
         this.jPasti.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         
         Show_Pulizie_In_JTable(this.jTablePulizie);
-        Show_Aiuti_In_JTable(this.jTableAiuti);
+        try {
+            Show_Aiuti_In_JTable(this.jTableAiuti);
+        } catch (ParseException ex) {
+            Logger.getLogger(JCustode.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Show_Pasti_In_JTable(this.jPasti);
         
         if(conn.stoPulendo( user)|| conn.stoNutrendo(user)){
@@ -71,12 +79,14 @@ public class JCustode extends javax.swing.JFrame {
             this.jPulizieFrame.setVisible(false);
             this.jTerminaCompito.setVisible(true);
             this.jAnnullaCompito.setVisible(true);
-            this.jRichiestaAiuto.setVisible(true);
+            
             pack();
             if(conn.stoPulendo( user)){
+                this.jRichiestaAiuto.setVisible(true);
                 this.jTipoCompito.setText("Devi pulire l'habitat : "+conn.attualePulizia(user).getCodice_Gabbia());
             }else if(conn.stoNutrendo(user)){
                 this.jTipoCompito.setText("Devi portare cibo all'habita : "+conn.attualePasto(user).getCodice_Gabbia());
+                
             }
         }else this.jLabelCompito.setText("Scegli un compito");
         
@@ -99,11 +109,11 @@ public class JCustode extends javax.swing.JFrame {
            
        }
     }   
-       public void Show_Aiuti_In_JTable(JTable table)
+       public final void Show_Aiuti_In_JTable(JTable table) throws ParseException
     {
        ArrayList<Pulizia> list = conn.listRichiesteAiuto();
        DefaultTableModel model = (DefaultTableModel) table.getModel();
-       Object[] row = new Object[2];
+       Object[] row = new Object[1];
        
         table.changeSelection(0, 0, false, false);
        for(int i = 0; i < list.size(); i++)
@@ -111,8 +121,6 @@ public class JCustode extends javax.swing.JFrame {
      
            row[0] = list.get(i).getCodice_Gabbia();
            
-           row[1] = list.get(i).getDisponibile();
-       
            model.addRow(row);
            
        }
@@ -223,8 +231,8 @@ public class JCustode extends javax.swing.JFrame {
             jNutrireFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jNutrireFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jAccettaNutri)
                 .addContainerGap())
         );
@@ -311,7 +319,7 @@ public class JCustode extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(JAccettaPulizia)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -335,9 +343,13 @@ public class JCustode extends javax.swing.JFrame {
         });
 
         jRichiestaAiuto.setText("Richiedi Aiuto");
+        jRichiestaAiuto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRichiestaAiutoActionPerformed(evt);
+            }
+        });
 
         jAnnullaCompito.setText("Annulla");
-        jAnnullaCompito.setActionCommand("Annulla");
         jAnnullaCompito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jAnnullaCompitoActionPerformed(evt);
@@ -426,7 +438,12 @@ public class JCustode extends javax.swing.JFrame {
         if(this.jTableAiuti.getSelectedRow() ==0){
             JOptionPane.showMessageDialog(null, "DEVI SELEZIONARE UN COMPITO");
         }else {
-            conn.accettaPulizia(conn.listRichiesteAiuto().get(this.jTableAiuti.getSelectedRow()-1), user);
+            try {
+                conn.accettaPulizia(conn.listRichiesteAiuto().get(this.jTableAiuti.getSelectedRow()-1), user);
+            } catch (ParseException ex) {
+                Logger.getLogger(JCustode.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
             setVisible(false); 
             JCustode cus = new JCustode(user);
         }
@@ -462,6 +479,11 @@ public class JCustode extends javax.swing.JFrame {
             JCustode cus = new JCustode(user);
         }
     }//GEN-LAST:event_JAccettaPuliziaActionPerformed
+
+    private void jRichiestaAiutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRichiestaAiutoActionPerformed
+        // TODO add your handling code here:
+        conn.richiediAiutoPulizia(conn.attualePulizia(user));
+    }//GEN-LAST:event_jRichiestaAiutoActionPerformed
 
     /**
      * @param args the command line arguments
