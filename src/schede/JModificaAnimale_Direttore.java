@@ -166,13 +166,17 @@ public class JModificaAnimale_Direttore extends javax.swing.JFrame {
                         .addComponent(jNomeAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jAggiunginomeanimale, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(22, 22, 22)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jSpecieAnimale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jselspecie)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jnostro, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSpecieAnimale)
+                            .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jnostro, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jselspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(27, 27, 27)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jGenereAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -183,13 +187,18 @@ public class JModificaAnimale_Direttore extends javax.swing.JFrame {
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jDataAnimale, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDatadinascita, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                 .addComponent(jModifica, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
         );
 
         jLabel3.setText("                            SELEZIONA L'ANIMALE DA MODIFICARE:");
 
+        jselezionaspecie.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jselezionaspecieFocusGained(evt);
+            }
+        });
         jselezionaspecie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jselezionaspecieActionPerformed(evt);
@@ -199,6 +208,12 @@ public class JModificaAnimale_Direttore extends javax.swing.JFrame {
         jLabel5.setText("SELEZIONA LA SPECIE:");
 
         jLabel6.setText("SELEZIONA L'ANIMALE:");
+
+        jselanim.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jselanimFocusGained(evt);
+            }
+        });
 
         jConferma.setText("Conferma");
         jConferma.addActionListener(new java.awt.event.ActionListener() {
@@ -248,7 +263,7 @@ public class JModificaAnimale_Direttore extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonClose)
                             .addComponent(jConferma))))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -315,6 +330,7 @@ public class JModificaAnimale_Direttore extends javax.swing.JFrame {
              this.jnostro.setSelectedItem(nostro);
             }
             this.jInternalFrame1.setVisible(true);
+            setLocationRelativeTo(null);
             pack();
         
     }//GEN-LAST:event_jConfermaActionPerformed
@@ -327,7 +343,9 @@ public class JModificaAnimale_Direttore extends javax.swing.JFrame {
         String genere = this.jGenere.getSelectedItem().toString();
         String data= this.jDatadinascita.getText();
         
-         String formname = "[a-zA-Z ]{1,}";
+        name=name.substring(0,1).toUpperCase()+name.substring(1, name.length()).toLowerCase();
+        
+         String formname = "[a-zA-Z ]{1,30}";
          //inserire la data in formato dd/mm/aaaa (giorno/mese/anno)
          String fordata ="(0[1-9]|1[0-9]|2[0-9]|3[01])[-](0[1-9]|1[0-2])[-](19|20)[0-9]{2}";
          String fordata2 ="(0[1-9]|1[0-9]|2[0-9]|3[01])[/](0[1-9]|1[0-2])[/](19|20)[0-9]{2}";
@@ -373,10 +391,21 @@ else
                    conn.updateAnimale(name, genere, sqlDate,nostro , Cod_Animale);
                     JOptionPane.showMessageDialog(null, "ANIMALE MODIFICATO CORRETTAMENTE");
           setVisible(false);
+          new JDirettore(utente).setVisible(true);
                 }
         }else{JOptionPane.showMessageDialog(null, "NON PUOI INSERIRE UNA DATA FUTURA");}
          }else{JOptionPane.showMessageDialog(null, "ALCUNI CAMPI NON SONO INSERITI CORRETTAMENTE");}
     }//GEN-LAST:event_jModificaActionPerformed
+
+    private void jselezionaspecieFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jselezionaspecieFocusGained
+         this.jInternalFrame1.setVisible(false);
+         pack();
+    }//GEN-LAST:event_jselezionaspecieFocusGained
+
+    private void jselanimFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jselanimFocusGained
+         this.jInternalFrame1.setVisible(false);
+         pack();
+    }//GEN-LAST:event_jselanimFocusGained
 
     /**
      * @param args the command line arguments

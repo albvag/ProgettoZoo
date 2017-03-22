@@ -198,7 +198,7 @@ public class JAggiungiProdotto_Direttore extends javax.swing.JFrame {
       String nome=this.jaggiunginome.getText();
       String prezzo=this.jaggiungiprezzo.getText();
       String giacenza=this.jaggiungigiacenza.getText();
-        String formnome = "[a-zA-Z ]{1,}";
+        String formnome = "[a-zA-Z ]{1,20}";
         String formprezzo1 = "[0-9]*+[.]+[0-9]*";
         String formprezzo2 = "[0-9]*";
         Pattern pattern = Pattern.compile(formnome);

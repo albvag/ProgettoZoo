@@ -417,15 +417,20 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
        String rippass= this.jRipetiPassword.getText();
        String ruolo = this.jRuolo.getSelectedItem().toString();
        
+          nome=nome.substring(0,1).toUpperCase()+nome.substring(1, nome.length()).toLowerCase();
+          cognome=cognome.substring(0,1).toUpperCase()+cognome.substring(1, cognome.length()).toLowerCase();
+          residenza=residenza.substring(0,1).toUpperCase()+residenza.substring(1, residenza.length()).toLowerCase();
+          indirizzo=indirizzo.substring(0,1).toUpperCase()+indirizzo.substring(1, indirizzo.length()).toLowerCase();
+          
         
         
       
-          String formnome = "[a-zA-Z ]{1,}";
-          String formcog = "[a-zA-Z ]{1,}";
+          String formnome = "[a-zA-Z ]{1,30}";
+          String formcog = "[a-zA-Z ]{1,30}";
           String fordata="(0[1-9]|1[0-9]|2[0-9]|3[01])[-](0[1-9]|1[0-2])[-](19|20)[0-9]{2}";
           String fordata2 ="(0[1-9]|1[0-9]|2[0-9]|3[01])[/](0[1-9]|1[0-2])[/](19|20)[0-9]{2}";
-          String formres = "[a-zA-Z ]{1,}";
-          String formind = "[a-zA-Z ]{1,}+[ 0-9]{1,}";
+          String formres = "[a-zA-Z ]{1,30}";
+          String formind = "[a-zA-Z ]{1,25}+[ 0-9]{1,4}";
           //Numero di telefono formato da soli numeri,minimo 1 e massimo 10
           String formtel = "[0-9]{1,10}";
           //nome utente formato da soli caratteri alfanumerici più  _ e – di lungezza min 3 e max 8

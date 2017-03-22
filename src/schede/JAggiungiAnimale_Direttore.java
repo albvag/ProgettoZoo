@@ -292,8 +292,9 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
         //data in formato dd/mm/aaaa
         String data = this.jDatadinascita.getText();
         
-      
-         String formnome = "[a-zA-Z ]{1,}";
+        
+        nome=nome.substring(0,1).toUpperCase()+nome.substring(1, nome.length()).toLowerCase();
+         String formnome = "[a-zA-Z ]{1,30}";
          //inserire la data in formato dd/mm/aaaa (giorno/mese/anno)
          String fordata ="(0[1-9]|1[0-9]|2[0-9]|3[01])[-](0[1-9]|1[0-2])[-](19|20)[0-9]{2}";
          String fordata2 ="(0[1-9]|1[0-9]|2[0-9]|3[01])[/](0[1-9]|1[0-2])[/](19|20)[0-9]{2}";
@@ -335,9 +336,9 @@ else
     
   
    
-   int cod=conn.countSpecie(specie);
+   String Cod_anim=conn.createCodAnimale(specie);
    
-   String Cod_anim=(this.jselspecie.getSelectedItem().toString()+cod);
+   
    
   
    

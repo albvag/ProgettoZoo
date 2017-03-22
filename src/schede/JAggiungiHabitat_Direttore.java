@@ -152,8 +152,8 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
     private void jSalvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalvaActionPerformed
        String habitat= this.jInseriscihabitat.getText();
         String specie=this.jaggiungispecie.getText();
-         String formspecie = "[a-zA-Z ]{1,}";
-         String formhabitat = "[a-zA-Z ]{1,}";
+         String formspecie = "[a-zA-Z ]{1,20}";
+         String formhabitat = "[a-zA-Z ]{1,20}";
          Pattern pattern = Pattern.compile(formspecie); 
        Pattern pattern1 = Pattern.compile(formhabitat);
         boolean spe=check(formspecie,specie);

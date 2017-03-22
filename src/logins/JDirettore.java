@@ -58,6 +58,7 @@ public class JDirettore extends javax.swing.JFrame {
         user.setNome(user_login.getNome());
         user.setCognome(user_login.getCognome());
         user.setRuolo(user_login.getRuolo());
+        setLocationRelativeTo(null);
     }
     /**
      * This method is called from within the constructor to initialize the form.

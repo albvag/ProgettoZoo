@@ -46,10 +46,15 @@ public class DBConnect {
             e.printStackTrace();
         }
     }
-    public int countSpecie(String specie)
+    
+    public String createCodAnimale(String specie)
     {
-        int conta=0;
-        String query="SELECT Specie from animale where animale.Specie= '"+specie+"'";
+        int conta=1;
+        boolean flag;
+        do
+        {
+            flag=false;
+        String query="SELECT * from animale where animale.Codice_Animale= '"+specie+conta+"'";
          try{
                
                rs = st.executeQuery(query);
@@ -57,7 +62,7 @@ public class DBConnect {
                
                 while(rs.next())
                 {
-                    
+                    flag=true;
                     conta++;
                     
                 }
@@ -65,7 +70,8 @@ public class DBConnect {
 
                 System.out.println(ex);
             }   
-           return conta+1; 
+        }while(flag);
+                return specie+conta; 
     }
     public int contaDirettore()
     {
