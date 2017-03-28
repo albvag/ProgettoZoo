@@ -275,7 +275,7 @@ public class JControlloPulizie_Direttore extends javax.swing.JFrame {
            }else{
                
               
-           if(listaPulizie.get(i).getData_Fine_Pulizia().after(listaPulizie.get(i).getData_Inizio_Pulizia()))
+           if(listaPulizie.get(i).getTerminato())
            {
              stat="TERMINATO";
            }else{stat="NON TERMINATO";} 

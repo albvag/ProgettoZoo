@@ -14,24 +14,22 @@ import java.util.Date;
 public class Pulizia {
     private int Codice_Pulizia;
     private String Cod_Gabbia;
-    private Date Data_Inizio_Pulizia;
-    private Date Data_Fine_Pulizia;
+    private Date Data_Pulizia;
     private boolean Disponibile;
     private boolean ServeAiuto;
-    private String NotePulizia;
+    private boolean Terminato;
     
     Pulizia(){
         
     }
     
-    Pulizia(int Codice_Pulizia,String Cod_Gabbia, Date Data_Inizio_Pulizia, Date Data_Fine_Pulizia, boolean Disponibile, boolean ServeAiuto, String NotePulizia){
+    Pulizia(int Codice_Pulizia,String Cod_Gabbia, Date Data_Pulizia, boolean Disponibile, boolean ServeAiuto,boolean Terminato){
        this.Codice_Pulizia = Codice_Pulizia;
        this.Cod_Gabbia = Cod_Gabbia;
-       this.Data_Inizio_Pulizia = Data_Inizio_Pulizia;
-       this.Data_Fine_Pulizia = Data_Fine_Pulizia;
+       this.Data_Pulizia = Data_Pulizia;
        this.Disponibile = Disponibile;
        this.ServeAiuto = ServeAiuto;
-       this.NotePulizia = NotePulizia;
+       this.Terminato = Terminato;
        
     }
     public int getCodice_Pulizia(){
@@ -42,12 +40,8 @@ public class Pulizia {
         return this.Cod_Gabbia;
     }
     
-    public Date getData_Inizio_Pulizia(){
-        return this.Data_Inizio_Pulizia;
-    }
-    
-    public Date getData_Fine_Pulizia(){
-        return this.Data_Fine_Pulizia;
+    public Date getData_Pulizia(){
+        return this.Data_Pulizia;
     }
     
     public boolean getDisponibile(){
@@ -58,8 +52,9 @@ public class Pulizia {
         return this.ServeAiuto;
     }
     
-    public String getNotePulizia(){
-        return this.NotePulizia;
+    public boolean getTerminato(){
+        return this.Terminato;
     }
+    
        
 }

@@ -7,7 +7,6 @@ package progettozoo;
 
 import java.sql.*;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -1120,7 +1119,7 @@ public class DBConnect {
          String data2=dat.toString()+" 23:59:59";
          
         
-       String query2 = "Select * from pulizia  where  pulizia.Data_Inizio_Pulizia >=  '"+data1+"' AND pulizia.Data_Inizio_Pulizia <= '"+data2+"'";
+       String query2 = "Select * from pulizia  where  pulizia.Data_Pulizia >=  '"+data1+"' AND pulizia.Data_Pulizia <= '"+data2+"'";
         try {
             
             rs=st.executeQuery(query2);
@@ -1129,7 +1128,7 @@ public class DBConnect {
         {
             
             
-             pul = new Pulizia(rs.getInt("Codice_Pulizia"),rs.getString("Cod_Gabbia"), rs.getTimestamp("Data_Inizio_Pulizia"),rs.getTimestamp("Data_Fine_Pulizia"),rs.getBoolean("Disponibile"),rs.getBoolean("ServeAiuto"),rs.getString("NotePulizia"));
+             pul = new Pulizia(rs.getInt("Codice_Pulizia"),rs.getString("Cod_Gabbia"), rs.getTimestamp("Data_Pulizia"),rs.getBoolean("Disponibile"),rs.getBoolean("ServeAiuto"),rs.getBoolean("Terminato"));
                     listaPulizie.add(pul);
    
         }
@@ -1290,17 +1289,17 @@ public class DBConnect {
     public ArrayList <Pulizia> listPulizieDisponibili(){
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
-        String dataInizio = format.format(date).toString()+" 00:00:00";
+        String dataInizio = format.format(date)+" 00:00:00";
         
-        ArrayList<Pulizia> listaPulizie = new ArrayList<Pulizia>();
-        String query = "Select * from pulizia WHERE Disponibile = "+true+" AND ServeAiuto="+false+" AND Data_Inizio_Pulizia='"+dataInizio+"'";
+        ArrayList<Pulizia> listaPulizie = new ArrayList<>();
+        String query = "Select * from pulizia WHERE Disponibile = "+true+" AND ServeAiuto="+false+" AND Data_Pulizia = '"+dataInizio+"'";
 
            try{
                Pulizia pul;
                rs = st.executeQuery(query);
                 while(rs.next())
                 {
-                    pul = new Pulizia(rs.getInt("Codice_Pulizia"),rs.getString("Cod_Gabbia"), rs.getDate("Data_Inizio_Pulizia"),rs.getDate("Data_Fine_Pulizia"),rs.getBoolean("Disponibile"),rs.getBoolean("ServeAiuto"),rs.getString("NotePulizia"));
+                    pul = new Pulizia(rs.getInt("Codice_Pulizia"),rs.getString("Cod_Gabbia"), rs.getDate("Data_Pulizia"),rs.getBoolean("Disponibile"),rs.getBoolean("ServeAiuto"),rs.getBoolean("Terminato"));
                     listaPulizie.add(pul);
                 }
             }catch(Exception ex){
@@ -1311,31 +1310,32 @@ public class DBConnect {
            
     }
     
-    public ArrayList <Pulizia> listRichiesteAiuto() throws ParseException{
+    public ArrayList <Pulizia> listRichiesteAiuto() {
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
         String dataInizio = format.format(date)+" 00:00:00";
        
-        Date inizio =format.parse(dataInizio); 
+        
         
            
         
-        ArrayList<Pulizia> listaPulizie = new ArrayList<Pulizia>();
+        ArrayList<Pulizia> listaPulizie = new ArrayList<>();
         
-        String query = "Select * from pulizia WHERE ServeAiuto = "+true+" AND Disponibile = "+false+" AND Data_Inizio_Pulizia > "+dataInizio+" ";
+        String query = "Select * from pulizia WHERE ServeAiuto = "+true+" AND Disponibile = "+false+" AND Data_Pulizia >= '"+dataInizio+"' AND Terminato = "+false+" ";
 
            try{
                Pulizia pul;
                rs = st.executeQuery(query);
                 while(rs.next())
                 {
-                    pul = new Pulizia(rs.getInt("Codice_Pulizia"),rs.getString("Cod_Gabbia"), rs.getDate("Data_Inizio_Pulizia"),rs.getDate("Data_Fine_Pulizia"),rs.getBoolean("Disponibile"),rs.getBoolean("ServeAiuto"),rs.getString("NotePulizia"));
+                    pul = new Pulizia(rs.getInt("Codice_Pulizia"),rs.getString("Cod_Gabbia"), rs.getDate("Data_Pulizia"),rs.getBoolean("Disponibile"),rs.getBoolean("ServeAiuto"),rs.getBoolean("Terminato"));
                     listaPulizie.add(pul);
                 }
             }catch(Exception ex){
 
                 System.out.println(ex);
             }   
+           
            return listaPulizie;
            
     }
@@ -1365,10 +1365,10 @@ public class DBConnect {
         Date date = new Date();
         DateFormat formatDate = new SimpleDateFormat("yyyy.MM.dd");
         DateFormat formatDateTime = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
-        String adesso= formatDateTime.format(date).toString();
-        String dataInizio = formatDate.format(date).toString()+" 00:00:00";
+        String adesso= formatDateTime.format(date);
+        String dataInizio = formatDate.format(date)+" 00:00:00";
         
-        String query = "Select * from pasti WHERE Disponibile = "+true+" AND Terminato= "+false+" AND Data_Pasto<'"+adesso+"'AND Data_Pasto>'"+dataInizio+"'";
+        String query = "Select * from pasti WHERE Disponibile = "+true+" AND Terminato = "+false+" AND Data_Pasto<'"+adesso+"'AND Data_Pasto>'"+dataInizio+"'";
         ArrayList<Pasto> listaPasti = new ArrayList();
 
            try{
@@ -1376,7 +1376,7 @@ public class DBConnect {
                rs = st.executeQuery(query);
                 while(rs.next())
                 {
-                    pas = new Pasto(rs.getInt("Codice_Pasto"),rs.getString("Cod_Gabbia"), rs.getDate("Data_Pasto"),rs.getBoolean("Disponibile"),rs.getBoolean("Terminato"));
+                    pas = new Pasto(rs.getInt("Codice_Pasto"),rs.getString("Cod_Gabbia"), rs.getTimestamp("Data_Pasto"),rs.getBoolean("Disponibile"),rs.getBoolean("Terminato"));
                     listaPasti.add(pas);
                     
                 }
@@ -1398,7 +1398,7 @@ public class DBConnect {
         ArrayList<Habitat> list = selezionaHabitat();
         for(int i=0;i<list.size();i++){
             try{
-            st.executeUpdate("INSERT INTO pulizia values("+0+",'"+list.get(i).getHabitat()+"','"+dataInizio+"','"+dataFine+"',"+true+","+false+",' ')");
+            st.executeUpdate("INSERT INTO pulizia values("+0+",'"+list.get(i).getHabitat()+"','"+dataInizio+"',"+true+","+false+","+false+")");
             }catch(SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1475,7 +1475,7 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
             }
         try{
-            st.executeUpdate("UPDATE pulizia SET Disponibile = "+ false + " , Data_Inizio_Pulizia='"+format.format(date).toString()+"' where Codice_Pulizia = "+ pul.getCodice_Pulizia() + "");
+            st.executeUpdate("UPDATE pulizia SET Disponibile = "+ false + " , ServeAiuto="+false+" where Codice_Pulizia = '"+ pul.getCodice_Pulizia() + "' ");
             }catch(SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1516,7 +1516,7 @@ public class DBConnect {
         if(stoNutrendo(user)){
             Pasto pas =attualePasto(user);
         try{
-            st.executeUpdate("UPDATE pasti SET Terminato= "+true+" WHERE Codice_Pasto='"+pas.getCodice_Pasto()+"'");
+            st.executeUpdate("UPDATE pasti SET Terminato = "+true+" WHERE Codice_Pasto = '"+pas.getCodice_Pasto()+"'");
             }catch(SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
             }    
@@ -1524,7 +1524,7 @@ public class DBConnect {
            
             Pulizia pul =attualePulizia(user);
             try{
-            st.executeUpdate("UPDATE pulizia SET Data_Fine_Pulizia= '"+data+"' WHERE Codice_Pulizia='"+pul.getCodice_Pulizia()+"'");
+            st.executeUpdate("UPDATE pulizia SET Terminato = "+true+" WHERE Codice_Pulizia = '"+pul.getCodice_Pulizia()+"'");
             }catch(SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1535,24 +1535,34 @@ public class DBConnect {
     public void annullaCompito(Utente user){
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
-        String data = format.format(date).toString()+" 00:00:00";
+        String data = format.format(date)+" 00:00:00";
             
         if(stoNutrendo(user)){
             Pasto pas =attualePasto(user);
             try{
-            st.executeUpdate("UPDATE pasti SET Disponibile= "+true+", Data_Pasto='"+data+"' WHERE Codice_Pasto='"+pas.getCodice_Pasto()+"'");
+            st.executeUpdate("UPDATE pasti SET Disponibile = "+true+" WHERE Codice_Pasto = '"+pas.getCodice_Pasto()+"'");
             }catch(SQLException ex) {
-            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        }else if(stoPulendo(user)) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);}
             
+            try {
+            st.execute("DELETE FROM nutre where Cod_Pasto = '"+pas.getCodice_Pasto()+"' ");
+            } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);}
+            
+        }else if(stoPulendo(user)) {
             Pulizia pul =attualePulizia(user);
             try{
-            st.executeUpdate("UPDATE pulizia SET Disponibile= "+true+", Data_Inizio_Pulizia='"+data+"' WHERE Codice_Pulizia='"+pul.getCodice_Pulizia()+"'");
+                if(numeroCustodiInPulizia(pul)==1){
+                    st.executeUpdate("UPDATE pulizia SET Disponibile = "+true+", Data_Pulizia = '"+data+"' WHERE Codice_Pulizia = '"+pul.getCodice_Pulizia()+"'");
+                }
             }catch(SQLException ex) {
-            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
-    }
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);   }
    
+            try {
+            st.execute("DELETE FROM pulisce where Cod_Pulizia = '"+pul.getCodice_Pulizia()+"' AND Cod_Custode ='"+user.getUsername()+"' ");
+            } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);}
+            
         }
         }
     
@@ -1560,14 +1570,15 @@ public class DBConnect {
     public boolean stoPulendo(Utente user){
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
-        String data = format.format(date).toString()+" 00:00:00";
-        ArrayList<String> list = new ArrayList<String>();
+        String data = format.format(date)+" 00:00:00";
+        ArrayList<String> list = new ArrayList<>();
         try{
             String query = "Select * from pulisce WHERE Cod_Custode='"+user.getUsername()+"'" ;
             rs = st.executeQuery(query);
            
             while(rs.next())  
             list.add(rs.getString("Cod_Pulizia"));
+            
         }catch(Exception ex) {
             
         }
@@ -1577,10 +1588,10 @@ public class DBConnect {
                 
             try{  
             
-            String query = "Select * from pulizia WHERE Codice_Pulizia='"+list.get(i)+"' AND Disponibile ="+false+" AND Data_Inizio_Pulizia > '"+data+"' AND Data_Fine_Pulizia < '"+data+"' ";
+            String query = "Select * from pulizia WHERE Codice_Pulizia= '"+list.get(i)+"' AND Disponibile = "+false+" AND Data_Pulizia >= '"+data+"' AND Terminato = "+false+" ";
             rs = st.executeQuery(query);
             while(rs.next()){
-                
+          
                 return true;}
             }catch(Exception ex) {
                 Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
@@ -1610,7 +1621,7 @@ public class DBConnect {
                 
             try{  
             
-            String query = "Select * from pasti WHERE Codice_Pasto='"+list.get(i)+"' AND Disponibile ="+false+" AND Data_Pasto > '"+data+"' AND Terminato="+false+" ";
+            String query = "Select * from pasti WHERE Codice_Pasto = '"+list.get(i)+"' AND Disponibile = "+false+" AND Data_Pasto > '"+data+"' AND Terminato = "+false+" ";
             rs = st.executeQuery(query);
             while(rs.next()){
                 
@@ -1627,8 +1638,8 @@ public class DBConnect {
         Pulizia pul = new Pulizia();
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
-        String data = format.format(date).toString()+" 00:00:00";
-        ArrayList<String> list = new ArrayList<String>();
+        String data = format.format(date)+" 00:00:00";
+        ArrayList<String> list = new ArrayList<>();
         try{
             String query = "Select * from pulisce WHERE Cod_Custode='"+user.getUsername()+"'" ;
             rs = st.executeQuery(query);
@@ -1643,10 +1654,10 @@ public class DBConnect {
             for(int i=0;i<list.size();i++){
                 
             try{   
-            String query = "Select * from pulizia WHERE Codice_Pulizia='"+list.get(i)+"' AND Disponibile ="+false+" AND Data_Inizio_Pulizia > '"+data+"' AND Data_Fine_Pulizia < '"+data+"' ";
+            String query = "Select * from pulizia WHERE Codice_Pulizia = '"+list.get(i)+"' AND Disponibile ="+false+" AND Data_Pulizia >= '"+data+"' AND Terminato = "+false+" ";
             rs = st.executeQuery(query);
             while(rs.next()){
-                pul = new Pulizia(rs.getInt("Codice_Pulizia"),rs.getString("Cod_Gabbia"), rs.getDate("Data_Inizio_Pulizia"),rs.getDate("Data_Fine_Pulizia"),rs.getBoolean("Disponibile"),rs.getBoolean("ServeAiuto"),rs.getString("NotePulizia"));
+                pul = new Pulizia(rs.getInt("Codice_Pulizia"),rs.getString("Cod_Gabbia"), rs.getDate("Data_Pulizia"),rs.getBoolean("Disponibile"),rs.getBoolean("ServeAiuto"),rs.getBoolean("Terminato"));
             }
             }catch(Exception ex){
                 Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
@@ -1665,7 +1676,7 @@ public class DBConnect {
         
         ArrayList<String> list = new ArrayList<String>();
         try{
-            String query = "Select * from nutre WHERE Cod_Custode='"+user.getUsername()+"'" ;
+            String query = "Select * from nutre WHERE Cod_Custode = '"+user.getUsername()+"'" ;
             rs = st.executeQuery(query);
            
             while(rs.next())  
@@ -1679,7 +1690,7 @@ public class DBConnect {
                 
             try{  
             
-            String query = "Select * from pasti WHERE Codice_Pasto='"+list.get(i)+"' AND Disponibile ="+false+" AND Data_Pasto > "+formatTime.parse(data)+" AND Terminato="+false+" ";
+            String query = "Select * from pasti WHERE Codice_Pasto = '"+list.get(i)+"' AND Disponibile = "+false+" AND Data_Pasto > '"+data+"' AND Terminato = "+false+" ";
             rs = st.executeQuery(query);
             while(rs.next()){
                 pas = new Pasto(rs.getInt("Codice_Pasto"),rs.getString("Cod_Gabbia"), rs.getDate("Data_Pasto"),rs.getBoolean("Disponibile"),rs.getBoolean("Terminato"));
@@ -1690,5 +1701,21 @@ public class DBConnect {
             }
         }
         return pas;
+    }
+    
+    public int numeroCustodiInPulizia(Pulizia pul){
+        int i = 0;
+        
+        try {
+            String query ="SELECT * FROM pulisce WHERE Cod_Pulizia= '"+pul.getCodice_Pulizia()+"' ";  
+            rs = st.executeQuery(query);
+            while(rs.next()){
+               i++; 
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return i;
     }
 }
