@@ -50,7 +50,7 @@ public class JVeterinario extends javax.swing.JFrame {
        
         ProgettoZoo pz = new ProgettoZoo();
         initComponents();
-        setLocationRelativeTo(null);
+        
         this.jPanelFiltri.setVisible(false);
         setVisible(true);
         setTitle("Benvenuto, "+user_login.getNome()+ " " + user_login.getCognome() );
@@ -75,6 +75,7 @@ public class JVeterinario extends javax.swing.JFrame {
          ArrayList<Animale> list = conn.selezionaAnimaliSpecie();
         for(int i = 0; i < list.size(); i++)  
             this.jComboBoxSpecie.addItem(list.get(i).getSpecie());
+        setLocationRelativeTo(null);
 
     }
 

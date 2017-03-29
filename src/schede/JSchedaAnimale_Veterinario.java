@@ -59,7 +59,6 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
         utente.setRuolo(user_log.getRuolo());
-        setLocationRelativeTo(null);
          setSize(900, 550);
         setTitle("Scheda Animale");
         setVisible(true); 
@@ -102,6 +101,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
             
         this.jTextAreaNoteVisita.setLineWrap(true);
         this.jTextAreaNoteVisita.setWrapStyleWord(true);
+        setLocationRelativeTo(null);
     }
     
 
@@ -439,6 +439,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
      bG.add(this.jRadioButtonSano);
      bG.add(this.jRadioButtonMalato);
      this.jRadioButtonSano.setSelected(true);
+     setLocationRelativeTo(null);
             
         
     }//GEN-LAST:event_jButtonNuovaVisitaActionPerformed
