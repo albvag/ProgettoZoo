@@ -111,6 +111,26 @@ public class DBConnect {
         } catch (SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
+           Date date = new Date();
+        DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+        String dataPranzo = format.format(date)+" 12:00:00";
+        String dataCena = format.format(date)+" 19:00:00";
+        String dataLimite = format.format(date)+" 12:00:00";
+        
+        if(date.getHours()<15){
+            try{
+                st.executeUpdate("INSERT INTO pasti values("+0+",'"+Cod_Gabbia+"','"+dataPranzo+"',"+true+","+false+")");
+            }catch(SQLException ex) {
+                Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if(date.getHours()<21){
+            try{
+                st.executeUpdate("INSERT INTO pasti values("+0+",'"+Cod_Gabbia+"','"+dataCena+"',"+true+","+false+")");
+            }catch(SQLException ex) {
+                Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
     //query per l'inserimento di un animale nel DB
     public void insertAnimale(String Cod_Animale,String nome,String specie,String genere,Date data,int salute,int nostro,int presente)
