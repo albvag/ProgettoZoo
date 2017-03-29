@@ -111,6 +111,11 @@ public class JCassiere extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableProdotti.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableProdottiMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTableProdotti);
 
         jVendiProdotti.setText("Vendi");
@@ -155,6 +160,11 @@ public class JCassiere extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableGiacenza.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableGiacenzaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableGiacenza);
 
         javax.swing.GroupLayout jFrameGiacenzaLayout = new javax.swing.GroupLayout(jFrameGiacenza.getContentPane());
@@ -240,7 +250,11 @@ public class JCassiere extends javax.swing.JFrame {
         boolean avanza = true; 
         for(int i = 0;i< pro.size()&&avanza; i++){ 
             Object go = this.jTableProdotti.getValueAt(i+1, 3);
-            String gs = go.toString();
+            String gs = "";
+            if(go==null){
+                gs= "0";
+            }else gs = go.toString();
+            
             String formInt = "[0-9]*";
             boolean pre=check(formInt,gs);
             if(!pre){
@@ -248,21 +262,25 @@ public class JCassiere extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "CARATTERI NON VALIDI");
             }      
         }
+        int conta = 0;
         ArrayList vendita = new ArrayList();
         for(int i = 0;i< pro.size()&&avanza; i++){
            
             Object go = this.jTableProdotti.getValueAt(i+1, 3);
-            String gs = go.toString();
+            String gs = "";
+            if(go==null){
+                gs= "0";
+            }else gs = go.toString();
             int gi = Integer.parseInt(gs);
             if(pro.get(i).getGiacenza()<gi){
                 avanza = false;
                 JOptionPane.showMessageDialog(null, "RICHIESTA ECCEDE GIACENZA");
             }
-            if(gi!=0&&avanza){
+            if(gi!=0 && avanza ){
                 String v=String.format("%s %-40s %-20s", pro.get(i).getTipo(),gi,Double.toString(gi*pro.get(i).getPrezzo()) + " €");
                 vendita.add(v);
                 vendita.add("\n");
-                
+                conta++;
             }
             
         }
@@ -270,14 +288,23 @@ public class JCassiere extends javax.swing.JFrame {
         venString = venString.replace('[', ' ');
         venString = venString.replace(']', ' ');
         venString = venString.replace(',', ' ');
+        
         if(avanza){
+            if(conta==0){
+                JOptionPane.showMessageDialog(null, "Non hai selezionato neesun prodotto");
+                avanza=false;
+            }else{
             int reply = JOptionPane.showConfirmDialog(null,venString,"Confermare?", JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.NO_OPTION)avanza=false;
             }
+        }
         for(int i = 0;i< pro.size()&&avanza; i++){
             
             Object go = this.jTableProdotti.getValueAt(i+1, 3);
-            String gs = go.toString();
+            String gs = "";
+            if(go==null){
+                gs= "0";
+            }else gs = go.toString();
             int gi = Integer.parseInt(gs);
             if(gi!=0)conn.vendiProdotto(pro.get(i), gi, user);
             
@@ -299,7 +326,8 @@ public class JCassiere extends javax.swing.JFrame {
     private void jBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackActionPerformed
         
         this.jFrameGiacenza.setVisible(false);
-        setSize(500,500);
+        pack();
+        setLocationRelativeTo(null);
     }//GEN-LAST:event_jBackActionPerformed
 
     private void jAddGiacenzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddGiacenzaActionPerformed
@@ -307,9 +335,13 @@ public class JCassiere extends javax.swing.JFrame {
         ArrayList<Prodotto> pro = conn.listaProdotti();
         this.jTableGiacenza.editCellAt(0, 0);
         boolean avanza = true; 
+        int conta = 0;
         for(int i = 0;i< pro.size()&&avanza; i++){ 
             Object go = this.jTableGiacenza.getValueAt(i+1, 2);
-            String gs = go.toString();
+            String gs = "";
+            if(go==null){
+                gs= "0";
+            }else gs = go.toString();
             String formInt = "[0-9]*";
             boolean pre=check(formInt,gs);
             if(!pre){
@@ -317,21 +349,45 @@ public class JCassiere extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "CARATTERI NON VALIDI");
             }      
         }
+        int reply ;
+        if(conta==0){
+                JOptionPane.showMessageDialog(null, "Non hai selezionato neesun prodotto");
+        }else {reply = JOptionPane.showConfirmDialog(null,"Vuoi aggiungere la giacenza","Confermare?", JOptionPane.YES_NO_OPTION);
+            if (reply == JOptionPane.NO_OPTION){
         
         for(int i = 0;i< pro.size()&&avanza; i++){
             
             Object go = this.jTableGiacenza.getValueAt(i+1, 2);
-            String gs = go.toString();
+            String gs = "";
+            if(go==null){
+                gs= "0";
+            }else gs = go.toString();
             int gi = Integer.parseInt(gs);
-            if(gi!=0)conn.addToGiacenza(pro.get(i), gi);
+            if(gi!=0){
+                conta++;
+                conn.addToGiacenza(pro.get(i), gi);
+            }
             
         }
+            }
         if(avanza){
             setVisible(false); 
             JCassiere c = new JCassiere(user);
         }
-        
+        }
     }//GEN-LAST:event_jAddGiacenzaActionPerformed
+
+    private void jTableProdottiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableProdottiMouseClicked
+        if(this.jTableProdotti.getSelectedColumn()== 3 && this.jTableProdotti.getSelectedRow()>0){
+            this.jTableProdotti.setValueAt(null,this.jTableProdotti.getSelectedRow(),3);
+        }
+    }//GEN-LAST:event_jTableProdottiMouseClicked
+
+    private void jTableGiacenzaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableGiacenzaMouseClicked
+        if(this.jTableGiacenza.getSelectedColumn()== 2 && this.jTableGiacenza.getSelectedRow()>0){
+            this.jTableGiacenza.setValueAt(null,this.jTableGiacenza.getSelectedRow(),2);
+        }
+    }//GEN-LAST:event_jTableGiacenzaMouseClicked
     
     /**
      * @param args the command line arguments
