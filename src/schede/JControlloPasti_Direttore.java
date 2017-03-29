@@ -39,6 +39,7 @@ public class JControlloPasti_Direttore extends javax.swing.JFrame {
         utente.setCognome(user_log.getCognome());
         this.jInternalFrameTablePasti.setVisible(false);
        pack();
+       setLocationRelativeTo(null);
     }
 
     /** This method is called from within the constructor to
@@ -207,6 +208,7 @@ public class JControlloPasti_Direttore extends javax.swing.JFrame {
         Show_ControlloPasti_In_JTable(this.jTablePasti,sqlDate);
         this.jInternalFrameTablePasti.setVisible(true);
         pack();
+        setLocationRelativeTo(null);
            }
        }
     }//GEN-LAST:event_jConfermaActionPerformed

@@ -46,7 +46,7 @@ public class JCustode extends javax.swing.JFrame {
         this.jAnnullaCompito.setVisible(false);
         this.jRichiestaAiuto.setVisible(false);
         setTitle("Benvenuto, "+user_login.getNome()+ " " + user_login.getCognome() );
-        pack();
+        
         user.setUsername(user_login.getUsername());
         user.setNome(user_login.getNome());
         user.setCognome(user_login.getCognome());
@@ -92,8 +92,9 @@ public class JCustode extends javax.swing.JFrame {
             }
         }else this.jLabelCompito.setText("Scegli un compito");
         this.jLogout.setVisible(true);
-        setLocationRelativeTo(null);
+        
         pack();
+        setLocationRelativeTo(null);
     }
     
     public void Show_Pulizie_In_JTable(JTable table)

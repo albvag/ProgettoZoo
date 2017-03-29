@@ -40,6 +40,7 @@ public class JControlloPulizie_Direttore extends javax.swing.JFrame {
         utente.setCognome(user_log.getCognome());
         this.jInternalFramePulizie.setVisible(false);
        pack();
+       setLocationRelativeTo(null);
     }
 
     /**
@@ -202,6 +203,7 @@ public class JControlloPulizie_Direttore extends javax.swing.JFrame {
         this.jTablePulizie.setVisible(true);
         this.jInternalFramePulizie.setVisible(true);
         pack();
+        setLocationRelativeTo(null);
        }
        }
     }//GEN-LAST:event_jConfermaActionPerformed

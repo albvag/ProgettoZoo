@@ -47,6 +47,7 @@ public class JVediIncassi_Direttore extends javax.swing.JFrame {
        this.jLabel1.setVisible(false);
        this.jTextField1.setVisible(false);
        pack();
+       setLocationRelativeTo(null);
     }
 
     /**
@@ -268,6 +269,7 @@ public class JVediIncassi_Direttore extends javax.swing.JFrame {
        this.jInternalFrameTableIncassi.setVisible(true);
        
        pack();
+       setLocationRelativeTo(null);
           this.jTableIncassi.getTableHeader().setReorderingAllowed(false);
            String[] jTableAnimaliHeaders  = {"Nome Prodotto","Quantità","Ricavi"};
         v.selectmode(this.jTableIncassi);   

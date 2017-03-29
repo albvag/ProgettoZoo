@@ -34,11 +34,9 @@ public class JCassiere extends javax.swing.JFrame {
        
 
         initComponents();
-        setLocationRelativeTo(null);
         setVisible(true);
         setTitle("Benvenuto, "+user_login.getNome()+ " " + user_login.getCognome() );
         this.jFrameGiacenza.setVisible(false);
-        pack();
         user.setUsername(user_login.getUsername());
         user.setNome(user_login.getNome());
         user.setCognome(user_login.getCognome());
@@ -53,7 +51,8 @@ public class JCassiere extends javax.swing.JFrame {
         Show_Giacenza_In_JTable(this.jTableGiacenza);
         this.jTableProdotti.setCellSelectionEnabled(false);
         this.jTableGiacenza.setCellSelectionEnabled(false);
-        
+        pack();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -293,6 +292,7 @@ public class JCassiere extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.jFrameGiacenza.setVisible(true);
         pack();
+        setLocationRelativeTo(null);
         
     }//GEN-LAST:event_jGiacenzaActionPerformed
 

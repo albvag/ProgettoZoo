@@ -161,7 +161,7 @@ public class JRimuoviHabitat_Direttore extends javax.swing.JFrame {
                         setVisible(false);
                 }
         }else{JOptionPane.showMessageDialog(null, "L'habitat selezionato non è vuoto, devi prima cancellare gli animali al suo interno");
-        setVisible(false);}
+        }
     
     }//GEN-LAST:event_jRimuoviActionPerformed
     

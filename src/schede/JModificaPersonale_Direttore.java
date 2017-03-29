@@ -45,6 +45,7 @@ public class JModificaPersonale_Direttore extends javax.swing.JFrame {
         }
         this.jInternalFrame2.setVisible(false);
         pack();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -343,6 +344,7 @@ public class JModificaPersonale_Direttore extends javax.swing.JFrame {
         
         this.jInternalFrame2.setVisible(true);
         pack();
+        setLocationRelativeTo(null);
     }//GEN-LAST:event_jConfermaActionPerformed
 
     private void jselruoloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jselruoloActionPerformed
