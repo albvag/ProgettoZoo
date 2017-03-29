@@ -443,7 +443,7 @@ public class JCustode extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLogoutActionPerformed
-        // TODO add your handling code here:
+
         JLogin log = new JLogin();
         log.setLocationRelativeTo(null);
         log.setVisible(true);
@@ -451,7 +451,7 @@ public class JCustode extends javax.swing.JFrame {
     }//GEN-LAST:event_jLogoutActionPerformed
 
     private void jAccettaNutriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAccettaNutriActionPerformed
-        // TODO add your handling code here:
+        
         if(this.jPasti.getSelectedRow()==0){
             JOptionPane.showMessageDialog(null, "DEVI SELEZIONARE UN COMPITO");
         }else {
@@ -466,7 +466,7 @@ public class JCustode extends javax.swing.JFrame {
     }//GEN-LAST:event_jAccettaNutriActionPerformed
 
     private void JAccettaRichiestaAiutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JAccettaRichiestaAiutoActionPerformed
-        // TODO add your handling code here:
+        
         if(this.jTableAiuti.getSelectedRow() ==0){
             JOptionPane.showMessageDialog(null, "DEVI SELEZIONARE UN COMPITO");
         }else {
@@ -502,7 +502,7 @@ public class JCustode extends javax.swing.JFrame {
     }//GEN-LAST:event_jAnnullaCompitoActionPerformed
 
     private void JAccettaPuliziaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JAccettaPuliziaActionPerformed
-        // TODO add your handling code here:
+        
         if(this.jTablePulizie.getSelectedRow()==0){
             JOptionPane.showMessageDialog(null, "DEVI SELEZIONARE UN COMPITO");
         }else {
@@ -517,7 +517,7 @@ public class JCustode extends javax.swing.JFrame {
     }//GEN-LAST:event_JAccettaPuliziaActionPerformed
 
     private void jRichiestaAiutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRichiestaAiutoActionPerformed
-        // TODO add your handling code here:
+        
         conn.richiediAiutoPulizia(conn.attualePulizia(user));
         setVisible(false);
         JCustode cus = new JCustode(user);

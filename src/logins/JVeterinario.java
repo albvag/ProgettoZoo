@@ -385,7 +385,7 @@ public class JVeterinario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogoutActionPerformed
-        // TODO add your handling code here:
+        
         JLogin log = new JLogin();
         log.setLocationRelativeTo(null);
         log.setVisible(true);
@@ -393,7 +393,7 @@ public class JVeterinario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLogoutActionPerformed
 
     private void jButtonSchedaAnimaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSchedaAnimaleActionPerformed
-        // TODO add your handling code here:
+        
  
         if(jTableAnimali.getSelectedRow() == -1) JOptionPane.showMessageDialog(null, "Errore: Nessuna riga selezionata", "Errore", JOptionPane.ERROR_MESSAGE);
         else{
@@ -439,7 +439,7 @@ public class JVeterinario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSchedaAnimaleActionPerformed
 
     private void jCheckBoxFiltriMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxFiltriMouseClicked
-        // TODO add your handling code here:
+        
 
             if(this.jCheckBoxFiltri.isSelected())
             {
@@ -453,7 +453,7 @@ public class JVeterinario extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBoxFiltriMouseClicked
 
     private void jComboBoxSpecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSpecieActionPerformed
-        // TODO add your handling code here:
+        
 
     }//GEN-LAST:event_jComboBoxSpecieActionPerformed
 
@@ -473,7 +473,7 @@ public class JVeterinario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldDN_AFocusGained
 
     private void jTextFieldDN_DaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDN_DaFocusGained
-   // TODO add your handling code here:
+   
          
         ProgettoZoo pz = new ProgettoZoo();
       boolean dat = pz.isThisDateValid(this.jTextFieldDN_Da.getText(), "dd-MM-yyyy");
@@ -487,7 +487,7 @@ public class JVeterinario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldDN_DaFocusGained
 
     private void jButtonFiltraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltraActionPerformed
-        // TODO add your handling code here:
+        
        
         setVisible(false);    
         
@@ -506,7 +506,7 @@ public class JVeterinario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonFiltraActionPerformed
 
     private void jTextFieldDN_DaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDN_DaFocusLost
-      // TODO add your handling code here:
+      
       ProgettoZoo pz = new ProgettoZoo();
       boolean dat = pz.isThisDateValid(this.jTextFieldDN_Da.getText(), "dd-MM-yyyy");
       
@@ -526,7 +526,7 @@ public class JVeterinario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldDN_DaFocusLost
 
     private void jTextFieldDN_AFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDN_AFocusLost
-        // TODO add your handling code here:
+        
         if(this.jTextFieldDN_A.getText().equals("")) {
             this.jTextFieldDN_Da.setText("");
         
@@ -534,7 +534,7 @@ public class JVeterinario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldDN_AFocusLost
 
     private void jButtonReset_FiltriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReset_FiltriActionPerformed
-        // TODO add your handling code here:
+        
         this.jComboBoxGenere.setSelectedIndex(0);
         this.jComboBoxSpecie.setSelectedIndex(0);
         this.jComboBoxSalute.setSelectedIndex(0);

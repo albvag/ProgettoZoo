@@ -399,7 +399,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
-        // TODO add your handling code here: 
+        
         setVisible(false);
         
         String[] FILTRI = new String[8];
@@ -432,7 +432,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLeggiNoteVisitaActionPerformed
 
     private void jButtonNuovaVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuovaVisitaActionPerformed
-        // TODO add your handling code here:
+        
         this.jFrameVisita.setTitle("Registrazione Nuova Visita per "+ this.jLabelDisplayCod.getText());
               this.jFrameVisita.setVisible(true); 
               pack();
@@ -445,7 +445,6 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonNuovaVisitaActionPerformed
 
     private void jButtonNewVisConfermaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewVisConfermaActionPerformed
-        // TODO add your handling code here:
         
        ProgettoZoo pz = new ProgettoZoo();
         String DataNuovaVisita = this.jTextFieldDataVisita.getText();
@@ -493,7 +492,7 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonNewVisConfermaActionPerformed
 
     private void jButtonNewVisAnnullaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewVisAnnullaActionPerformed
-        // TODO add your handling code here:
+        
         
         this.jTextFieldDataVisita.setText("");
         this.jTextAreaNoteVisita.setText("");

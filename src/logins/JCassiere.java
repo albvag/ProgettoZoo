@@ -222,7 +222,7 @@ public class JCassiere extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogoutActionPerformed
-        // TODO add your handling code here:
+        
         JLogin log = new JLogin();
         log.setLocationRelativeTo(null);
         log.setVisible(true);
@@ -232,7 +232,7 @@ public class JCassiere extends javax.swing.JFrame {
     //vende biglietti e merce
     
     private void jVendiProdottiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVendiProdottiActionPerformed
-        // TODO add your handling code here:
+        
         
         this.jTableProdotti.editCellAt(0, 0);
         ArrayList<Prodotto> pro = conn.listaProdotti();
@@ -289,7 +289,7 @@ public class JCassiere extends javax.swing.JFrame {
     }//GEN-LAST:event_jVendiProdottiActionPerformed
 
     private void jGiacenzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGiacenzaActionPerformed
-        // TODO add your handling code here:
+        
         this.jFrameGiacenza.setVisible(true);
         pack();
         setLocationRelativeTo(null);
@@ -297,13 +297,13 @@ public class JCassiere extends javax.swing.JFrame {
     }//GEN-LAST:event_jGiacenzaActionPerformed
 
     private void jBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackActionPerformed
-        // TODO add your handling code here:
+        
         this.jFrameGiacenza.setVisible(false);
         setSize(500,500);
     }//GEN-LAST:event_jBackActionPerformed
 
     private void jAddGiacenzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddGiacenzaActionPerformed
-        // TODO add your handling code here:
+        
         ArrayList<Prodotto> pro = conn.listaProdotti();
         this.jTableGiacenza.editCellAt(0, 0);
         boolean avanza = true; 

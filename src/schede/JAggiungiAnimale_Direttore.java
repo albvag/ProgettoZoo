@@ -278,11 +278,11 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCloseActionPerformed
 
     private void jDatadinascitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDatadinascitaActionPerformed
-    // TODO add your handling code here:
+    
     }//GEN-LAST:event_jDatadinascitaActionPerformed
 
     private void jAggiunginomeanimaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAggiunginomeanimaleActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jAggiunginomeanimaleActionPerformed
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
@@ -372,15 +372,15 @@ else
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jGenereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGenereActionPerformed
-               // TODO add your handling code here:
+               
     }//GEN-LAST:event_jGenereActionPerformed
 
     private void jnostroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jnostroActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jnostroActionPerformed
 
     private void jsaluteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jsaluteActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jsaluteActionPerformed
 
     private void jDatadinascitaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jDatadinascitaFocusGained
@@ -389,7 +389,7 @@ else
          jDatadinascita.setForeground(Color.black);
         }
         else
-            jDatadinascita.getText(); // TODO add your handling code here:
+            jDatadinascita.getText(); 
     }//GEN-LAST:event_jDatadinascitaFocusGained
 
     private void jDatadinascitaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jDatadinascitaFocusLost
@@ -410,7 +410,7 @@ else
            jAggiunginomeanimale.setForeground(Color.black);
           }
         else
-            jAggiunginomeanimale.getText(); // TODO add your handling code here:
+            jAggiunginomeanimale.getText(); 
     }//GEN-LAST:event_jAggiunginomeanimaleFocusGained
 
     private void jselspecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jselspecieActionPerformed

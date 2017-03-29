@@ -42,7 +42,7 @@ public class DBConnect {
         try {
             this.conn.close();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
+            
             e.printStackTrace();
         }
     }
@@ -1412,7 +1412,7 @@ public class DBConnect {
         
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
-        String dataInizio = format.format(date).toString()+" 00:00:00";
+        String dataInizio = format.format(date)+" 00:00:00";
         String dataFine ="1980/01/01 01:00:00";
                 
         ArrayList<Habitat> list = selezionaHabitat();
@@ -1432,7 +1432,7 @@ public class DBConnect {
         
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
-        String dataPasto = format.format(date).toString()+" 12:00:00";
+        String dataPasto = format.format(date)+" 12:00:00";
         
                 
         ArrayList<Habitat> list = selezionaHabitat();
@@ -1450,7 +1450,7 @@ public class DBConnect {
         
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
-        String dataPasto = format.format(date).toString()+" 19:00:00";
+        String dataPasto = format.format(date)+" 19:00:00";
         
                 
         ArrayList<Habitat> list = selezionaHabitat();
@@ -1624,7 +1624,7 @@ public class DBConnect {
     public boolean stoNutrendo(Utente user){
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
-        String data = format.format(date).toString()+" 00:00:00";
+        String data = format.format(date)+" 00:00:00";
         ArrayList<String> list = new ArrayList<String>();
         try{
             String query = "Select * from nutre WHERE Cod_Custode='"+user.getUsername()+"'" ;
