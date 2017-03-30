@@ -271,6 +271,7 @@ public class JCassiere extends javax.swing.JFrame {
             if(go==null){
                 gs= "0";
             }else gs = go.toString();
+            
             int gi = Integer.parseInt(gs);
             if(pro.get(i).getGiacenza()<gi){
                 avanza = false;
@@ -288,6 +289,8 @@ public class JCassiere extends javax.swing.JFrame {
         venString = venString.replace('[', ' ');
         venString = venString.replace(']', ' ');
         venString = venString.replace(',', ' ');
+        
+        
         
         if(avanza){
             if(conta==0){
@@ -341,19 +344,26 @@ public class JCassiere extends javax.swing.JFrame {
             String gs = "";
             if(go==null){
                 gs= "0";
-            }else gs = go.toString();
+            }else {
+                gs = go.toString();
+                
+            }
             String formInt = "[0-9]*";
             boolean pre=check(formInt,gs);
             if(!pre){
                 avanza=false;
                 JOptionPane.showMessageDialog(null, "CARATTERI NON VALIDI");
-            }      
+            }else if(!gs.equals("0")) conta++; 
+            
         }
         int reply ;
+        
+        System.out.print(conta);
+        
         if(conta==0){
                 JOptionPane.showMessageDialog(null, "Non hai selezionato neesun prodotto");
         }else {reply = JOptionPane.showConfirmDialog(null,"Vuoi aggiungere la giacenza","Confermare?", JOptionPane.YES_NO_OPTION);
-            if (reply == JOptionPane.NO_OPTION){
+            if (reply == JOptionPane.YES_OPTION){
         
         for(int i = 0;i< pro.size()&&avanza; i++){
             
@@ -364,12 +374,12 @@ public class JCassiere extends javax.swing.JFrame {
             }else gs = go.toString();
             int gi = Integer.parseInt(gs);
             if(gi!=0){
-                conta++;
+                
                 conn.addToGiacenza(pro.get(i), gi);
             }
             
         }
-            }
+            }else avanza=false;
         if(avanza){
             setVisible(false); 
             JCassiere c = new JCassiere(user);
