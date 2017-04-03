@@ -44,11 +44,25 @@ public class DBConnect {
      */
     public void close() {
         try {
+            
             this.conn.close();
         } catch (SQLException e) {
             
             e.printStackTrace();
         }
+    }
+    
+    public void setmaxconn(int n){
+        String query = "set global max_connections= "+n;
+        
+           try{
+               rs = st.executeQuery(query);
+    
+            }catch(Exception ex){
+                
+                System.out.println(ex);
+            }   
+           
     }
     
     /**
@@ -1011,11 +1025,14 @@ public class DBConnect {
                 {
                     vis = new Visita(rs.getString("Cod_Veterinario"),rs.getString("Cod_Animale"), rs.getDate("Data_Visita"), rs.getString("Note_Visita"));
                     visitaList.add(vis);
+                   
                 }
+               
             }catch(Exception ex){
 
                 System.out.println(ex);
-            }   
+            }
+            
            return visitaList;   
         }
        

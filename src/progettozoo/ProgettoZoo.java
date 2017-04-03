@@ -25,7 +25,9 @@ public class ProgettoZoo {
      */
     public static void main(String[] args) 
     {
+       
         DBConnect conn = new DBConnect();
+        conn.setmaxconn(2000);
         if(!conn.ciSonoCompiti()){
             
             conn.addPranziGionalieri();
@@ -347,8 +349,8 @@ public Date ConvertStringToDate(String Data, String FORMAT)
                 }
                     
             }
-     
         conn.close();
+        
     }   
 
  }
