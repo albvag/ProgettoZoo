@@ -6,8 +6,7 @@
 
 package schede;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.Pattern;
@@ -16,7 +15,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import logins.JDirettore;
 import logins.JVeterinario;
-import progettozoo.DBConnect;
+import database.DBConnect;
 import progettozoo.Pasto;
 import progettozoo.ProgettoZoo;
 import progettozoo.Utente;

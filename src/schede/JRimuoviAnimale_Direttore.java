@@ -6,12 +6,10 @@
 package schede;
 
 import java.util.ArrayList;
-import java.util.function.UnaryOperator;
 import javax.swing.JOptionPane;
 import logins.JDirettore;
 import progettozoo.Animale;
-import progettozoo.DBConnect;
-import progettozoo.Habitat;
+import database.DBConnect;
 import progettozoo.Utente;
 
 

@@ -22,11 +22,11 @@ public class Pasto {
     private boolean Disponibile;
     private boolean Terminato;
     
-    Pasto(){
+    public Pasto(){
         
     }
     
-    Pasto(int Codice_Pasto,String Cod_Gabbia, Date Data_Pasto, boolean Disponibile, boolean Terminato){
+    public Pasto(int Codice_Pasto,String Cod_Gabbia, Date Data_Pasto, boolean Disponibile, boolean Terminato){
        this.Codice_Pasto = Codice_Pasto;
        this.Cod_Gabbia = Cod_Gabbia;
        this.Data_Pasto = Data_Pasto;

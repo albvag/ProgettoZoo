@@ -14,7 +14,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import logins.JDirettore;
 import logins.JVeterinario;
-import progettozoo.DBConnect;
+import database.DBConnect;
 import progettozoo.ProgettoZoo;
 import progettozoo.Utente;
 import progettozoo.Vende;

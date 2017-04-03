@@ -9,7 +9,7 @@ import java.awt.Color;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import logins.JDirettore;
-import progettozoo.DBConnect;
+import database.DBConnect;
 import progettozoo.Utente;
 import static schede.JAggiungiAnimale_Direttore.check;
 import static schede.JAggiungiPersonale_Direttore.check;

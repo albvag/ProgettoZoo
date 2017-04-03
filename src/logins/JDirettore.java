@@ -6,12 +6,9 @@
 package logins;
 import java.util.ArrayList;
 import javax.swing.*;
-import javax.swing.event.*;
 import javax.swing.table.*;
-import progettozoo.Animale;
-import progettozoo.DBConnect;
+import database.DBConnect;
 import progettozoo.Habitat;
-import progettozoo.Pasto;
 import progettozoo.Prodotto;
 import progettozoo.ProgettoZoo;
 import progettozoo.Utente;

@@ -11,7 +11,7 @@ import java.util.Date;
 import javax.swing.*;
 import javax.swing.table.*;
 import progettozoo.Animale;
-import progettozoo.DBConnect;
+import database.DBConnect;
 import progettozoo.Visita;
 import progettozoo.ProgettoZoo;
 import progettozoo.Utente;

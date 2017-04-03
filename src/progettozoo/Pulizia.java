@@ -19,11 +19,11 @@ public class Pulizia {
     private boolean ServeAiuto;
     private boolean Terminato;
     
-    Pulizia(){
+    public Pulizia(){
         
     }
     
-    Pulizia(int Codice_Pulizia,String Cod_Gabbia, Date Data_Pulizia, boolean Disponibile, boolean ServeAiuto,boolean Terminato){
+    public Pulizia(int Codice_Pulizia,String Cod_Gabbia, Date Data_Pulizia, boolean Disponibile, boolean ServeAiuto,boolean Terminato){
        this.Codice_Pulizia = Codice_Pulizia;
        this.Cod_Gabbia = Cod_Gabbia;
        this.Data_Pulizia = Data_Pulizia;

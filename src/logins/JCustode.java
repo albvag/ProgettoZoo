@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import progettozoo.DBConnect;
+import database.DBConnect;
 import progettozoo.Pasto;
 import progettozoo.Pulizia;
 import progettozoo.Utente;

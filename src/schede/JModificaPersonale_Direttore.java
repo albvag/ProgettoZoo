@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import logins.JDirettore;
-import progettozoo.DBConnect;
+import database.DBConnect;
 import progettozoo.ProgettoZoo;
 import progettozoo.Utente;
 

@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import logins.JDirettore;
 import progettozoo.Animale;
-import progettozoo.DBConnect;
+import database.DBConnect;
 import progettozoo.Habitat;
 import progettozoo.ProgettoZoo;
 import progettozoo.Utente;
@@ -301,7 +301,7 @@ public class JModificaAnimale_Direttore extends javax.swing.JFrame {
         Habitat hab=new Habitat();
         ArrayList<Habitat> list =new ArrayList<Habitat>();
           list = conn.selezionaHabitat();
-          ArrayList<Animale> lista = conn.selezionaSpecie();
+          
           
          
         an=conn.selezionaAnimale(nome, specie);

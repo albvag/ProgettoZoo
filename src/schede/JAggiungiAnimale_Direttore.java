@@ -4,22 +4,13 @@
  * and open the template in the editor.
  */
 package schede;
-import java.awt.Toolkit;
-import java.awt.event.*;
 import java.awt.*;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import logins.JLogin;
-import progettozoo.DBConnect;
+import database.DBConnect;
 import logins.JDirettore;
 import java.util.regex.Pattern;
-import java.util.regex.Matcher;
-import java.util.regex.PatternSyntaxException;
-import javax.swing.ComboBoxModel;
 import javax.swing.JOptionPane;
-import progettozoo.Animale;
-import progettozoo.Habitat;
 import progettozoo.ProgettoZoo;
 import progettozoo.Utente;
 /**
@@ -41,12 +32,12 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
           
        
              
-        ArrayList<Animale> lista = conn.selezionaSpecie();
+        ArrayList<String> lista = conn.selezionaSpecie();
         
         for(int i = 0; i < lista.size(); i++)
         {
             
-            this.jselspecie.addItem(lista.get(i).getSpecie());
+            this.jselspecie.addItem(lista.toString());
             
         }
     }

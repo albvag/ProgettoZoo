@@ -8,7 +8,7 @@ package schede;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import logins.JDirettore;
-import progettozoo.DBConnect;
+import database.DBConnect;
 import progettozoo.Prodotto;
 import progettozoo.Utente;
 

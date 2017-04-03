@@ -4,18 +4,15 @@
  * and open the template in the editor.
  */
 package schede;
-import java.util.ArrayList;
+
 import java.util.Date;
 import javax.swing.*;
-import javax.swing.table.*;
+
 import logins.JDirettore;
 import logins.JVeterinario;
 import progettozoo.Animale;
-import progettozoo.DBConnect;
-import progettozoo.ProgettoZoo;
 import progettozoo.Utente;
-import progettozoo.Visita;
-import schede.JSchedaAnimale_Veterinario;
+
 
 /**
  *

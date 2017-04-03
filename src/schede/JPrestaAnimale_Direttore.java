@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import logins.JDirettore;
 import logins.JVeterinario;
 import progettozoo.Animale;
-import progettozoo.DBConnect;
+import database.DBConnect;
 import progettozoo.ProgettoZoo;
 import progettozoo.Utente;
 

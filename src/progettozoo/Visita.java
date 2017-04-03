@@ -5,6 +5,7 @@
  */
 package progettozoo;
 
+import database.DBConnect;
 import java.util.ArrayList;
 import java.util.Date;
 /**

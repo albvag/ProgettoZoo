@@ -6,13 +6,10 @@
 package schede;
 
 import java.util.ArrayList;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import logins.JDirettore;
-import progettozoo.Animale;
-import progettozoo.DBConnect;
+import database.DBConnect;
 import progettozoo.Habitat;
-import progettozoo.ProgettoZoo;
 import progettozoo.Utente;
 
 
