@@ -350,6 +350,7 @@ public class JCassiere extends javax.swing.JFrame {
         
         
         this.jTableProdotti.getSelectionModel().clearSelection();
+        this.jTableProdotti.editCellAt(0, 0);
         ArrayList<Prodotto> pro = conn.listaProdotti();        
         boolean avanza = true; 
         for(int i = 0;i< pro.size()&&avanza; i++){ 
@@ -440,6 +441,7 @@ public class JCassiere extends javax.swing.JFrame {
     private void jAddGiacenzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddGiacenzaActionPerformed
         
         this.jTableGiacenza.getSelectionModel().clearSelection();
+        this.jTableGiacenza.editCellAt(0, 0);
         ArrayList<Prodotto> pro = conn.listaProdotti();
         boolean avanza = true; 
         int conta = 0;
