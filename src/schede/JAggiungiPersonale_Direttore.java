@@ -176,7 +176,7 @@ public class JAggiungiPersonale_Direttore extends javax.swing.JFrame {
         jLabel8.setText("  Conferma Password");
 
         jAggiungiUser.setForeground(new java.awt.Color(153, 153, 153));
-        jAggiungiUser.setText("Campo formato da soli caratteri alfanumerici più  _ e – di lungezza min 3 e max 8");
+        jAggiungiUser.setText("Campo formato da soli caratteri alfanumerici più  _ e – di lunghezza min 3 e max 8");
         jAggiungiUser.setToolTipText("Username formato da soli caratteri alfanumerici più  _ e – di lungezza min 3 e max 15");
         jAggiungiUser.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -683,7 +683,7 @@ else
     private void jAggiungiUserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAggiungiUserFocusLost
                 if(jAggiungiUser.getText().equals(""))
                 {  jAggiungiUser.setForeground(Color.gray);   
-        jAggiungiUser.setText("Campo formato da soli caratteri alfanumerici più  _ e – di lunghezza min 3 e max 15");}
+        jAggiungiUser.setText("Campo formato da soli caratteri alfanumerici più  _ e – di lunghezza min 3 e max 8");}
     }//GEN-LAST:event_jAggiungiUserFocusLost
 
     /**
