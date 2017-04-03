@@ -62,7 +62,7 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="jRefresh" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="jAggiorna" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLogout" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
@@ -102,7 +102,7 @@
               <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLogout" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="jRefresh" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="jAggiorna" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -357,12 +357,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jAiutoLabel">
     </Component>
-    <Component class="javax.swing.JButton" name="jRefresh">
+    <Component class="javax.swing.JButton" name="jAggiorna">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Refresh"/>
+        <Property name="text" type="java.lang.String" value="Aggiorna"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRefreshActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jAggiornaActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

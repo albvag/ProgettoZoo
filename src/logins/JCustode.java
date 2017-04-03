@@ -206,7 +206,7 @@ public class JCustode extends javax.swing.JFrame {
         jRichiestaAiuto = new javax.swing.JButton();
         jAnnullaCompito = new javax.swing.JButton();
         jAiutoLabel = new javax.swing.JLabel();
-        jRefresh = new javax.swing.JButton();
+        jAggiorna = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -395,10 +395,10 @@ public class JCustode extends javax.swing.JFrame {
             }
         });
 
-        jRefresh.setText("Refresh");
-        jRefresh.addActionListener(new java.awt.event.ActionListener() {
+        jAggiorna.setText("Aggiorna");
+        jAggiorna.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRefreshActionPerformed(evt);
+                jAggiornaActionPerformed(evt);
             }
         });
 
@@ -421,7 +421,7 @@ public class JCustode extends javax.swing.JFrame {
                                 .addComponent(jLabelCompito, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(40, 40, 40)
-                                .addComponent(jRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jAggiorna, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(5, 5, 5)
@@ -453,7 +453,7 @@ public class JCustode extends javax.swing.JFrame {
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jAggiorna, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPulizieFrame)
         );
@@ -542,10 +542,10 @@ public class JCustode extends javax.swing.JFrame {
         JCustode cus = new JCustode(user);
     }//GEN-LAST:event_jRichiestaAiutoActionPerformed
 
-    private void jRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRefreshActionPerformed
+    private void jAggiornaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAggiornaActionPerformed
         setVisible(false);
         JCustode cus = new JCustode(user);
-    }//GEN-LAST:event_jRefreshActionPerformed
+    }//GEN-LAST:event_jAggiornaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -587,6 +587,7 @@ public class JCustode extends javax.swing.JFrame {
     private javax.swing.JButton JAccettaPulizia;
     private javax.swing.JButton JAccettaRichiestaAiuto;
     private javax.swing.JButton jAccettaNutri;
+    private javax.swing.JButton jAggiorna;
     private javax.swing.JLabel jAiutoLabel;
     private javax.swing.JButton jAnnullaCompito;
     private javax.swing.JInternalFrame jInternalFrame1;
@@ -598,7 +599,6 @@ public class JCustode extends javax.swing.JFrame {
     private javax.swing.JInternalFrame jNutrireFrame;
     private javax.swing.JTable jPasti;
     private javax.swing.JInternalFrame jPulizieFrame;
-    private javax.swing.JButton jRefresh;
     private javax.swing.JButton jRichiestaAiuto;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

@@ -466,7 +466,7 @@ public class JCassiere extends javax.swing.JFrame {
         
         if(conta==0){
                 JOptionPane.showMessageDialog(null, "Non hai selezionato nessun prodotto");
-        }else {reply = JOptionPane.showConfirmDialog(null,"Vuoi aggiungere la giacenza","Confermare?", JOptionPane.YES_NO_OPTION);
+        }else {reply = JOptionPane.showConfirmDialog(null,"Vuoi aggiungere la giacenza ?","Confermare?", JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION){
         
         for(int i = 0;i< pro.size()&&avanza; i++){
