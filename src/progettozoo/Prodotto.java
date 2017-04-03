@@ -11,8 +11,9 @@ package progettozoo;
  */
 public class Prodotto {
     private String tipo;
-    private final double prezzo;
+    private double prezzo;
     private int giacenza;
+    
    
   
     public Prodotto(String tipo,double prezzo, int giacenza ){
@@ -21,6 +22,11 @@ public class Prodotto {
         this.giacenza = giacenza;
     }
    
+    public Prodotto(){
+        
+    }
+        
+     
     public double getPrezzo(){
     return this.prezzo;
     }

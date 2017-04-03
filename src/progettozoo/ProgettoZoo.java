@@ -38,10 +38,13 @@ public class ProgettoZoo {
         login.setLocationRelativeTo(null);
         login.setVisible(true);
     }  
-    
-public Date ConvertStringToDate(String Data, String FORMAT)
-{
-    String startDateString = Data;
+
+    /**
+     * Metodo per la conversione delle String in Date dato un formato
+     */    
+        public Date ConvertStringToDate(String Data, String FORMAT)
+        {
+        String startDateString = Data;
                 DateFormat df = new SimpleDateFormat(FORMAT); 
                 Date startDate = new Date();
                 try {
@@ -51,7 +54,11 @@ public Date ConvertStringToDate(String Data, String FORMAT)
                   //  e.printStackTrace();
                 }
                 return startDate;
-}
+        }
+        
+        /**
+        * Data una data in String cambia il formato da OLD_FORMAT a NEW_FORMAT
+        */
         public String NuovoFormatoData(String DataToFormat_AS_STRING, String OLD_FORMAT, String NEW_FORMAT)
         { 
            String DATE_FORMAT = NEW_FORMAT; 
@@ -59,7 +66,10 @@ public Date ConvertStringToDate(String Data, String FORMAT)
            SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
            return sdf.format(newDate);
         }
-
+        
+        /**
+        * Fa andare a capo al primo spazio dopo un intervallo dato
+        */
         public String StringFormat(String stringToFormat, int intervallo)
         {
             int index = 0;          
@@ -82,6 +92,9 @@ public Date ConvertStringToDate(String Data, String FORMAT)
                 return stringToFormat;
         }
         
+        /**
+        * Controlla se la data rispetta il formato dato
+        */
         public boolean isThisDateValid(String dateToValidate, String dateFormat){
 
 		if(dateToValidate == null){
@@ -105,6 +118,9 @@ public Date ConvertStringToDate(String Data, String FORMAT)
 		return true;
 	}
         
+        /**
+        * Ordina le date delle visite di un animale tramite algoritmo quicksort
+        */
         public void quicksortDate(ArrayList<Visita> arrayDate, int start, int end, String ordine)
         {
             Date pivotElem, tmp;
@@ -184,9 +200,12 @@ public Date ConvertStringToDate(String Data, String FORMAT)
                 } break;
             }
         }
-     
- public void quicksortTAB_ANIM(ArrayList<Animale> list, int start, int end, String ordine)
- { 
+ 
+    /**
+    * Ordina gli animali in base alla data dell'ultima visita tramite algoritmo
+    */       
+    public void quicksortTAB_ANIM(ArrayList<Animale> list, int start, int end, String ordine)
+    { 
      DBConnect conn = new DBConnect();
      ProgettoZoo pz = new ProgettoZoo();
      

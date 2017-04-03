@@ -30,7 +30,8 @@ public class JCambiaPrezzi_Direttore extends javax.swing.JFrame {
           utente.setUsername(user_log.getUsername());
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
-        ArrayList<Prodotto> list = conn.selezionaProdotto("");
+        //ArrayList<Prodotto> list = conn.selezionaProdotto("");
+        ArrayList<Prodotto> list = conn.listaProdotti();
         
         
         for(int i = 0; i < list.size(); i++)
@@ -146,8 +147,8 @@ public class JCambiaPrezzi_Direttore extends javax.swing.JFrame {
 
     private void jselprodottoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jselprodottoActionPerformed
         String prodotto =this.jselprodotto.getSelectedItem().toString();
-        ArrayList<Prodotto> prod =conn.selezionaProdotto(prodotto);
-        Double a= prod.get(0).getPrezzo();
+        Prodotto prod =conn.selezionaProdotto(prodotto);
+        Double a= prod.getPrezzo();
         this.joldprize.setText(a.toString());
       
     }//GEN-LAST:event_jselprodottoActionPerformed

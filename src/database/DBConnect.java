@@ -478,7 +478,7 @@ public class DBConnect {
       }
     
     /**
-     * Query che restituisce il ruolo dato un utente
+     * Query che restituisce la lista delle specie
      */
     public ArrayList<String> selezionaSpecie()
     {
@@ -502,34 +502,36 @@ public class DBConnect {
             }   
            return spelist; 
     }
-      
-     public ArrayList<Prodotto> selezionaProdotto(String prodotto)
+    
+    /**
+     * Query che restituisce un prodotto dato il codice
+     */
+    public Prodotto selezionaProdotto(String prodotto)
     {
-        ArrayList<Prodotto> prolist = new ArrayList<Prodotto>();
-        String query="";
-        if(prodotto.equals(""))
-        query = "Select * from prodotto ";
-        else
-            query = "Select * from prodotto where prodotto.Codice_Prodotto=  '"+prodotto+"'";
+        Prodotto pro = new Prodotto();
+        String query = "Select * from prodotto where prodotto.Codice_Prodotto=  '"+prodotto+"'";
 
            try{
-               Prodotto pro;
+               
                rs = st.executeQuery(query);
                
                
                 while(rs.next())
                 {
                     pro = new Prodotto(rs.getString("prodotto.Codice_Prodotto"),rs.getDouble("prodotto.Prezzo"),rs.getInt("prodotto.Giacenza"));
-                    prolist.add(pro);
+                    
                 }
             }catch(Exception ex){
 
                 System.out.println(ex);
             }   
-           return prolist; 
+           return pro;
     }
     
-     public Animale selezionaAnimale(String nome,String specie)
+    /**
+     * Query che restituisce un animale dato il nome e la specie
+     */
+    public Animale selezionaAnimale(String nome,String specie)
     {
        Animale an= new Animale();
         String query = "Select * from animale where animale.Nome= '"+nome+"' AND animale.Specie= '"+specie+"'";
@@ -558,29 +560,36 @@ public class DBConnect {
             }   
            return an; 
     }
-   
-    public ArrayList<Animale> selezionaAnimaliSpecie()
+    
+    /**
+     * Query che restituisce la lista delle specie di cui esiste anche un animale
+     */
+    public ArrayList<String> selezionaAnimaliSpecie()
     {
-        ArrayList<Animale> animlist = new ArrayList<Animale>();
+        ArrayList<String> spelist = new ArrayList<>();
         String query = "Select distinct Specie from animale ";
-
+        
            try{
-               Animale an;
+               String spe;
                rs = st.executeQuery(query);
                
                
                 while(rs.next())
                 {
-                    an = new Animale();
-                    an.setSpecie(rs.getString("animale.Specie"));
-                    animlist.add(an);
+                    
+                    spe = rs.getString("animale.Specie");
+                    spelist.add(spe);
                 }
             }catch(Exception ex){
 
                 System.out.println(ex);
             }   
-           return animlist; 
+           return spelist; 
     }
+    
+    /**
+     * Query che restituisce la lista dei nome degli animali data la specie a cui appartengono
+     */
      public ArrayList<Animale> selezionaAnimaliNome(String specie)
     {
         ArrayList<Animale> speclist = new ArrayList<Animale>();
@@ -604,7 +613,11 @@ public class DBConnect {
             }   
            return speclist; 
     }
-          public ArrayList<Animale> selezionaAnimaliPresenti()
+     
+     /**
+     * Query che restituisce la lista degli animali appartenetni allo zoo che sono presenti in questo momento
+     */
+    public ArrayList<Animale> selezionaAnimaliPresenti()
     {
         ArrayList<Animale> anpreslist = new ArrayList<Animale>();
         String query = "Select * from animale where animale.Presente= "+true+" AND animale.Nostro= "+true+"";
@@ -631,7 +644,11 @@ public class DBConnect {
             }   
            return anpreslist; 
     } 
-                 public ArrayList<Animale> selezionaAnimaliInPrestito()
+    
+    /**
+     * Query che restituisce la lista degli animali appertanenti allo zoo che sono al momento in prestito
+     */
+    public ArrayList<Animale> selezionaAnimaliInPrestito()
     {
         ArrayList<Animale> prestitolist = new ArrayList<Animale>();
         String query = "Select * from animale where animale.Presente= "+false+" AND animale.Nostro= "+true+"";
@@ -658,7 +675,11 @@ public class DBConnect {
             }   
            return prestitolist; 
     } 
-       public Utente selezionaPersonale(String ruolo,String nome)
+    
+    /**
+     * Query che restituisce un impiegato dato il ruolo e il nome
+     */
+    public Utente selezionaPersonale(String ruolo,String nome)
     {
         Utente ut=new Utente();
         String query = "Select distinct * from impiegato JOIN utente on impiegato.Codice_Impiegato=utente.Codice_Utente where utente.Ruolo_Utente= '"+ruolo+"' AND impiegato.Cognome= '"+nome+"'";
@@ -686,7 +707,11 @@ public class DBConnect {
             }   
            return ut; 
     }
-         public ArrayList<Utente> selezionaImpiegato()
+    
+    /**
+     * Query che restituisce la lista di impiegati
+     */
+    public ArrayList<Utente> selezionaImpiegato()
     {
         ArrayList<Utente> implist = new ArrayList<Utente>();
         String query = "Select * from impiegato JOIN utente on impiegato.Codice_Impiegato=utente.Codice_Utente ";

@@ -36,10 +36,10 @@ public class JModificaAnimale_Direttore extends javax.swing.JFrame {
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
         
-        ArrayList<Animale> list = conn.selezionaAnimaliSpecie();
+        ArrayList<String> list = conn.selezionaAnimaliSpecie();
         for(int i=0;i<list.size();i++)
         {
-          this.jselezionaspecie.addItem(list.get(i).getSpecie());
+          this.jselezionaspecie.addItem(list.get(i));
         }
         this.jInternalFrame1.setVisible(false);
         pack();

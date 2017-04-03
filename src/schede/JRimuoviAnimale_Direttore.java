@@ -29,13 +29,13 @@ public class JRimuoviAnimale_Direttore extends javax.swing.JFrame {
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
          
-        ArrayList<Animale> list = conn.selezionaAnimaliSpecie();
+        ArrayList<String> list = conn.selezionaAnimaliSpecie();
         
         
         for(int i = 0; i < list.size(); i++)
         {
             
-            this.jselspecie.addItem(list.get(i).getSpecie());
+            this.jselspecie.addItem(list.get(i));
            
         }
         

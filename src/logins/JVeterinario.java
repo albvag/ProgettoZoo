@@ -72,9 +72,9 @@ public class JVeterinario extends javax.swing.JFrame {
         Show_Animali_In_JTable(this.jTableAnimali, filtri);
         
          DBConnect conn=new DBConnect();
-         ArrayList<Animale> list = conn.selezionaAnimaliSpecie();
+         ArrayList<String> list = conn.selezionaAnimaliSpecie();
         for(int i = 0; i < list.size(); i++)  
-            this.jComboBoxSpecie.addItem(list.get(i).getSpecie());
+            this.jComboBoxSpecie.addItem(list.get(i));
         setLocationRelativeTo(null);
 
     }

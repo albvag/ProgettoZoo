@@ -28,7 +28,7 @@ public class JRimuoviProdotto_Direttore extends javax.swing.JFrame {
         utente.setUsername(user_log.getUsername());
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
-        ArrayList<Prodotto> list = conn.selezionaProdotto("");
+        ArrayList<Prodotto> list = conn.listaProdotti();
         
         
         for(int i = 0; i < list.size(); i++)
