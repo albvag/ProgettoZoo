@@ -9,7 +9,7 @@ import java.awt.Toolkit;
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.JOptionPane;
-import progettozoo.DBConnect;
+import database.DBConnect;
 import progettozoo.Utente;
 
 /**
