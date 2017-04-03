@@ -439,7 +439,7 @@ public class JCassiere extends javax.swing.JFrame {
 
     private void jAddGiacenzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddGiacenzaActionPerformed
         
-        this.jTableProdotti.getSelectionModel().clearSelection();
+        this.jTableGiacenza.getSelectionModel().clearSelection();
         ArrayList<Prodotto> pro = conn.listaProdotti();
         boolean avanza = true; 
         int conta = 0;
