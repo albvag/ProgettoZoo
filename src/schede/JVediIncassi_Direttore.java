@@ -5,7 +5,7 @@
  */
 package schede;
 
-import java.awt.Color;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.Pattern;
@@ -15,7 +15,6 @@ import javax.swing.table.DefaultTableModel;
 import logins.JDirettore;
 import logins.JVeterinario;
 import progettozoo.DBConnect;
-import progettozoo.Prodotto;
 import progettozoo.ProgettoZoo;
 import progettozoo.Utente;
 import progettozoo.Vende;
@@ -39,15 +38,19 @@ public class JVediIncassi_Direttore extends javax.swing.JFrame {
         utente.setUsername(user_log.getUsername());
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
-       this.jInternalFrameTableIncassi.setVisible(false);
+        this.jInternalFrameTableIncassi.setVisible(false);
    
-      this.jTableIncassi.getTableHeader().setVisible(false);
-       this.jTableIncassi.setVisible(false);
+        this.jTableIncassi.getTableHeader().setVisible(false);
+        this.jTableIncassi.setVisible(false);
         
-       this.jLabel1.setVisible(false);
-       this.jTextField1.setVisible(false);
-       pack();
-       setLocationRelativeTo(null);
+        this.jLabel1.setVisible(false);
+        this.jTextField1.setVisible(false);
+        this.jTableIncassi.getTableHeader().setReorderingAllowed(false);
+        this.jTableIncassi.getTableHeader().setResizingAllowed(false);
+        
+        pack();
+        setLocationRelativeTo(null);
+       
     }
 
     /**

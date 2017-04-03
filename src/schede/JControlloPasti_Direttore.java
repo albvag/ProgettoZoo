@@ -37,7 +37,9 @@ public class JControlloPasti_Direttore extends javax.swing.JFrame {
         utente.setUsername(user_log.getUsername());
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
-        this.jInternalFrameTablePasti.setVisible(false);
+        this.jTablePasti.setVisible(false);
+        this.jTablePasti.getTableHeader().setReorderingAllowed(false);
+        this.jTablePasti.getTableHeader().setResizingAllowed(false);
        pack();
        setLocationRelativeTo(null);
     }

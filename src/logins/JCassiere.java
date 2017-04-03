@@ -53,6 +53,10 @@ public class JCassiere extends javax.swing.JFrame {
         Show_Giacenza_In_JTable(this.jTableGiacenza);
         this.jTableProdotti.setCellSelectionEnabled(false);
         this.jTableGiacenza.setCellSelectionEnabled(false);
+        this.jTableProdotti.getTableHeader().setReorderingAllowed(false);
+        this.jTableGiacenza.getTableHeader().setReorderingAllowed(false);
+        this.jTableProdotti.getTableHeader().setResizingAllowed(false);
+        this.jTableGiacenza.getTableHeader().setResizingAllowed(false);
         pack();
         setLocationRelativeTo(null);
     }
@@ -345,9 +349,8 @@ public class JCassiere extends javax.swing.JFrame {
     private void jVendiProdottiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVendiProdottiActionPerformed
         
         
-        this.jTableProdotti.editCellAt(0, 0);
-        ArrayList<Prodotto> pro = conn.listaProdotti();
-        this.jTableProdotti.editCellAt(0, 0);
+        this.jTableProdotti.getSelectionModel().clearSelection();
+        ArrayList<Prodotto> pro = conn.listaProdotti();        
         boolean avanza = true; 
         for(int i = 0;i< pro.size()&&avanza; i++){ 
             Object go = this.jTableProdotti.getValueAt(i+1, 3);
@@ -395,7 +398,7 @@ public class JCassiere extends javax.swing.JFrame {
         
         if(avanza){
             if(conta==0){
-                JOptionPane.showMessageDialog(null, "Non hai selezionato neesun prodotto");
+                JOptionPane.showMessageDialog(null, "Non hai selezionato nessun prodotto");
                 avanza=false;
             }else{
             int reply = JOptionPane.showConfirmDialog(null,venString,"Confermare?", JOptionPane.YES_NO_OPTION);
@@ -436,8 +439,8 @@ public class JCassiere extends javax.swing.JFrame {
 
     private void jAddGiacenzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddGiacenzaActionPerformed
         
+        this.jTableProdotti.getSelectionModel().clearSelection();
         ArrayList<Prodotto> pro = conn.listaProdotti();
-        this.jTableGiacenza.editCellAt(0, 0);
         boolean avanza = true; 
         int conta = 0;
         for(int i = 0;i< pro.size()&&avanza; i++){ 
@@ -462,7 +465,7 @@ public class JCassiere extends javax.swing.JFrame {
         System.out.print(conta);
         
         if(conta==0){
-                JOptionPane.showMessageDialog(null, "Non hai selezionato neesun prodotto");
+                JOptionPane.showMessageDialog(null, "Non hai selezionato nessun prodotto");
         }else {reply = JOptionPane.showConfirmDialog(null,"Vuoi aggiungere la giacenza","Confermare?", JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION){
         

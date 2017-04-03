@@ -124,7 +124,7 @@ public class DBConnect {
     }
     
     /**
-     * Inserisce una nuova specie nel DB
+     * Query di inserimento di una nuova specie nel DB
      */
      public void insertSpecie(String Cod_Specie)
     {
@@ -136,7 +136,7 @@ public class DBConnect {
     }
      
     /**
-     * Inserisce un nuovo habitat nel DB
+     * Query di inserimento un nuovo habitat nel DB
      * e data l'ora inserisce i pasti
      * fino alle 14:59 inserisce pranzo e cena
      * dalle 15:00 alle 20:59 inserisce solo la cena
@@ -172,7 +172,7 @@ public class DBConnect {
     }
     
     /**
-     * Inserisce un nuovo animale nel DB
+     * Query di inserimento di un nuovo animale nel DB
      */
     public void insertAnimale(String Cod_Animale,String nome,String specie,String genere,Date data,int salute,int nostro,int presente)
     {
@@ -182,6 +182,10 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    /**
+     * Query di inserimento un animale nell'habitat nella table situto del DB
+     */
     public void insertAnimaleSituato(int codsituato,String Cod_anim,String Cod_Hab)
     {
         try {
@@ -190,7 +194,10 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     //query per l'inserimento del personale nel DB
+     
+    /**
+     * Query di inserimento del personale nel DB
+     */
     public void insertImpiegato(String user,String nome,String cognome,Date data,String residenza,String indirizzo,String telefono)
     {
      try {
@@ -199,6 +206,10 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+     /**
+     * Query di inserimento di un utente nel DB
+     */
     public void inserisciUtente(String user,String password,String ruolo)
     {
         try {
@@ -208,6 +219,10 @@ public class DBConnect {
         }
 
     }
+    
+    /**
+     * Query di inserimento di un direttore nel DB
+     */
     public void insertDirettore(String user)
     {
         try{
@@ -216,7 +231,11 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-         public void insertVeterinario(String user)
+    
+    /**
+     * Query di inserimento di un veterinario nel DB
+     */
+    public void insertVeterinario(String user)
     {
         try{
             st.executeUpdate("INSERT INTO veterinario values('"+user+"')");
@@ -224,7 +243,11 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-            public void insertCustode(String user)
+         
+    /**
+     * Query di inserimento di un custode nel DB
+     */     
+    public void insertCustode(String user)
     {
         try{
             st.executeUpdate("INSERT INTO custode values('"+user+"')");
@@ -232,7 +255,15 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-               public void insertCassiere(String user)
+    
+    /**
+     * Query di inserimento di un cassiere nel DB
+     */
+    public void insertCassiere(String user)
+            
+    /**
+     * Query di inserimento di una visita nel DB
+     */
     {
         try{
             st.executeUpdate("INSERT INTO cassiere values('"+user+"')");
@@ -249,6 +280,10 @@ public class DBConnect {
         }
     }    
     
+    /**
+     * Query per la modifica della salute di un animale nel DB 
+     * e restituisce la salute
+     */
     public int updateSaluteAnimale(String Salute, String Cod_Animale)
     {
         int salute;
@@ -262,6 +297,10 @@ public class DBConnect {
         return salute;
     }
     
+    /**
+     * Query per modifica dell'attributo presente della tabella animale 
+     * serve per gestire il prestito degli animali
+     */
      public void updateAnimalePresente(boolean presente,Animale an)
     {
         
@@ -273,7 +312,10 @@ public class DBConnect {
         
     }
     
-      public double updatePrezzoProdotto(double prezzo, String prodotto)
+     /**
+     * Query per la modifica del prezzo di un prodotto nel DB
+     */
+    public double updatePrezzoProdotto(double prezzo, String prodotto)
     {
        
         try {
@@ -283,7 +325,12 @@ public class DBConnect {
         }
         return prezzo;
     }
-      public void updatePersonale(String user,String nome,String cognome,Date data,String residenza,String indirizzo,String telefono,String password,String ruolo)
+      
+    /**
+     * Query per la modifica dei dati del personale nel DB
+     * Il codice utente non è modificabile
+     */
+    public void updatePersonale(String user,String nome,String cognome,Date data,String residenza,String indirizzo,String telefono,String password,String ruolo)
       {
         try {
             st.executeUpdate("UPDATE impiegato SET Nome = '"+nome+"',Cognome = '"+cognome+"', DataNascita= '"+data.toString()+"', Residenza= '"+residenza+"',Indirizzo= '"+indirizzo+"',Telefono= '"+telefono+"' where Codice_Impiegato= '"+user+"' ");
@@ -296,7 +343,12 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         } 
       }
-      public void updateAnimale(String nome,String genere,Date data,int nostro,String codice)
+      
+    /**
+     * Query per la modifica dei dati di un animale nel DB
+     * il codice identificativo, la specie e l'habitat di appartenenza non sono modificabili
+     */
+    public void updateAnimale(String nome,String genere,Date data,int nostro,String codice)
       {
         try {
             st.executeUpdate("UPDATE animale SET Nome= '"+nome+"',Genere= '"+genere+"',Data_Nascita= '"+data.toString()+"',Nostro= "+nostro+" where Codice_Animale= '"+codice+"'" );
@@ -304,6 +356,10 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
       }
+    
+    /**
+     * Query che restituisce l'habitat dato un animale
+     */
     public String checkAnimalHabitat(String Codice_Animale)
     {
     try{
@@ -320,7 +376,9 @@ public class DBConnect {
         }
     }
     
-    //Mi dice qual è il ruolo di un certo utente
+    /**
+     * Query che restituisce il ruolo dato un utente
+     */
     public String checkRole(String user)
     {
         try{
@@ -336,7 +394,11 @@ public class DBConnect {
             return "Errore";
         }
     }
-      public ArrayList<Habitat> selezionaHabitat()
+    
+    /**
+    * Query che restituisce una lista di habitat
+    */
+    public ArrayList<Habitat> selezionaHabitat()
     {
         ArrayList<Habitat> hablist = new ArrayList<Habitat>();
         String query = "Select *  from gabbia ";
@@ -357,9 +419,12 @@ public class DBConnect {
             }   
            return hablist; 
     }
-      
-      public Habitat selezionaHabitatSpecie(String specie)
-      {
+    
+    /**
+     * Query che restituisce l'habitat di una specie data
+     */
+    public Habitat selezionaHabitatSpecie(String specie)
+    {
           Habitat hab= new Habitat();
           String query="Select * from gabbia where gabbia.Cod_Specie= '"+specie+"'";
            try{
@@ -378,8 +443,12 @@ public class DBConnect {
             }   
           return hab;
       }
-       public Habitat selezionaSpecieHabitat(String habitat)
-      {
+    
+    /**
+     * Query che restituisce un habitat dato il codice dell'habitat
+     */
+    public Habitat selezionaSpecieHabitat(String habitat)
+    {
           Habitat hab= new Habitat();
           String query="Select * from gabbia where gabbia.Codice_Gabbia= '"+habitat+"'";
            try{
@@ -398,7 +467,11 @@ public class DBConnect {
             }   
           return hab;
       }
-      public ArrayList<Animale> selezionaSpecie()
+    
+    /**
+     * Query che restituisce il ruolo dato un utente
+     */
+    public ArrayList<Animale> selezionaSpecie()
     {
         ArrayList<Animale> spelist = new ArrayList<Animale>();
         String query = "Select distinct Codice_Specie from specie ";

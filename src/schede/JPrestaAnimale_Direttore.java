@@ -15,7 +15,7 @@ import progettozoo.Animale;
 import progettozoo.DBConnect;
 import progettozoo.ProgettoZoo;
 import progettozoo.Utente;
-import progettozoo.Visita;
+
 
 
 /**
@@ -36,17 +36,20 @@ public class JPrestaAnimale_Direttore extends javax.swing.JFrame {
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
         this.jTablePresenti.getTableHeader().setReorderingAllowed(false);
-           String[] jTableAnimaliHeaders  = {"Nome Animale","Specie","Genere","Data di Nascita"};
+        String[] jTableAnimaliHeaders  = {"Nome Animale","Specie","Genere","Data di Nascita"};
         v.selectmode(this.jTablePresenti);   
         v.creaTabella(this.jTablePresenti, jTableAnimaliHeaders);
         this.jTablePresenti.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         Show_AnimaliPresenti_In_JTable(this.jTablePresenti);
         this.jTableInPrestito.getTableHeader().setReorderingAllowed(false);
-           String[] jTableAnimaliHeaders1  = {"Nome Animale","Specie","Genere","Data di Nascita"};
         v.selectmode(this.jTableInPrestito);   
         v.creaTabella(this.jTableInPrestito, jTableAnimaliHeaders);
         this.jTableInPrestito.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         Show_AnimaliInPrestito_In_JTable(this.jTableInPrestito);
+        this.jTablePresenti.getTableHeader().setReorderingAllowed(false);
+        this.jTablePresenti.getTableHeader().setResizingAllowed(false);
+        this.jTableInPrestito.getTableHeader().setReorderingAllowed(false);
+        this.jTableInPrestito.getTableHeader().setResizingAllowed(false);
     }
 
     /**

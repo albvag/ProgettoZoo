@@ -92,6 +92,13 @@ public class JCustode extends javax.swing.JFrame {
         }else this.jLabelCompito.setText("Scegli un compito");
         this.jLogout.setVisible(true);
         
+        this.jPasti.getTableHeader().setReorderingAllowed(false);
+        this.jPasti.getTableHeader().setResizingAllowed(false);
+        this.jTablePulizie.getTableHeader().setReorderingAllowed(false);
+        this.jTablePulizie.getTableHeader().setResizingAllowed(false);
+        this.jTableAiuti.getTableHeader().setReorderingAllowed(false);
+        this.jTableAiuti.getTableHeader().setResizingAllowed(false);
+        
         pack();
         setLocationRelativeTo(null);
     }
@@ -183,7 +190,6 @@ public class JCustode extends javax.swing.JFrame {
         jPasti = new javax.swing.JTable();
         jAccettaNutri = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jPulizieFrame = new javax.swing.JInternalFrame();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTablePulizie = new javax.swing.JTable();
@@ -200,6 +206,7 @@ public class JCustode extends javax.swing.JFrame {
         jRichiestaAiuto = new javax.swing.JButton();
         jAnnullaCompito = new javax.swing.JButton();
         jAiutoLabel = new javax.swing.JLabel();
+        jRefresh = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -270,8 +277,6 @@ public class JCustode extends javax.swing.JFrame {
                 .addComponent(jAccettaNutri)
                 .addContainerGap())
         );
-
-        jLabel1.setText("SCEGLI COMPITO");
 
         jPulizieFrame.setVisible(true);
 
@@ -353,7 +358,7 @@ public class JCustode extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(JAccettaPulizia)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -390,6 +395,13 @@ public class JCustode extends javax.swing.JFrame {
             }
         });
 
+        jRefresh.setText("Refresh");
+        jRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRefreshActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -400,9 +412,6 @@ public class JCustode extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(116, 116, 116)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTipoCompito, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -411,7 +420,9 @@ public class JCustode extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabelCompito, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(150, 150, 150)
+                                .addGap(40, 40, 40)
+                                .addComponent(jRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(5, 5, 5)
                         .addComponent(jNutrireFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -427,9 +438,7 @@ public class JCustode extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jNutrireFrame)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(58, 58, 58)
                 .addComponent(jLabelCompito, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTipoCompito, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -442,7 +451,9 @@ public class JCustode extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jRichiestaAiuto, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55)
-                .addComponent(jLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPulizieFrame)
         );
@@ -531,6 +542,11 @@ public class JCustode extends javax.swing.JFrame {
         JCustode cus = new JCustode(user);
     }//GEN-LAST:event_jRichiestaAiutoActionPerformed
 
+    private void jRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRefreshActionPerformed
+        setVisible(false);
+        JCustode cus = new JCustode(user);
+    }//GEN-LAST:event_jRefreshActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -574,7 +590,6 @@ public class JCustode extends javax.swing.JFrame {
     private javax.swing.JLabel jAiutoLabel;
     private javax.swing.JButton jAnnullaCompito;
     private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -583,6 +598,7 @@ public class JCustode extends javax.swing.JFrame {
     private javax.swing.JInternalFrame jNutrireFrame;
     private javax.swing.JTable jPasti;
     private javax.swing.JInternalFrame jPulizieFrame;
+    private javax.swing.JButton jRefresh;
     private javax.swing.JButton jRichiestaAiuto;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

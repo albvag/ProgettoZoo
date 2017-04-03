@@ -31,6 +31,8 @@ public class JListaHabitat_Direttore extends javax.swing.JFrame {
         v.creaTabella(this.jTableHabitat, jTableProdottiHeaders);
         this.jTableHabitat.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         d.Show_Habitat_In_JTable(this.jTableHabitat);
+        this.jTableHabitat.getTableHeader().setReorderingAllowed(false);
+        this.jTableHabitat.getTableHeader().setResizingAllowed(false);
     }
 
     /**

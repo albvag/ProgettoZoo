@@ -6,6 +6,7 @@
 package schede;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import logins.JDirettore;
 import progettozoo.DBConnect;
@@ -159,11 +160,20 @@ public class JCambiaPrezzi_Direttore extends javax.swing.JFrame {
     private void jConfermaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConfermaActionPerformed
        String prezzo=this.jnewprize.getText();
        String prodotto=this.jselprodotto.getSelectedItem().toString();
-       String formprezzo1 = "[0-9]*+[.]+[0-9]*";
+       String formnome = "[a-zA-Z ]{1,20}";
+        String formprezzo1 = "[0-9]*+[.]+[0-9]*";
+        String formprezzo2 = "[0-9]*";
+        Pattern pattern = Pattern.compile(formnome);
+        Pattern pattern1 = Pattern.compile(formprezzo1);
+        Pattern pattern2 = Pattern.compile(formprezzo2);
+        
         boolean pre=check(formprezzo1,prezzo);
-         if(pre==false)
-         JOptionPane.showMessageDialog(null, "CARATTERI NON VALIDI");
-         else{
+        boolean pre2=check(formprezzo2,prezzo);
+     
+        
+        if(!(pre || pre2)){
+      JOptionPane.showMessageDialog(null, "CARATTERI NON VALIDI");
+        }else{
        int reply = JOptionPane.showConfirmDialog(null, "Vuoi cambiare il prezzo del prodotto: "+this.jselprodotto.getSelectedItem().toString()+" da: "+this.joldprize.getText()+" a: "+this.jnewprize.getText(), "Confermare?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION)
                 {    double p=Double.parseDouble(prezzo);

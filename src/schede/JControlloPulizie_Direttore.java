@@ -39,6 +39,8 @@ public class JControlloPulizie_Direttore extends javax.swing.JFrame {
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
         this.jInternalFramePulizie.setVisible(false);
+        this.jTablePulizie.getTableHeader().setReorderingAllowed(false);
+        this.jTablePulizie.getTableHeader().setResizingAllowed(false);
        pack();
        setLocationRelativeTo(null);
     }

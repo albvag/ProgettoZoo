@@ -9,7 +9,7 @@ import javax.swing.JTable;
 import logins.JDirettore;
 import logins.JVeterinario;
 import progettozoo.Utente;
-import static schede.JControlloPasti_Direttore.utente;
+
 
 /**
  *
@@ -32,6 +32,8 @@ public class JListaProdotti_Direttore extends javax.swing.JFrame {
         v.creaTabella(this.jTableProdotti, jTableProdottiHeaders);
         this.jTableProdotti.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         d.Show_Prodotti_In_JTable(this.jTableProdotti);
+        this.jTableProdotti.getTableHeader().setReorderingAllowed(false);
+        this.jTableProdotti.getTableHeader().setResizingAllowed(false);
     }
 
     /**

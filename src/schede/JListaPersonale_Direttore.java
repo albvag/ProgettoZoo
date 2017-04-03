@@ -21,7 +21,7 @@ public class JListaPersonale_Direttore extends javax.swing.JFrame {
     /**
      * Creates new form JListaPersonale_Direttore
      */
-    public JListaPersonale_Direttore(Utente user_log) {
+public JListaPersonale_Direttore(Utente user_log) {
         initComponents();
          utente.setUsername(user_log.getUsername());
         utente.setNome(user_log.getNome());
@@ -31,7 +31,9 @@ public class JListaPersonale_Direttore extends javax.swing.JFrame {
         v.creaTabella(this.jTablePersonale, jTableProdottiHeaders);
         this.jTablePersonale.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         d.Show_Utenti_In_JTable(this.jTablePersonale);
-    }
+        this.jTablePersonale.getTableHeader().setReorderingAllowed(false);
+        this.jTablePersonale.getTableHeader().setResizingAllowed(false);
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
