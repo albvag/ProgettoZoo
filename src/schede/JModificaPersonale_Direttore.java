@@ -35,12 +35,12 @@ public class JModificaPersonale_Direttore extends javax.swing.JFrame {
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
             
-        ArrayList<Utente> list = conn.selezionaPersonaleRuolo();
+        ArrayList<String> list = conn.selezionaPersonaleRuolo();
         
         
         for(int i = 0; i < list.size(); i++)
         {       
-            this.jselruolo.addItem(list.get(i).getRuolo());
+            this.jselruolo.addItem(list.get(i));
            
         }
         this.jInternalFrame2.setVisible(false);
@@ -320,8 +320,6 @@ public class JModificaPersonale_Direttore extends javax.swing.JFrame {
          String ruolo = this.jselruolo.getSelectedItem().toString();
         String nome = this.jselnome.getSelectedItem().toString();
         Utente ut=new Utente();
-        ArrayList<Utente> ruololist = new ArrayList<Utente>();
-        ruololist=conn.selezionaPersonaleRuolo();
          String [] nom=nome.split(" ");
         int no=nom.length-1;
         String n=nom[no]; 

@@ -28,12 +28,12 @@ public class JRimuoviPersonale_Direttore extends javax.swing.JFrame {
         utente.setNome(user_log.getNome());
         utente.setCognome(user_log.getCognome());
          
-        ArrayList<Utente> list = conn.selezionaPersonaleRuolo();
+        ArrayList<String> list = conn.selezionaPersonaleRuolo();
         
         
         for(int i = 0; i < list.size(); i++)
         {       
-            this.jselruolo.addItem(list.get(i).getRuolo());
+            this.jselruolo.addItem(list.get(i));
            
         }
     }

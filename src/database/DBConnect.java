@@ -738,24 +738,29 @@ public class DBConnect {
             }   
            return implist; 
     }
-     public ArrayList<Utente> selezionaPersonaleRuolo()
+    
+    /**
+    * Query che restituisce la lista dei ruoli
+    */
+    
+     public ArrayList<String> selezionaPersonaleRuolo()
     {
-        ArrayList<Utente> ruololist = new ArrayList<Utente>();
+        ArrayList<String> ruololist = new ArrayList<>();
         String query = "SELECT DISTINCT Ruolo_Utente from utente";
 
            try{
-               Utente ut;
+               String ruolo;
                rs = st.executeQuery(query);
                
                
                 while(rs.next())
                 {   
                     
-                    ut = new Utente();
-                    ut.setRuolo(rs.getString("utente.Ruolo_Utente"));
+                    
+                    ruolo = rs.getString("utente.Ruolo_Utente");
                     
                     
-                    ruololist.add(ut);
+                    ruololist.add(ruolo);
                 }
             }catch(Exception ex){
 
@@ -763,7 +768,11 @@ public class DBConnect {
             }   
            return ruololist; 
     }
-      public ArrayList<Utente> selezionaPersonaleNome(String ruolo)
+     
+    /**
+     * Query che restituisce una lista con i nomi e cognomi del personale
+     */ 
+    public ArrayList<Utente> selezionaPersonaleNome(String ruolo)
     {
         
         ArrayList<Utente> ruololist = new ArrayList<Utente>();
@@ -788,7 +797,11 @@ public class DBConnect {
             }   
               return ruololist; 
     }
-       public String selezionacodiceAnimale(String nome)
+    
+    /**
+     * dato il nome dell'animale restituisce il codice identificativo
+     */
+    public String selezionaCodiceAnimale(String nome)
       {   
           String codice="";
           String query="SELECT Codice_Animale from animale where animale.Nome= '"+nome+"'";
@@ -804,7 +817,11 @@ public class DBConnect {
         }
        return codice;
       }
-      public String selezionacodiceImpiegato(String cognome)
+    
+    /**
+     * Query che restituisce il codice identificativo di un impiegato dato il cognome
+     */
+    public String selezionacodiceImpiegato(String cognome)
       {   
           String codice="";
           String query="SELECT Codice_Impiegato from impiegato where impiegato.Cognome= '"+cognome+"'";
@@ -820,7 +837,11 @@ public class DBConnect {
         }
        return codice;
       }
-     public void deletePersonaleImpiegato(String  codice)
+    
+    /**
+     * Query che dato il codice identificativo cancella un impiegato dalla tabella impiegato
+     */
+    public void deletePersonaleImpiegato(String  codice)
     {
         try {
             st.execute("DELETE FROM impiegato where impiegato.Codice_Impiegato = '"+codice+"'");
@@ -828,7 +849,11 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-      public void deletePersonaleUtente(String  codice)
+    
+    /**
+     * Query che dato il codice identificativo cancella un utente dalla tabella utente 
+     */
+    public void deletePersonaleUtente(String  codice)
     {
         try {
             st.execute("DELETE FROM utente where utente.Codice_Utente = '"+codice+"'");
@@ -836,6 +861,10 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    /**
+     * Query che dato il codice identificativo cancella un direttore dalla tabella direttore 
+     */
     public void deleteDirettore(String  codice)
     {
         try {
@@ -844,7 +873,11 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     public void deleteVeterinario(String  codice)
+    
+    /**
+     * Query che dato il codice identificativo cancella un veterinario dalla tabella veterinario 
+     */
+    public void deleteVeterinario(String  codice)
     {
         try {
             st.execute("DELETE FROM veterinario where veterinario.Codice_Veterinario = '"+codice+"'");
@@ -852,7 +885,11 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-      public void deleteCustode(String  codice)
+    
+    /**
+     * Query che dato il codice identificativo cancella un custode dalla tabella custode 
+     */
+    public void deleteCustode(String  codice)
     {
         try {
             st.execute("DELETE FROM custode where custode.Codice_Custode = '"+codice+"'");
@@ -860,7 +897,11 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-        public void deleteCassiere(String  codice)
+    
+    /**
+     * Query che dato il codice identificativo cancella un cassiere dalla tabella cassiere 
+     */
+    public void deleteCassiere(String  codice)
     {
         try {
             st.execute("DELETE FROM cassiere where cassiere.Codice_Cassiere = '"+codice+"'");
@@ -868,6 +909,10 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    /**
+     * Query che cancella un habitat dato il codice identificativo
+     */
     public void deleteHabitat(String Cod_Gabbia)
     {
         try {
@@ -876,7 +921,11 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     public void deleteSpecie(String specie)
+    
+    /**
+     * Query che cancella cancella una specie
+     */
+    public void deleteSpecie(String specie)
     {
         try {
             st.execute("DELETE FROM specie where Codice_Specie= '"+specie+"'");
@@ -884,7 +933,11 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-      public void deleteProdotto(String codice)
+    
+    /**
+     * Query che cancella un prodotto
+     */
+    public void deleteProdotto(String codice)
     {
         try {
             st.execute("DELETE FROM prodotto where Codice_Prodotto= '"+codice+"'");
@@ -892,7 +945,11 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     public void deleteAnimale(String Cod_anim)
+    
+    /**
+     * Query che cancella un animale
+     */
+    public void deleteAnimale(String Cod_anim)
     {
         try {
             st.execute("DELETE FROM animale where Nome= '"+Cod_anim+"'");
@@ -900,7 +957,11 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-       public void deleteAnimaleVisita(String Cod_anim)
+    
+    /**
+     * Query che cancella tutte le visite dell'animale che ha come codice il codice dato
+     */
+    public void deleteAnimaleVisita(String Cod_anim)
     {
         try {
             st.execute("DELETE FROM visita where Cod_Animale= '"+Cod_anim+"'");
@@ -916,6 +977,10 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+         
+    /**
+     * Query che controlla che esiste un animale con il codice dato
+     */
     public boolean animaleExists(String Cod_anim)
     {
         try{
@@ -931,7 +996,11 @@ public class DBConnect {
         }
         return false;
     }
-     public boolean impiegatoExists(String Cod_imp)
+    
+    /**
+     * Query che controlla che esiste un impiegato con il codice dato 
+     */
+    public boolean impiegatoExists(String Cod_imp)
     {
         try{
             String query = "Select * from impiegato where impiegato.Codice_Impiegato = '"+Cod_imp+"'";
@@ -947,6 +1016,9 @@ public class DBConnect {
         return false;
     }
     
+    /**
+     * Query che controlla che esiste un habitat con il codice dato 
+     */
     public boolean habitatExists(String Cod_Gabbia)
     {
         try{
@@ -962,7 +1034,11 @@ public class DBConnect {
         }
         return false;
     }
-     public boolean habitatisEmpty(String Cod_Gabbia)
+    
+    /**
+     * Query che controlla se un habitat è vuoto con il codice dato 
+     */
+    public boolean habitatisEmpty(String Cod_Gabbia)
     {
         try{
             String query = "Select * from situato where situato.Cod_Gabbia = '"+Cod_Gabbia+"'";
@@ -977,8 +1053,9 @@ public class DBConnect {
     }
     
     
-    
-    //verifica la corrispondenza tra utente e password inseriti
+    /**
+     * verifica la corrispondenza tra utente e password inseriti
+     */
     public boolean userExists(String user, String password)
     {
         try{
@@ -995,6 +1072,9 @@ public class DBConnect {
         return false;
     }
     
+    /**
+     * Query che restituisce l'utente che ha come codice identificativo il codice dato
+     */
     public Utente InfoUtente(String Cod_Utente)
     {
         Utente utente = new Utente();
@@ -1024,8 +1104,11 @@ public class DBConnect {
         return utente;
     }
 
-    //Estrae le informazioni sull'animale da poter mettere sulla tabella
-       public ArrayList<Animale> animaliList(String[] Filtri)
+    
+    /**
+     * Query che restituisce una lista di animali che soddisfano i filtri
+     */
+    public ArrayList<Animale> animaliList(String[] Filtri)
        {
            ProgettoZoo pz = new ProgettoZoo();
         ArrayList<Animale> animaliList = new ArrayList<Animale>();
@@ -1119,7 +1202,9 @@ public class DBConnect {
            return animaliList;   
         }       
        
-       //DATI VISITE EFFETTUATE AD UN CERTO ANIMALE
+       /**
+        * Query che restituisce la lista delle visite di un animale
+        */
        public ArrayList<Visita> visitaList(String animale)
        {
         ArrayList<Visita> visitaList = new ArrayList<>();
@@ -1143,6 +1228,9 @@ public class DBConnect {
            return visitaList;   
         }
        
+       /**
+        * Query che restituisce la lista di tutte le visite
+        */
        public ArrayList<Visita> visitaTuttiList()
        {
         ArrayList<Visita> visitaTuttiList = new ArrayList<Visita>();
@@ -1162,6 +1250,10 @@ public class DBConnect {
             }   
            return visitaTuttiList;   
         }
+    
+    /**
+     * Query che restituisce la lista dei prodotti attualmente venduti nello zoo
+     */   
     public ArrayList<Prodotto> listaProdotti()
        {
         ArrayList<Prodotto> listaProdotti = new ArrayList<Prodotto>();
@@ -1181,6 +1273,10 @@ public class DBConnect {
             }   
            return listaProdotti;   
         }
+    
+    /**
+     * Query che restituisce la lista di tutti i prodotti che siano mai stati venduti nello zoo
+     */
     public ArrayList<String> selezionaProdVenduti()
     {
          ArrayList<String> prodlist = new ArrayList<String>();
@@ -1207,7 +1303,10 @@ public class DBConnect {
            return prodlist; 
     }
     
-     public Utente[] getPasti(Date dat,ArrayList<Pasto> listaPasti)
+    /**
+     * Query che restituisce un array di utenti e riempie la lista dei pasti del giorno dato
+     */
+    public Utente[] getPasti(Date dat,ArrayList<Pasto> listaPasti)
     {
         
        
@@ -1216,11 +1315,12 @@ public class DBConnect {
          String data1=dat.toString()+" 00:00:00";
          String data2=dat.toString()+" 23:59:59";
          
+        //viene riempita la lista dei pasti del giorno dato
         
-       String query2 = "Select * from pasti  where  pasti.Data_Pasto >=  '"+data1+"' AND pasti.Data_Pasto <= '"+data2+"'";
+       String query1 = "Select * from pasti  where  pasti.Data_Pasto >=  '"+data1+"' AND pasti.Data_Pasto <= '"+data2+"'";
         try {
             
-            rs=st.executeQuery(query2);
+            rs=st.executeQuery(query1);
             
              while(rs.next())  
         {
@@ -1239,10 +1339,13 @@ public class DBConnect {
         {
            Utente  ut=new Utente();
            utlist[i]=ut;
-        String query = "Select * from nutre  where Cod_Pasto= '"+listaPasti.get(i).getCodice_Pasto()+"'";
+        
+        //lista di nutre che hanno come pasto una di quelle nella lista riempita sopra
+        
+        String query2 = "Select * from nutre  where Cod_Pasto= '"+listaPasti.get(i).getCodice_Pasto()+"'";
         try {
             
-            rs=st.executeQuery(query);
+            rs=st.executeQuery(query2);
             
              while(rs.next())  
         {
@@ -1260,6 +1363,9 @@ public class DBConnect {
         }
         for(int i=0;i<utlist.length;i++)
         {
+            //riempio l'array con gli utenti che hanno nutrito gli habitat
+            //l'indice dell'utente corrisponde all'indice del pasto che l'utente ha portato all'habitat
+            
              String query3 = "Select * from impiegato  where Codice_Impiegato= '"+utlist[i].getUsername()+"'";
         try {
             
@@ -1279,8 +1385,10 @@ public class DBConnect {
         return utlist;
     }
      
-     
-       public Utente[][] getPulizie(Date dat,ArrayList<Pulizia> listaPulizie)
+    /**
+     * Query che restituisce una matrice con gli utenti che hanno pulito gli habitat e riempie la lista delle pulizie del giorno 
+     */ 
+    public Utente[][] getPulizie(Date dat,ArrayList<Pulizia> listaPulizie)
     {
         
        
@@ -1289,11 +1397,12 @@ public class DBConnect {
          String data1=dat.toString()+" 00:00:00";
          String data2=dat.toString()+" 23:59:59";
          
-        
-       String query2 = "Select * from pulizia  where  pulizia.Data_Pulizia >=  '"+data1+"' AND pulizia.Data_Pulizia <= '"+data2+"'";
+       //lista di pulizie del giorno dato
+         
+       String query1 = "Select * from pulizia  where  pulizia.Data_Pulizia >=  '"+data1+"' AND pulizia.Data_Pulizia <= '"+data2+"'";
         try {
             
-            rs=st.executeQuery(query2);
+            rs=st.executeQuery(query1);
             
              while(rs.next())  
         {
@@ -1310,6 +1419,8 @@ public class DBConnect {
        
         Utente[][] utlist= new Utente[listaPulizie.size()][3];
         
+        //inizializzo la matrice
+        
         for(int i =0;i<listaPulizie.size();i++)
         {
             Utente  ut=new Utente();
@@ -1317,14 +1428,15 @@ public class DBConnect {
           {
                Utente user=new Utente();
               utlist[i][j]=user;
-          }
-          
-           int j=0;
+          }           
+          int j=0;
+         
+        //lista dei pulisce in cui la pulizia appartiene alla lista riempita sopra
            
-        String query = "Select * from pulisce  where Cod_Pulizia= '"+listaPulizie.get(i).getCodice_Pulizia()+"'";
+        String query2 = "Select * from pulisce  where Cod_Pulizia= '"+listaPulizie.get(i).getCodice_Pulizia()+"'";
         try {
            
-            rs=st.executeQuery(query);
+            rs=st.executeQuery(query2);
             
              while(rs.next())  
         {
@@ -1347,6 +1459,9 @@ public class DBConnect {
         {
             for(int j=0;j<2;j++)
             {
+                
+               //riempie la matrice con gli utenti che hanno pulito gli habita
+                //l'indice delle colonne della matrice coincide con l'indice della pulizia nella lista
              String query3 = "Select * from impiegato  where Codice_Impiegato= '"+utlist[i][j].getUsername()+"'";
         try {
             

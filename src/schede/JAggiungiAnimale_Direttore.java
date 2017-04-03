@@ -349,7 +349,7 @@ else
         {int reply = JOptionPane.showConfirmDialog(null, "Stai inserendo l'animale: "+this.jAggiunginomeanimale.getText()+"\n Specie: "+this.jselspecie.getSelectedItem().toString()+"\n Sesso: "+this.jGenere.getSelectedItem().toString()+"\n Nato il: "+this.jDatadinascita.getText()+"\n Habitat: "+this.jselhabitat.getText()+"\n Salute: "+this.jsalute.getSelectedItem().toString()+"\n Nostro: "+this.jnostro.getSelectedItem().toString(), "Confermare?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION)
                 { conn.insertAnimale(Cod_anim, nome,specie,genere , sqlDate, salute,nostro,presente);
-    String codiceanim=conn.selezionacodiceAnimale(nome);
+    String codiceanim=conn.selezionaCodiceAnimale(nome);
     conn.insertAnimaleSituato(0,codiceanim, this.jselhabitat.getText());
     JOptionPane.showMessageDialog(null, "ANIMALE INSERITO CORRETTAMENTE");
      jListaAnimali_Direttore lis = new jListaAnimali_Direttore(utente);

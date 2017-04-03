@@ -152,7 +152,7 @@ public class JRimuoviAnimale_Direttore extends javax.swing.JFrame {
 
     private void jRimuoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRimuoviActionPerformed
           String Cod_anim=this.jselanim.getSelectedItem().toString();
-          String codice=conn.selezionacodiceAnimale(Cod_anim);
+          String codice=conn.selezionaCodiceAnimale(Cod_anim);
            int reply = JOptionPane.showConfirmDialog(null, "Vuoi eliminare l'animale "+this.jselanim.getSelectedItem().toString()+"\n di specie "+this.jselspecie.getSelectedItem().toString() , "Confermare?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION)
                 { conn.deleteAnimale(Cod_anim);
