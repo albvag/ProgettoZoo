@@ -25,7 +25,9 @@ public class DBConnect {
     private ResultSet rs;
     
     
-    //Connessione al nostro DB
+    /**
+     * Crea una connessione al DB
+     */
     public DBConnect(){
     
         try{
@@ -37,7 +39,9 @@ public class DBConnect {
             System.out.printf("Errore "+ex);
         };
     }
-    
+    /**
+     * Chiude la connessione al DB
+     */
     public void close() {
         try {
             this.conn.close();
@@ -47,6 +51,10 @@ public class DBConnect {
         }
     }
     
+    /**
+     * Crea il codice identificativo per l'animale insetito
+     * il codice è composto dalla specie dell'animale più un numero
+     */
     public String createCodAnimale(String specie)
     {
         int conta=1;
@@ -73,6 +81,10 @@ public class DBConnect {
         }while(flag);
                 return specie+conta; 
     }
+    
+    /**
+     * Ritorna il numero di direttori presenti nel DB
+     */
     public int contaDirettore()
     {
         int conta=0;
@@ -96,6 +108,10 @@ public class DBConnect {
            return conta; 
     
     }
+    
+    /**
+     * Inserisce una nuova specie nel DB
+     */
      public void insertSpecie(String Cod_Specie)
     {
         try {
@@ -104,6 +120,14 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+     
+    /**
+     * Inserisce un nuovo habitat nel DB
+     * e data l'ora inserisce i pasti
+     * fino alle 14:59 inserisce pranzo e cena
+     * dalle 15:00 alle 20:59 inserisce solo la cena
+     * dalle 21:00 non inseriesce pasti
+     */ 
     public void insertHabitat(String Cod_Gabbia,String Cod_Specie)
     {
         try {
@@ -132,7 +156,10 @@ public class DBConnect {
             }
         }
     }
-    //query per l'inserimento di un animale nel DB
+    
+    /**
+     * Inserisce un nuovo animale nel DB
+     */
     public void insertAnimale(String Cod_Animale,String nome,String specie,String genere,Date data,int salute,int nostro,int presente)
     {
      try {

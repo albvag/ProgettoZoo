@@ -348,7 +348,7 @@ public Date ConvertStringToDate(String Data, String FORMAT)
                     
             }
      
-        
+        conn.close();
     }   
 
  }

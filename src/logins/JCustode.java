@@ -5,11 +5,8 @@
  */
 package logins;
 
-import java.awt.event.ActionEvent;
-import java.text.ParseException;
+
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -30,12 +27,14 @@ public class JCustode extends javax.swing.JFrame {
     DBConnect conn = new DBConnect();
     
     /**
-     * Creates new form JCustode
+     * Crea nuova form JCustode
      */
     public JCustode() {
         initComponents();
     }
-    
+    /**
+     * Crea nuova form JCustode e salva dati dell'utente
+     */
     
      public JCustode(Utente user_login) {
         initComponents();
@@ -97,6 +96,9 @@ public class JCustode extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
     
+    /**
+     * Riempie una JTable con le pulizie del giorno ancora disponibili
+     */ 
     public void Show_Pulizie_In_JTable(JTable table)
     {
         
@@ -113,7 +115,11 @@ public class JCustode extends javax.swing.JFrame {
            model.addRow(row);
            
        }
-    }   
+    }  
+    
+    /**
+     * Riempie una JTable con le pulizie in cui è stato richiesto aiuto
+     */ 
        public final void Show_Aiuti_In_JTable(JTable table)
     {
        ArrayList<Pulizia> list = conn.listRichiesteAiuto();
@@ -132,7 +138,9 @@ public class JCustode extends javax.swing.JFrame {
            
        }
     }
-       
+    /**
+     * Riempe una JTable con i pasti del giorno
+     */    
     public void Show_Pasti_In_JTable(JTable table)
     {
        ArrayList<Pasto> list = conn.listaPastiDisponibili();

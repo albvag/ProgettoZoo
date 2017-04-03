@@ -24,12 +24,14 @@ public class JCassiere extends javax.swing.JFrame {
     Utente user = new Utente();
     DBConnect conn = new DBConnect();
     /**
-     * Creates new form JCassiere
+     * Crea nuova form JCassiere
      */
     public JCassiere() {
         initComponents();
     }
-    
+    /**
+     * Crea una nuova form JCassiere salvando i dati dell'utente
+     */ 
     public JCassiere(Utente user_login) {
        
 
@@ -55,6 +57,105 @@ public class JCassiere extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
+    /**
+     * Crea una JTable in cui la quarta colonna è editabile
+     */ 
+    public void creaTabellaProdotti(JTable table,String[] columnHeaders){
+        Object[][] data = {
+            {"","","","","","","","",""},
+        };
+        
+        DefaultTableModel tableModel = new DefaultTableModel(data, columnHeaders)
+        {
+            boolean[] canEdit = new boolean[]{
+                    false, false, false, true //messo così per ricordarmi come si fa per ogni singola cella
+            };
+            
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+         
+        };
+         table.setModel(tableModel);  
+        
+    }
+   
+    /**
+     * Crea una JTable in cui la terza colonna è editabile
+     */ 
+    public void creaTabellaGiacenza(JTable table,String[] columnHeaders){
+        Object[][] data = {
+            {"","","","","","","","",""},
+        };
+        
+        DefaultTableModel tableModel = new DefaultTableModel(data, columnHeaders)
+        {
+            boolean[] canEdit = new boolean[]{
+                    false, false, true //messo così per ricordarmi come si fa per ogni singola cella
+            };
+            
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+         
+        };
+         table.setModel(tableModel);  
+        
+    }
+    
+     /**
+     * Riempe una JTable con i prodotti venduti nello zoo
+     */
+    public void Show_Prodotti_In_JTable(JTable table)
+    {
+       ArrayList<Prodotto> list = conn.listaProdotti();
+       DefaultTableModel model = (DefaultTableModel) table.getModel();
+       Object[] row = new Object[4];
+       
+        table.changeSelection(0, 0, false, false);
+       for(int i = 0; i < list.size(); i++)
+       {
+     
+           row[0] = list.get(i).getTipo();
+           
+           row[1] = list.get(i).getPrezzo();
+           
+           row[2] = list.get(i).getGiacenza();
+           
+           row[3] = 0;
+                   
+           model.addRow(row);
+           
+       }
+       
+       
+    }
+     /**
+     * Riempe una JTable con i dati di giacenza dei prodotti
+     */
+    public void Show_Giacenza_In_JTable(JTable table)
+    {
+       ArrayList<Prodotto> list = conn.listaProdotti();
+       DefaultTableModel model = (DefaultTableModel) table.getModel();
+       Object[] row = new Object[3];
+       
+        table.changeSelection(0, 0, false, false);
+       for(int i = 0; i < list.size(); i++)
+       {
+     
+           row[0] = list.get(i).getTipo();
+           
+           row[1] = list.get(i).getGiacenza();
+           
+           row[2] = 0;
+                   
+           model.addRow(row);
+           
+       }
+    }    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -434,94 +535,7 @@ public class JCassiere extends javax.swing.JFrame {
             }
         });
     }
-    
-    public void creaTabellaProdotti(JTable table,String[] columnHeaders){
-        Object[][] data = {
-            {"","","","","","","","",""},
-        };
-        
-        DefaultTableModel tableModel = new DefaultTableModel(data, columnHeaders)
-        {
-            boolean[] canEdit = new boolean[]{
-                    false, false, false, true //messo così per ricordarmi come si fa per ogni singola cella
-            };
-            
-            @Override
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
-            }
-         
-        };
-         table.setModel(tableModel);  
-        
-    }
-    
-    public void creaTabellaGiacenza(JTable table,String[] columnHeaders){
-        Object[][] data = {
-            {"","","","","","","","",""},
-        };
-        
-        DefaultTableModel tableModel = new DefaultTableModel(data, columnHeaders)
-        {
-            boolean[] canEdit = new boolean[]{
-                    false, false, true //messo così per ricordarmi come si fa per ogni singola cella
-            };
-            
-            @Override
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
-            }
-         
-        };
-         table.setModel(tableModel);  
-        
-    }
-    
-    public void Show_Prodotti_In_JTable(JTable table)
-    {
-       ArrayList<Prodotto> list = conn.listaProdotti();
-       DefaultTableModel model = (DefaultTableModel) table.getModel();
-       Object[] row = new Object[4];
-       
-        table.changeSelection(0, 0, false, false);
-       for(int i = 0; i < list.size(); i++)
-       {
-     
-           row[0] = list.get(i).getTipo();
-           
-           row[1] = list.get(i).getPrezzo();
-           
-           row[2] = list.get(i).getGiacenza();
-           
-           row[3] = 0;
-                   
-           model.addRow(row);
-           
-       }
-       
-       
-    }
-    
-    public void Show_Giacenza_In_JTable(JTable table)
-    {
-       ArrayList<Prodotto> list = conn.listaProdotti();
-       DefaultTableModel model = (DefaultTableModel) table.getModel();
-       Object[] row = new Object[3];
-       
-        table.changeSelection(0, 0, false, false);
-       for(int i = 0; i < list.size(); i++)
-       {
-     
-           row[0] = list.get(i).getTipo();
-           
-           row[1] = list.get(i).getGiacenza();
-           
-           row[2] = 0;
-                   
-           model.addRow(row);
-           
-       }
-    }
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
