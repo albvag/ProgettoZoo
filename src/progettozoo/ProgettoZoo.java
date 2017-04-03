@@ -21,7 +21,8 @@ import logins.JLogin;
 public class ProgettoZoo {
 
     /**
-     * @param args the command line arguments
+     * Inizializza i compiti quotidini se non sono già stati creati
+     * Fa partire la form di login
      */
     public static void main(String[] args) 
     {
@@ -40,7 +41,7 @@ public class ProgettoZoo {
     }  
 
     /**
-     * Metodo per la conversione delle String in Date dato un formato
+     * Metodo per la conversione da String in Date dato un formato
      */    
         public Date ConvertStringToDate(String Data, String FORMAT)
         {
@@ -57,7 +58,7 @@ public class ProgettoZoo {
         }
         
         /**
-        * Data una data in String cambia il formato da OLD_FORMAT a NEW_FORMAT
+        * Cambia il formato della data da OLD_FORMAT a NEW_FORMAT
         */
         public String NuovoFormatoData(String DataToFormat_AS_STRING, String OLD_FORMAT, String NEW_FORMAT)
         { 
