@@ -10,6 +10,8 @@ import java.awt.event.*;
 import java.awt.*;
 import javax.swing.JOptionPane;
 import database.DBConnect;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import progettozoo.Utente;
 
 /**
@@ -159,10 +161,16 @@ DBConnect conn = new DBConnect();
                 }
                 case "Veterinario": {
                     String[] vett = {"","","","","","","",""};
-                    JVeterinario vet = new JVeterinario(user_login, vett );
+                    JVeterinario vet;
+                try {
+                    vet = new JVeterinario(user_login, vett );
                     vet.setLocationRelativeTo(null);
                     vet.setVisible(true);
                     break;
+                } catch (Throwable ex) {
+                    Logger.getLogger(JLogin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                    
                 }
                 case "Custode":{
                     JCustode cus = new JCustode(user_login);
@@ -215,10 +223,16 @@ DBConnect conn = new DBConnect();
                 }
                 case "Veterinario": {
                     String[] vett = {"","","","","","","",""};
-                    JVeterinario vet = new JVeterinario(user_login, vett );
+                    JVeterinario vet;
+                try {
+                    vet = new JVeterinario(user_login, vett );
                     vet.setLocationRelativeTo(null);
                     vet.setVisible(true);
                     break;
+                } catch (Throwable ex) {
+                    Logger.getLogger(JLogin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                    
                 }
                 case "Custode":{
                     JCustode cust = new JCustode(user_login);
@@ -277,9 +291,14 @@ DBConnect conn = new DBConnect();
                 }
                 case "Veterinario": {
                     String[] vett = {"","","","","","","",""};
+                    try{
                     JVeterinario vet = new JVeterinario(user_login, vett );
                     vet.setLocationRelativeTo(null);
                     vet.setVisible(true);
+                    }catch (Throwable ex) {
+                    Logger.getLogger(JLogin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                    
                     break;
                 }
                 case "Custode":{

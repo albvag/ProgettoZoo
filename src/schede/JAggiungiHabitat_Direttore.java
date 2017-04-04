@@ -157,13 +157,15 @@ public class JAggiungiHabitat_Direttore extends javax.swing.JFrame {
          Pattern pattern = Pattern.compile(formspecie); 
        Pattern pattern1 = Pattern.compile(formhabitat);
         boolean spe=check(formspecie,specie);
-       boolean hab=check(formhabitat,habitat);
+        boolean hab=check(formhabitat,habitat);
        
-       if(hab==true && spe==true)
-       {if(conn.habitatExists(habitat))
-       {
+        if(hab==true && spe==true)
+        {if(conn.habitatExists(habitat))
+        {
             JOptionPane.showMessageDialog(null, "Errore! L'Habitat è già esistente");
-       }else{
+        }else if(conn.specieExists(specie)){
+           JOptionPane.showMessageDialog(null, "Errore! Questa specie ha già un habitat");
+        }else{
             int reply = JOptionPane.showConfirmDialog(null, "L'habitat che vuoi inserire è: "+this.jInseriscihabitat.getText()+"\n con all'interno la specie: "+this.jaggiungispecie.getText() , "Confermare?", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION)
                 {  

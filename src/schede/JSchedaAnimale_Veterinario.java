@@ -13,6 +13,8 @@ import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import database.DBConnect;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import logins.JVeterinario;
 import progettozoo.Animale;
 import progettozoo.ProgettoZoo;
@@ -404,7 +406,11 @@ public class JSchedaAnimale_Veterinario extends javax.swing.JFrame {
         String[] FILTRI = new String[8];
         for(int i=0; i<FILTRI.length; i++) FILTRI[i] = "";
         
-        new JVeterinario(utente, FILTRI);
+            try {
+                new JVeterinario(utente, FILTRI);
+            } catch (Throwable ex) {
+                Logger.getLogger(JSchedaAnimale_Veterinario.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_jButtonCloseActionPerformed
 
     private void jButtonLeggiNoteVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLeggiNoteVisitaActionPerformed

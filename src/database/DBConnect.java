@@ -51,13 +51,11 @@ public class DBConnect {
     /**
      * Chiude la connessione al DB
      */
-    public void close() throws Throwable {
+    public void close(){
         try {
             super.finalize();
-            
-        } catch (SQLException e) {
-            
-            e.printStackTrace();
+        } catch (Throwable ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -1063,6 +1061,25 @@ public class DBConnect {
     {
         try{
             String query = "Select * from utente where utente.Codice_Utente = '"+user+"' AND utente.Password = '"+password+"'";
+            rs = st.executeQuery(query);
+           
+            while(rs.next())  return true;
+            
+        }catch(Exception ex){
+            
+            JOptionPane.showMessageDialog(null, "Errore! Username o password non sono corretti.");
+            return false;
+        }
+        return false;
+    }
+    
+    /**
+     * verifica la corrispondenza tra utente e password inseriti
+     */
+    public boolean specieExists(String specie)
+    {
+        try{
+            String query = "Select * from gabbia where Cod_Specie = '"+specie+"'";
             rs = st.executeQuery(query);
            
             while(rs.next())  return true;
