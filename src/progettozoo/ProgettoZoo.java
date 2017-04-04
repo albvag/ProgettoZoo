@@ -28,7 +28,6 @@ public class ProgettoZoo {
     {
        
         DBConnect conn = new DBConnect();
-        conn.setmaxconn(2000);
         if(!conn.ciSonoCompiti()){
             
             conn.addPranziGionalieri();
@@ -205,7 +204,7 @@ public class ProgettoZoo {
     /**
     * Ordina gli animali in base alla data dell'ultima visita tramite algoritmo
     */       
-    public void quicksortTAB_ANIM(ArrayList<Animale> list, int start, int end, String ordine)
+    public void quicksortTAB_ANIM(ArrayList<Animale> list, int start, int end, String ordine) throws Throwable
     { 
      DBConnect conn = new DBConnect();
      ProgettoZoo pz = new ProgettoZoo();

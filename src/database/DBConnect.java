@@ -51,16 +51,19 @@ public class DBConnect {
     /**
      * Chiude la connessione al DB
      */
-    public void close() {
+    public void close() throws Throwable {
         try {
+            super.finalize();
             
-            this.conn.close();
         } catch (SQLException e) {
             
             e.printStackTrace();
         }
     }
     
+    /**
+     * Imposta le connessioni massime
+     */
     public void setmaxconn(int n){
         String query = "set global max_connections= "+n;
         

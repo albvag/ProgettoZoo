@@ -12,6 +12,8 @@ import javax.swing.*;
 import javax.swing.table.*;
 import progettozoo.Animale;
 import database.DBConnect;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import progettozoo.Visita;
 import progettozoo.ProgettoZoo;
 import progettozoo.Utente;
@@ -46,7 +48,7 @@ public class JVeterinario extends javax.swing.JFrame {
         
     }
     
-    public JVeterinario(Utente user_login, String[] filter) {
+    public JVeterinario(Utente user_login, String[] filter) throws Throwable {
        
         ProgettoZoo pz = new ProgettoZoo();
         initComponents();
@@ -502,7 +504,11 @@ public class JVeterinario extends javax.swing.JFrame {
            if(this.jRadioButtonDUV_DECR.isSelected()) filtri[7] = "DUV_DECRESCENTE";
            
            
-        new JVeterinario(user, filtri);
+        try {
+            new JVeterinario(user, filtri);
+        } catch (Throwable ex) {
+            Logger.getLogger(JVeterinario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonFiltraActionPerformed
 
     private void jTextFieldDN_DaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDN_DaFocusLost
@@ -638,7 +644,7 @@ public void selectmode(JTable table)
     }
         
     @SuppressWarnings("empty-statement")
-   public void Show_Animali_In_JTable(JTable table, String[] Filtri)
+   public void Show_Animali_In_JTable(JTable table, String[] Filtri) throws Throwable
    {
        DBConnect conn = new DBConnect();
        ProgettoZoo pz = new ProgettoZoo();          

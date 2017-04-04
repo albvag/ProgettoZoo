@@ -79,7 +79,13 @@ public class JCassiere extends javax.swing.JFrame {
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit[columnIndex];
             }
-         
+
+            
+            public void deleteAllRows(int i) {
+                super.setRowCount(0); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            
         };
          table.setModel(tableModel);  
         
@@ -103,11 +109,17 @@ public class JCassiere extends javax.swing.JFrame {
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit[columnIndex];
             }
+            
+            @Override
+            public void setRowCount(int i) {
+                super.setRowCount(i); //To change body of generated methods, choose Tools | Templates.
+            }
          
         };
          table.setModel(tableModel);  
         
     }
+    
     
      /**
      * Riempe una JTable con i prodotti venduti nello zoo
@@ -417,9 +429,12 @@ public class JCassiere extends javax.swing.JFrame {
             if(gi!=0)conn.vendiProdotto(pro.get(i), gi, user);
             
         }
+        
         if(avanza){
             setVisible(false); 
             JCassiere c = new JCassiere(user);
+        }else {
+            Show_Prodotti_In_JTable(jTableProdotti);           
         }
     }//GEN-LAST:event_jVendiProdottiActionPerformed
 

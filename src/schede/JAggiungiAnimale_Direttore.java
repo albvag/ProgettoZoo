@@ -37,7 +37,7 @@ public class JAggiungiAnimale_Direttore extends javax.swing.JFrame {
         for(int i = 0; i < lista.size(); i++)
         {
             
-            this.jselspecie.addItem(lista.toString());
+            this.jselspecie.addItem(lista.get(i));
             
         }
     }
