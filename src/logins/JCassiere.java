@@ -433,9 +433,8 @@ public class JCassiere extends javax.swing.JFrame {
         if(avanza){
             setVisible(false); 
             JCassiere c = new JCassiere(user);
-        }else {
-            Show_Prodotti_In_JTable(jTableProdotti);           
         }
+        
     }//GEN-LAST:event_jVendiProdottiActionPerformed
 
     private void jGiacenzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGiacenzaActionPerformed
