@@ -70,23 +70,41 @@ public class Vende {
         this.DataVendita=data;
     }
     
+    /**
+     * Restituisce l'attributo Cod_Cassiere
+     */
     public String getCod_Cassiere()
     {
         return Cod_Cassiere;
     }
     
+    /**
+     * Restituisce l'attributo Cod_Prodotto
+     */
     public String getCod_Prodotto()
     {
         return Cod_Prodotto;
     }
+    
+    /**
+     * Restituisce l'attributo Quantità
+     */
     public int getQuantita()
     {
         return Quantita;
     }
+    
+    /**
+     * Restituisce l'attributo Ricavi
+     */
     public double getRicavi()
     {
         return Ricavi;
     }
+    
+    /**
+     * Restituisce l'attributo DataVendita
+     */
     public Date getDataVendita()
     {
         return DataVendita;

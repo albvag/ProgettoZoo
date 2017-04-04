@@ -72,26 +72,41 @@ public class Visita {
         return this.note = Note;
     }
     
+    /**
+     * Restituisce l'attributo veterinario
+     */
     public String getVeterinario()
     {
         return veterinario;
     }
+    
+    /**
+     * Restituisce l'attributo animale
+     */
     public String getAnimaleVisitato()
     {
         return animale;
     }
-
+    
+    /**
+     * Restituisce l'attributo note
+     */
     public String getNote()
     {
         return note;
     }
-
+    
+    /**
+     * Restituisce l'attributo dat_visita
+     */
     public Date getDV()
     {
         return data_visita;
     }
 
-    //ritorna data ultima visita
+    /**
+     * Restituisce la data dell'ultima visita dato il codice dell'animale
+     */
     public Date getDUV(String animale)
     {
         DBConnect conn = new DBConnect();

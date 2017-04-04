@@ -119,46 +119,73 @@ public class Utente {
         return this.DataNascita=data;
     }
     
-    //GET
+    /**
+     * Restituisce l'attributo Username
+     */
     public String getUsername()
     {
         return this.Username;
     }    
-   
+    
+    /**
+     * Restituisce l'attributo Password
+     */
     public String getPassword()
     {
         return this.Password;
     }
     
+    /**
+     * Restituisce l'attributo Nome
+     */
     public String getNome()
     {
         return this.Nome;
     }
     
+    /**
+     * Restituisce l'attributo Cognome
+     */
     public String getCognome()
     {
         return this.Cognome;
     }
     
+    /**
+     * Restituisce l'attributo Ruolo
+     */
     public String getRuolo()
     {
         return this.Ruolo;
     }
     
+    /**
+     * Restituisce l'attributo Residenza
+     */
     public String getResidenza()
     {
       return this.Residenza;
     }
     
+    /**
+     * Restituisce l'attributo indirizzo
+     */
     public String getIndirizzo()
     {
         return this.Indirizzo;
     }
     
+    /**
+     * Restituisce l'attributo Telefono
+     */
     public String getTelefono()
     {
         return this.Telefono;
     }
+    
+    /**
+     * Restituisce l'attributo DataNascita
+     */
     public Date getData()
     {
         return this.DataNascita;

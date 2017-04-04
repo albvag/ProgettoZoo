@@ -39,26 +39,44 @@ public class Pulizia {
        
     }
     
+    /**
+     * Restituisce l'attributo Codice_Pulizia
+     */
     public int getCodice_Pulizia(){
         return this.Codice_Pulizia;
     }
     
+    /**
+     * Restituisce l'attributo Cod_Gabbia
+     */
     public String getCodice_Gabbia(){
         return this.Cod_Gabbia;
     }
     
+    /**
+     * Restituisce l'attributo Data_Pulizia
+     */
     public Date getData_Pulizia(){
         return this.Data_Pulizia;
     }
     
+    /**
+     * Restituisce l'attributo Disponibile
+     */
     public boolean getDisponibile(){
         return this.Disponibile;
     }
     
+    /**
+     * Restituisce l'attributo ServeAiuto
+     */
     public boolean getServeAiuto(){
         return this.ServeAiuto;
     }
     
+    /**
+     * Restituisce l'attributo Terminato
+     */
     public boolean getTerminato(){
         return this.Terminato;
     }

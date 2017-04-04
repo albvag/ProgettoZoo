@@ -31,15 +31,23 @@ public class Prodotto {
         
     }
         
-     
+    /**
+     * Restituisce l'attributo prezzo
+     */ 
     public double getPrezzo(){
     return this.prezzo;
     }
     
+    /**
+     * Restituisce l'attributo tipo
+     */
     public String getTipo(){
     return this.tipo;
     }
     
+    /**
+     * Restituisce l'attributo giacenza
+     */
     public int getGiacenza(){
     return this.giacenza;
     }
