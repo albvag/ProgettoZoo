@@ -1645,7 +1645,7 @@ public class DBConnect {
            
     }
     
-    /*
+    /**
      * Query che restituisce la lista dei pasti odierni ancora disponibili
      * Prima delle 12:00 restituisce un lista vuota
      * Dalle 12:00 fino alle 17:59 restituisce la lista contenente i prazi che sono diponibili
@@ -1682,7 +1682,7 @@ public class DBConnect {
         
     }
     
-    /*
+    /**
      * Query che aggiunge le pulizie odierne nel DB
      */
     public void addPulizieGionaliere(){
@@ -1703,7 +1703,7 @@ public class DBConnect {
     
     }
     
-    /*
+    /**
      * Query che aggiunge i pranzi odierni al DB
      */
     public void addPranziGionalieri(){
@@ -1724,7 +1724,7 @@ public class DBConnect {
     
     }
     
-    /*
+    /**
      * Query che aggiunge le cene odierne nel DB
      */
     public void addCeneGionaliere(){
@@ -1745,7 +1745,7 @@ public class DBConnect {
     
     }
     
-    /*
+    /**
      * Query che controlla se sono stati creati compiti per oggi nel DB
      * Controllando se esintono pasti con la dta di oggi nel DB
      */
@@ -1769,7 +1769,7 @@ public class DBConnect {
         return false;
     }   
     
-    /*
+    /**
      * Query usata per accettare una pulizia 
      * Aggiunge una riga nella tabella pulisce e setta la pulizia a non disponibile
      */
@@ -1791,6 +1791,9 @@ public class DBConnect {
         
     }    
     
+    /**
+     * Query usate per accettare
+     */
     public void accettaPasto(Pasto pas,Utente user){
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");

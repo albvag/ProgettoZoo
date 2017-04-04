@@ -293,7 +293,8 @@ public class JCustode extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTablePulizie);
 
-        JAccettaRichiestaAiuto.setText("Accetta Pulizia");
+        JAccettaRichiestaAiuto.setText("Aiuta");
+        JAccettaRichiestaAiuto.setActionCommand("Aiuta");
         JAccettaRichiestaAiuto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JAccettaRichiestaAiutoActionPerformed(evt);
@@ -340,13 +341,13 @@ public class JCustode extends javax.swing.JFrame {
                         .addGap(157, 157, 157)
                         .addComponent(jLabel2))
                     .addGroup(jPulizieFrameLayout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addComponent(JAccettaRichiestaAiuto))
-                    .addGroup(jPulizieFrameLayout.createSequentialGroup()
                         .addGap(150, 150, 150)
                         .addGroup(jPulizieFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(JAccettaPulizia)
-                            .addComponent(jLabel3))))
+                            .addComponent(jLabel3)))
+                    .addGroup(jPulizieFrameLayout.createSequentialGroup()
+                        .addGap(177, 177, 177)
+                        .addComponent(JAccettaRichiestaAiuto)))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         jPulizieFrameLayout.setVerticalGroup(
