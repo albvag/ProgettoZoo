@@ -1648,8 +1648,8 @@ public class DBConnect {
     /*
      * Query che restituisce la lista dei pasti odierni ancora disponibili
      * Prima delle 12:00 restituisce un lista vuota
-     * Dalle 12:00 restituisce la lista contenente i prazi che sono diponibili
-     * Dalle 19:00 restituisce la lista contenente prazi e cene ancora disponibili
+     * Dalle 12:00 fino alle 17:59 restituisce la lista contenente i prazi che sono diponibili
+     * Dalle 19:00 fino alle 23:59 restituisce la lista contenente i prazi e le cene ancora disponibili
      */
     public ArrayList <Pasto> listaPastiDisponibili(){
         Date date = new Date();
@@ -1657,8 +1657,12 @@ public class DBConnect {
         DateFormat formatDateTime = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
         String adesso= formatDateTime.format(date);
         String dataInizio = formatDate.format(date)+" 00:00:00";
-        
-        String query = "Select * from pasti WHERE Disponibile = "+true+" AND Terminato = "+false+" AND Data_Pasto<'"+adesso+"'AND Data_Pasto>'"+dataInizio+"'";
+        String dataCena = formatDate.format(date)+" 18:00:00";
+        String query;
+        if(date.getHours()<18){
+            query = "Select * from pasti WHERE Disponibile = "+true+" AND Terminato = "+false+" AND Data_Pasto<'"+adesso+"'AND Data_Pasto>'"+dataInizio+"'";
+        }else query = "Select * from pasti WHERE Disponibile = "+true+" AND Terminato = "+false+" AND Data_Pasto<'"+adesso+"'AND Data_Pasto>'"+dataCena+"'";
+            
         ArrayList<Pasto> listaPasti = new ArrayList();
 
            try{
@@ -1678,6 +1682,9 @@ public class DBConnect {
         
     }
     
+    /*
+     * Query che aggiunge le pulizie odierne nel DB
+     */
     public void addPulizieGionaliere(){
         
         Date date = new Date();
@@ -1696,9 +1703,10 @@ public class DBConnect {
     
     }
     
-    
-
-        public void addPranziGionalieri(){
+    /*
+     * Query che aggiunge i pranzi odierni al DB
+     */
+    public void addPranziGionalieri(){
         
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
@@ -1716,7 +1724,10 @@ public class DBConnect {
     
     }
     
-        public void addCeneGionaliere(){
+    /*
+     * Query che aggiunge le cene odierne nel DB
+     */
+    public void addCeneGionaliere(){
         
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
@@ -1734,7 +1745,11 @@ public class DBConnect {
     
     }
     
-        public boolean ciSonoCompiti(){
+    /*
+     * Query che controlla se sono stati creati compiti per oggi nel DB
+     * Controllando se esintono pasti con la dta di oggi nel DB
+     */
+    public boolean ciSonoCompiti(){
         
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
@@ -1753,7 +1768,11 @@ public class DBConnect {
         }
         return false;
     }   
-        
+    
+    /*
+     * Query usata per accettare una pulizia 
+     * Aggiunge una riga nella tabella pulisce e setta la pulizia a non disponibile
+     */
     public void accettaPulizia(Pulizia pul,Utente user){
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
@@ -1830,7 +1849,7 @@ public class DBConnect {
         if(stoNutrendo(user)){
             Pasto pas =attualePasto(user);
             try{
-            st.executeUpdate("UPDATE pasti SET Disponibile = "+true+" WHERE Codice_Pasto = '"+pas.getCodice_Pasto()+"'");
+            st.executeUpdate("UPDATE pasti SET Disponibile = "+true+", ServeAiuto = "+false+" WHERE Codice_Pasto = '"+pas.getCodice_Pasto()+"'");
             }catch(SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);}
             
