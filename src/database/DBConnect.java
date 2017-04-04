@@ -269,11 +269,7 @@ public class DBConnect {
     /**
      * Query di inserimento di un cassiere nel DB
      */
-    public void insertCassiere(String user)
-            
-    /**
-     * Query di inserimento di una visita nel DB
-     */
+    public void insertCassiere(String user)                
     {
         try{
             st.executeUpdate("INSERT INTO cassiere values('"+user+"')");
@@ -281,10 +277,20 @@ public class DBConnect {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    /**
+     * Query di inserimento di una visita nel DB
+     */
     public void insertVisita(int Cod_Visita, String Cod_Vet, String Cod_Anim, Date DataVisita, String NoteVisita)
-    {
+    {   
+        String[] Note = NoteVisita.split("'");
+        String succ = Note[0];
+        for(int i=1; i<Note.length; i++)
+        {
+            succ = succ + "''"+Note[i];
+        }
         try {
-            st.executeUpdate("INSERT INTO visita values ("+Cod_Visita+",'"+Cod_Vet +"','"+Cod_Anim+"','"+DataVisita+"','"+NoteVisita+"')");
+            st.executeUpdate("INSERT INTO visita values ("+Cod_Visita+",'"+Cod_Vet +"','"+Cod_Anim+"','"+DataVisita+"','"+succ+"')");
         } catch (SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
