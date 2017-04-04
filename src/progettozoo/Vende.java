@@ -18,54 +18,78 @@ public class Vende {
     private double Ricavi;
     private Date DataVendita;
 
+    /**
+     * Crea un istanza della classe Vende vuota
+     */
+    public  Vende()
+    {
+        this.Cod_Cassiere = "";
+        this.Cod_Prodotto = "";
+        this.Quantita=0;
+        this.Ricavi=0;
+        this.DataVendita = new Date(0000,00,00);
+    }
+    
+    /**
+     * Modifica l'attributo Cod_Casiere
+     */
+    public void setCod_Cassiere(String Cod_Cassiere)
+    {
+        this.Cod_Cassiere=Cod_Cassiere;
+    }
+    
+    /**
+     * Modifica l'attributo Cod_Prodotto
+     */
+    public void setCod_Prodotto(String Cod_Prodotto)
+    {
+        this.Cod_Prodotto=Cod_Prodotto;
+    }
+    
+    /**
+     * Modifica l'attributo Quantità
+     */
+    public void setQuantita(int quant)
+    {
+        this.Quantita=quant;
+    }
+    
+    /**
+     * Modifica l'attributo Ricavi
+     */
+    public void setRicavi(double ricavi)
+    {
+        this.Ricavi=ricavi;
+    }
+    
+    /**
+     * Modifica l'attributo DataVendita
+     */
+    public void setDataVendita(Date data)
+    {
+        this.DataVendita=data;
+    }
+    
+    public String getCod_Cassiere()
+    {
+        return Cod_Cassiere;
+    }
+    
+    public String getCod_Prodotto()
+    {
+        return Cod_Prodotto;
+    }
+    public int getQuantita()
+    {
+        return Quantita;
+    }
+    public double getRicavi()
+    {
+        return Ricavi;
+    }
+    public Date getDataVendita()
+    {
+        return DataVendita;
+    }
 
-public  Vende()
-{
-    this.Cod_Cassiere = "";
-    this.Cod_Prodotto = "";
-    this.Quantita=0;
-    this.Ricavi=0;
-    this.DataVendita = new Date(0000,00,00);
-}
-public void setCod_Cassiere(String Cod_Cassiere)
-{
-    this.Cod_Cassiere=Cod_Cassiere;
-}
-public void setCod_Prodotto(String Cod_Prodotto)
-{
-    this.Cod_Prodotto=Cod_Prodotto;
-}
-public void setQuantita(int quant)
-{
-    this.Quantita=quant;
-}
-public void setRicavi(double ricavi)
-{
-    this.Ricavi=ricavi;
-}
-public void setDataVendita(Date data)
-{
-    this.DataVendita=data;
-}
-public String getCod_Cassiere()
-{
-    return Cod_Cassiere;
-}
-public String getCod_Prodotto()
-{
-    return Cod_Prodotto;
-}
-public int getQuantita()
-{
-    return Quantita;
-}
-public double getRicavi()
-{
-    return Ricavi;
-}
-public Date getDataVendita()
-{
-    return DataVendita;
-}
-
-}
+    }

@@ -19,10 +19,16 @@ public class Pulizia {
     private boolean ServeAiuto;
     private boolean Terminato;
     
+    /**
+     * Crea un istanza della classe Pulizia vuota
+     */
     public Pulizia(){
         
     }
     
+    /**
+     * Crea un istanza della classe Pulizia con i parametri dati
+     */
     public Pulizia(int Codice_Pulizia,String Cod_Gabbia, Date Data_Pulizia, boolean Disponibile, boolean ServeAiuto,boolean Terminato){
        this.Codice_Pulizia = Codice_Pulizia;
        this.Cod_Gabbia = Cod_Gabbia;
@@ -32,6 +38,7 @@ public class Pulizia {
        this.Terminato = Terminato;
        
     }
+    
     public int getCodice_Pulizia(){
         return this.Codice_Pulizia;
     }

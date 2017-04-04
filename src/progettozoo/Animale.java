@@ -24,7 +24,9 @@ public class Animale {
     private boolean salute, nostro, presente;
     
     
-
+    /**
+     * Crea un istanza della classe Animale vuota
+     */
     public Animale()
     {
         this.id = "";
@@ -38,7 +40,9 @@ public class Animale {
         this.presente = true;
     }
   
-    
+    /**
+     * Crea un istanza della classe Animale dati i parametri
+     */
     public Animale(String ID, String Nome, String Specie, String Sesso, String Habitat, Date Data_Nascita, boolean Salute, boolean Nostro, boolean Presente)
     {
         this.id = ID;
@@ -52,91 +56,145 @@ public class Animale {
         this.presente = Presente;
     }
     
+    /**
+     * Modifica l'attributo id
+     */
     public void setId(String ID)
     {
         this.id = ID;
     }
     
+    /**
+     * Modifica l'attributo nome
+     */
     public void setNome(String NOME)
     {
         this.nome = NOME;
     }
     
+    /**
+     * Modifica l'attributo specie
+     */
     public void setSpecie(String SPECIE)
     {
         this.specie = SPECIE;
     }
     
+    /**
+     * Modifica l'attributo sesso
+     */
     public void setSesso(String SESSO)
     {
         this.sesso = SESSO;
     }
     
+    /**
+     * Modifica l'attributo habitat
+     */
     public void setHabitat(String HABITAT)
     {
         this.habitat = HABITAT;
     }
     
+    /**
+     * Modifica l'attributo data_nascita
+     */
     public void setDataNascita(Date DATA)
     {
         this.data_nascita = DATA;
     }
     
+    /**
+     * Modifica l'attributo salute
+     */
     public void setSalute(boolean SALUTE)
     {
         this.salute = SALUTE;   
     }
     
-     public void setPresente(boolean PRESENTE)
+    /**
+     * Modifica l'attributo presente
+     */
+    public void setPresente(boolean PRESENTE)
     {
        this.presente = PRESENTE;     
     }
     
+    /**
+     * Modifica l'attributo nostro
+     */
     public void setNostro(boolean NOSTRO)
     {
        this.nostro = NOSTRO;     
     }
     
+    /**
+     * Restituisce l'attributo id
+     */
     public String getId()
     {
         return id;
     }
     
+    /**
+     * Restituisce l'attributo nome
+     */
     public String getNome()
     {
         return nome;
     }
     
+    /**
+     * Restituisce l'attributo specie
+     */
     public String getSpecie()
     {
         return specie;
     }
     
+    /**
+     * Restituisce l'attributo sesso
+     */
     public String getSesso()
     {
         return sesso;
     }
     
+    /**
+     * Restituisce l'attributo habitat
+     */
     public String getHabitat()
     {
         return habitat;
     }
     
+    /**
+     * Restituisce l'attributo data_nascita
+     */
     public Date getDataNascita()
     {
         return data_nascita;
     }
     
+    /**
+     * Restituisce l'attributo salute
+     */
     public boolean getSalute()
     {
         return salute;
     }
     
+    /**
+     * Restituisce l'attributo presente
+     */
     public boolean getPresente()
     {
         return presente;
     }
     
+    /**
+     * Restituisce l'attributo nostro
+     */
     public boolean getNostro()
     {
         return nostro;

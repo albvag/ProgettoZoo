@@ -22,10 +22,16 @@ public class Pasto {
     private boolean Disponibile;
     private boolean Terminato;
     
+    /**
+     * Crea un istanza della classe Pasto vuota
+     */
     public Pasto(){
         
     }
     
+    /**
+     * Crea un istanza della classe Pasto con i parametri dati
+     */
     public Pasto(int Codice_Pasto,String Cod_Gabbia, Date Data_Pasto, boolean Disponibile, boolean Terminato){
        this.Codice_Pasto = Codice_Pasto;
        this.Cod_Gabbia = Cod_Gabbia;
@@ -34,6 +40,9 @@ public class Pasto {
        this.Terminato = Terminato;
     }
     
+    /**
+     * Restituisce l'attributo Codice_Pasto
+     */
     public int getCodice_Pasto(){
         return this.Codice_Pasto;
     }

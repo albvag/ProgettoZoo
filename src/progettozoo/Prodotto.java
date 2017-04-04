@@ -15,13 +15,18 @@ public class Prodotto {
     private int giacenza;
     
    
-  
+    /**
+     * Crea un istanza della classe Prodotto con i parametri dati
+     */
     public Prodotto(String tipo,double prezzo, int giacenza ){
         this.prezzo = prezzo;
         this.tipo = tipo;
         this.giacenza = giacenza;
     }
-   
+    
+    /**
+     * Crea un istanza della classe Prodotto vuota
+     */
     public Prodotto(){
         
     }
