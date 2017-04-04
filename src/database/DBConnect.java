@@ -1461,7 +1461,7 @@ public class DBConnect {
             {
                 
                //riempie la matrice con gli utenti che hanno pulito gli habita
-                //l'indice delle colonne della matrice coincide con l'indice della pulizia nella lista
+               //l'indice delle colonne della matrice coincide con l'indice della pulizia nella lista
              String query3 = "Select * from impiegato  where Codice_Impiegato= '"+utlist[i][j].getUsername()+"'";
         try {
             
@@ -1483,6 +1483,10 @@ public class DBConnect {
         
         return utlist;
     }
+    
+    /**
+     * Query che restituisce gli incassi dello zoo in una data specificata
+     */
     public ArrayList<Vende> getIncassi(ArrayList<String> prodlist,Date dat)
     {
         ArrayList<Vende> venlist = new ArrayList<Vende>();
@@ -1522,6 +1526,10 @@ public class DBConnect {
         }
         return venlist;
     }
+    
+    /**
+     * Funzione che data la lista degli incassi restituisce il ricavo totale
+     */
     public double totaleIncassi(ArrayList<Vende> venlist)
     {
         double totale=0;
@@ -1532,7 +1540,9 @@ public class DBConnect {
         return totale;
     }
     
-    
+    /**
+     * Query che aggiunge un prodotto al DB
+     */
     public void addProdotto(String Codice_Prodotto, double Prezzo, int Giacenza){
       try {
          st.executeUpdate("INSERT INTO prodotto values ('"+Codice_Prodotto+"','"+Prezzo+"','"+Giacenza+"')");
@@ -1541,6 +1551,10 @@ public class DBConnect {
         }  
     
     }
+    
+    /**
+     * Query per la vendità di un prodotto
+     */
     public void vendiProdotto(Prodotto p, int q, Utente u){
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
@@ -1561,6 +1575,9 @@ public class DBConnect {
         
     }
     
+    /**
+     * Query per aggiungere prodotti alla giacenza
+     */
     public void addToGiacenza(Prodotto p,int q){
         int newGiacenza = q + p.getGiacenza();
         
@@ -1572,6 +1589,9 @@ public class DBConnect {
         
     }
     
+    /**
+     * Query che restituisce la lista di pulizie odierne disponibili 
+     */
     public ArrayList <Pulizia> listPulizieDisponibili(){
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
@@ -1596,14 +1616,13 @@ public class DBConnect {
            
     }
     
+    /**
+     * Query che restituisce la lista delle pulizie odierne di cui è stato richiesto aiuto
+     */
     public ArrayList <Pulizia> listRichiesteAiuto() {
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
         String dataInizio = format.format(date)+" 00:00:00";
-       
-        
-        
-           
         
         ArrayList<Pulizia> listaPulizie = new ArrayList<>();
         
@@ -1626,27 +1645,12 @@ public class DBConnect {
            
     }
     
-     public ArrayList <Pasto> listaPasti(){
-        String query = "Select * from pasti ";
-        ArrayList<Pasto> listaPasti = new ArrayList<Pasto>();
-
-           try{
-               Pasto pas;
-               rs = st.executeQuery(query);
-                while(rs.next())
-                {
-                    pas = new Pasto(rs.getInt("Codice_Pasto"),rs.getString("Cod_Gabbia"), rs.getDate("Data_Pasto"),rs.getBoolean("Disponibile"),rs.getBoolean("Terminato"));
-                    listaPasti.add(pas);
-                    
-                }
-            }catch(Exception ex){
-
-                System.out.println(ex);
-            }   
-           return listaPasti;
-        
-    }
- 
+    /*
+     * Query che restituisce la lista dei pasti odierni ancora disponibili
+     * Prima delle 12:00 restituisce un lista vuota
+     * Dalle 12:00 restituisce la lista contenente i prazi che sono diponibili
+     * Dalle 19:00 restituisce la lista contenente prazi e cene ancora disponibili
+     */
     public ArrayList <Pasto> listaPastiDisponibili(){
         Date date = new Date();
         DateFormat formatDate = new SimpleDateFormat("yyyy.MM.dd");
