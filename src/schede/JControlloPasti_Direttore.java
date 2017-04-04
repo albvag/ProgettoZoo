@@ -282,7 +282,7 @@ public class JControlloPasti_Direttore extends javax.swing.JFrame {
            }else{stat="NON TERMINATO";} 
            }
        
-           row[3] = stat;
+           row[2] = stat;
            
            model.addRow(row);
            
