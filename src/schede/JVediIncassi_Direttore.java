@@ -47,7 +47,6 @@ public class JVediIncassi_Direttore extends javax.swing.JFrame {
         this.jTextField1.setVisible(false);
         this.jTableIncassi.getTableHeader().setReorderingAllowed(false);
         this.jTableIncassi.getTableHeader().setResizingAllowed(false);
-        
         pack();
         setLocationRelativeTo(null);
        
@@ -82,6 +81,13 @@ public class JVediIncassi_Direttore extends javax.swing.JFrame {
         });
 
         jLabel1.setText("    TOTALE:");
+
+        jTextField1.setEditable(false);
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jdataincassi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -284,6 +290,10 @@ public class JVediIncassi_Direttore extends javax.swing.JFrame {
              }
        }
     }//GEN-LAST:event_jConfermaActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
