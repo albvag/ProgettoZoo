@@ -202,7 +202,7 @@ public class JControlloPasti_Direttore extends javax.swing.JFrame {
        JOptionPane.showMessageDialog(null, "NON CI SONO PASTI IN QUELLA DATA"); 
            }    else{
             this.jTablePasti.getTableHeader().setReorderingAllowed(false);
-           String[] jTableAnimaliHeaders  = {"Pasto","Custode","Disponibile","Terminato"};
+           String[] jTableAnimaliHeaders  = {"Pasto","Custode","Stato"};
         v.selectmode(this.jTablePasti);   
         v.creaTabella(this.jTablePasti, jTableAnimaliHeaders);
         this.jTablePasti.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
