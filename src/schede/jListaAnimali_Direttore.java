@@ -6,6 +6,8 @@
 package schede;
 
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 import logins.JDirettore;
@@ -42,7 +44,12 @@ public class jListaAnimali_Direttore extends javax.swing.JFrame {
         String[] FILTRI = new String[8];
         for(int i=0; i<FILTRI.length; i++) FILTRI[i] = "";
         
-        v.Show_Animali_In_JTable(this.jTableAnimali, FILTRI);
+        try {
+                v.Show_Animali_In_JTable(this.jTableAnimali, FILTRI);
+            } catch (Throwable ex) {
+                Logger.getLogger(JSchedaAnimale_Veterinario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
            
        
     }
