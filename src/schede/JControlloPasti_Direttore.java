@@ -268,19 +268,21 @@ public class JControlloPasti_Direttore extends javax.swing.JFrame {
            
            row[1] = utlist[i].getNome()+" "+utlist[i].getCognome();
            
-            String disp="";
+           String stat="";
+           
            if(listaPasti.get(i).getDisponibile())
            {
-             disp="NON INIZIATO";
-           }else{disp="INIZIATO";}
-           row[2] = disp;
-           
-           String term="";
+             stat="NON INIZIATO";
+           }else{
+               
+              
            if(listaPasti.get(i).getTerminato())
            {
-             term="TERMINATO";
-           }else{term="NON TERMINATO";}
-           row[3] = term;
+             stat="TERMINATO";
+           }else{stat="NON TERMINATO";} 
+           }
+       
+           row[3] = stat;
            
            model.addRow(row);
            
