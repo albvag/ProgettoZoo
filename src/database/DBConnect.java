@@ -1792,7 +1792,8 @@ public class DBConnect {
     }    
     
     /**
-     * Query usate per accettare
+     * Query usate per accettare il compito pasto
+     * aggiunge una riga alla tabella nutre e setta il pasto a non disponibile
      */
     public void accettaPasto(Pasto pas,Utente user){
         Date date = new Date();
@@ -1811,6 +1812,10 @@ public class DBConnect {
             }
     }    
     
+    /**
+     * Query per la richiesta di aiuto in una pulizia
+     * setta ServeAiuto a true
+     */
     public void richiediAiutoPulizia(Pulizia pul){
         try{
             st.executeUpdate("UPDATE pulizia SET ServeAiuto = "+true+" where Codice_Pulizia = '"+ pul.getCodice_Pulizia() + "'");
@@ -1820,6 +1825,10 @@ public class DBConnect {
         
     }    
     
+    /**
+     * Query che serve a terminare un compito
+     * setta Terminato a true
+     */
     public void terminaCompito(Utente user){
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
@@ -1843,7 +1852,11 @@ public class DBConnect {
             
         }
         }
-            
+    
+    /**
+     * Query usata per rinunciare a un compito accettato che non sia ha intenzione di terminare
+     * modifica Disponibile mettendolo a true se si è l'unico che stava svolgendo il compito
+     */
     public void annullaCompito(Utente user){
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
@@ -1852,7 +1865,7 @@ public class DBConnect {
         if(stoNutrendo(user)){
             Pasto pas =attualePasto(user);
             try{
-            st.executeUpdate("UPDATE pasti SET Disponibile = "+true+", ServeAiuto = "+false+" WHERE Codice_Pasto = '"+pas.getCodice_Pasto()+"'");
+            st.executeUpdate("UPDATE pasti SET Disponibile = "+true+" WHERE Codice_Pasto = '"+pas.getCodice_Pasto()+"'");
             }catch(SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);}
             
@@ -1865,7 +1878,7 @@ public class DBConnect {
             Pulizia pul =attualePulizia(user);
             try{
                 if(numeroCustodiInPulizia(pul)==1){
-                    st.executeUpdate("UPDATE pulizia SET Disponibile = "+true+", Data_Pulizia = '"+data+"' WHERE Codice_Pulizia = '"+pul.getCodice_Pulizia()+"'");
+                    st.executeUpdate("UPDATE pulizia SET Disponibile = "+true+", Data_Pulizia = '"+data+"', ServeAiuto = "+false+" WHERE Codice_Pulizia = '"+pul.getCodice_Pulizia()+"'");
                 }
             }catch(SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);   }
@@ -1878,7 +1891,9 @@ public class DBConnect {
         }
         }
     
-    
+    /**
+     * Query che restitusce true se l'utente sta eseguendo compiti di pulizia
+     */
     public boolean stoPulendo(Utente user){
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
@@ -1913,6 +1928,9 @@ public class DBConnect {
         return false;
     }
 
+    /**
+     * Query che restitusce true se l'utente sta nutrendo un habitat
+     */
     public boolean stoNutrendo(Utente user){
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("yyyy.MM.dd");
@@ -1946,6 +1964,9 @@ public class DBConnect {
         return false;
     }
     
+    /**
+     * Query che restituisce il compito di pulizia che il custode sta attualmente svolgendo
+     */
     public Pulizia attualePulizia(Utente user){
         Pulizia pul = new Pulizia();
         Date date = new Date();
@@ -1979,6 +2000,9 @@ public class DBConnect {
         return pul;
     }
 
+    /**
+     * Query che restituisce il pasto che l'utente sta attualmente svolgendo
+     */
     public Pasto attualePasto(Utente user){
         Pasto pas = new Pasto();
         Date date = new Date();
@@ -2015,6 +2039,9 @@ public class DBConnect {
         return pas;
     }
     
+    /**
+     * Query che restituisce il numero di custodi che stanno svolgendo una pulizia data 
+     */
     public int numeroCustodiInPulizia(Pulizia pul){
         int i = 0;
         
